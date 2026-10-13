@@ -103,9 +103,7 @@ export const ContactFooter: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4 text-[11px]">
-            <span>React 19 + TypeScript + Vite</span>
-            <span>•</span>
-            <span className="text-[#059669] font-medium">Anti-Slop Verified</span>
+            <span>React 19 · TypeScript · Tailwind CSS</span>
           </div>
         </div>
       </div>
