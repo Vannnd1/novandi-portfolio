@@ -5,6 +5,8 @@ interface RevealOnScrollProps {
   delay?: number;
   className?: string;
   direction?: 'up' | 'none';
+  distance?: number;
+  duration?: number;
   as?: React.ElementType;
 }
 
@@ -13,6 +15,8 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   delay = 0,
   className = '',
   direction = 'up',
+  distance = 24,
+  duration = 700,
   as: Component = 'div',
 }) => {
   const elementRef = useRef<HTMLElement>(null);
@@ -29,6 +33,7 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   useEffect(() => {
     if (isVisible) return;
 
+    // Trigger point: when element reaches the lower 85% of the viewport (15% above the bottom)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,8 +46,8 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.05,
+        rootMargin: '0px 0px -15% 0px',
       }
     );
 
@@ -51,14 +56,20 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
       observer.observe(currentEl);
     }
 
+    // Safety fallback: if for any reason intersection never fired after 3.5s, reveal gracefully
+    const safetyTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3500);
+
     return () => {
+      clearTimeout(safetyTimer);
       if (currentEl) {
         observer.unobserve(currentEl);
       }
     };
   }, [isVisible]);
 
-  const translateStyle = direction === 'up' ? 'translateY(14px)' : 'translateY(0)';
+  const translateStyle = direction === 'up' ? `translateY(${distance}px)` : 'translateY(0)';
 
   return (
     <Component
@@ -67,7 +78,7 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : translateStyle,
-        transition: 'opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: `opacity ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
         transitionDelay: `${delay}ms`,
         willChange: isVisible ? 'auto' : 'opacity, transform',
       }}

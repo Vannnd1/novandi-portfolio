@@ -20,10 +20,12 @@
 
     /* Motion Tokens */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-reveal: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
     --duration-fast: 150ms;
     --duration-base: 250ms;
-    --duration-slow: 600ms;
+    --duration-reveal: 700ms;
+    --duration-slow: 750ms;
   }
 
   body {

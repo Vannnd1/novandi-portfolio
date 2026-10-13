@@ -42,12 +42,10 @@ export const ProjectsSection: React.FC = () => {
 
       {/* Flagship Thesis Dedicated Component */}
       {thesisProject && (
-        <RevealOnScroll delay={80}>
-          <FlagshipThesis
-            project={thesisProject}
-            onOpenCaseStudy={setSelectedProjectId}
-          />
-        </RevealOnScroll>
+        <FlagshipThesis
+          project={thesisProject}
+          onOpenCaseStudy={setSelectedProjectId}
+        />
       )}
 
       {/* 2. Secondary Verified Projects Section */}
@@ -117,7 +115,7 @@ export const ProjectsSection: React.FC = () => {
         {/* Projects List */}
         <div id="ai" className="grid grid-cols-1 gap-6">
           {filteredProjects.map((project, idx) => (
-            <RevealOnScroll key={project.id} delay={Math.min(idx * 70, 280)}>
+            <RevealOnScroll key={project.id} delay={Math.min(idx * 90, 360)}>
               <ProjectCard
                 project={project}
                 onOpenCaseStudy={setSelectedProjectId}

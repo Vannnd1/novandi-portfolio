@@ -115,7 +115,7 @@ export const TechnicalBackground: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {profileData.skillCategories.map((category, idx) => (
-              <RevealOnScroll key={category.title} delay={Math.min(idx * 60, 240)}>
+              <RevealOnScroll key={category.title} delay={Math.min(idx * 80, 320)}>
                 <div className="bg-white border border-[#E4E4E1] hover:border-[#CBD5E1] rounded-lg p-5 space-y-3 transition-colors">
                   <h3 className="font-mono-tech text-xs font-semibold text-[#111318] pb-2 border-b border-[#F4F4F2]">
                     {category.title}
