@@ -42,10 +42,12 @@ export const ProjectsSection: React.FC = () => {
 
       {/* Flagship Thesis Dedicated Component */}
       {thesisProject && (
-        <FlagshipThesis
-          project={thesisProject}
-          onOpenCaseStudy={setSelectedProjectId}
-        />
+        <RevealOnScroll delay={60}>
+          <FlagshipThesis
+            project={thesisProject}
+            onOpenCaseStudy={setSelectedProjectId}
+          />
+        </RevealOnScroll>
       )}
 
       {/* 2. Secondary Verified Projects Section */}

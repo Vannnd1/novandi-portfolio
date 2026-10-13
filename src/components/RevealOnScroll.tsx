@@ -8,6 +8,7 @@ interface RevealOnScrollProps {
   distance?: number;
   duration?: number;
   as?: React.ElementType;
+  once?: boolean;
 }
 
 export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
@@ -18,6 +19,7 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   distance = 24,
   duration = 700,
   as: Component = 'div',
+  once = true,
 }) => {
   const elementRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(() => {
@@ -31,43 +33,37 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   });
 
   useEffect(() => {
-    if (isVisible) return;
+    if (isVisible && once) return;
 
-    // Trigger point: when element reaches the lower 85% of the viewport (15% above the bottom)
+    const currentEl = elementRef.current;
+    if (!currentEl) return;
+
+    // Trigger reveal when the element enters 60px before the bottom edge of the viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            if (elementRef.current) {
-              observer.unobserve(elementRef.current);
+            if (once) {
+              observer.unobserve(entry.target);
             }
+          } else if (!once) {
+            setIsVisible(false);
           }
         });
       },
       {
         threshold: 0.05,
-        rootMargin: '0px 0px -15% 0px',
+        rootMargin: '0px 0px -60px 0px',
       }
     );
 
-    const currentEl = elementRef.current;
-    if (currentEl) {
-      observer.observe(currentEl);
-    }
-
-    // Safety fallback: if for any reason intersection never fired after 3.5s, reveal gracefully
-    const safetyTimer = setTimeout(() => {
-      setIsVisible(true);
-    }, 3500);
+    observer.observe(currentEl);
 
     return () => {
-      clearTimeout(safetyTimer);
-      if (currentEl) {
-        observer.unobserve(currentEl);
-      }
+      observer.disconnect();
     };
-  }, [isVisible]);
+  }, [isVisible, once]);
 
   const translateStyle = direction === 'up' ? `translateY(${distance}px)` : 'translateY(0)';
 
