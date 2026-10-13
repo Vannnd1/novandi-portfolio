@@ -1,12 +1,13 @@
 import React from 'react';
-import { ShieldCheck, GitBranch, ArrowUpRight, CheckCircle2, Cpu, BarChart2 } from 'lucide-react';
+import { ShieldCheck, GitBranch, ArrowUpRight, CheckCircle2, Cpu, BarChart2, BookOpen } from 'lucide-react';
 import type { ProjectItem } from '../data/projects';
 
 interface FlagshipThesisProps {
   project: ProjectItem;
+  onOpenCaseStudy: (projectId: string) => void;
 }
 
-export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project }) => {
+export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenCaseStudy }) => {
   return (
     <article
       id="research"
@@ -106,10 +107,12 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project }) => {
           </div>
 
           <ul className="space-y-2 text-xs text-[#575B66]">
-            {project.architectureDetails?.slice(0, 4).map((detail, idx) => (
+            {project.caseStudy.systemArchitecture.steps.slice(0, 4).map((s, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="text-[#2563EB] font-bold font-mono-tech mt-0.5">•</span>
-                <span>{detail}</span>
+                <span>
+                  <strong className="text-[#111318] font-medium">{s.step}:</strong> {s.description}
+                </span>
               </li>
             ))}
           </ul>
@@ -130,7 +133,7 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project }) => {
 
       </div>
 
-      {/* Tech Stack Pills & Direct Repository Link */}
+      {/* Tech Stack Pills & Action Buttons */}
       <div className="mt-8 pt-5 border-t border-[#E4E4E1] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="font-mono-tech text-xs text-[#858A96] mr-2">Core Stack:</span>
@@ -144,18 +147,30 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project }) => {
           ))}
         </div>
 
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#111318] hover:bg-[#2563EB] text-white font-mono-tech text-xs font-medium rounded transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => onOpenCaseStudy(project.id)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-mono-tech text-xs font-medium rounded transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
           >
-            <GitBranch className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>Inspect Thesis Repository</span>
+            <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Read Case Study</span>
             <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-          </a>
-        )}
+          </button>
+
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#111318] hover:bg-[#2563EB] text-white font-mono-tech text-xs font-medium rounded transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+            >
+              <GitBranch className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Inspect Repository</span>
+              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

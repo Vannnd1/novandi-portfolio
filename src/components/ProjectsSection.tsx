@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { projectsData } from '../data/projects';
 import { FlagshipThesis } from './FlagshipThesis';
 import { ProjectCard } from './ProjectCard';
+import { CaseStudyModal } from './CaseStudyModal';
 
 export const ProjectsSection: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'systems' | 'data-ai' | 'academic'>('all');
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   const thesisProject = projectsData.find((p) => p.id === 'chaotic-image-encryption');
   const secondaryProjects = projectsData.filter((p) => p.id !== 'chaotic-image-encryption');
+  const activeCaseStudyProject = projectsData.find((p) => p.id === selectedProjectId) ?? null;
 
   const filteredProjects = secondaryProjects.filter((p) => {
     if (filter === 'all') return true;
@@ -35,7 +38,12 @@ export const ProjectsSection: React.FC = () => {
       </div>
 
       {/* Flagship Thesis Dedicated Component */}
-      {thesisProject && <FlagshipThesis project={thesisProject} />}
+      {thesisProject && (
+        <FlagshipThesis
+          project={thesisProject}
+          onOpenCaseStudy={setSelectedProjectId}
+        />
+      )}
 
       {/* 2. Secondary Verified Projects Section */}
       <div id="systems" className="pt-8 space-y-8">
@@ -102,10 +110,20 @@ export const ProjectsSection: React.FC = () => {
         {/* Projects List */}
         <div id="ai" className="grid grid-cols-1 gap-6">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onOpenCaseStudy={setSelectedProjectId}
+            />
           ))}
         </div>
       </div>
+
+      {/* Expandable Case Study Modal */}
+      <CaseStudyModal
+        project={activeCaseStudyProject}
+        onClose={() => setSelectedProjectId(null)}
+      />
 
     </section>
   );
