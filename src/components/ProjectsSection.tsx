@@ -3,6 +3,7 @@ import { projectsData } from '../data/projects';
 import { FlagshipThesis } from './FlagshipThesis';
 import { ProjectCard } from './ProjectCard';
 import { CaseStudyModal } from './CaseStudyModal';
+import { RevealOnScroll } from './RevealOnScroll';
 
 export const ProjectsSection: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'systems' | 'data-ai' | 'academic'>('all');
@@ -24,97 +25,104 @@ export const ProjectsSection: React.FC = () => {
     <section className="py-16 md:py-24 max-w-5xl mx-auto px-5 sm:px-8 space-y-16">
       
       {/* 1. Flagship Research Section Header */}
-      <div className="space-y-3">
-        <div className="flex items-center gap-2 font-mono-tech text-xs text-[#2563EB] uppercase font-semibold">
-          <span className="w-2 h-0.5 bg-[#2563EB]" />
-          <span>01 · Flagship Thesis Research</span>
+      <RevealOnScroll delay={0}>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 font-mono-tech text-xs text-[#2563EB] uppercase font-semibold">
+            <span className="w-2 h-0.5 bg-[#2563EB]" />
+            <span>01 · Flagship Thesis Research</span>
+          </div>
+          <h2 className="font-serif-display text-3xl sm:text-4xl text-[#111318]">
+            Applied Cryptography & Mathematical Image Security
+          </h2>
+          <p className="font-sans-body text-sm sm:text-base text-[#575B66] max-w-2xl leading-relaxed">
+            Culminating undergraduate research project at Universitas Gunadarma, demonstrating mathematical formulation, JIT compilation performance, and empirical NIST statistical validation.
+          </p>
         </div>
-        <h2 className="font-serif-display text-3xl sm:text-4xl text-[#111318]">
-          Applied Cryptography & Mathematical Image Security
-        </h2>
-        <p className="font-sans-body text-sm sm:text-base text-[#575B66] max-w-2xl leading-relaxed">
-          Culminating undergraduate research project at Universitas Gunadarma, demonstrating mathematical formulation, JIT compilation performance, and empirical NIST statistical validation.
-        </p>
-      </div>
+      </RevealOnScroll>
 
       {/* Flagship Thesis Dedicated Component */}
       {thesisProject && (
-        <FlagshipThesis
-          project={thesisProject}
-          onOpenCaseStudy={setSelectedProjectId}
-        />
+        <RevealOnScroll delay={80}>
+          <FlagshipThesis
+            project={thesisProject}
+            onOpenCaseStudy={setSelectedProjectId}
+          />
+        </RevealOnScroll>
       )}
 
       {/* 2. Secondary Verified Projects Section */}
       <div id="systems" className="pt-8 space-y-8">
-        <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4 pb-4 border-b border-[#E4E4E1]">
-          <div>
-            <div className="flex items-center gap-2 font-mono-tech text-xs text-[#2563EB] uppercase font-semibold">
-              <span className="w-2 h-0.5 bg-[#2563EB]" />
-              <span>02 · Systems, Intelligence & Interactive Works</span>
+        <RevealOnScroll delay={0}>
+          <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4 pb-4 border-b border-[#E4E4E1]">
+            <div>
+              <div className="flex items-center gap-2 font-mono-tech text-xs text-[#2563EB] uppercase font-semibold">
+                <span className="w-2 h-0.5 bg-[#2563EB]" />
+                <span>02 · Systems, Intelligence & Interactive Works</span>
+              </div>
+              <h2 className="font-serif-display text-3xl sm:text-4xl text-[#111318] mt-1">
+                Selected Engineering Codebases
+              </h2>
             </div>
-            <h2 className="font-serif-display text-3xl sm:text-4xl text-[#111318] mt-1">
-              Selected Engineering Codebases
-            </h2>
-          </div>
 
-          {/* Minimalist Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#F4F4F2] rounded-md font-mono-tech text-xs">
-            <button
-              type="button"
-              onClick={() => setFilter('all')}
-              className={`px-3 py-1.5 rounded transition-colors ${
-                filter === 'all'
-                  ? 'bg-white text-[#111318] shadow-xs font-semibold'
-                  : 'text-[#575B66] hover:text-[#111318]'
-              }`}
-            >
-              All ({secondaryProjects.length})
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('systems')}
-              className={`px-3 py-1.5 rounded transition-colors ${
-                filter === 'systems'
-                  ? 'bg-white text-[#111318] shadow-xs font-semibold'
-                  : 'text-[#575B66] hover:text-[#111318]'
-              }`}
-            >
-              Systems
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('data-ai')}
-              className={`px-3 py-1.5 rounded transition-colors ${
-                filter === 'data-ai'
-                  ? 'bg-white text-[#111318] shadow-xs font-semibold'
-                  : 'text-[#575B66] hover:text-[#111318]'
-              }`}
-            >
-              Data & AI
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('academic')}
-              className={`px-3 py-1.5 rounded transition-colors ${
-                filter === 'academic'
-                  ? 'bg-white text-[#111318] shadow-xs font-semibold'
-                  : 'text-[#575B66] hover:text-[#111318]'
-              }`}
-            >
-              Cohort & Academic
-            </button>
+            {/* Minimalist Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#F4F4F2] rounded-md font-mono-tech text-xs">
+              <button
+                type="button"
+                onClick={() => setFilter('all')}
+                className={`px-3 py-1.5 rounded transition-all active:scale-[0.98] cursor-pointer ${
+                  filter === 'all'
+                    ? 'bg-white text-[#111318] shadow-xs font-semibold'
+                    : 'text-[#575B66] hover:text-[#111318]'
+                }`}
+              >
+                All ({secondaryProjects.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilter('systems')}
+                className={`px-3 py-1.5 rounded transition-all active:scale-[0.98] cursor-pointer ${
+                  filter === 'systems'
+                    ? 'bg-white text-[#111318] shadow-xs font-semibold'
+                    : 'text-[#575B66] hover:text-[#111318]'
+                }`}
+              >
+                Systems
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilter('data-ai')}
+                className={`px-3 py-1.5 rounded transition-all active:scale-[0.98] cursor-pointer ${
+                  filter === 'data-ai'
+                    ? 'bg-white text-[#111318] shadow-xs font-semibold'
+                    : 'text-[#575B66] hover:text-[#111318]'
+                }`}
+              >
+                Data & AI
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilter('academic')}
+                className={`px-3 py-1.5 rounded transition-all active:scale-[0.98] cursor-pointer ${
+                  filter === 'academic'
+                    ? 'bg-white text-[#111318] shadow-xs font-semibold'
+                    : 'text-[#575B66] hover:text-[#111318]'
+                }`}
+              >
+                Cohort & Academic
+              </button>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
         {/* Projects List */}
         <div id="ai" className="grid grid-cols-1 gap-6">
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onOpenCaseStudy={setSelectedProjectId}
-            />
+          {filteredProjects.map((project, idx) => (
+            <RevealOnScroll key={project.id} delay={Math.min(idx * 70, 280)}>
+              <ProjectCard
+                project={project}
+                onOpenCaseStudy={setSelectedProjectId}
+              />
+            </RevealOnScroll>
           ))}
         </div>
       </div>

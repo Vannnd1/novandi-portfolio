@@ -40,7 +40,10 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenC
       {/* Core Cryptographic Metric Highlights */}
       <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {project.metrics.map((metric) => (
-          <div key={metric.label} className="p-3.5 rounded bg-[#FAFAF9] border border-[#E4E4E1]">
+          <div
+            key={metric.label}
+            className="p-3.5 rounded bg-[#FAFAF9] border border-[#E4E4E1] hover:border-[#2563EB]/40 hover:bg-white transition-all duration-150"
+          >
             <div className="font-mono-tech text-[11px] text-[#575B66] uppercase tracking-wider">
               {metric.label}
             </div>
@@ -70,7 +73,7 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenC
             <strong className="text-[#111318] font-medium">MS-Gauss Map (FoG)</strong>:
           </p>
 
-          <div className="bg-[#111318] text-[#FAFAF9] rounded p-3.5 font-mono-tech text-xs space-y-2 overflow-x-auto">
+          <div className="bg-[#111318] text-[#FAFAF9] rounded p-3.5 font-mono-tech text-xs space-y-2 overflow-x-auto selection:bg-[#2563EB]">
             <div className="text-[#858A96] text-[11px]"># Gauss-MS Composite Function (GoF)</div>
             <div className="text-[#93C5FD]">
               GoF(x) = [ exp(-α · (f(x))²) + β ] mod 1
@@ -140,7 +143,7 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenC
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="font-mono-tech text-xs px-2.5 py-1 rounded bg-[#F4F4F2] border border-[#E4E4E1] text-[#111318]"
+              className="font-mono-tech text-xs px-2.5 py-1 rounded bg-[#F4F4F2] border border-[#E4E4E1] hover:border-[#CBD5E1] text-[#111318] transition-colors"
             >
               {tech}
             </span>
@@ -151,11 +154,11 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenC
           <button
             type="button"
             onClick={() => onOpenCaseStudy(project.id)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-mono-tech text-xs font-medium rounded transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
+            className="group inline-flex items-center gap-2 px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-mono-tech text-xs font-medium rounded transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
           >
             <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Read Case Study</span>
-            <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" aria-hidden="true" />
           </button>
 
           {project.githubUrl && (
@@ -163,11 +166,11 @@ export const FlagshipThesis: React.FC<FlagshipThesisProps> = ({ project, onOpenC
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#111318] hover:bg-[#2563EB] text-white font-mono-tech text-xs font-medium rounded transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+              className="group inline-flex items-center gap-2 px-4 py-2 bg-[#111318] hover:bg-[#2563EB] text-white font-mono-tech text-xs font-medium rounded transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB]"
             >
               <GitBranch className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Inspect Repository</span>
-              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" aria-hidden="true" />
             </a>
           )}
         </div>

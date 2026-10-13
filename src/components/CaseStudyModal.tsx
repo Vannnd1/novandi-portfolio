@@ -36,16 +36,19 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-study-title"
-      className="fixed inset-0 z-50 bg-[#111318]/60 backdrop-blur-sm overflow-y-auto flex justify-center p-0 sm:p-4 md:p-6 animate-in fade-in duration-200"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 bg-[#111318]/65 backdrop-blur-sm overflow-y-auto flex justify-center p-0 sm:p-4 md:p-6 animate-in fade-in duration-200 cursor-pointer"
     >
-      <div className="bg-[#FAFAF9] text-[#111318] w-full max-w-4xl min-h-screen sm:min-h-fit sm:rounded-xl border border-[#E4E4E1] shadow-2xl overflow-hidden flex flex-col my-auto">
+      <div className="bg-[#FAFAF9] text-[#111318] w-full max-w-4xl min-h-screen sm:min-h-fit sm:rounded-xl border border-[#E4E4E1] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default animate-in zoom-in-98 duration-200">
         
         {/* Sticky Top Action Bar */}
-        <div className="sticky top-0 z-20 bg-[#FAFAF9]/90 backdrop-blur-md px-6 py-4 border-b border-[#E4E4E1] flex items-center justify-between">
+        <div className="sticky top-0 z-20 bg-[#FAFAF9]/95 backdrop-blur-md px-6 py-4 border-b border-[#E4E4E1] flex items-center justify-between">
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center gap-2 font-mono-tech text-xs text-[#575B66] hover:text-[#111318] px-3 py-1.5 rounded hover:bg-[#F4F4F2] transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+            className="inline-flex items-center gap-2 font-mono-tech text-xs text-[#575B66] hover:text-[#111318] px-3 py-1.5 rounded hover:bg-[#F4F4F2] active:scale-95 transition-all focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Projects Overview</span>
@@ -57,17 +60,17 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 font-mono-tech text-xs text-[#2563EB] hover:underline"
+                className="group hidden sm:inline-flex items-center gap-1.5 font-mono-tech text-xs text-[#2563EB] hover:underline active:scale-95 transition-transform"
               >
                 <GitBranch className="w-3.5 h-3.5" />
                 <span>Source Code</span>
-                <ArrowUpRight className="w-3 h-3" />
+                <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
               </a>
             )}
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded text-[#575B66] hover:text-[#111318] hover:bg-[#F4F4F2] transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+              className="p-1.5 rounded text-[#575B66] hover:text-[#111318] hover:bg-[#F4F4F2] active:scale-95 transition-all focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
               aria-label="Close Case Study"
             >
               <X className="w-5 h-5" />

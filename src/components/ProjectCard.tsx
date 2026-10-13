@@ -98,7 +98,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenCaseStu
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="font-mono-tech text-[11px] px-2 py-0.5 rounded bg-[#F4F4F2] text-[#575B66]"
+              className="font-mono-tech text-[11px] px-2 py-0.5 rounded bg-[#F4F4F2] hover:bg-[#EDEDEB] text-[#575B66] hover:text-[#111318] transition-colors"
             >
               {tech}
             </span>
@@ -109,11 +109,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenCaseStu
           <button
             type="button"
             onClick={() => onOpenCaseStudy(project.id)}
-            className="inline-flex items-center gap-1.5 font-mono-tech text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
+            className="group/btn inline-flex items-center gap-1.5 font-mono-tech text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB] cursor-pointer"
           >
             <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Case Study</span>
-            <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-150" aria-hidden="true" />
           </button>
 
           {project.githubUrl ? (
@@ -121,11 +121,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenCaseStu
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-mono-tech text-xs font-medium text-[#111318] hover:text-[#2563EB] transition-colors focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+              className="group/repo inline-flex items-center gap-1.5 font-mono-tech text-xs font-medium text-[#111318] hover:text-[#2563EB] transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB]"
             >
               <GitBranch className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Repository</span>
-              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover/repo:translate-x-0.5 group-hover/repo:-translate-y-0.5 transition-transform duration-150" aria-hidden="true" />
             </a>
           ) : (
             <span className="font-mono-tech text-[11px] text-[#858A96] italic">
