@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-canvas: #FAFAF9;
+    --color-surface: #FFFFFF;
+    --color-surface-muted: #F4F4F2;
+    --color-ink: #111318;
+    --color-slate-muted: #575B66;
+    --color-slate-subtle: #858A96;
+    --color-border: #E4E4E1;
+    --color-border-subtle: #EDEDEB;
+    --color-cobalt: #2563EB;
+    --color-cobalt-hover: #1D4ED8;
+    --color-status-pass: #059669;
+
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: #111318;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+.font-serif-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-mono-tech {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+}
