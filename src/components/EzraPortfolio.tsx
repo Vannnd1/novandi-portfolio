@@ -132,100 +132,55 @@ export const EzraPortfolio: React.FC = () => {
             {/* TAB 1: EXPERIENCE */}
             {activeTab === 'experience' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
-                {/* Item 1 */}
-                <article className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
-                  <div>
-                    <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
-                      Discrete MOM / MES
-                    </h3>
-                    <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
-                      Lead Full-Stack Systems Engineer (Independent & Coursework)
+                {profileData.experience.map((exp, idx) => (
+                  <article key={idx} className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
+                    <div>
+                      <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
+                        {exp.institution}
+                      </h3>
+                      <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
+                        {exp.role}
+                      </p>
+                    </div>
+                    <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
+                      {exp.period}
+                    </time>
+                    <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
+                      {exp.description}
                     </p>
-                  </div>
-                  <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
-                    2024-2025
-                  </time>
-                  <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
-                    Engineered an enterprise-grade Discrete Manufacturing Operations Management (MOM/MES) platform from scratch using React 19, Node.js, Express, and PostgreSQL. Implemented Segregation of Duties (SoD) with Role-Based Access Control (RBAC), and maintained 252 automated unit and integration tests passing with 89.9% Jest code coverage.
-                  </p>
-                </article>
-
-                {/* Item 2 */}
-                <article className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
-                  <div>
-                    <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
-                      Program Asah Dicoding
-                    </h3>
-                    <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
-                      Cohort Developer — Cloud & Full-Stack Web
-                    </p>
-                  </div>
-                  <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
-                    2025
-                  </time>
-                  <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
-                    Intensive technical cohort by Dicoding Indonesia covering cloud infrastructure, fullstack web services with React and Node.js, and Generative AI fundamentals with AWS. Collaborated in an agile team on the capstone project Adaptive Learning Insight to analyze educational workflows.
-                  </p>
-                </article>
-
-                {/* Item 3 */}
-                <article className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
-                  <div>
-                    <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
-                      Gunadarma Cryptography Lab
-                    </h3>
-                    <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
-                      Undergraduate Cryptography Researcher
-                    </p>
-                  </div>
-                  <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
-                    2025-2026
-                  </time>
-                  <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
-                    Formulated, simulated, and benchmarked 5 chaotic map algorithms (Gauss-MS and MS-Gauss Map) using Python and Numba JIT acceleration. Conducted comprehensive empirical validation with NIST SP 800-22 randomness suites, Shannon Entropy, NPCR/UACI differential tests, and Lyapunov exponents.
-                  </p>
-                </article>
+                    {exp.highlights && exp.highlights.length > 0 && (
+                      <ul className="font-space text-sm text-[#777] space-y-1.5 col-span-2 mt-2 pl-4 list-disc">
+                        {exp.highlights.map((h, hIdx) => (
+                          <li key={hIdx}>{h}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </article>
+                ))}
               </div>
             )}
 
             {/* TAB 2: EDUCATION */}
             {activeTab === 'education' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
-                {/* Edu 1 */}
-                <article className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
-                  <div>
-                    <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
-                      Universitas Gunadarma
-                    </h3>
-                    <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
-                      S1 Informatika (Bachelor of Computer Science) · IPK 3.64 / 4.00
+                {profileData.education.map((edu, idx) => (
+                  <article key={idx} className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
+                    <div>
+                      <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
+                        {edu.institution}
+                      </h3>
+                      <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
+                        {edu.degree} {edu.score ? `· ${edu.score}` : ''}
+                      </p>
+                    </div>
+                    <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
+                      {edu.period}
+                    </time>
+                    <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
+                      {edu.description}
                     </p>
-                  </div>
-                  <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
-                    2022-2026
-                  </time>
-                  <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
-                    Undergraduate curriculum in Computer Science focusing on software engineering, database modeling, network security, and machine learning. Final thesis project concentrated on chaotic medical image cryptography validated with NIST SP 800-22 standards.
-                  </p>
-                </article>
-
-                {/* Edu 2 */}
-                <article className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
-                  <div>
-                    <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
-                      SMKN 1 Cibinong
-                    </h3>
-                    <p className="font-geist text-lg sm:text-[20px] text-[#767676] font-semibold mt-2.5 mb-0 leading-[1.35]">
-                      Multimedia Specialization
-                    </p>
-                  </div>
-                  <time className="font-dm-sans italic font-bold text-3xl sm:text-[44px] text-[#3d3d3d] text-right leading-none shrink-0">
-                    2019-2022
-                  </time>
-                  <p className="font-space font-medium text-base text-[#777] leading-[1.6] col-span-2 mt-3 m-0">
-                    Studies in interactive digital media, user interface design principles, graphic assets, audio-visual editing, and frontend foundations.
-                  </p>
-                </article>
+                  </article>
+                ))}
               </div>
             )}
 
