@@ -27,9 +27,9 @@ export const EzraPortfolio: React.FC = () => {
           <a
             href="/"
             className="font-hegarty text-[32px] text-[#101010] stroke-title no-underline hover:opacity-90 transition-opacity"
-            aria-label="novandi.dev home"
+            aria-label="novan home"
           >
-            novandi.dev
+            novan
           </a>
         </nav>
       </header>
@@ -257,9 +257,9 @@ export const EzraPortfolio: React.FC = () => {
         </section>
 
         {/* Giant Brand Wordmark Footer (Exact Ezra Footer Typography) */}
-        <section className="pt-24 pb-6 overflow-hidden select-none">
-          <p className="font-hegarty text-[clamp(90px,18vw,260px)] text-[#202020] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95">
-            novandi.dev
+        <section className="pt-20 sm:pt-24 pb-4 sm:pb-6 select-none flex justify-center overflow-hidden">
+          <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95">
+            novan
           </p>
         </section>
 
