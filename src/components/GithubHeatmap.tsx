@@ -91,15 +91,15 @@ export const GithubHeatmap: React.FC = () => {
   const getColor = (level: number) => {
     switch (level) {
       case 4:
-        return 'bg-[#db2777] shadow-xs'; // deep vibrant magenta
+        return 'bg-[#e54afd]'; // deep purple/magenta
       case 3:
-        return 'bg-[#ec4899] shadow-xs'; // hot pink
+        return 'bg-[#fd4aa6]'; // hot pink
       case 2:
-        return 'bg-[#f472b6]'; // medium pink
+        return 'bg-[#ff9ac4]'; // medium pink
       case 1:
-        return 'bg-[#fbcfe8]'; // soft pink
+        return 'bg-[#ffd3e5]'; // soft pink
       default:
-        return 'bg-[#E5E7EB] hover:bg-[#D1D5DB]'; // light gray
+        return 'bg-[#f1f1f1] hover:bg-[#e2e2e2]'; // light gray
     }
   };
 
