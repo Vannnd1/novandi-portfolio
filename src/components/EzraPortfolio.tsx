@@ -7,7 +7,7 @@ import { TechPill } from './TechPill';
 import { ProjectMockup } from './ProjectMockup';
 import { StickerCard } from './StickerCard';
 import { CaseStudyModal } from './CaseStudyModal';
-import { GitHubIcon } from './Icons';
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from './Icons';
 import { BookOpen } from 'lucide-react';
 
 type TabType = 'experience' | 'education' | 'works';
@@ -61,15 +61,17 @@ export const EzraPortfolio: React.FC = () => {
             i share my journey on{' '}
             <SocialPill
               href="https://linkedin.com"
+              icon={<LinkedInIcon className="w-3.5 h-3.5" />}
               label="linkedin"
               variant="linkedin"
               tilt={-1.2}
             />{' '}
             and{' '}
             <SocialPill
-              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profileData.email}`}
-              label="gmail"
-              variant="gmail"
+              href={profileData.instagramUrl}
+              icon={<InstagramIcon className="w-3.5 h-3.5" />}
+              label="instagram"
+              variant="instagram"
               tilt={2.1}
             />
             , and keep everything i build on{' '}
@@ -315,12 +317,12 @@ export const EzraPortfolio: React.FC = () => {
             github
           </a>
           <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profileData.email}`}
+            href={profileData.instagramUrl}
             target="_blank"
             rel="noreferrer"
             className="text-[#f0258d] hover:underline no-underline"
           >
-            gmail
+            instagram
           </a>
           <a
             href="https://linkedin.com"
