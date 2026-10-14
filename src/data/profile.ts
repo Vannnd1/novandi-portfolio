@@ -27,6 +27,7 @@ export interface ProfileData {
   phone: string;
   location: string;
   githubUrl: string;
+  instagramUrl: string;
   bioSummary: string;
   education: EducationItem[];
   experience: ExperienceItem[];
@@ -47,6 +48,7 @@ export const profileData: ProfileData = {
   phone: "085155228540",
   location: "Cibinong, Bogor, Indonesia",
   githubUrl: "https://github.com/Vannnd1",
+  instagramUrl: "https://www.instagram.com/novandiahmdr/",
   bioSummary:
     "Fresh S1 Informatika graduate from Universitas Gunadarma with a verified foundation in software engineering, applied digital image cryptography, and data intelligence. Experienced in developing full-stack web applications with React and Node.js, building enterprise workflows with rigorous test coverage, and implementing medical image encryption algorithms with NIST SP 800-22 statistical validation.",
   verifiedMetrics: {
