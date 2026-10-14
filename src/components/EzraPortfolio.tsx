@@ -54,9 +54,9 @@ export const EzraPortfolio: React.FC = () => {
           </div>
 
           <p className="font-space text-lg sm:text-[20px] text-[#101010] font-medium leading-[1.8] pt-1">
-            an informatics engineer focus mainly on software systems & applied cryptography.{' '}
+            a software engineer with a strong foundation in informatics and web development.{' '}
             <span className="text-[#929292]">
-              i'm also curious about what happens behind the screen, from mathematical chaotic cryptosystems to scalable enterprise architectures and data intelligence.
+              i'm curious about what happens behind the screen—from clean backend architectures and digital security to how AI-driven systems power real-world industrial workflows.
             </span>{' '}
             i share my journey on{' '}
             <SocialPill
