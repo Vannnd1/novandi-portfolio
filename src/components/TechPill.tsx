@@ -2,9 +2,11 @@ import React from 'react';
 
 interface TechPillProps {
   name: string;
+  size?: 'sm' | 'base';
+  className?: string;
 }
 
-export const TechPill: React.FC<TechPillProps> = ({ name }) => {
+export const TechPill: React.FC<TechPillProps> = ({ name, size = 'base', className = '' }) => {
   const normalized = name.toLowerCase();
 
   const getBadgeClass = (tech: string) => {
@@ -29,12 +31,14 @@ export const TechPill: React.FC<TechPillProps> = ({ name }) => {
     return 'bg-white text-black border-black';
   };
 
+  const sizeClasses = size === 'sm' ? 'text-xs sm:text-sm px-2.5 py-1' : 'text-base px-3 py-1.5';
+
   return (
     <button
       type="button"
-      className={`font-space text-base font-medium px-3 py-1.5 rounded-full border transition-transform hover:scale-105 active:scale-95 cursor-pointer leading-none select-none ${getBadgeClass(
+      className={`font-space font-medium rounded-full border transition-transform hover:scale-105 active:scale-95 cursor-pointer leading-none select-none ${sizeClasses} ${getBadgeClass(
         normalized
-      )}`}
+      )} ${className}`}
     >
       {name}
     </button>
