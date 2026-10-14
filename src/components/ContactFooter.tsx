@@ -70,11 +70,13 @@ export const ContactFooter: React.FC = () => {
               </button>
 
               <a
-                href={`mailto:${profileData.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profileData.email}`}
+                target="_blank"
+                rel="noreferrer"
                 className="group inline-flex items-center gap-2 px-4 py-2.5 border border-[#E4E4E1] hover:border-[#111318] bg-white text-[#111318] font-mono-tech text-xs font-medium rounded transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB]"
               >
                 <Mail className="w-4 h-4 text-[#575B66]" aria-hidden="true" />
-                <span>Open Mailer</span>
+                <span>Open in Gmail</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#858A96] group-hover:text-[#2563EB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150" aria-hidden="true" />
               </a>
 
