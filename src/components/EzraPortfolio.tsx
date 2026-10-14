@@ -8,7 +8,7 @@ import { ProjectMockup } from './ProjectMockup';
 import { StickerCard } from './StickerCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { GitHubIcon, InstagramIcon, LinkedInIcon } from './Icons';
-import { BookOpen } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 type TabType = 'experience' | 'education' | 'works';
 
@@ -204,10 +204,10 @@ export const EzraPortfolio: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setSelectedProjectId(project.id)}
-                        className="p-1.5 rounded-full text-[#9CA3AF] hover:text-[#fd4aa6] hover:bg-[#F3F4F6] transition-colors cursor-pointer shrink-0"
-                        title="View Full Case Study"
+                        className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
                       >
-                        <BookOpen className="w-5 h-5" />
+                        <span>view full case study</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
 
@@ -216,11 +216,22 @@ export const EzraPortfolio: React.FC = () => {
                       {project.summary}
                     </p>
 
-                    {/* Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-2 mt-4" role="group" aria-label="Tech stack">
-                      {project.techStack.map((tech) => (
-                        <TechPill key={tech} name={tech} />
-                      ))}
+                    {/* Tech Stack Badges and Mobile Case Study CTA */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
+                      <div className="flex flex-wrap gap-2" role="group" aria-label="Tech stack">
+                        {project.techStack.map((tech) => (
+                          <TechPill key={tech} name={tech} />
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProjectId(project.id)}
+                        className="sm:hidden inline-flex items-center gap-1.5 font-hegarty text-xs text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 self-start shrink-0 select-none"
+                      >
+                        <span>view full case study</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </button>
                     </div>
 
                     {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Screenshot 3) */}
