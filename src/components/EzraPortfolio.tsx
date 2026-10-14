@@ -27,9 +27,9 @@ export const EzraPortfolio: React.FC = () => {
           <a
             href="/"
             className="font-hegarty text-[32px] text-[#101010] stroke-title no-underline hover:opacity-90 transition-opacity"
-            aria-label="novan home"
+            aria-label="novan.arm home"
           >
-            novan
+            novan.arm
           </a>
         </nav>
       </header>
