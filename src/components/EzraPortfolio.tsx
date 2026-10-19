@@ -234,14 +234,22 @@ export const EzraPortfolio: React.FC = () => {
                       </button>
                     </div>
 
-                    {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Screenshot 3) */}
-                    <div className="hidden lg:block opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out absolute top-1/2 left-[calc(100%+28px)] -translate-y-1/2 z-30 pointer-events-none rounded-xl border-4 border-white shadow-[0_18px_30px_rgba(0,0,0,0.2)] overflow-hidden">
+                    {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Experience) */}
+                    <div className="hidden md:block opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out absolute top-1/2 -translate-y-1/2 z-30 pointer-events-none rounded-2xl border-[3.5px] border-white shadow-[0_22px_50px_rgba(0,0,0,0.22)] overflow-hidden scale-95 group-hover:scale-100 right-0 xl:left-[calc(100%+20px)] xl:right-auto">
                       <ProjectMockup projectId={project.id} />
                     </div>
 
-                    {/* Mobile/Tablet inline mockup */}
-                    <div className="lg:hidden mt-4 pt-2">
-                      <ProjectMockup projectId={project.id} />
+                    {/* Mobile expandable preview toggle */}
+                    <div className="md:hidden mt-3 pt-1">
+                      <details className="group/preview">
+                        <summary className="font-hegarty text-xs text-[#767676] hover:text-[#fd4aa6] cursor-pointer inline-flex items-center gap-1.5 select-none py-1">
+                          <span>quick preview</span>
+                          <span className="transition-transform group-open/preview:rotate-180 text-[9px]">▼</span>
+                        </summary>
+                        <div className="mt-2 rounded-2xl border-[3px] border-white shadow-lg overflow-hidden w-fit">
+                          <ProjectMockup projectId={project.id} />
+                        </div>
+                      </details>
                     </div>
                   </article>
                 ))}
