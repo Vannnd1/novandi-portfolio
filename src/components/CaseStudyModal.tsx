@@ -57,6 +57,18 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           </button>
 
           <div className="flex items-center gap-2.5">
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span>live site</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -110,8 +122,20 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 </div>
               )}
 
-              {/* Quick Repository Links */}
+              {/* Quick Repository & Live Site Links */}
               <div className="pt-2 flex flex-wrap items-center gap-3">
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    <span>buka website live</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
                 {project.githubUrl ? (
                   <a
                     href={project.githubUrl}
@@ -124,9 +148,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 ) : (
-                  <span className="font-space text-xs text-[#767676] bg-[#f5f5f5] px-3.5 py-1.5 rounded-full border border-[#e8e8e8]">
-                    source: academic & internal engineering
-                  </span>
+                  !project.demoUrl && (
+                    <span className="font-space text-xs text-[#767676] bg-[#f5f5f5] px-3.5 py-1.5 rounded-full border border-[#e8e8e8]">
+                      source: academic & internal engineering
+                    </span>
+                  )
                 )}
               </div>
             </div>
@@ -355,18 +381,32 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 <span>back to works</span>
               </button>
 
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#d8d8d8] hover:border-black hover:bg-[#f7f7f7] text-[#202020] font-hegarty text-base rounded-full transition-all active:scale-95 cursor-pointer"
-                >
-                  <GitBranch className="w-4 h-4" />
-                  <span>visit github repository</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-              )}
+              <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-3">
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20 cursor-pointer"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    <span>kunjungi website live</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#d8d8d8] hover:border-black hover:bg-[#f7f7f7] text-[#202020] font-hegarty text-base rounded-full transition-all active:scale-95 cursor-pointer"
+                  >
+                    <GitBranch className="w-4 h-4" />
+                    <span>visit github repository</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
             </div>
           </RevealOnScroll>
 
