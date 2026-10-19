@@ -9,6 +9,7 @@ import { StickerCard } from './StickerCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { GitHubIcon, InstagramIcon, LinkedInIcon } from './Icons';
 import { ArrowUpRight } from 'lucide-react';
+import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 
 type TabType = 'experience' | 'education' | 'works';
 
@@ -336,6 +337,13 @@ export const EzraPortfolio: React.FC = () => {
             className="text-[#46b8ff] hover:underline no-underline"
           >
             linkedin
+          </a>
+          <a
+            href={getMailtoUrl(profileData.email)}
+            onClick={(e) => handleSmartEmailClick(e, profileData.email)}
+            className="text-[#bef264] hover:underline no-underline"
+          >
+            email
           </a>
         </nav>
       </footer>

@@ -24,11 +24,13 @@ export const SocialPill: React.FC<SocialPillProps> = ({ href, icon, label, varia
     }
   };
 
+  const isMailto = href.startsWith('mailto:');
+
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      target={isMailto ? undefined : '_blank'}
+      rel={isMailto ? undefined : 'noreferrer'}
       style={{ transform: `rotate(${tilt}deg)` }}
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] font-space text-lg font-medium transition-transform duration-150 active:scale-95 shadow-xs align-baseline mx-1 select-none text-white no-underline hover:scale-105 ${getVariantStyles()}`}
     >

@@ -3,6 +3,7 @@ import { Mail, Copy, Check, ArrowUpRight, MapPin } from 'lucide-react';
 import { profileData } from '../data/profile';
 import { GitHubIcon } from './Icons';
 import { RevealOnScroll } from './RevealOnScroll';
+import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 
 export const ContactFooter: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -70,13 +71,12 @@ export const ContactFooter: React.FC = () => {
               </button>
 
               <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profileData.email}`}
-                target="_blank"
-                rel="noreferrer"
+                href={getMailtoUrl(profileData.email)}
+                onClick={(e) => handleSmartEmailClick(e, profileData.email)}
                 className="group inline-flex items-center gap-2 px-4 py-2.5 border border-[#E4E4E1] hover:border-[#111318] bg-white text-[#111318] font-mono-tech text-xs font-medium rounded transition-all active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-[#2563EB]"
               >
                 <Mail className="w-4 h-4 text-[#575B66]" aria-hidden="true" />
-                <span>Open in Gmail</span>
+                <span>Open in Email App / Gmail</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#858A96] group-hover:text-[#2563EB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150" aria-hidden="true" />
               </a>
 
