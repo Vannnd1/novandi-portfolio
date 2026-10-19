@@ -172,6 +172,7 @@ export const projectsData: ProjectItem[] = [
       { label: "Database Transactions", value: "ACID Guaranteed", status: "verified" },
     ],
     githubUrl: "https://github.com/Vannnd1/manufacturing-digital-operations",
+    demoUrl: "https://manufacturing-digital-operations.vercel.app/",
     caseStudy: {
       problemStatement:
         "Discrete manufacturing environments often operate with disconnected paper logs and uncoordinated spreadsheets. This leads to severe factory problems: production delays due to phantom inventory reservations, procurement fraud from self-approved purchase orders, duplicate inspections, and broken traceability when defective finished goods cannot be traced back to supplier raw material lots.",
@@ -492,6 +493,7 @@ export const projectsData: ProjectItem[] = [
       { label: "Audio Engine", value: "HTML5 Web Audio API", status: "neutral" },
     ],
     githubUrl: "https://github.com/Vannnd1/SahabatDunia",
+    demoUrl: "https://sahabat-dunia.vercel.app/",
     caseStudy: {
       problemStatement:
         "Children's educational web tools often rely on heavy, ad-supported mobile frameworks or static pages lacking engaging auditory feedback and interactive quiz mechanisms.",

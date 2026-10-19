@@ -148,8 +148,9 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="font-bold text-xs text-slate-900">Operational Command Center</div>
               <div className="text-[8.5px] text-slate-500">Real-time manufacturing operations & quality gate events</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              ● Shop Floor Active
+            <span className="px-2 py-0.5 rounded text-[8.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Live on Vercel</span>
             </span>
           </div>
 
@@ -451,9 +452,15 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               />
               <span className="font-bold text-xs text-sky-950">Sahabat Dunia — Belajar Hewan</span>
             </div>
-            <div className="flex items-center gap-1 text-[8.5px] bg-white/80 px-2 py-0.5 rounded-full border border-sky-200 text-sky-800">
-              <span>🔊</span>
-              <span>Audio: Aktif</span>
+            <div className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1 text-[8px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span>Live on Vercel</span>
+              </span>
+              <div className="flex items-center gap-1 text-[8.5px] bg-white/80 px-2 py-0.5 rounded-full border border-sky-200 text-sky-800">
+                <span>🔊</span>
+                <span>Audio: Aktif</span>
+              </div>
             </div>
           </div>
 

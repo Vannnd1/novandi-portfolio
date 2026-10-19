@@ -201,14 +201,30 @@ export const EzraPortfolio: React.FC = () => {
                         </h3>
                       </button>
 
-                      <button
-                        type="button"
-                        onClick={() => setSelectedProjectId(project.id)}
-                        className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
-                      >
-                        <span>view full case study</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center gap-2 shrink-0">
+                        {project.demoUrl && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 hover:border-[#059669] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none bg-emerald-50/50"
+                            title="Buka Website Live"
+                          >
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>live demo</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProjectId(project.id)}
+                          className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
+                        >
+                          <span>view full case study</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Description */}
@@ -224,14 +240,29 @@ export const EzraPortfolio: React.FC = () => {
                         ))}
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => setSelectedProjectId(project.id)}
-                        className="sm:hidden inline-flex items-center gap-1.5 font-hegarty text-xs text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 self-start shrink-0 select-none"
-                      >
-                        <span>view full case study</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center gap-2 sm:hidden self-start flex-wrap">
+                        {project.demoUrl && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 font-hegarty text-xs text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 px-3 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 select-none bg-emerald-50/50"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>live demo</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </a>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProjectId(project.id)}
+                          className="inline-flex items-center gap-1.5 font-hegarty text-xs text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 select-none"
+                        >
+                          <span>view full case study</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Experience) */}
