@@ -277,6 +277,7 @@ export const projectsData: ProjectItem[] = [
       { label: "Customer Segments", value: "8 Spend Brackets", status: "verified" },
     ],
     githubUrl: "https://github.com/Vannnd1/retailinsight-ai",
+    demoUrl: "https://retailinsight-ai.vercel.app/",
     caseStudy: {
       problemStatement:
         "Analyzing multi-million-dollar retail transaction datasets often forces decision-makers to choose between high-latency database queries or rigid pre-rendered reports. Furthermore, when executives query standalone AI assistants, the models lack real-time context of active dashboard filters, leading to inaccurate answers or generic advice.",
