@@ -252,9 +252,15 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="font-bold text-xs text-white">RetailInsight AI · Analytics Studio</div>
               <div className="text-[8.5px] text-slate-400">Sales Velocity, RFM Clusters & Churn Predictor</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8.5px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
-              Gemini 1.5 Flash
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-emerald-500 text-white shadow-xs flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span>Live on Vercel</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                Gemini 1.5
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-2">
