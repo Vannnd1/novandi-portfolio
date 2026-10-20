@@ -50,7 +50,7 @@ export const EzraPortfolio: React.FC = () => {
               hello, i'm
             </p>
             <h1 className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
-              novandi ramdhan
+              Novandi Ahmad Ramdhan
             </h1>
           </div>
 
@@ -308,7 +308,7 @@ export const EzraPortfolio: React.FC = () => {
       {/* Dark Footer Bar matching Ezra's exact bottom bar */}
       <footer className="w-full bg-[#202020] text-white h-[110px] sm:h-[135px] px-6 sm:px-20 flex flex-col sm:flex-row items-center justify-between gap-4 select-none">
         <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
-          <span>@novandi ramdhan</span>
+          <span>@novandi ahmad ramdhan</span>
           <span aria-hidden="true">•</span>
           <span>all right reserved</span>
         </p>
