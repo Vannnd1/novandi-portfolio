@@ -76,15 +76,16 @@ export const profileData: ProfileData = {
   ],
   experience: [
     {
-      period: "2025",
-      role: "Cohort Developer — Cloud & Full-Stack Web",
-      institution: "Program Asah — Dicoding Indonesia",
+      period: "2025 – 2026",
+      role: "React & Back-End with AI Developer — Cohort Participant",
+      institution: "Program Asah (Dicoding Indonesia × Accenture)",
       description:
-        "Intensive technical development program covering full-stack web engineering with React and Node.js, RESTful API architecture, cloud infrastructure, and Generative AI fundamentals using AWS services.",
+        "Selected for the intensive industry-accredited digital talent scholarship program (900+ instructional hours) led by Dicoding Indonesia in association with Accenture under the Kampus Merdeka initiative. Specialized in the 'React & Back-End with AI' learning path, mastering modern front-end web engineering, scalable back-end RESTful API architectures, and seamless artificial intelligence integrations.",
       highlights: [
-        "Architected full-stack web services integrating React front-ends with Node.js back-ends via RESTful APIs.",
-        "Implemented cloud deployment concepts and utilized AWS Generative AI services.",
-        "Collaborated in a development team on the capstone project Adaptive Learning Insight to analyze educational data and generate AI-driven insights.",
+        "Mastered the 'React & Back-End with AI' curriculum: modern React (Hooks, Context, React Router, Recharts), server-side engineering with Node.js & Express, and integrating AI/LLM capabilities into web applications.",
+        "Underwent rigorous code-by-code review from Dicoding industry experts on every submission, ensuring clean code, production-grade security, and performance standards.",
+        "Participated in weekly technical and soft skills mentoring sessions conducted directly by senior technology leaders from Accenture and Dicoding.",
+        "Collaborated in a development team to engineer the official capstone project 'Adaptive Learning Insight'—an educational analytics platform utilizing React, Express, Supabase, and automated AI insight generation.",
       ],
     },
   ],
