@@ -423,68 +423,81 @@ export const projectsData: ProjectItem[] = [
   {
     id: "youtube-sentiment-jumbo",
     title: "YouTube Sentiment Analysis Concerning Film Jumbo",
-    subtitle: "Natural Language Processing using Support Vector Machine & InSet Lexicon",
+    subtitle: "End-to-End Indonesian NLP Pipeline using Support Vector Machine & InSet Lexicon",
     category: "academic-coursework",
-    categoryLabel: "ACADEMIC RESEARCH · NATURAL LANGUAGE PROCESSING",
+    categoryLabel: "MACHINE LEARNING · NATURAL LANGUAGE PROCESSING",
     year: "2025",
     isFlagship: false,
     academicContext: "Universitas Gunadarma Academic Study (2025)",
     summary:
-      "A data analysis and machine learning research project performing Indonesian sentiment classification on public YouTube comments concerning the animated film Jumbo using Support Vector Machine (SVM) and the InSet sentiment lexicon.",
-    techStack: ["Python", "Data Analysis", "NLP", "Support Vector Machine (SVM)", "InSet Lexicon", "Scikit-Learn"],
+      "A complete machine learning and NLP application analyzing audience reception from official YouTube teaser/trailer comments for the animated film 'Jumbo'. Features smart preprocessing (demojizing emojis, 15,000 slang word normalization, negation word preservation, Sastrawi stemming), InSet lexicon polarity scoring with domain override, and a balanced-weight Linear SVM classifier achieving 86% test accuracy, deployed as an interactive Streamlit web application.",
+    techStack: ["Python", "Streamlit", "Scikit-Learn", "NLTK", "Sastrawi", "InSet Lexicon", "SVM", "TF-IDF N-gram"],
     metrics: [
-      { label: "Classification Model", value: "Support Vector Machine (SVM)", status: "neutral" },
-      { label: "Lexicon Methodology", value: "InSet Sentiment Lexicon", status: "neutral" },
-      { label: "Language Domain", value: "Indonesian Informal Text", status: "neutral" },
+      { label: "Overall Accuracy", value: "86% Test Set", status: "verified" },
+      { label: "Positive F1-Score", value: "0.90 (Precision 0.92)", status: "verified" },
+      { label: "Negative F1-Score", value: "0.74 (Recall 0.77)", status: "verified" },
+      { label: "Slang Dictionary", value: "15K Kamus Alay Normalized", status: "verified" },
     ],
+    githubUrl: "https://github.com/Vannnd1/jumbo-movie-sentiment-analysis",
+    demoUrl: "https://jumbo-movie-sentiment.streamlit.app/",
     caseStudy: {
       problemStatement:
-        "Public reception of Indonesian cultural media and animated films is reflected in thousands of social media and YouTube comments. Understanding community reception requires automated NLP methods that can handle informal Indonesian text, slang, and mixed sentiment.",
+        "Public reception of Indonesian cultural media and animated films is reflected in thousands of social media and YouTube comments. Understanding audience sentiment requires automated NLP pipelines capable of handling informal Indonesian text, slang, emotional emojis, negations ('tidak bagus'), and unbalanced opinion polarities without compromising real negative feedback.",
       objectives: [
-        "Extract public comment data from YouTube concerning the promotional videos of the animated film Jumbo.",
-        "Implement Indonesian text preprocessing: case folding, tokenization, filtering, and slang normalization.",
-        "Apply the InSet Lexicon to determine sentiment polarity scores (positive, neutral, negative).",
-        "Train and evaluate a supervised Support Vector Machine (SVM) classifier to categorize public commentary.",
+        "Extract public comment data from YouTube via YouTube Data API v3 concerning the official teasers/trailers of animated film Jumbo.",
+        "Implement a smart Indonesian text preprocessing pipeline: emoji demojizing (e.g. 🔥 ➔ fire), slang normalization using a 15,000-word colloquial lexicon, negation preservation (e.g. 'tidak', 'kurang', 'gak'), and Sastrawi root-word stemming.",
+        "Apply the InSet Lexicon with domain-specific keyword overrides and negation polarity inversion for binary sentiment labeling (Positive vs. Negative).",
+        "Engineer TF-IDF N-gram (1,2) feature representations and train a cost-sensitive Linear Support Vector Machine (class_weight='balanced') evaluated with 5-fold cross-validation.",
+        "Deploy the serialized machine learning model into an interactive Streamlit web dashboard for real-time user comment analysis.",
       ],
       roleAndContributions:
-        "Individual student researcher. Designed the Python data collection workflow, implemented the text preprocessing pipeline, mapped sentiment polarity using the InSet lexicon dictionary, and trained the SVM model.",
+        "Machine Learning & NLP Engineer. Developed the YouTube scraping workflow, engineered the 6-stage Indonesian text normalization and preprocessing pipeline, calibrated lexicon overrides, trained and evaluated the balanced SVM model, and built the live Streamlit interactive web application.",
       systemArchitecture: {
         overview:
-          "Standard NLP pipeline: Raw Text Extraction → Text Cleaning & Preprocessing → Feature Extraction / Lexicon Scoring → SVM Classification → Sentiment Evaluation.",
+          "End-to-end NLP pipeline: YouTube Data Ingestion → Smart Text Preprocessing (Demojize + Slang + Stemming) → InSet Lexicon Domain Labeling → TF-IDF N-gram (1,2) Extraction → Class-Weighted Linear SVM → Streamlit Web Deployment.",
         steps: [
-          { step: "1. Data Collection", description: "Harvested public comments from YouTube videos related to Film Jumbo." },
-          { step: "2. Text Preprocessing", description: "Case folding, URL/emoji stripping, tokenization, Indonesian stopword removal." },
-          { step: "3. Lexicon Labeling", description: "InSet sentiment lexicon calculates polarity values for positive and negative terms." },
-          { step: "4. SVM Classification", description: "Supervised classification using Support Vector Machine to predict sentiment class." },
+          { step: "1. Data Collection", description: "Harvested audience comments from official YouTube teaser and trailer videos for Film Jumbo." },
+          { step: "2. Intelligent Preprocessing", description: "Demojizes emojis into text, normalizes 15K slang terms, preserves critical negation markers, and applies Sastrawi Indonesian stemming." },
+          { step: "3. Lexicon Labeling & Domain Override", description: "InSet sentiment lexicon (-5 to +5) with movie-domain overrides and negation flips to construct verified binary sentiment labels." },
+          { step: "4. Balanced SVM Classification", description: "TF-IDF feature extraction with unigrams and bigrams, trained using Linear SVM with class_weight='balanced' to handle class skew." },
+          { step: "5. Streamlit Interactive App", description: "Deployed interactive web dashboard allowing users to input custom reviews and visualize sentiment predictions in real time." },
         ],
       },
       implementationDecisions: [
         {
-          title: "InSet Lexicon for Indonesian Polarity Scoring",
+          title: "Emoji Demojizing & Negation Word Preservation",
           rationale:
-            "General English sentiment dictionaries fail on Indonesian linguistic structures. The InSet Lexicon provides validated polarity weights specifically calibrated for Indonesian vocabulary.",
+            "Rather than stripping emojis and stopwords naively, emojis (like ❤️ or 🔥) were converted into semantic text, and negation words ('tidak', 'kurang', 'bukan') were retained to prevent polarity reversals in phrases like 'tidak bagus'.",
         },
         {
-          title: "Support Vector Machine (SVM) Classifier",
+          title: "Balanced-Weight Linear SVM over Synthetic SMOTE",
           rationale:
-            "SVM is well suited for high-dimensional sparse text vectors produced by bag-of-words and TF-IDF representations, providing strong generalization even with moderate dataset sizes.",
+            "Linear SVM with cost-sensitive penalty (class_weight='balanced') provided superior stability and generalization on high-dimensional sparse TF-IDF vectors compared to synthetic oversampling, doubling negative recall from 38% to 77%.",
+        },
+        {
+          title: "Interactive Streamlit Cloud Deployment",
+          rationale:
+            "Built and deployed an accessible web interface enabling recruiters, movie creators, and audiences to test sentiment predictions on unseen commentary in real time.",
         },
       ],
       empiricalResults: {
         summary:
-          "Demonstrated an end-to-end Indonesian NLP pipeline, successfully categorizing audience comments into sentiment classes to gauge public reception for Film Jumbo.",
+          "Demonstrated an 86% overall test accuracy on unseen data, achieving a Positive F1-Score of 0.90, Negative F1-Score of 0.74 (Recall 77%), and Macro Average F1-Score of 0.82 across 236 test samples.",
         metrics: [
-          { label: "Language Target", value: "Bahasa Indonesia", benchmark: "Informal YouTube Comments" },
-          { label: "Classifier Model", value: "SVM Linear Kernel", benchmark: "Scikit-Learn Implementation" },
+          { label: "Overall Test Accuracy", value: "86%", benchmark: "236 Test Comments (80:20 Split)" },
+          { label: "Positive Class", value: "F1: 0.90 / Precision: 0.92", benchmark: "Support: 175 Comments" },
+          { label: "Negative Class", value: "F1: 0.74 / Recall: 0.77", benchmark: "Support: 61 Comments" },
+          { label: "Live Web App", value: "Streamlit Cloud", benchmark: "Interactive Classifier" },
         ],
       },
       limitationsAndFutureWork: [
-        "Informal colloquial slang (Bahasa gaul) and sarcasm continue to pose challenges for dictionary-based lexicon scoring.",
-        "Future enhancement: fine-tuning a pre-trained IndoBERT transformer model for contextual understanding.",
+        "Highly sarcastic comments and contextual figurative speech remain challenging for static lexicon boundaries.",
+        "Future direction: fine-tuning pre-trained transformer architectures (such as IndoBERT) for deeper contextual nuance.",
       ],
       references: [
-        "Fajri K., et al. (InSet Lexicon for Indonesian Sentiment Analysis).",
-        "Universitas Gunadarma Informatics Coursework Research (2025).",
+        "Koto, F., & Rahmaningtyas, G. Y. (2017). InSet Lexicon: Evaluation of a Word List for Indonesian Sentiment Analysis in Microblogs. IEEE IALP.",
+        "Salsabila, N. A., et al. (2018). Colloquial Indonesian Lexicon (Kamus Alay 15K).",
+        "Sastrawi: Indonesian Morphological Lemmatizer and Stemmer Python Library.",
       ],
     },
   },
