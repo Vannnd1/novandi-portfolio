@@ -386,9 +386,10 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
       );
 
     /* ──────────────────────────────────────────────────────────────────────────
-     * 5. YouTube Sentiment Analysis
-     * Direct replica of NLP pipeline in:
-     * c:\Users\panpe\Downloads\Analisis Sentimen Mobil Listrik
+     * 5. YouTube Sentiment Analysis — Film Jumbo
+     * Direct replica of Streamlit app & ML pipeline in:
+     * https://github.com/Vannnd1/jumbo-movie-sentiment-analysis
+     * https://jumbo-movie-sentiment.streamlit.app/
      * ────────────────────────────────────────────────────────────────────────── */
     case 'youtube-sentiment-jumbo':
       return (
@@ -396,44 +397,52 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
             <div>
               <div className="font-bold text-xs text-slate-900">YouTube Comment Sentiment Classifier</div>
-              <div className="text-[8.5px] text-slate-500">Support Vector Machine (SVM) · InSet Lexicon</div>
+              <div className="text-[8.5px] text-slate-500">Film Jumbo · Support Vector Machine & InSet Lexicon</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
-              N=12,500 Data
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-emerald-500 text-white shadow-xs flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span>Live on Streamlit</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                SVM 86%
+              </span>
+            </div>
           </div>
 
           {/* Sentiment Distribution Bar */}
           <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1.5">
             <div className="flex justify-between text-[8.5px] text-slate-600">
-              <span className="font-bold">Distribusi Sentimen Ulasan</span>
-              <span className="text-slate-400 font-mono">100% Normalized</span>
+              <span className="font-bold">Distribusi Sentimen Ulasan (236 Data Uji)</span>
+              <span className="text-slate-400 font-mono">Biner (InSet Lexicon)</span>
             </div>
             <div className="h-3.5 bg-slate-200 rounded-full overflow-hidden flex">
-              <div className="h-full bg-emerald-500 w-[74%]" />
-              <div className="h-full bg-amber-400 w-[17%]" />
-              <div className="h-full bg-rose-500 w-[9%]" />
+              <div className="h-full bg-emerald-500 w-[74.2%]" />
+              <div className="h-full bg-rose-500 w-[25.8%]" />
             </div>
             <div className="flex justify-between text-[8.5px] font-medium pt-0.5">
-              <span className="text-emerald-700 font-bold">● Positif 74.2%</span>
-              <span className="text-amber-700 font-bold">● Netral 16.8%</span>
-              <span className="text-rose-700 font-bold">● Negatif 9.0%</span>
+              <span className="text-emerald-700 font-bold">● Positif 74.2% (175 data)</span>
+              <span className="text-rose-700 font-bold">● Negatif 25.8% (61 data)</span>
             </div>
           </div>
 
           {/* Model Evaluation Metrics */}
-          <div className="grid grid-cols-3 gap-1.5 text-center text-[8.5px]">
+          <div className="grid grid-cols-4 gap-1 text-center text-[8.5px]">
             <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
-              <div className="text-slate-400">Akurasi Model</div>
-              <div className="font-bold text-slate-900 text-[10px]">91.8%</div>
+              <div className="text-slate-400">Akurasi Uji</div>
+              <div className="font-bold text-slate-900 text-[10px]">86.0%</div>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
-              <div className="text-slate-400">F1-Score</div>
-              <div className="font-bold text-emerald-600 text-[10px]">92.4%</div>
+              <div className="text-slate-400">F1 Positif</div>
+              <div className="font-bold text-emerald-600 text-[10px]">0.90</div>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
-              <div className="text-slate-400">Stemming</div>
-              <div className="font-bold text-purple-600 text-[10px]">InSet ID</div>
+              <div className="text-slate-400">Recall Negatif</div>
+              <div className="font-bold text-purple-600 text-[10px]">77.0%</div>
+            </div>
+            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
+              <div className="text-slate-400">Normalisasi</div>
+              <div className="font-bold text-slate-700 text-[10px]">15K Alay</div>
             </div>
           </div>
         </div>
