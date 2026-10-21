@@ -195,20 +195,29 @@ export const EzraPortfolio: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setSelectedProjectId(project.id)}
-                        className="text-left group cursor-pointer"
+                        className="text-left group cursor-pointer flex-1"
                       >
                         <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0 group-hover:text-[#fd4aa6] transition-colors">
                           {project.title}
                         </h3>
                       </button>
 
-                      <div className="flex items-center gap-2 shrink-0">
+                      <div className="hidden sm:flex flex-col items-end gap-2 shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProjectId(project.id)}
+                          className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
+                        >
+                          <span>view full case study</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </button>
+
                         {project.demoUrl && (
                           <a
                             href={project.demoUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 hover:border-[#059669] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none bg-emerald-50/50"
+                            className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 hover:border-[#059669] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none bg-emerald-50/50"
                             title="Buka Website Live"
                           >
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -216,15 +225,6 @@ export const EzraPortfolio: React.FC = () => {
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </a>
                         )}
-
-                        <button
-                          type="button"
-                          onClick={() => setSelectedProjectId(project.id)}
-                          className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
-                        >
-                          <span>view full case study</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </button>
                       </div>
                     </div>
 
