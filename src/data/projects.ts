@@ -347,66 +347,76 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "adaptive-learning-insight",
-    title: "Adaptive Learning Insight — Capstone Project Program Asah",
-    subtitle: "AI-Powered Web Solution for Educational Learning Data Analytics",
+    title: "Adaptive Learning Insight — Capstone Project Program Asah (Dicoding × Accenture)",
+    subtitle: "AI-Powered Educational Learning Analytics & Student Diagnostic Intelligence Platform",
     category: "academic-coursework",
     categoryLabel: "COHORT CAPSTONE · FULL-STACK WEB & AI",
     year: "2025",
     isFlagship: false,
-    academicContext: "Program Asah — Dicoding Indonesia in association with Accenture (2025)",
+    academicContext: "Program Asah 2025 — Asah led by Dicoding in association with Accenture (Learning Path: React & Back-End with AI)",
     summary:
-      "A collaborative team capstone web application developed during Program Asah to analyze student learning patterns, track module completions, and generate relevant educational insights using React, Node.js, and cloud AI fundamentals.",
-    techStack: ["React", "Node.js", "JavaScript", "REST API", "AI Fundamentals", "AWS"],
+      "The official team capstone project engineered during Program Asah 2025 led by Dicoding in association with Accenture under the 'React & Back-End with AI' learning path. A full-stack educational analytics platform that tracks student study progression, evaluates module mastery through interactive Recharts visualizations, and delivers automated AI-driven diagnostic insights using React 19, Node.js (Express 5), Supabase PostgreSQL, and AI learning analytics models.",
+    techStack: ["React 19", "Node.js", "Express 5", "Supabase", "PostgreSQL", "Recharts", "REST API", "Tailwind CSS", "AI Analytics Engine"],
     metrics: [
-      { label: "Program Cohort", value: "Program Asah Dicoding", status: "neutral" },
-      { label: "Verified Role", value: "Full-Stack Web Collaborator", status: "neutral" },
-      { label: "Cloud Services", value: "AWS Fundamentals", status: "neutral" },
+      { label: "Program Cohort", value: "Asah 2025 (Dicoding × Accenture)", status: "verified" },
+      { label: "Learning Path", value: "React & Back-End with AI", status: "verified" },
+      { label: "Cohort Training", value: "900+ Hours Curriculum", status: "verified" },
+      { label: "Capstone Delivery", value: "Validated & Graduated", status: "verified" },
     ],
     caseStudy: {
       problemStatement:
-        "Educational platforms produce large amounts of student activity data, but instructors often lack automated tools to detect where students face learning obstacles or disengage from modules.",
+        "Modern digital education platforms generate massive volumes of student activity data, yet instructors and academic mentors often lack real-time automated tools to identify students falling behind, pinpoint specific conceptual bottlenecks, or provide individualized intervention strategies.",
       objectives: [
-        "Collaborate in a cross-functional development team to build a web-based educational dashboard.",
-        "Create responsive user interfaces in React for viewing course engagement and student quiz performance.",
-        "Develop and consume backend RESTful API endpoints using Node.js.",
-        "Integrate cloud infrastructure and Generative AI fundamentals via AWS to provide automated learning insight summaries.",
+        "Collaborate in a cross-functional development team to engineer a scalable web-based student learning analytics dashboard.",
+        "Construct responsive, interactive user interfaces in React 19 utilizing Recharts for visual progress tracking, velocity metrics, and quiz mastery rates.",
+        "Architect and implement RESTful API endpoints using Node.js and Express 5, connecting to Supabase (PostgreSQL) for persistent data storage.",
+        "Integrate AI-driven learning diagnostic models to synthesize quiz submission trends and generate tailored improvement recommendations.",
+        "Execute rigorous code reviews, automated linting, and Git feature-branch workflows matching Dicoding and Accenture production standards.",
       ],
       roleAndContributions:
-        "Team Collaborator and Full-Stack Developer. Collaborated with cohort peers in developing frontend components with React, implementing RESTful API endpoints in Node.js, integrating backend services, and participating in Git/GitHub team collaboration workflows.",
+        "Full-Stack Web & AI Developer (Cohort Collaborator). Implemented frontend interface components in React with Recharts for dynamic time-series performance tracking, developed and tested Express backend REST endpoints, handled database schema integration with Supabase, and participated in Git/GitHub team collaboration with strict code reviews.",
       systemArchitecture: {
         overview:
-          "Client-server web architecture connecting a React single-page frontend to a Node.js RESTful API, with backend connectivity to database storage and AWS AI services.",
+          "Client-server full-stack architecture coupling a React 19 single-page application with a Node.js Express 5 RESTful API, backed by Supabase cloud PostgreSQL storage and an AI analytics inference pipeline.",
         steps: [
-          { step: "1. Data Capture", description: "Collects student quiz submissions and course progression metrics via API." },
-          { step: "2. Analysis Engine", description: "Aggregates completion percentages, average scores, and topic difficulty ratings." },
-          { step: "3. Instructor Dashboard", description: "Presents visual charts and student progression tables in React." },
+          { step: "1. Learning Activity Tracking", description: "Collects granular student quiz scores, study duration, and module completion events through Express REST API endpoints." },
+          { step: "2. Aggregation & Cloud Storage", description: "Persists structured student progress records in Supabase PostgreSQL with relational data modeling." },
+          { step: "3. AI Diagnostic Engine", description: "Processes historical student performance data to detect drop-off risks and generate targeted instructional recommendations." },
+          { step: "4. Interactive Instructor Dashboard", description: "Renders responsive progress gauges, Recharts learning velocity graphs, and student intervention alerts in React." },
         ],
       },
       implementationDecisions: [
         {
-          title: "RESTful API Integration for Front-to-Back Separation",
+          title: "Supabase & PostgreSQL for Reliable Cloud Persistence",
           rationale:
-            "Decoupled the React interface from backend services to ensure independent deployment and clean separation of concerns.",
+            "Replaced transient storage with Supabase cloud PostgreSQL, providing relational integrity for student cohorts, quizzes, and learning milestone tracking.",
         },
         {
-          title: "Collaborative Git/GitHub Feature-Branch Workflow",
+          title: "Clean Front-to-Back Separation via RESTful APIs",
           rationale:
-            "Followed team pull-request workflows, branch protection, and code reviews throughout the 6-month intensive Dicoding cohort.",
+            "Decoupled the React 19 interface from the Express 5 backend services, allowing modular testing, independent scaling, and standardized JSON data exchange.",
+        },
+        {
+          title: "Dicoding & Accenture Industry Code Standards",
+          rationale:
+            "Enforced code-by-code reviews, pull-request validations, and ESLint rules throughout the 6-month intensive 900+ hour cohort.",
         },
       ],
       empiricalResults: {
         summary:
-          "Successfully completed and presented as the official capstone deliverable for Program Asah led by Dicoding Indonesia in association with Accenture (2025).",
+          "Successfully completed, defended, and validated as the official team capstone deliverable for Program Asah 2025 led by Dicoding in association with Accenture, fulfilling the graduation criteria for the specialized React & Back-End with AI learning path.",
         metrics: [
-          { label: "Capstone Completion", value: "Validated", benchmark: "Dicoding Program Asah 2025" },
-          { label: "Architecture", value: "Full-Stack Web", benchmark: "React + Node.js + REST API" },
+          { label: "Cohort Graduation", value: "Verified Distinction", benchmark: "Asah 2025 (Dicoding × Accenture)" },
+          { label: "Learning Path", value: "React & Back-End with AI", benchmark: "900+ Hours Curriculum" },
+          { label: "Tech Architecture", value: "Full-Stack Web + AI", benchmark: "React 19 + Express 5 + Supabase" },
         ],
       },
       limitationsAndFutureWork: [
-        "Code was developed in a collaborative cohort repository; ongoing deployment maintenance concluded with the cohort term.",
+        "Delivered as an academic team capstone repository; production cloud hosting lifecycle concluded upon successful cohort graduation in February 2026.",
       ],
       references: [
-        "Program Asah Curriculum & Dicoding Indonesia Capstone Documentation (2025).",
+        "Asah led by Dicoding in association with Accenture — React & Back-End with AI Official Curriculum & Syllabus (2025).",
+        "Dicoding Indonesia & Accenture Capstone Project Documentation & Verification Standards (2025–2026).",
       ],
     },
   },

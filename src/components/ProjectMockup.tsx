@@ -314,11 +314,11 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
           <div className="flex items-center justify-between pb-1.5 border-b border-gray-100">
             <div>
               <div className="font-bold text-xs text-gray-900">Halo, Novan! 👋</div>
-              <div className="text-[8.5px] text-gray-500">Pantau terus progres belajarmu di Program Asah</div>
+              <div className="text-[8.5px] text-gray-500">Program Asah 2025 · Dicoding × Accenture · React & Back-End with AI</div>
             </div>
-            <div className="w-6 h-6 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-[9px]">
-              N
-            </div>
+            <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+              React + AI Cohort
+            </span>
           </div>
 
           {/* 3 Statistic Cards matching Dashboard.jsx */}
