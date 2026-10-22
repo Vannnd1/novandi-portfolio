@@ -27,7 +27,7 @@ export const StickerCard: React.FC = () => {
 
       {/* Content Layer: Right-aligned Text matching Ezra's site */}
       <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 text-right">
-        <h2 className="font-hegarty text-[#3d3d3d] text-4xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight max-w-[500px] text-right">
+        <h2 className="font-hegarty text-[#3d3d3d] text-4xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight max-w-[640px] text-right">
           Ready to elevate your workflow?
         </h2>
 

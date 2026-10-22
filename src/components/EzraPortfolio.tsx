@@ -24,7 +24,7 @@ export const EzraPortfolio: React.FC = () => {
       
       {/* 1. Sticky Header with Ezra's exact brand logo */}
       <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 border-b border-[#101010]/10">
-        <nav className="max-w-[760px] mx-auto px-5 sm:px-6 h-[70px] flex items-center justify-center select-none">
+        <nav className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 h-[72px] flex items-center justify-center select-none">
           <a
             href="/"
             className="font-hegarty text-[32px] text-[#101010] stroke-title no-underline hover:opacity-90 transition-opacity"
@@ -35,8 +35,8 @@ export const EzraPortfolio: React.FC = () => {
         </nav>
       </header>
 
-      {/* 2. Main Page Shell (Max Width ~760px matching Ezra's central column) */}
-      <main className="max-w-[760px] mx-auto px-5 sm:px-6 pt-10 sm:pt-14 pb-20 space-y-16">
+      {/* 2. Main Page Shell (Widened to 1020px for spacious, clean typography & layout) */}
+      <main className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-24 space-y-16 sm:space-y-20">
         
         {/* GitHub Calendar Heatmap Section */}
         <section aria-label="GitHub contribution calendar" className="w-full">
@@ -189,20 +189,21 @@ export const EzraPortfolio: React.FC = () => {
             {activeTab === 'works' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
                 {projectsData.map((project) => (
-                  <article key={project.id} className="relative group">
-                    {/* Title with Case Study trigger */}
-                    <div className="flex items-start justify-between gap-4">
+                  <article key={project.id} className="relative group border-b border-[#ececec] pb-12 last:border-b-0">
+                    {/* Title and Direct Action Buttons */}
+                    <div className="space-y-2.5">
                       <button
                         type="button"
                         onClick={() => setSelectedProjectId(project.id)}
-                        className="text-left group cursor-pointer flex-1"
+                        className="text-left group cursor-pointer block"
                       >
-                        <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0 group-hover:text-[#fd4aa6] transition-colors">
+                        <h3 className="font-hegarty text-3xl sm:text-[38px] md:text-[40px] text-black leading-[1.08] m-0 group-hover:text-[#fd4aa6] transition-colors">
                           {project.title}
                         </h3>
                       </button>
 
-                      <div className="hidden sm:flex flex-col items-end gap-2 shrink-0">
+                      {/* Action buttons (case study & live demo) placed cleanly below title */}
+                      <div className="flex flex-wrap items-center gap-2.5 pt-0.5">
                         <button
                           type="button"
                           onClick={() => setSelectedProjectId(project.id)}
@@ -229,45 +230,19 @@ export const EzraPortfolio: React.FC = () => {
                     </div>
 
                     {/* Description */}
-                    <p className="font-space font-medium text-base text-[#777] leading-[1.6] mt-3 mb-0">
+                    <p className="font-space font-medium text-base text-[#666] leading-[1.65] mt-3.5 mb-0">
                       {project.summary}
                     </p>
 
-                    {/* Tech Stack Badges and Mobile Case Study CTA */}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
-                      <div className="flex flex-wrap gap-2" role="group" aria-label="Tech stack">
-                        {project.techStack.map((tech) => (
-                          <TechPill key={tech} name={tech} />
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-2 sm:hidden self-start flex-wrap">
-                        {project.demoUrl && (
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 font-hegarty text-xs text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 px-3 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 select-none bg-emerald-50/50"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span>live demo</span>
-                            <ArrowUpRight className="w-3 h-3" />
-                          </a>
-                        )}
-
-                        <button
-                          type="button"
-                          onClick={() => setSelectedProjectId(project.id)}
-                          className="inline-flex items-center gap-1.5 font-hegarty text-xs text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 select-none"
-                        >
-                          <span>view full case study</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                    {/* Tech Stack Badges */}
+                    <div className="flex flex-wrap gap-2 mt-4" role="group" aria-label="Tech stack">
+                      {project.techStack.map((tech) => (
+                        <TechPill key={tech} name={tech} />
+                      ))}
                     </div>
 
                     {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Experience) */}
-                    <div className="hidden md:block opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out absolute top-1/2 -translate-y-1/2 z-30 pointer-events-none rounded-2xl border-[3.5px] border-white shadow-[0_22px_50px_rgba(0,0,0,0.22)] overflow-hidden scale-95 group-hover:scale-100 right-0 xl:left-[calc(100%+20px)] xl:right-auto">
+                    <div className="hidden md:block opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out absolute top-1/2 -translate-y-1/2 z-30 pointer-events-none rounded-2xl border-[3.5px] border-white shadow-[0_22px_50px_rgba(0,0,0,0.22)] overflow-hidden scale-95 group-hover:scale-100 right-0 2xl:left-[calc(100%+24px)] 2xl:right-auto">
                       <ProjectMockup projectId={project.id} />
                     </div>
 
@@ -306,46 +281,48 @@ export const EzraPortfolio: React.FC = () => {
       </main>
 
       {/* Dark Footer Bar matching Ezra's exact bottom bar */}
-      <footer className="w-full bg-[#202020] text-white h-[110px] sm:h-[135px] px-6 sm:px-20 flex flex-col sm:flex-row items-center justify-between gap-4 select-none">
-        <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
-          <span>@novandi ahmad ramdhan</span>
-          <span aria-hidden="true">•</span>
-          <span>all right reserved</span>
-        </p>
+      <footer className="w-full bg-[#202020] text-white py-8 sm:h-[135px] select-none flex items-center">
+        <div className="max-w-[1020px] w-full mx-auto px-6 sm:px-8 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
+            <span>@novandi ahmad ramdhan</span>
+            <span aria-hidden="true">•</span>
+            <span>all right reserved</span>
+          </p>
 
-        <nav className="flex items-center gap-6 font-hegarty text-base sm:text-[1.15rem]" aria-label="Footer navigation">
-          <a
-            href={profileData.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#cf2ee3] hover:underline no-underline"
-          >
-            github
-          </a>
-          <a
-            href={profileData.instagramUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#f0258d] hover:underline no-underline"
-          >
-            instagram
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#46b8ff] hover:underline no-underline"
-          >
-            linkedin
-          </a>
-          <a
-            href={getMailtoUrl(profileData.email)}
-            onClick={(e) => handleSmartEmailClick(e, profileData.email)}
-            className="text-[#bef264] hover:underline no-underline"
-          >
-            email
-          </a>
-        </nav>
+          <nav className="flex items-center gap-6 font-hegarty text-base sm:text-[1.15rem]" aria-label="Footer navigation">
+            <a
+              href={profileData.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#cf2ee3] hover:underline no-underline"
+            >
+              github
+            </a>
+            <a
+              href={profileData.instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#f0258d] hover:underline no-underline"
+            >
+              instagram
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#46b8ff] hover:underline no-underline"
+            >
+              linkedin
+            </a>
+            <a
+              href={getMailtoUrl(profileData.email)}
+              onClick={(e) => handleSmartEmailClick(e, profileData.email)}
+              className="text-[#bef264] hover:underline no-underline"
+            >
+              email
+            </a>
+          </nav>
+        </div>
       </footer>
 
       {/* Modal Case Study for Deep Engineering Verification */}
