@@ -43,10 +43,10 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
       }}
       className="fixed inset-0 z-50 bg-[#101010]/70 backdrop-blur-md overflow-y-auto flex justify-center p-2 sm:p-5 md:p-8 animate-in fade-in duration-200 cursor-pointer"
     >
-      <div className="bg-white text-[#101010] w-full max-w-4xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default animate-in zoom-in-95 duration-200">
+      <div className="bg-white text-[#101010] w-full max-w-5xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default animate-in zoom-in-95 duration-200">
         
         {/* Sticky Top Action Bar */}
-        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-5 sm:px-8 py-3.5 border-b border-[#e8e8e8] flex items-center justify-between">
+        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#e8e8e8] flex items-center justify-between">
           <button
             type="button"
             onClick={onClose}
@@ -93,7 +93,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         </div>
 
         {/* Case Study Content Body */}
-        <div className="p-6 sm:p-8 md:p-12 space-y-12 max-w-3xl mx-auto w-full">
+        <div className="p-6 sm:p-8 md:p-12 space-y-12 max-w-4xl mx-auto w-full">
           
           {/* Header Banner */}
           <RevealOnScroll delay={0}>
