@@ -1,8 +1,8 @@
 import React from 'react';
-import { EzraPortfolio } from './components/EzraPortfolio';
+import { NovandiPortfolio } from './components/NovandiPortfolio';
 
 export const App: React.FC = () => {
-  return <EzraPortfolio />;
+  return <NovandiPortfolio />;
 };
 
 export default App;

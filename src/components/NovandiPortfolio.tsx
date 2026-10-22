@@ -13,7 +13,7 @@ import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 
 type TabType = 'experience' | 'education' | 'works';
 
-export const EzraPortfolio: React.FC = () => {
+export const NovandiPortfolio: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('experience');
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
@@ -22,7 +22,7 @@ export const EzraPortfolio: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#101010] selection:bg-[#ffd3e5] selection:text-[#fd4aa6]">
       
-      {/* 1. Sticky Header with Ezra's exact brand logo */}
+      {/* 1. Sticky Header with Novandi's brand logo */}
       <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 border-b border-[#101010]/10">
         <nav className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 h-[72px] flex items-center justify-center select-none">
           <a
@@ -43,7 +43,7 @@ export const EzraPortfolio: React.FC = () => {
           <GithubHeatmap />
         </section>
 
-        {/* Intro Hero Section matching Ezra's exact HTML layout */}
+        {/* Intro Hero Section */}
         <section className="space-y-4 pt-2">
           <div className="flex flex-wrap items-baseline gap-x-3">
             <p className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
@@ -185,7 +185,7 @@ export const EzraPortfolio: React.FC = () => {
               </div>
             )}
 
-            {/* TAB 3: WORKS (PROJECTS WITH EXACT EZRA PREVIEW & BADGES) */}
+            {/* TAB 3: WORKS (PROJECTS WITH INTERACTIVE PREVIEWS & BADGES) */}
             {activeTab === 'works' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
                 {projectsData.map((project) => (
@@ -241,7 +241,7 @@ export const EzraPortfolio: React.FC = () => {
                       ))}
                     </div>
 
-                    {/* Desktop Floating Mockup Preview on Hover (Exact Ezra Experience) */}
+                    {/* Desktop Floating Mockup Preview on Hover */}
                     <div className="hidden md:block opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out absolute top-1/2 -translate-y-1/2 z-30 pointer-events-none rounded-2xl border-[3.5px] border-white shadow-[0_22px_50px_rgba(0,0,0,0.22)] overflow-hidden scale-95 group-hover:scale-100 right-0 2xl:left-[calc(100%+24px)] 2xl:right-auto">
                       <ProjectMockup projectId={project.id} />
                     </div>
@@ -266,12 +266,12 @@ export const EzraPortfolio: React.FC = () => {
           </div>
         </section>
 
-        {/* Lime Green CTA Card (Exact Ezra CTA) */}
+        {/* Lime Green CTA Card */}
         <section aria-label="Call to Action" className="pt-16">
           <StickerCard />
         </section>
 
-        {/* Giant Brand Wordmark Footer (Exact Ezra Footer Typography) */}
+        {/* Giant Brand Wordmark Footer Typography */}
         <section className="pt-20 sm:pt-24 pb-4 sm:pb-6 select-none flex justify-center overflow-hidden">
           <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95">
             novan
@@ -280,7 +280,7 @@ export const EzraPortfolio: React.FC = () => {
 
       </main>
 
-      {/* Dark Footer Bar matching Ezra's exact bottom bar */}
+      {/* Dark Footer Bar */}
       <footer className="w-full bg-[#202020] text-white py-8 sm:h-[135px] select-none flex items-center">
         <div className="max-w-[1020px] w-full mx-auto px-6 sm:px-8 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">

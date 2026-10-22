@@ -25,7 +25,7 @@ export const StickerCard: React.FC = () => {
       {/* Lime Green Accent Inner Layer */}
       <div className="absolute inset-5 sm:inset-6 bg-[#9dff34] rounded-xl overflow-hidden transition-colors group-hover:bg-[#92f52c]" />
 
-      {/* Content Layer: Right-aligned Text matching Ezra's site */}
+      {/* Content Layer: Right-aligned Text */}
       <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 text-right">
         <h2 className="font-hegarty text-[#3d3d3d] text-4xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight max-w-[640px] text-right">
           Ready to elevate your workflow?
