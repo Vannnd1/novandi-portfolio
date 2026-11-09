@@ -75,48 +75,71 @@ export const NovandiPortfolio: React.FC = () => {
           <GithubHeatmap />
         </section>
 
-        {/* Intro Hero Section */}
-        <section className="space-y-4 pt-2">
-          <div className="flex flex-wrap items-baseline gap-x-3">
-            <p className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
-              {t.hero.helloIm}
-            </p>
-            <h1 className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
-              {t.hero.name}
-            </h1>
-          </div>
+        {/* Intro Hero Section with Profile Photo */}
+        <section className="pt-2">
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8 md:gap-10">
+            {/* Left Column: Text & Intro */}
+            <div className="flex-1 space-y-4 text-left">
+              <div className="flex flex-wrap items-baseline gap-x-3">
+                <p className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
+                  {t.hero.helloIm}
+                </p>
+                <h1 className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
+                  {t.hero.name}
+                </h1>
+              </div>
 
-          <p className="font-space text-lg sm:text-[20px] text-[#101010] font-medium leading-[1.8] pt-1">
-            {t.hero.leadBefore}{' '}
-            <span className="text-[#929292]">
-              {t.hero.leadMuted}
-            </span>{' '}
-            {t.hero.leadShare}{' '}
-            <SocialPill
-              href="https://linkedin.com"
-              icon={<LinkedInIcon className="w-3.5 h-3.5" />}
-              label="linkedin"
-              variant="linkedin"
-              tilt={-1.2}
-            />{' '}
-            {t.hero.and}{' '}
-            <SocialPill
-              href={profile.instagramUrl}
-              icon={<InstagramIcon className="w-3.5 h-3.5" />}
-              label="instagram"
-              variant="instagram"
-              tilt={2.1}
-            />
-            {t.hero.leadKeep}{' '}
-            <SocialPill
-              href={profile.githubUrl}
-              icon={<GitHubIcon className="w-3.5 h-3.5" />}
-              label="github"
-              variant="github"
-              tilt={0.3}
-            />
-            .
-          </p>
+              <p className="font-space text-lg sm:text-[20px] text-[#101010] font-medium leading-[1.8] pt-1 m-0">
+                {t.hero.leadBefore}{' '}
+                <span className="text-[#929292]">
+                  {t.hero.leadMuted}
+                </span>{' '}
+                {t.hero.leadShare}{' '}
+                <SocialPill
+                  href="https://linkedin.com"
+                  icon={<LinkedInIcon className="w-3.5 h-3.5" />}
+                  label="linkedin"
+                  variant="linkedin"
+                  tilt={-1.2}
+                />{' '}
+                {t.hero.and}{' '}
+                <SocialPill
+                  href={profile.instagramUrl}
+                  icon={<InstagramIcon className="w-3.5 h-3.5" />}
+                  label="instagram"
+                  variant="instagram"
+                  tilt={2.1}
+                />
+                {t.hero.leadKeep}{' '}
+                <SocialPill
+                  href={profile.githubUrl}
+                  icon={<GitHubIcon className="w-3.5 h-3.5" />}
+                  label="github"
+                  variant="github"
+                  tilt={0.3}
+                />
+                .
+              </p>
+            </div>
+
+            {/* Right Column: Professional Profile Photo Card */}
+            <div className="shrink-0 relative group">
+              <div className="w-32 h-40 sm:w-40 sm:h-48 md:w-44 md:h-52 rounded-2xl sm:rounded-3xl overflow-hidden border-[3.5px] border-white shadow-[0_14px_32px_rgba(0,0,0,0.12)] ring-1 ring-black/10 bg-[#f4f4f5] transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_18px_38px_rgba(0,0,0,0.16)]">
+                <img
+                  src="/profile.jpg"
+                  alt={profile.name}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="eager"
+                />
+              </div>
+
+              {/* Status Indicator Badge */}
+              <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:-right-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#e4e4e7] shadow-sm text-xs font-space font-semibold text-[#18181b] whitespace-nowrap select-none">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>{t.hero.statusAvailable}</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Portfolio Tabs Navigation */}
