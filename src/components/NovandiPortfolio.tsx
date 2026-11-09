@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { profileData } from '../data/profile';
-import { projectsData } from '../data/projects';
+import { useLanguage } from '../context/useLanguage';
 import { GithubHeatmap } from './GithubHeatmap';
 import { SocialPill } from './SocialPill';
 import { TechPill } from './TechPill';
@@ -14,24 +13,57 @@ import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 type TabType = 'experience' | 'education' | 'works';
 
 export const NovandiPortfolio: React.FC = () => {
+  const { language, setLanguage, t, profile, projects } = useLanguage();
   const [activeTab, setActiveTab] = useState<TabType>('experience');
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
-  const activeProject = projectsData.find((p) => p.id === selectedProjectId) ?? null;
+  const activeProject = projects.find((p) => p.id === selectedProjectId) ?? null;
 
   return (
     <div className="min-h-screen bg-white text-[#101010] selection:bg-[#ffd3e5] selection:text-[#fd4aa6]">
       
-      {/* 1. Sticky Header with Novandi's brand logo */}
+      {/* 1. Sticky Header with Novandi's brand logo & Language Switcher */}
       <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 border-b border-[#101010]/10">
-        <nav className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 h-[72px] flex items-center justify-center select-none">
+        <nav className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 h-[72px] flex items-center justify-between select-none">
           <a
             href="/"
             className="font-hegarty text-[32px] text-[#101010] stroke-title no-underline hover:opacity-90 transition-opacity"
-            aria-label="novan.arm home"
+            aria-label={t.nav.homeAria}
           >
             novan.arm
           </a>
+
+          {/* Interactive Language Switcher Toggle */}
+          <div
+            className="flex items-center gap-1 bg-[#f4f4f5] p-1 rounded-full border border-[#e4e4e7] text-xs font-space"
+            role="group"
+            aria-label={t.nav.langSwitchAria}
+          >
+            <button
+              type="button"
+              onClick={() => setLanguage('id')}
+              className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                language === 'id'
+                  ? 'bg-[#101010] text-white shadow-xs'
+                  : 'text-[#666] hover:text-black hover:bg-black/5'
+              }`}
+              title="Bahasa Indonesia"
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage('en')}
+              className={`px-3 py-1 rounded-full font-bold transition-all cursor-pointer ${
+                language === 'en'
+                  ? 'bg-[#101010] text-white shadow-xs'
+                  : 'text-[#666] hover:text-black hover:bg-black/5'
+              }`}
+              title="English"
+            >
+              EN
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -39,7 +71,7 @@ export const NovandiPortfolio: React.FC = () => {
       <main className="max-w-[1020px] mx-auto px-6 sm:px-8 md:px-10 pt-10 sm:pt-14 pb-24 space-y-16 sm:space-y-20">
         
         {/* GitHub Calendar Heatmap Section */}
-        <section aria-label="GitHub contribution calendar" className="w-full">
+        <section aria-label={t.heatmap.ariaLabel} className="w-full">
           <GithubHeatmap />
         </section>
 
@@ -47,19 +79,19 @@ export const NovandiPortfolio: React.FC = () => {
         <section className="space-y-4 pt-2">
           <div className="flex flex-wrap items-baseline gap-x-3">
             <p className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
-              hello, i'm
+              {t.hero.helloIm}
             </p>
             <h1 className="font-hegarty text-4xl sm:text-[42px] text-[#101010] stroke-title m-0">
-              Novandi Ahmad Ramdhan
+              {t.hero.name}
             </h1>
           </div>
 
           <p className="font-space text-lg sm:text-[20px] text-[#101010] font-medium leading-[1.8] pt-1">
-            a software engineer with a strong foundation in informatics and web development.{' '}
+            {t.hero.leadBefore}{' '}
             <span className="text-[#929292]">
-              i'm curious about what happens behind the screen—from clean backend architectures and digital security to how AI-driven systems power real-world industrial workflows.
+              {t.hero.leadMuted}
             </span>{' '}
-            i share my journey on{' '}
+            {t.hero.leadShare}{' '}
             <SocialPill
               href="https://linkedin.com"
               icon={<LinkedInIcon className="w-3.5 h-3.5" />}
@@ -67,17 +99,17 @@ export const NovandiPortfolio: React.FC = () => {
               variant="linkedin"
               tilt={-1.2}
             />{' '}
-            and{' '}
+            {t.hero.and}{' '}
             <SocialPill
-              href={profileData.instagramUrl}
+              href={profile.instagramUrl}
               icon={<InstagramIcon className="w-3.5 h-3.5" />}
               label="instagram"
               variant="instagram"
               tilt={2.1}
             />
-            , and keep everything i build on{' '}
+            {t.hero.leadKeep}{' '}
             <SocialPill
-              href={profileData.githubUrl}
+              href={profile.githubUrl}
               icon={<GitHubIcon className="w-3.5 h-3.5" />}
               label="github"
               variant="github"
@@ -93,37 +125,37 @@ export const NovandiPortfolio: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveTab('experience')}
-              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none ${
+              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none capitalize ${
                 activeTab === 'experience'
                   ? 'text-black border-b-[#fd4aa6]'
                   : 'text-[#767676] border-b-transparent hover:text-black'
               }`}
             >
-              experience
+              {t.tabs.experience}
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab('education')}
-              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none ${
+              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none capitalize ${
                 activeTab === 'education'
                   ? 'text-black border-b-[#fd4aa6]'
                   : 'text-[#767676] border-b-transparent hover:text-black'
               }`}
             >
-              education
+              {t.tabs.education}
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab('works')}
-              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none ${
+              className={`font-hegarty text-2xl pb-3.5 border-b-[3px] transition-colors cursor-pointer leading-none capitalize ${
                 activeTab === 'works'
                   ? 'text-black border-b-[#fd4aa6]'
                   : 'text-[#767676] border-b-transparent hover:text-black'
               }`}
             >
-              works
+              {t.tabs.works}
             </button>
           </div>
 
@@ -133,7 +165,7 @@ export const NovandiPortfolio: React.FC = () => {
             {/* TAB 1: EXPERIENCE */}
             {activeTab === 'experience' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
-                {profileData.experience.map((exp, idx) => (
+                {profile.experience.map((exp, idx) => (
                   <article key={idx} className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
                     <div>
                       <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
@@ -164,7 +196,7 @@ export const NovandiPortfolio: React.FC = () => {
             {/* TAB 2: EDUCATION */}
             {activeTab === 'education' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
-                {profileData.education.map((edu, idx) => (
+                {profile.education.map((edu, idx) => (
                   <article key={idx} className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start relative">
                     <div>
                       <h3 className="font-hegarty text-3xl sm:text-[40px] text-black leading-[1.05] m-0">
@@ -188,7 +220,7 @@ export const NovandiPortfolio: React.FC = () => {
             {/* TAB 3: WORKS (PROJECTS WITH INTERACTIVE PREVIEWS & BADGES) */}
             {activeTab === 'works' && (
               <div className="flex flex-col gap-14 animate-in fade-in duration-300">
-                {projectsData.map((project) => (
+                {projects.map((project) => (
                   <article key={project.id} className="relative group border-b border-[#ececec] pb-12 last:border-b-0">
                     {/* Title and Direct Action Buttons */}
                     <div className="space-y-2.5">
@@ -209,7 +241,7 @@ export const NovandiPortfolio: React.FC = () => {
                           onClick={() => setSelectedProjectId(project.id)}
                           className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-white hover:bg-[#fd4aa6] border border-[#fd4aa6]/40 hover:border-[#fd4aa6] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none"
                         >
-                          <span>view full case study</span>
+                          <span>{t.works.viewCaseStudy}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
                         </button>
 
@@ -219,10 +251,10 @@ export const NovandiPortfolio: React.FC = () => {
                             target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#059669] hover:text-white hover:bg-[#059669] border border-[#059669]/40 hover:border-[#059669] px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95 shrink-0 select-none bg-emerald-50/50"
-                            title="Buka Website Live"
+                            title={t.works.liveDemo}
                           >
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span>live demo</span>
+                            <span>{t.works.liveDemo}</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </a>
                         )}
@@ -235,7 +267,7 @@ export const NovandiPortfolio: React.FC = () => {
                     </p>
 
                     {/* Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-2 mt-4" role="group" aria-label="Tech stack">
+                    <div className="flex flex-wrap gap-2 mt-4" role="group" aria-label={t.works.techStackAria}>
                       {project.techStack.map((tech) => (
                         <TechPill key={tech} name={tech} />
                       ))}
@@ -250,7 +282,7 @@ export const NovandiPortfolio: React.FC = () => {
                     <div className="md:hidden mt-3 pt-1">
                       <details className="group/preview">
                         <summary className="font-hegarty text-xs text-[#767676] hover:text-[#fd4aa6] cursor-pointer inline-flex items-center gap-1.5 select-none py-1">
-                          <span>quick preview</span>
+                          <span>{t.works.quickPreview}</span>
                           <span className="transition-transform group-open/preview:rotate-180 text-[9px]">▼</span>
                         </summary>
                         <div className="mt-2 rounded-2xl border-[3px] border-white shadow-lg overflow-hidden w-fit">
@@ -286,12 +318,12 @@ export const NovandiPortfolio: React.FC = () => {
           <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
             <span>@novandi ahmad ramdhan</span>
             <span aria-hidden="true">•</span>
-            <span>all right reserved</span>
+            <span>{t.footer.rights}</span>
           </p>
 
-          <nav className="flex items-center gap-6 font-hegarty text-base sm:text-[1.15rem]" aria-label="Footer navigation">
+          <nav className="flex items-center gap-6 font-hegarty text-base sm:text-[1.15rem]" aria-label={t.footer.navAria}>
             <a
-              href={profileData.githubUrl}
+              href={profile.githubUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#cf2ee3] hover:underline no-underline"
@@ -299,7 +331,7 @@ export const NovandiPortfolio: React.FC = () => {
               github
             </a>
             <a
-              href={profileData.instagramUrl}
+              href={profile.instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="text-[#f0258d] hover:underline no-underline"
@@ -315,8 +347,8 @@ export const NovandiPortfolio: React.FC = () => {
               linkedin
             </a>
             <a
-              href={getMailtoUrl(profileData.email)}
-              onClick={(e) => handleSmartEmailClick(e, profileData.email)}
+              href={getMailtoUrl(profile.email)}
+              onClick={(e) => handleSmartEmailClick(e, profile.email)}
               className="text-[#bef264] hover:underline no-underline"
             >
               email

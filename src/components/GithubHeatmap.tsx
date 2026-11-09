@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useLanguage } from '../context/useLanguage';
 
 interface ContributionDay {
   date: string;
@@ -14,13 +15,12 @@ interface ApiResponse {
 }
 
 export const GithubHeatmap: React.FC = () => {
+  const { language, t } = useLanguage();
   const [weeks, setWeeks] = useState<ContributionDay[][]>([]);
   const [totalContributions, setTotalContributions] = useState<number>(112);
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
   const [monthLabels, setMonthLabels] = useState<{ label: string; colIndex: number }[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const daysLabel = ['Mon', 'Wed', 'Fri'];
 
   useEffect(() => {
     let isMounted = true;
@@ -60,7 +60,7 @@ export const GithubHeatmap: React.FC = () => {
 
         weekCols.forEach((col, idx) => {
           const firstDayDate = new Date(col[0].date);
-          const monthName = firstDayDate.toLocaleString('en-US', { month: 'short' });
+          const monthName = firstDayDate.toLocaleString(language === 'id' ? 'id-ID' : 'en-US', { month: 'short' });
           if (monthName !== lastMonth) {
             months.push({ label: monthName, colIndex: idx });
             lastMonth = monthName;
@@ -86,7 +86,7 @@ export const GithubHeatmap: React.FC = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [language]);
 
   const getColor = (level: number) => {
     switch (level) {
@@ -109,23 +109,25 @@ export const GithubHeatmap: React.FC = () => {
       <div className="h-4 text-[11px] font-sans text-center mb-1 text-[#6B7280]">
         {hoveredDay ? (
           <span className="text-[#111318] font-medium">
-            <strong className="text-[#ec4899]">{hoveredDay.count}</strong> contribution{hoveredDay.count === 1 ? '' : 's'} on{' '}
-            {new Date(hoveredDay.date).toLocaleDateString('en-US', {
+            <strong className="text-[#ec4899]">{hoveredDay.count}</strong>{' '}
+            {hoveredDay.count === 1 ? t.heatmap.contribution : t.heatmap.contributions}{' '}
+            {t.heatmap.on}{' '}
+            {new Date(hoveredDay.date).toLocaleDateString(language === 'id' ? 'id-ID' : 'en-US', {
               month: 'short',
               day: 'numeric',
               year: 'numeric',
             })}
           </span>
         ) : (
-          <span className="text-[#9CA3AF] text-[10px]">hover on any block to see live contributions</span>
+          <span className="text-[#9CA3AF] text-[10px]">{t.heatmap.tooltipHover}</span>
         )}
       </div>
 
       {/* Grid Viewport */}
       <div className="flex items-start gap-2 pt-1">
-        {/* Days on left: Mon, Wed, Fri (index 1, 3, 5) */}
+        {/* Days on left */}
         <div className="flex flex-col justify-between h-[84px] text-[10px] font-sans text-[#9CA3AF] pt-5 select-none shrink-0">
-          {daysLabel.map((d) => (
+          {t.heatmap.days.map((d) => (
             <span key={d} className="leading-none">{d}</span>
           ))}
         </div>
@@ -150,12 +152,12 @@ export const GithubHeatmap: React.FC = () => {
               ))
             ) : (
               <div className="flex justify-between w-full pr-2">
-                <span>Nov</span>
-                <span>Jan</span>
-                <span>Mar</span>
-                <span>May</span>
-                <span>Jul</span>
-                <span>Oct</span>
+                <span>{language === 'id' ? 'Nov' : 'Nov'}</span>
+                <span>{language === 'id' ? 'Jan' : 'Jan'}</span>
+                <span>{language === 'id' ? 'Mar' : 'Mar'}</span>
+                <span>{language === 'id' ? 'Mei' : 'May'}</span>
+                <span>{language === 'id' ? 'Jul' : 'Jul'}</span>
+                <span>{language === 'id' ? 'Okt' : 'Oct'}</span>
               </div>
             )}
           </div>
@@ -201,18 +203,18 @@ export const GithubHeatmap: React.FC = () => {
           rel="noreferrer"
           className="font-medium text-[#4B5563] hover:text-[#ec4899] transition-colors inline-flex items-center gap-1"
         >
-          <span>{totalContributions} contributions in the last year</span>
+          <span>{t.heatmap.yearSummary(totalContributions)}</span>
           <span>→</span>
         </a>
 
         <div className="flex items-center gap-1.5 text-[10px]">
-          <span>Less</span>
+          <span>{t.heatmap.less}</span>
           <span className="w-2 h-2 rounded-full bg-[#E5E7EB]" />
           <span className="w-2 h-2 rounded-full bg-[#fbcfe8]" />
           <span className="w-2 h-2 rounded-full bg-[#f472b6]" />
           <span className="w-2 h-2 rounded-full bg-[#ec4899]" />
           <span className="w-2 h-2 rounded-full bg-[#db2777]" />
-          <span>More</span>
+          <span>{t.heatmap.more}</span>
         </div>
       </div>
     </div>
