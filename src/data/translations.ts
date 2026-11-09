@@ -24,6 +24,7 @@ export interface Translations {
     leadShare: string;
     and: string;
     leadKeep: string;
+    statusAvailable: string;
   };
   tabs: {
     experience: string;
@@ -97,6 +98,7 @@ export const translations: Record<Language, Translations> = {
       leadShare: "saya membagikan perjalanan dan wawasan di",
       and: "dan",
       leadKeep: ", serta mendokumentasikan seluruh proyek yang saya bangun di",
+      statusAvailable: "Tersedia untuk kerja",
     },
     tabs: {
       experience: "pengalaman",
@@ -168,6 +170,7 @@ export const translations: Record<Language, Translations> = {
       leadShare: "i share my journey on",
       and: "and",
       leadKeep: ", and keep everything i build on",
+      statusAvailable: "Available for work",
     },
     tabs: {
       experience: "experience",
