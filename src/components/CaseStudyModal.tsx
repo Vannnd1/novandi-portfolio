@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, ArrowLeft, GitBranch, ArrowUpRight, CheckCircle2, BookOpen } from 'lucide-react';
 import type { ProjectItem } from '../data/projects';
+import { useLanguage } from '../context/useLanguage';
 import { RevealOnScroll } from './RevealOnScroll';
 import { TechPill } from './TechPill';
 
@@ -10,6 +11,8 @@ interface CaseStudyModalProps {
 }
 
 export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose }) => {
+  const { t } = useLanguage();
+
   // Lock body scroll and handle Escape key
   useEffect(() => {
     if (!project) return;
@@ -53,7 +56,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             className="inline-flex items-center gap-2 font-hegarty text-sm sm:text-base text-[#767676] hover:text-black px-3.5 py-1.5 rounded-full hover:bg-[#f5f5f5] active:scale-95 transition-all cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>back to works</span>
+            <span>{t.modal.backToWorks}</span>
           </button>
 
           <div className="flex items-center gap-2.5">
@@ -65,7 +68,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>live site</span>
+                <span>{t.modal.liveSite}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}
@@ -85,7 +88,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               type="button"
               onClick={onClose}
               className="w-9 h-9 rounded-full bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#555] hover:text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer"
-              aria-label="Close Case Study"
+              aria-label={t.modal.closeAria}
             >
               <X className="w-4 h-4" />
             </button>
@@ -132,7 +135,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20"
                   >
                     <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    <span>buka website live</span>
+                    <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 )}
@@ -144,13 +147,13 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#202020] hover:bg-[#fd4aa6] text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
                   >
                     <GitBranch className="w-4 h-4" />
-                    <span>inspect github repository</span>
+                    <span>{t.modal.inspectGithubRepo}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 ) : (
                   !project.demoUrl && (
                     <span className="font-space text-xs text-[#767676] bg-[#f5f5f5] px-3.5 py-1.5 rounded-full border border-[#e8e8e8]">
-                      source: academic & internal engineering
+                      {t.modal.sourceAcademic}
                     </span>
                   )
                 )}
@@ -163,11 +166,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>01. problem statement & motivation</span>
+                <span>{t.modal.sec01Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <h3 className="font-geist font-semibold text-base sm:text-lg text-black">
-                  Why this problem matters
+                  {t.modal.sec01Sub}
                 </h3>
                 <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
                   {caseStudy.problemStatement}
@@ -181,7 +184,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>02. objectives & engineering scope</span>
+                <span>{t.modal.sec02Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <ul className="space-y-3 text-sm sm:text-base text-[#555]">
@@ -201,7 +204,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>03. verified role & contribution</span>
+                <span>{t.modal.sec03Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
@@ -216,7 +219,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>04. verified technical stack</span>
+                <span>{t.modal.sec04Title}</span>
               </div>
               <div className="flex flex-wrap gap-2.5 pt-1">
                 {project.techStack.map((tech) => (
@@ -231,7 +234,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>05. system architecture & processing workflow</span>
+                <span>{t.modal.sec05Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
@@ -261,7 +264,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>06. key implementation decisions</span>
+                <span>{t.modal.sec06Title}</span>
               </div>
               <div className="space-y-4">
                 {caseStudy.implementationDecisions.map((dec, i) => (
@@ -280,7 +283,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                             <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                             <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
                           </div>
-                          <span className="font-space text-xs text-[#a1a1aa] font-medium">implementation snippet</span>
+                          <span className="font-space text-xs text-[#a1a1aa] font-medium">{t.modal.codeSnippetLabel}</span>
                         </div>
                         <pre className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] text-[#f4f4f5] overflow-x-auto leading-relaxed">
                           <code>{dec.technicalCode}</code>
@@ -298,7 +301,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>07. verified results & empirical validation</span>
+                <span>{t.modal.sec07Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
@@ -309,9 +312,9 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                   <table className="w-full text-left font-space text-xs sm:text-sm">
                     <thead className="bg-[#f7f7f7] border-b border-[#e8e8e8]">
                       <tr>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">evaluation metric</th>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">verified output</th>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-[#767676] hidden sm:table-cell">theoretical / benchmark</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">{t.modal.colMetric}</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">{t.modal.colOutput}</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-[#767676] hidden sm:table-cell">{t.modal.colBenchmark}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#f0f0f0]">
@@ -338,7 +341,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <section className="space-y-3.5">
               <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
-                <span>08. transparent limitations & future work</span>
+                <span>{t.modal.sec08Title}</span>
               </div>
               <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <ul className="space-y-2.5 text-sm sm:text-base text-[#555]">
@@ -358,7 +361,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             <RevealOnScroll delay={0}>
               <section className="space-y-3 pt-2">
                 <div className="flex items-center gap-2 font-hegarty text-base sm:text-lg text-[#767676]">
-                  <span>technical standards & references</span>
+                  <span>{t.modal.secRefTitle}</span>
                 </div>
                 <ul className="space-y-2 text-xs sm:text-sm font-space text-[#767676] pl-4 border-l-2 border-[#fd4aa6]/40">
                   {caseStudy.references.map((ref, i) => (
@@ -378,7 +381,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#202020] hover:bg-[#fd4aa6] text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>back to works</span>
+                <span>{t.modal.backToWorks}</span>
               </button>
 
               <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-3">
@@ -390,7 +393,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20 cursor-pointer"
                   >
                     <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    <span>kunjungi website live</span>
+                    <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 )}
@@ -402,7 +405,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#d8d8d8] hover:border-black hover:bg-[#f7f7f7] text-[#202020] font-hegarty text-base rounded-full transition-all active:scale-95 cursor-pointer"
                   >
                     <GitBranch className="w-4 h-4" />
-                    <span>visit github repository</span>
+                    <span>{t.modal.githubRepo}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 )}
