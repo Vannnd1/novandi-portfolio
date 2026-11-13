@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 
-interface RevealOnScrollProps {
+export interface RevealOnScrollProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
@@ -17,69 +18,28 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   className = '',
   direction = 'up',
   distance = 24,
-  duration = 700,
-  as: Component = 'div',
+  duration = 600,
   once = true,
 }) => {
-  const elementRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-        return true;
-      }
-    }
-    return false;
-  });
+  const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    if (isVisible && once) return;
-
-    const currentEl = elementRef.current;
-    if (!currentEl) return;
-
-    // Trigger reveal when the element enters 60px before the bottom edge of the viewport
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            if (once) {
-              observer.unobserve(entry.target);
-            }
-          } else if (!once) {
-            setIsVisible(false);
-          }
-        });
-      },
-      {
-        threshold: 0.05,
-        rootMargin: '0px 0px -60px 0px',
-      }
-    );
-
-    observer.observe(currentEl);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [isVisible, once]);
-
-  const translateStyle = direction === 'up' ? `translateY(${distance}px)` : 'translateY(0)';
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
-    <Component
-      ref={elementRef}
-      className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : translateStyle,
-        transition: `opacity ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
-        transitionDelay: `${delay}ms`,
-        willChange: isVisible ? 'auto' : 'opacity, transform',
+    <motion.div
+      initial={{ opacity: 0, y: direction === 'up' ? distance : 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once, margin: '0px 0px -50px 0px' }}
+      transition={{
+        duration: duration / 1000,
+        delay: delay / 1000,
+        ease: [0.16, 1, 0.3, 1],
       }}
+      className={className}
     >
       {children}
-    </Component>
+    </motion.div>
   );
 };

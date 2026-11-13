@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLanguage } from '../context/useLanguage';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface ContributionDay {
   date: string;
@@ -106,21 +107,39 @@ export const GithubHeatmap: React.FC = () => {
   return (
     <div className="w-full max-w-3xl lg:max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-xs transition-shadow hover:shadow-sm">
       {/* Tooltip / Active Day Indicator */}
-      <div className="h-4 text-[11px] font-sans text-center mb-1 text-[#6B7280]">
-        {hoveredDay ? (
-          <span className="text-[#111318] font-medium">
-            <strong className="text-[#ec4899]">{hoveredDay.count}</strong>{' '}
-            {hoveredDay.count === 1 ? t.heatmap.contribution : t.heatmap.contributions}{' '}
-            {t.heatmap.on}{' '}
-            {new Date(hoveredDay.date).toLocaleDateString(language === 'id' ? 'id-ID' : 'en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-            })}
-          </span>
-        ) : (
-          <span className="text-[#9CA3AF] text-[10px]">{t.heatmap.tooltipHover}</span>
-        )}
+      <div className="h-5 text-[11px] font-sans text-center mb-1 text-[#6B7280] flex items-center justify-center overflow-hidden">
+        <AnimatePresence mode="wait">
+          {hoveredDay ? (
+            <motion.span
+              key={hoveredDay.date}
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -3 }}
+              transition={{ duration: 0.15 }}
+              className="text-[#111318] font-medium"
+            >
+              <strong className="text-[#ec4899]">{hoveredDay.count}</strong>{' '}
+              {hoveredDay.count === 1 ? t.heatmap.contribution : t.heatmap.contributions}{' '}
+              {t.heatmap.on}{' '}
+              {new Date(hoveredDay.date).toLocaleDateString(language === 'id' ? 'id-ID' : 'en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </motion.span>
+          ) : (
+            <motion.span
+              key="default"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="text-[#9CA3AF] text-[10px]"
+            >
+              {t.heatmap.tooltipHover}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Grid Viewport */}
@@ -167,16 +186,31 @@ export const GithubHeatmap: React.FC = () => {
             {weeks.length > 0 ? (
               weeks.map((week, colIdx) => (
                 <div key={colIdx} className="flex flex-col gap-[3.5px] sm:gap-1">
-                  {week.map((day, rowIdx) => (
-                    <div
-                      key={rowIdx}
-                      onMouseEnter={() => setHoveredDay(day)}
-                      onMouseLeave={() => setHoveredDay(null)}
-                      className={`w-2.5 h-2.5 rounded-full transition-transform hover:scale-125 cursor-pointer ${getColor(
-                        day.level
-                      )}`}
-                    />
-                  ))}
+                  {week.map((day, rowIdx) => {
+                    const formattedDate = new Date(day.date).toLocaleDateString(
+                      language === 'id' ? 'id-ID' : 'en-US',
+                      { month: 'short', day: 'numeric', year: 'numeric' }
+                    );
+                    const label = `${day.count} ${
+                      day.count === 1 ? t.heatmap.contribution : t.heatmap.contributions
+                    } ${t.heatmap.on} ${formattedDate}`;
+
+                    return (
+                      <div
+                        key={rowIdx}
+                        tabIndex={0}
+                        role="button"
+                        aria-label={label}
+                        onMouseEnter={() => setHoveredDay(day)}
+                        onMouseLeave={() => setHoveredDay(null)}
+                        onFocus={() => setHoveredDay(day)}
+                        onBlur={() => setHoveredDay(null)}
+                        className={`w-2.5 h-2.5 rounded-full transition-transform duration-150 hover:scale-130 focus:scale-130 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#fd4aa6] focus-visible:ring-offset-1 ${getColor(
+                          day.level
+                        )}`}
+                      />
+                    );
+                  })}
                 </div>
               ))
             ) : (

@@ -34,13 +34,12 @@ export const TechPill: React.FC<TechPillProps> = ({ name, size = 'base', classNa
   const sizeClasses = size === 'sm' ? 'text-xs sm:text-sm px-2.5 py-1' : 'text-base px-3 py-1.5';
 
   return (
-    <button
-      type="button"
-      className={`font-space font-medium rounded-full border transition-transform hover:scale-105 active:scale-95 cursor-pointer leading-none select-none ${sizeClasses} ${getBadgeClass(
+    <span
+      className={`inline-flex items-center font-space font-medium rounded-full border transition-transform duration-150 hover:scale-105 select-none leading-none ${sizeClasses} ${getBadgeClass(
         normalized
       )} ${className}`}
     >
       {name}
-    </button>
+    </span>
   );
 };

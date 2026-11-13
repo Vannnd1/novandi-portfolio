@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { X, ArrowLeft, GitBranch, ArrowUpRight, CheckCircle2, BookOpen } from 'lucide-react';
 import type { ProjectItem } from '../data/projects';
 import { useLanguage } from '../context/useLanguage';
@@ -12,10 +13,15 @@ interface CaseStudyModalProps {
 
 export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose }) => {
   const { t } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
-  // Lock body scroll and handle Escape key
+  // Lock body scroll, avoid layout shift, and handle Escape key
   useEffect(() => {
     if (!project) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -23,12 +29,25 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
       }
     };
 
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
     window.addEventListener('keydown', handleKeyDown);
 
+    // Initial focus on close button
+    const timer = setTimeout(() => {
+      closeBtnRef.current?.focus();
+    }, 40);
+
     return () => {
-      document.body.style.overflow = 'unset';
+      clearTimeout(timer);
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
       window.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
     };
   }, [project, onClose]);
 
@@ -37,17 +56,26 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
   const { caseStudy } = project;
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }}
       role="dialog"
       aria-modal="true"
       aria-labelledby="case-study-title"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
-      className="fixed inset-0 z-50 bg-[#101010]/70 backdrop-blur-md overflow-y-auto flex justify-center p-2 sm:p-5 md:p-8 animate-in fade-in duration-200 cursor-pointer"
+      className="fixed inset-0 z-50 bg-[#101010]/70 backdrop-blur-md overflow-y-auto flex justify-center p-2 sm:p-5 md:p-8 cursor-pointer"
     >
-      <div className="bg-white text-[#101010] w-full max-w-5xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default animate-in zoom-in-95 duration-200">
-        
+      <motion.div
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 12 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
+        className="bg-white text-[#101010] w-full max-w-5xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default"
+      >
         {/* Sticky Top Action Bar */}
         <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#e8e8e8] flex items-center justify-between">
           <button
@@ -85,9 +113,10 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               </a>
             )}
             <button
+              ref={closeBtnRef}
               type="button"
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#555] hover:text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-full bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#555] hover:text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
               aria-label={t.modal.closeAria}
             >
               <X className="w-4 h-4" />
@@ -414,7 +443,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           </RevealOnScroll>
 
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
