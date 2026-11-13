@@ -64,6 +64,17 @@
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Subtle Editorial Background Patterns */
+.bg-tech-grid {
+  background-image: radial-gradient(rgba(16, 16, 16, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(253, 74, 166, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 /* Purposeful Motion Animations */
 @keyframes slideUpFade {
   from {

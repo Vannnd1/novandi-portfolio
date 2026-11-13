@@ -25,6 +25,9 @@ export interface Translations {
     and: string;
     leadKeep: string;
     statusAvailable: string;
+    exploreWorks: string;
+    contactMe: string;
+    discipline: string;
   };
   tabs: {
     experience: string;
@@ -99,6 +102,9 @@ export const translations: Record<Language, Translations> = {
       and: "dan",
       leadKeep: ", serta mendokumentasikan seluruh proyek yang saya bangun di",
       statusAvailable: "Tersedia untuk kerja",
+      exploreWorks: "Jelajahi Karya",
+      contactMe: "Hubungi Saya",
+      discipline: "S1 Informatika · Software Engineering & Cryptography",
     },
     tabs: {
       experience: "pengalaman",
@@ -171,6 +177,9 @@ export const translations: Record<Language, Translations> = {
       and: "and",
       leadKeep: ", and keep everything i build on",
       statusAvailable: "Available for work",
+      exploreWorks: "Explore Works",
+      contactMe: "Get in Touch",
+      discipline: "B.Sc. Informatics · Software Engineering & Cryptography",
     },
     tabs: {
       experience: "experience",
