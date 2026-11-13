@@ -17,33 +17,44 @@ export const StickerCard: React.FC = () => {
   };
 
   return (
-    <a
-      href={getMailtoUrl(profile.email)}
-      onClick={(e) => handleSmartEmailClick(e, profile.email)}
-      className="group block relative w-full min-h-[380px] sm:min-h-[460px] p-5 sm:p-6 bg-[#f7f7f7] border border-[#e8e8e8] rounded-xl shadow-[0_10px_18px_rgba(0,0,0,0.16)] transition-all duration-200 hover:shadow-xl hover:-translate-y-1 overflow-hidden select-none no-underline cursor-pointer"
-      title={t.stickerCard.titleAttr}
+    <div
+      className="group relative w-full min-h-[380px] sm:min-h-[460px] p-5 sm:p-6 bg-[#f7f7f7] border border-[#e8e8e8] rounded-xl shadow-[0_10px_18px_rgba(0,0,0,0.16)] transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden select-none"
     >
+      {/* Clickable Card Stretched Link */}
+      <a
+        href={getMailtoUrl(profile.email)}
+        onClick={(e) => handleSmartEmailClick(e, profile.email)}
+        className="absolute inset-0 z-0 rounded-xl focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
+        title={t.stickerCard.titleAttr}
+        aria-label={t.stickerCard.titleAttr}
+      />
+
       {/* Lime Green Accent Inner Layer */}
-      <div className="absolute inset-5 sm:inset-6 bg-[#9dff34] rounded-xl overflow-hidden transition-colors group-hover:bg-[#92f52c]" />
+      <div className="pointer-events-none absolute inset-5 sm:inset-6 bg-[#9dff34] rounded-xl overflow-hidden transition-colors duration-300 group-hover:bg-[#92f52c]" />
 
       {/* Content Layer: Right-aligned Text */}
-      <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 text-right">
+      <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 text-right pointer-events-none">
         <h2 className="font-hegarty text-[#3d3d3d] text-4xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight max-w-[640px] text-right">
           {t.stickerCard.heading}
         </h2>
 
         {/* Email Address & Quick Copy Pill */}
-        <div className="mt-4 flex flex-wrap items-center justify-end gap-2 text-xs sm:text-sm font-space">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/10 hover:bg-black/15 text-[#202020] font-medium transition-colors">
+        <div className="mt-4 flex flex-wrap items-center justify-end gap-2 text-xs sm:text-sm font-space pointer-events-auto">
+          <a
+            href={getMailtoUrl(profile.email)}
+            onClick={(e) => handleSmartEmailClick(e, profile.email)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/10 hover:bg-black/15 text-[#202020] font-medium transition-all duration-150 no-underline cursor-pointer active:scale-95"
+            title={profile.email}
+          >
             <Mail className="w-3.5 h-3.5 text-[#202020]" />
             <span>{profile.email}</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-[#202020] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </span>
+          </a>
 
           <button
             type="button"
             onClick={handleCopy}
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-black/10 hover:bg-black/20 text-[#202020] font-semibold transition-all active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-black/10 hover:bg-black/20 text-[#202020] font-semibold transition-all duration-150 active:scale-95 cursor-pointer relative z-20"
             title={t.stickerCard.copyTitle}
             aria-label={t.stickerCard.copyTitle}
           >
@@ -61,6 +72,6 @@ export const StickerCard: React.FC = () => {
           </button>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
