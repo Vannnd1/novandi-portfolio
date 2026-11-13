@@ -57,12 +57,12 @@ export const projectsDataEn: ProjectItem[] = [
     categoryLabel: "UNDERGRADUATE THESIS · CRYPTOGRAPHY & SECURITY",
     year: "2026",
     isFlagship: true,
-    academicContext: "Undergraduate Thesis (Skripsi), S1 Informatika Universitas Gunadarma (NPM: 51422256)",
+    academicContext: "Undergraduate Thesis (Skripsi), S1 Informatika Universitas Gunadarma",
     summary:
       "A medical digital image encryption and decryption system utilizing composite chaotic maps (Gauss-MS Map and MS-Gauss Map) to protect confidential healthcare imagery against statistical, differential, and brute-force attacks.",
     techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
     metrics: [
-      { label: "NIST SP 800-22", value: "100% Passed (15 Tests)", status: "passed" },
+      { label: "NIST SP 800-22", value: "15/15 Tests Passed (α=0.01)", status: "passed" },
       { label: "Shannon Entropy", value: "≈ 7.998 / 8.000", status: "verified" },
       { label: "NPCR Differential", value: "≥ 99.62%", status: "verified" },
       { label: "UACI Differential", value: "≈ 33.46%", status: "verified" },
@@ -152,7 +152,7 @@ export const projectsDataEn: ProjectItem[] = [
       references: [
         "NIST Special Publication 800-22 Revision 1a: A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications.",
         "Shannon, C. E. (1949). Communication Theory of Secrecy Systems. Bell System Technical Journal, 28(4), 656-715.",
-        "Universitas Gunadarma Undergraduate Thesis Repository (Skripsi 2026, Novandi Ahmad Ramdhan, NPM: 51422256).",
+        "Universitas Gunadarma Undergraduate Thesis Repository (Skripsi 2026, Novandi Ahmad Ramdhan).",
       ],
     },
   },
@@ -277,17 +277,17 @@ export const projectsDataEn: ProjectItem[] = [
   {
     id: "retailinsight-ai",
     title: "RetailInsight AI — Sales Intelligence Dashboard & AI Analyst",
-    subtitle: "Zero-Latency Multidimensional Analytics with Context-Aware Google Gemini LLM",
+    subtitle: "Multidimensional Retail Analytics with Context-Aware Google Gemini LLM",
     category: "data-ai",
     categoryLabel: "DATA ANALYSIS · GENERATIVE A.I.",
     year: "2026",
     isFlagship: false,
     summary:
-      "An end-to-end interactive retail intelligence dashboard analyzing 541,000+ transaction records through responsive visualizations, universal 0ms cross-filtering, and an embedded context-aware AI analyst powered by Google Gemini.",
+      "An end-to-end interactive retail intelligence dashboard analyzing 541,000+ transaction records from the UCI Online Retail dataset through responsive visualizations, client-side in-memory cross-filtering over pre-aggregated matrices, and an embedded context-aware AI analyst powered by Google Gemini.",
     techStack: ["React 18", "Vite", "Tailwind CSS", "Recharts", "Google Gemini API", "JavaScript", "Node.js ETL"],
     metrics: [
       { label: "Dataset Scale", value: "541,909 Records", status: "verified" },
-      { label: "Filter Latency", value: "0ms Client-Side", status: "verified" },
+      { label: "Filter Architecture", value: "Client-Side In-Memory", status: "verified" },
       { label: "Failover Fallback", value: "4-Model Cascade", status: "verified" },
       { label: "Customer Segments", value: "8 Spend Brackets", status: "verified" },
     ],
@@ -298,7 +298,7 @@ export const projectsDataEn: ProjectItem[] = [
         "Analyzing multi-million-dollar retail transaction datasets often forces decision-makers to choose between high-latency database queries or rigid pre-rendered reports. Furthermore, when executives query standalone AI assistants, the models lack real-time context of active dashboard filters, leading to inaccurate answers or generic advice.",
       objectives: [
         "Build a data preprocessing ETL pipeline in Node.js to clean and aggregate 541,909 records from the UCI Online Retail dataset.",
-        "Develop an interactive web dashboard in React 18 + Tailwind CSS + Recharts with universal multidimensional cross-filtering operating with 0ms client-side latency.",
+        "Develop an interactive web dashboard in React 18 + Tailwind CSS + Recharts with universal multidimensional cross-filtering operating entirely in-memory without server roundtrips.",
         "Solve severe geographical skew (~90% UK transactions) via an 'Exclude UK' benchmark toggle to enable clear comparative analysis of European markets.",
         "Integrate a context-aware Google Gemini AI analyst that dynamically receives currently active filter parameters, enforces low-hallucination guardrails (temperature 0.1), and incorporates a 4-model cascade fallback.",
       ],
@@ -314,7 +314,7 @@ export const projectsDataEn: ProjectItem[] = [
           },
           {
             step: "2. Client-Side Universal Cross-Filtering",
-            description: "User clicks on country bar, date slider, or spend bracket; recalculates all dashboard KPIs and chart data instantaneously with 0ms server latency.",
+            description: "User clicks on country bar, date slider, or spend bracket; recalculates all dashboard KPIs and chart data instantaneously in-memory without server requests.",
           },
           {
             step: "3. Context-Aware AI Prompt Generation",
@@ -330,7 +330,7 @@ export const projectsDataEn: ProjectItem[] = [
         {
           title: "Pre-aggregated Multidimensional Data Architecture",
           rationale:
-            "Sending raw 541,909 rows (45MB) to every browser session causes high memory consumption. Pre-aggregating data into indexed multidimensional JSON matrices allows 0ms client-side cross-filtering with less than 2MB initial network payload.",
+            "Sending raw 541,909 rows (45MB) to every browser session causes high memory consumption. Pre-aggregating data into indexed multidimensional JSON matrices allows instant client-side cross-filtering without querying a backend server, keeping the initial network payload under 2MB.",
         },
         {
           title: "Dynamic AI Filter Context Synchronization",
@@ -345,7 +345,7 @@ export const projectsDataEn: ProjectItem[] = [
           "The dashboard handles filtering over multi-million-pound transaction volumes with zero lag, and the AI Analyst provides verified data answers with strict guardrails.",
         metrics: [
           { label: "Transactions Processed", value: "541,909 Rows", benchmark: "UCI Online Retail Dataset" },
-          { label: "Client Cross-Filter Latency", value: "0ms", benchmark: "Instant React state updates" },
+          { label: "Cross-Filter Execution", value: "Client-Side In-Memory", benchmark: "Zero backend roundtrips (Pre-aggregated JSON)" },
           { label: "LLM Hallucination Guardrail", value: "Temperature 0.1", benchmark: "Strict fact-based prompting" },
           { label: "Model Failover Chain", value: "4 Generations", benchmark: "Gemini 3.8 → 3.7 → 3.6 → 3.5" },
         ],
@@ -591,12 +591,12 @@ export const projectsDataId: ProjectItem[] = [
     categoryLabel: "SKRIPSI SARJANA · KRIPTOGRAFI & KEAMANAN SIBER",
     year: "2026",
     isFlagship: true,
-    academicContext: "Skripsi Sarjana S1 Informatika, Universitas Gunadarma (NPM: 51422256)",
+    academicContext: "Skripsi Sarjana S1 Informatika, Universitas Gunadarma",
     summary:
       "Sistem enkripsi dan dekripsi citra medis digital menggunakan composite chaotic maps (Gauss-MS Map dan MS-Gauss Map) untuk melindungi kerahasiaan data rekam medis pasien dari serangan statistik, diferensial, dan brute-force.",
     techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
     metrics: [
-      { label: "NIST SP 800-22", value: "100% Lolos (15 Pengujian)", status: "passed" },
+      { label: "NIST SP 800-22", value: "15/15 Pengujian Lolos (α=0.01)", status: "passed" },
       { label: "Entropi Shannon", value: "≈ 7.998 / 8.000", status: "verified" },
       { label: "Sensitivitas NPCR", value: "≥ 99.62%", status: "verified" },
       { label: "Perubahan UACI", value: "≈ 33.46%", status: "verified" },
@@ -686,7 +686,7 @@ export const projectsDataId: ProjectItem[] = [
       references: [
         "NIST Special Publication 800-22 Revision 1a: A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications.",
         "Shannon, C. E. (1949). Communication Theory of Secrecy Systems. Bell System Technical Journal, 28(4), 656-715.",
-        "Repositori Skripsi S1 Informatika Universitas Gunadarma (Skripsi 2026, Novandi Ahmad Ramdhan, NPM: 51422256).",
+        "Repositori Skripsi S1 Informatika Universitas Gunadarma (Skripsi 2026, Novandi Ahmad Ramdhan).",
       ],
     },
   },
@@ -811,17 +811,17 @@ export const projectsDataId: ProjectItem[] = [
   {
     id: "retailinsight-ai",
     title: "RetailInsight AI — Dasbor Inteligensi Penjualan & AI Analyst",
-    subtitle: "Analitik Multidimensi Berlatensi 0ms dengan Asisten LLM Google Gemini Sadar Konteks",
+    subtitle: "Analitik Multidimensi Retail dengan Asisten LLM Google Gemini Sadar Konteks",
     category: "data-ai",
     categoryLabel: "ANALISIS DATA · GENERATIVE A.I.",
     year: "2026",
     isFlagship: false,
     summary:
-      "Dasbor analitik retail interaktif menyeluruh yang menganalisis 541.000+ data transaksi melalui visualisasi responsif, cross-filtering universal berlatensi 0ms di sisi klien, dan asisten analitik AI cerdas berbasis Google Gemini yang sadar konteks filter.",
+      "Dasbor analitik retail interaktif menyeluruh yang menganalisis 541.000+ data transaksi dari dataset UCI Online Retail melalui visualisasi responsif, cross-filtering in-memory di sisi klien berbasis matriks pra-agregasi (tanpa beban server), dan asisten analitik AI cerdas berbasis Google Gemini yang sadar konteks filter.",
     techStack: ["React 18", "Vite", "Tailwind CSS", "Recharts", "Google Gemini API", "JavaScript", "Node.js ETL"],
     metrics: [
       { label: "Skala Dataset", value: "541.909 Baris Data", status: "verified" },
-      { label: "Latensi Filter", value: "0ms di Sisi Klien", status: "verified" },
+      { label: "Arsitektur Filter", value: "In-Memory Sisi Klien", status: "verified" },
       { label: "Failover Fallback", value: "4-Model Cascade", status: "verified" },
       { label: "Segmentasi Pelanggan", value: "8 Rentang Belanja", status: "verified" },
     ],
@@ -832,7 +832,7 @@ export const projectsDataId: ProjectItem[] = [
         "Menganalisis dataset transaksi retail bernilai jutaan dolar sering kali memaksa pengambil keputusan memilih antara kueri database yang lambat atau laporan statis yang kaku. Selain itu, asisten AI umum sering kali tidak memahami konteks filter aktif di dasbor, menghasilkan jawaban yang tidak akurat atau sekadar saran umum yang tidak relevan dengan data saat itu.",
       objectives: [
         "Membangun pipeline ETL pra-pemrosesan data dengan Node.js untuk membersihkan dan mengagregasi 541.909 baris data dari dataset UCI Online Retail.",
-        "Mengembangkan dasbor web interaktif di React 18 + Tailwind CSS + Recharts dengan kemampuan universal cross-filtering yang berjalan instan berlatensi 0ms di browser.",
+        "Mengembangkan dasbor web interaktif di React 18 + Tailwind CSS + Recharts dengan kemampuan universal cross-filtering yang berjalan instan di memori klien tanpa roundtrip server.",
         "Mengatasi skew geografis ekstrem (~90% transaksi dari UK) lewat tombol pembanding 'Exclude UK' untuk membedah pasar Eropa lainnya secara proporsional.",
         "Mengintegrasikan AI Analyst berbasis Google Gemini yang secara dinamis menerima parameter filter aktif, dibentengi guardrail halusinasi rendah (temperature 0.1), serta mekanisme failover berjenjang 4 model.",
       ],
@@ -848,7 +848,7 @@ export const projectsDataId: ProjectItem[] = [
           },
           {
             step: "2. Cross-Filtering Universal Sisi Klien",
-            description: "Pengguna mengklik bar negara, slider tanggal, atau bracket belanja; seluruh KPI dan data grafik dihitung ulang seketika dengan latensi server 0ms.",
+            description: "Pengguna mengklik bar negara, slider tanggal, atau bracket belanja; seluruh KPI dan data grafik dihitung ulang seketika di memori tanpa beban server.",
           },
           {
             step: "3. Generasi Prompt AI Sadar Konteks",
@@ -864,7 +864,7 @@ export const projectsDataId: ProjectItem[] = [
         {
           title: "Arsitektur Data Multidimensi Pra-Agregasi",
           rationale:
-            "Mengirimkan 541.909 baris data mentah (45MB) ke setiap sesi browser menyebabkan konsumsi memori tinggi dan loading lambat. Melakukan pra-agregasi ke dalam matriks JSON terindeks memungkinkan interaktivitas 0ms dengan payload awal kurang dari 2MB.",
+            "Mengirimkan 541.909 baris data mentah (45MB) ke setiap sesi browser menyebabkan konsumsi memori tinggi dan loading lambat. Melakukan pra-agregasi ke dalam matriks JSON terindeks memungkinkan interaktivitas instan tanpa membebani server backend, dengan payload awal kurang dari 2MB.",
         },
         {
           title: "Sinkronisasi Konteks Filter AI yang Dinamis",
@@ -879,7 +879,7 @@ export const projectsDataId: ProjectItem[] = [
           "Dasbor berhasil memproses pemfilteran atas volume transaksi jutaan pound sterling tanpa jeda (zero lag), dan AI Analyst menyajikan wawasan data terverifikasi dengan pagar keamanan fakta yang ketat.",
         metrics: [
           { label: "Transaksi Terproses", value: "541.909 Baris", benchmark: "Dataset UCI Online Retail" },
-          { label: "Latensi Filter Klien", value: "0ms", benchmark: "Pembaruan state React instan" },
+          { label: "Eksekusi Cross-Filter", value: "In-Memory Sisi Klien", benchmark: "Tanpa roundtrip backend (JSON Pra-Agregasi)" },
           { label: "Guardrail Halusinasi LLM", value: "Temperature 0.1", benchmark: "Prompting berbasis fakta ketat" },
           { label: "Rantai Failover Model", value: "4 Generasi Model", benchmark: "Gemini 3.8 → 3.7 → 3.6 → 3.5" },
         ],

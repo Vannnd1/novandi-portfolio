@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { useLanguage } from '../context/useLanguage';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -18,27 +18,38 @@ interface ApiResponse {
 export const GithubHeatmap: React.FC = () => {
   const { language, t } = useLanguage();
   const [weeks, setWeeks] = useState<ContributionDay[][]>([]);
-  const [totalContributions, setTotalContributions] = useState<number>(112);
+  const [totalContributions, setTotalContributions] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [hasError, setHasError] = useState<boolean>(false);
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
-  const [monthLabels, setMonthLabels] = useState<{ label: string; colIndex: number }[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const fetchContributions = async () => {
       try {
-        const res = await fetch('https://github-contributions-api.jogruber.de/v4/Vannnd1?y=last');
+        setIsLoading(true);
+        setHasError(false);
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/Vannnd1?y=last', {
+          signal: controller.signal,
+        });
         if (!res.ok) throw new Error('Failed to fetch contributions');
         const data: ApiResponse = await res.json();
 
-        if (!isMounted) return;
+        if (!data || !data.total || !Array.isArray(data.contributions)) {
+          throw new Error('Malformed API response');
+        }
 
-        const total = data.total?.lastYear ?? Object.values(data.total)[0] ?? 112;
+        const total = data.total?.lastYear ?? Object.values(data.total)[0] ?? 0;
         setTotalContributions(total);
 
         const allDays = data.contributions;
-        if (!allDays || allDays.length === 0) return;
+        if (allDays.length === 0) {
+          setIsLoading(false);
+          return;
+        }
 
         // Group into weeks of 7 days
         const weekCols: ContributionDay[][] = [];
@@ -55,39 +66,52 @@ export const GithubHeatmap: React.FC = () => {
           weekCols.push(currentWeek);
         }
 
-        // Calculate month labels at column intervals
-        const months: { label: string; colIndex: number }[] = [];
-        let lastMonth = '';
-
-        weekCols.forEach((col, idx) => {
-          const firstDayDate = new Date(col[0].date);
-          const monthName = firstDayDate.toLocaleString(language === 'id' ? 'id-ID' : 'en-US', { month: 'short' });
-          if (monthName !== lastMonth) {
-            months.push({ label: monthName, colIndex: idx });
-            lastMonth = monthName;
-          }
-        });
-
         setWeeks(weekCols);
-        setMonthLabels(months);
+        setIsLoading(false);
 
         // Auto-scroll to the right so recent commits are in view
-        setTimeout(() => {
+        scrollTimeout = setTimeout(() => {
           if (scrollContainerRef.current) {
             scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth;
           }
         }, 150);
-      } catch {
-        // Fallback gracefully to default state if offline
+      } catch (err: unknown) {
+        if (err instanceof DOMException && err.name === 'AbortError') {
+          return;
+        }
+        setIsLoading(false);
+        setHasError(true);
       }
     };
 
     fetchContributions();
 
     return () => {
-      isMounted = false;
+      controller.abort();
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
     };
-  }, [language]);
+  }, []);
+
+  // Compute month labels reactively without re-fetching API data on language toggle
+  const monthLabels = useMemo(() => {
+    if (weeks.length === 0) return [];
+    const months: { label: string; colIndex: number }[] = [];
+    let lastMonth = '';
+
+    weeks.forEach((col, idx) => {
+      if (!col[0]?.date) return;
+      const firstDayDate = new Date(col[0].date);
+      const monthName = firstDayDate.toLocaleString(language === 'id' ? 'id-ID' : 'en-US', { month: 'short' });
+      if (monthName !== lastMonth) {
+        months.push({ label: monthName, colIndex: idx });
+        lastMonth = monthName;
+      }
+    });
+
+    return months;
+  }, [weeks, language]);
 
   const getColor = (level: number) => {
     switch (level) {
@@ -183,7 +207,30 @@ export const GithubHeatmap: React.FC = () => {
 
           {/* Matrix Columns */}
           <div className="flex gap-[3.5px] sm:gap-1 min-w-max py-0.5">
-            {weeks.length > 0 ? (
+            {isLoading ? (
+              // Initial placeholder skeleton while loading
+              <div className="flex gap-1 py-1">
+                {Array.from({ length: 28 }).map((_, colIdx) => (
+                  <div key={colIdx} className="flex flex-col gap-1">
+                    {Array.from({ length: 7 }).map((_, rowIdx) => (
+                      <div key={rowIdx} className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB] animate-pulse" />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ) : hasError ? (
+              <div className="py-6 text-center w-full text-xs font-mono text-[#888]">
+                {language === 'id'
+                  ? 'Gagal memuat visualisasi kontribusi. Kunjungi GitHub untuk melihat aktivitas terbaru.'
+                  : 'Failed to load contribution activity. Visit GitHub to inspect recent activity.'}
+              </div>
+            ) : weeks.length === 0 ? (
+              <div className="py-6 text-center w-full text-xs font-mono text-[#888]">
+                {language === 'id'
+                  ? 'Tidak ada riwayat kontribusi untuk periode ini.'
+                  : 'No contribution activity found for this period.'}
+              </div>
+            ) : (
               weeks.map((week, colIdx) => (
                 <div key={colIdx} className="flex flex-col gap-[3.5px] sm:gap-1">
                   {week.map((day, rowIdx) => {
@@ -213,17 +260,6 @@ export const GithubHeatmap: React.FC = () => {
                   })}
                 </div>
               ))
-            ) : (
-              // Initial placeholder skeleton while loading
-              <div className="flex gap-1 py-1">
-                {Array.from({ length: 28 }).map((_, colIdx) => (
-                  <div key={colIdx} className="flex flex-col gap-1">
-                    {Array.from({ length: 7 }).map((_, rowIdx) => (
-                      <div key={rowIdx} className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB] animate-pulse" />
-                    ))}
-                  </div>
-                ))}
-              </div>
             )}
           </div>
         </div>
@@ -237,7 +273,13 @@ export const GithubHeatmap: React.FC = () => {
           rel="noreferrer"
           className="font-medium text-[#4B5563] hover:text-[#ec4899] transition-colors inline-flex items-center gap-1"
         >
-          <span>{t.heatmap.yearSummary(totalContributions)}</span>
+          <span>
+            {isLoading
+              ? (language === 'id' ? 'Memuat kontribusi...' : 'Loading contributions...')
+              : hasError
+                ? (language === 'id' ? 'Lihat profil GitHub @Vannnd1' : 'View GitHub profile @Vannnd1')
+                : t.heatmap.yearSummary(totalContributions ?? 0)}
+          </span>
           <span>→</span>
         </a>
 

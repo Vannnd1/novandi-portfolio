@@ -18,9 +18,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
   switch (projectId) {
     /* ──────────────────────────────────────────────────────────────────────────
      * 1. Chaotic Medical Image Encryption System
-     * Direct replica of tkinter GUI in:
-     * C:\Users\panpe\Downloads\2026_51422256_Novandi Ahmad Ramdhan\Program\windows\encrypt.py
-     * and wireframe in file wireframe sk\Enkripsi.jpg
+     * Direct replica of tkinter GUI and wireframe in Skripsi documentation
      * ────────────────────────────────────────────────────────────────────────── */
     case 'chaotic-image-encryption':
       return (
@@ -136,8 +134,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
     /* ──────────────────────────────────────────────────────────────────────────
      * 2. Manufacturing Digital Operations System (MOM / MES)
-     * Direct replica of Dashboard.tsx in:
-     * c:\Users\panpe\Downloads\manufacturing-digital-operations\apps\frontend\src\pages\Dashboard.tsx
+     * Direct replica of Dashboard component in manufacturing-digital-operations
      * ────────────────────────────────────────────────────────────────────────── */
     case 'manufacturing-digital-operations':
       return (
@@ -304,8 +301,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
     /* ──────────────────────────────────────────────────────────────────────────
      * 4. Adaptive Learning Insight
-     * Direct replica of Dashboard.jsx in:
-     * c:\Users\panpe\Downloads\ai-learning-insight-capstone\.../Dashboard.jsx
+     * Direct replica of Dashboard in ai-learning-insight-capstone
      * ────────────────────────────────────────────────────────────────────────── */
     case 'adaptive-learning-insight':
       return (
@@ -450,8 +446,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
     /* ──────────────────────────────────────────────────────────────────────────
      * 6. Sahabat Dunia — Belajar Hewan
-     * Direct replica of interactive web in:
-     * c:\Users\panpe\Downloads\SahabatDunia\index.html
+     * Direct replica of interactive web in SahabatDunia
      * using real card assets from asset/CardMenu
      * ────────────────────────────────────────────────────────────────────────── */
     case 'sahabat-dunia':

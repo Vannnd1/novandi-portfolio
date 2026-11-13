@@ -29,6 +29,15 @@ export interface Translations {
     contactMe: string;
     discipline: string;
   };
+  credibility: {
+    gpaSub: string;
+    tests: string;
+    testsSub: string;
+    nist: string;
+    nistSub: string;
+    data: string;
+    dataSub: string;
+  };
   tabs: {
     experience: string;
     education: string;
@@ -106,6 +115,15 @@ export const translations: Record<Language, Translations> = {
       contactMe: "Hubungi Saya",
       discipline: "S1 Informatika · Software Engineering & Cryptography",
     },
+    credibility: {
+      gpaSub: "IPK · S1 Informatika",
+      tests: "252 Tests",
+      testsSub: "Proyek MOM/MES (20 Suites)",
+      nist: "15/15 NIST",
+      nistSub: "Evaluasi SP 800-22 Skripsi",
+      data: "540K+ Data",
+      dataSub: "ETL Transaksi Retail",
+    },
     tabs: {
       experience: "pengalaman",
       education: "pendidikan",
@@ -180,6 +198,15 @@ export const translations: Record<Language, Translations> = {
       exploreWorks: "Explore Works",
       contactMe: "Get in Touch",
       discipline: "B.Sc. Informatics · Software Engineering & Cryptography",
+    },
+    credibility: {
+      gpaSub: "GPA · S1 Informatics",
+      tests: "252 Tests",
+      testsSub: "MOM/MES Project (20 Suites)",
+      nist: "15/15 NIST",
+      nistSub: "SP 800-22 Thesis Evaluation",
+      data: "540K+ Data",
+      dataSub: "Retail Transaction ETL",
     },
     tabs: {
       experience: "experience",
