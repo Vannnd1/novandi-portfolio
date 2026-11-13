@@ -1,20 +1,39 @@
 import React, { useState } from 'react';
-import { Mail, ArrowUpRight, Copy, Check, Sparkles } from 'lucide-react';
+import { Mail, ArrowUpRight, Copy, Check, Sparkles, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../context/useLanguage';
 import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 import { Magnetic } from './MagneticButton';
 
 export const StickerCard: React.FC = () => {
-  const { t, profile } = useLanguage();
-  const [copied, setCopied] = useState(false);
+  const { t, profile, language } = useLanguage();
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
 
-  const handleCopy = (e: React.MouseEvent) => {
+  const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    navigator.clipboard.writeText(profile.email).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(profile.email);
+        setCopyState('copied');
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = profile.email;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (!successful) throw new Error('execCommand copy failed');
+        setCopyState('copied');
+      }
+      setTimeout(() => setCopyState('idle'), 2000);
+    } catch {
+      setCopyState('error');
+      setTimeout(() => setCopyState('idle'), 2500);
+    }
   };
 
   return (
@@ -68,14 +87,19 @@ export const StickerCard: React.FC = () => {
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/10 hover:bg-black/25 text-[#101010] font-bold transition-all duration-150 active:scale-95 cursor-pointer relative z-20 shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/10 hover:bg-black/25 text-[#101010] font-bold transition-all duration-150 active:scale-95 cursor-pointer relative z-20 shadow-xs focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
               title={t.stickerCard.copyTitle}
               aria-label={t.stickerCard.copyTitle}
             >
-              {copied ? (
+              {copyState === 'copied' ? (
                 <>
                   <Check className="w-4 h-4 text-emerald-800" />
                   <span className="text-emerald-950 font-bold">{t.stickerCard.copied}</span>
+                </>
+              ) : copyState === 'error' ? (
+                <>
+                  <AlertCircle className="w-4 h-4 text-red-800" />
+                  <span className="text-red-950 font-bold">{language === 'id' ? 'Gagal' : 'Failed'}</span>
                 </>
               ) : (
                 <>

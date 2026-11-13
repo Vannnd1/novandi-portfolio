@@ -16,8 +16,9 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
   const shouldReduceMotion = useReducedMotion();
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const modalContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // Lock body scroll, avoid layout shift, and handle Escape key
+  // Lock body scroll, avoid layout shift, and handle Escape / Tab focus trap
   useEffect(() => {
     if (!project) return;
 
@@ -25,11 +26,45 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        e.preventDefault();
         onClose();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const container = modalContainerRef.current;
+        if (!container) return;
+
+        const focusableElements = container.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+
+        if (focusableElements.length === 0) {
+          e.preventDefault();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement || !container.contains(document.activeElement)) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement || !container.contains(document.activeElement)) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
 
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
     document.body.style.overflow = 'hidden';
     if (scrollbarWidth > 0) {
       document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -44,8 +79,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
     return () => {
       clearTimeout(timer);
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
       window.removeEventListener('keydown', handleKeyDown);
       previousFocusRef.current?.focus();
     };
@@ -70,6 +105,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
       className="fixed inset-0 z-50 bg-[#101010]/70 backdrop-blur-md overflow-y-auto flex justify-center p-2 sm:p-5 md:p-8 cursor-pointer"
     >
       <motion.div
+        ref={modalContainerRef}
         initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 12 }}

@@ -26,7 +26,7 @@ export interface ProfileData {
   title: string;
   positioning: string;
   email: string;
-  phone: string;
+  phone?: string;
   location: string;
   githubUrl: string;
   instagramUrl: string;
@@ -47,7 +47,6 @@ export const profileDataEn: ProfileData = {
   title: "Informatics Engineer",
   positioning: "Software Development · Data Analysis · Cybersecurity",
   email: "novandiramdhan5@gmail.com",
-  phone: "085155228540",
   location: "Cibinong, Bogor, Indonesia",
   githubUrl: "https://github.com/Vannnd1",
   instagramUrl: "https://www.instagram.com/novandiahmdr/",
@@ -56,8 +55,8 @@ export const profileDataEn: ProfileData = {
   verifiedMetrics: {
     gpa: "3.64 / 4.00",
     thesisTitle: "Medical Image Encryption using Gauss-MS & MS-Gauss Chaotic Maps",
-    verifiedTests: "252 Automated Tests Passing (89.9% Coverage)",
-    dataScale: "541,909 Transactions Preprocessed (0ms Client Latency)",
+    verifiedTests: "252 Automated Tests (MOM/MES Project, 96.6% Core Logic Coverage)",
+    dataScale: "541,909 Transactions Preprocessed (Pre-aggregated In-Memory Filtering)",
   },
   education: [
     {
@@ -132,7 +131,6 @@ export const profileDataId: ProfileData = {
   title: "Sarjana Informatika & Software Engineer",
   positioning: "Pengembangan Perangkat Lunak · Analisis Data · Keamanan Siber",
   email: "novandiramdhan5@gmail.com",
-  phone: "085155228540",
   location: "Cibinong, Bogor, Indonesia",
   githubUrl: "https://github.com/Vannnd1",
   instagramUrl: "https://www.instagram.com/novandiahmdr/",
@@ -141,8 +139,8 @@ export const profileDataId: ProfileData = {
   verifiedMetrics: {
     gpa: "3.64 / 4.00",
     thesisTitle: "Enkripsi Citra Medis Menggunakan Composite Chaotic Maps Gauss-MS & MS-Gauss",
-    verifiedTests: "252 Pengujian Otomatis Lolos (89.9% Coverage)",
-    dataScale: "541.909 Transaksi Terproses (Latensi Klien 0ms)",
+    verifiedTests: "252 Pengujian Otomatis (Proyek MOM/MES, 96.6% Core Logic Coverage)",
+    dataScale: "541.909 Transaksi Terproses (Pemfilteran In-Memory Pra-Agregasi)",
   },
   education: [
     {
