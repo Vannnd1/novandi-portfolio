@@ -63,8 +63,8 @@ export const StickerCard: React.FC = () => {
       </div>
 
       {/* Content Layer: Right-aligned Text */}
-      <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 text-right pointer-events-none">
-        <h2 className="font-hegarty text-[#262626] text-4xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight max-w-[680px] text-right">
+      <div className="relative z-10 w-full min-h-[340px] sm:min-h-[412px] flex flex-col justify-end items-end p-6 sm:p-10 lg:p-12 text-right pointer-events-none">
+        <h2 className="font-hegarty text-[#262626] text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] leading-[0.92] tracking-tight max-w-[840px] text-right">
           {t.stickerCard.heading}
         </h2>
 

@@ -43,7 +43,7 @@ export const NovandiPortfolio: React.FC = () => {
 
       {/* 1. Sticky Header with Novandi's brand logo & Language Switcher */}
       <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 border-b border-[#101010]/10">
-        <nav className="max-w-[1040px] mx-auto px-6 sm:px-8 md:px-10 h-[72px] flex items-center justify-between select-none">
+        <nav className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 h-[72px] flex items-center justify-between select-none">
           <a
             href="/"
             className="font-hegarty text-[30px] sm:text-[32px] text-[#101010] stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
@@ -83,7 +83,7 @@ export const NovandiPortfolio: React.FC = () => {
       </header>
 
       {/* 2. Main Page Shell */}
-      <main className="max-w-[1040px] mx-auto px-6 sm:px-8 md:px-10 pt-8 sm:pt-12 pb-24 space-y-16 sm:space-y-20">
+      <main className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 pt-6 sm:pt-8 pb-20 space-y-12 sm:space-y-16">
         
         {/* ── HERO SECTION: Visually Striking Editorial First Screen ── */}
         <HeroSection
@@ -102,7 +102,7 @@ export const NovandiPortfolio: React.FC = () => {
         </RevealOnScroll>
 
         {/* ── PORTFOLIO TABS NAVIGATION ── */}
-        <section id="portfolio-tabs" className="pt-4 space-y-10 scroll-mt-24">
+        <section id="portfolio-tabs" className="space-y-8 scroll-mt-24">
           <div className="flex items-end gap-9 border-b border-[#d8d8d8] overflow-x-auto select-none">
             {(['works', 'experience', 'education'] as const).map((tab) => (
               <button
@@ -149,14 +149,14 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── LIME GREEN CALL TO ACTION ── */}
         <RevealOnScroll distance={24} delay={50}>
-          <section aria-label="Call to Action" className="pt-12 sm:pt-16">
+          <section aria-label="Call to Action">
             <StickerCard />
           </section>
         </RevealOnScroll>
 
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
-          <section className="pt-16 sm:pt-20 pb-4 sm:pb-6 select-none flex justify-center overflow-hidden">
+          <section className="pt-2 pb-2 select-none flex justify-center overflow-hidden">
             <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
@@ -188,7 +188,7 @@ export const NovandiPortfolio: React.FC = () => {
 
       {/* ── DARK FOOTER BAR ── */}
       <footer className="w-full bg-[#202020] text-white py-8 sm:h-[135px] select-none flex items-center">
-        <div className="max-w-[1040px] w-full mx-auto px-6 sm:px-8 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1180px] w-full mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
             <span>@novandi ahmad ramdhan</span>
             <span aria-hidden="true">•</span>

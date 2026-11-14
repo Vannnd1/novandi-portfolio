@@ -27,17 +27,17 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] as const }}
-      className="space-y-12"
+      className="space-y-8 sm:space-y-10"
     >
       {projects.map((project, idx) => (
         <RevealOnScroll key={project.id} delay={idx * 50} distance={24}>
-          <article className="group relative rounded-3xl border border-[#e8e8e8] bg-[#fbfbfb] hover:bg-white p-6 sm:p-8 md:p-10 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] overflow-hidden">
+          <article className="group relative rounded-3xl border border-[#e8e8e8] bg-[#fbfbfb] hover:bg-white p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] overflow-hidden">
             {/* Subtle top corner gradient accent */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#fd4aa6]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
               {/* Left Column (Metadata, Title, Description, Metrics, Actions) */}
-              <div className="w-full lg:col-span-6 space-y-4 text-left">
+              <div className="w-full lg:col-span-7 xl:col-span-6 space-y-4 text-left">
                 {/* Header tags: Category & Year */}
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#eaeaea] pb-3">
                   <span className="font-space text-xs font-bold px-3 py-1 rounded-full bg-white text-[#fd4aa6] border border-[#fd4aa6]/30 uppercase tracking-wider shadow-2xs">
@@ -54,7 +54,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                   onClick={() => onSelectProject(project.id)}
                   className="text-left group/title cursor-pointer block focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#fd4aa6] rounded-md"
                 >
-                  <h3 className="font-hegarty text-2xl sm:text-3xl md:text-4xl text-[#101010] leading-[1.08] m-0 group-hover/title:text-[#fd4aa6] transition-colors">
+                  <h3 className="font-hegarty text-2xl sm:text-3xl lg:text-[2.15rem] text-[#101010] leading-[1.08] m-0 group-hover/title:text-[#fd4aa6] transition-colors">
                     {project.title}
                   </h3>
                 </button>
@@ -66,7 +66,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                 )}
 
                 {/* Summary */}
-                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed m-0">
+                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed max-w-[640px] m-0">
                   {project.summary}
                 </p>
 
@@ -141,8 +141,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
               </div>
 
               {/* Right Column: Visual Mockup Viewport with 3D Tilt & Accessible Button */}
-              <div className="w-full lg:col-span-6 flex justify-center">
-                <TiltCard maxTilt={6} scale={1.02} className="w-full max-w-[450px]">
+              <div className="w-full lg:col-span-5 xl:col-span-6 flex justify-center">
+                <TiltCard maxTilt={6} scale={1.02} className="w-full max-w-[500px]">
                   <button
                     type="button"
                     onClick={() => onSelectProject(project.id)}

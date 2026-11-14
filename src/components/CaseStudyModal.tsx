@@ -110,7 +110,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
-        className="bg-white text-[#101010] w-full max-w-5xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default"
+        className="bg-white text-[#101010] w-full max-w-5xl xl:max-w-6xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default"
       >
         {/* Sticky Top Action Bar */}
         <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#e8e8e8] flex items-center justify-between">
@@ -161,7 +161,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         </div>
 
         {/* Case Study Content Body */}
-        <div className="p-6 sm:p-8 md:p-12 space-y-12 max-w-4xl mx-auto w-full">
+        <div className="p-6 sm:p-8 md:p-12 xl:p-14 space-y-12 max-w-4xl xl:max-w-5xl mx-auto w-full">
           
           {/* Header Banner */}
           <RevealOnScroll delay={0}>

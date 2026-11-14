@@ -129,7 +129,7 @@ export const GithubHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl lg:max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-6 shadow-xs transition-shadow hover:shadow-sm">
+    <div className="w-full bg-white border border-[#E5E7EB] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs transition-shadow hover:shadow-sm">
       {/* Tooltip / Active Day Indicator */}
       <div className="h-5 text-[11px] font-sans text-center mb-1 text-[#6B7280] flex items-center justify-center overflow-hidden">
         <AnimatePresence mode="wait">

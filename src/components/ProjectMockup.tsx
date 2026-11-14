@@ -22,7 +22,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'chaotic-image-encryption':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-[#F8FAFC] text-[#0F172A] p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-[#E2E8F0]">
+        <div className="w-full max-w-[500px] bg-[#F8FAFC] text-[#0F172A] p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-[#E2E8F0]">
           {/* Windows Title Bar */}
           <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0] bg-white -m-3.5 mb-2.5 p-2.5 px-3">
             <div className="flex items-center gap-1.5">
@@ -138,7 +138,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'manufacturing-digital-operations':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-slate-50 text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-200">
+        <div className="w-full max-w-[500px] bg-slate-50 text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-200">
           {/* Operational Command Center Header */}
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
             <div>
@@ -243,7 +243,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'retailinsight-ai':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-slate-900 text-white p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-700">
+        <div className="w-full max-w-[500px] bg-slate-900 text-white p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-700">
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-800">
             <div>
               <div className="font-bold text-xs text-white">RetailInsight AI · Analytics Studio</div>
@@ -305,7 +305,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'adaptive-learning-insight':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-white text-gray-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-gray-200">
+        <div className="w-full max-w-[500px] bg-white text-gray-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-gray-200">
           {/* Header matching Dashboard.jsx */}
           <div className="flex items-center justify-between pb-1.5 border-b border-gray-100">
             <div>
@@ -389,7 +389,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'youtube-sentiment-jumbo':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-white text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-200">
+        <div className="w-full max-w-[500px] bg-white text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-slate-200">
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
             <div>
               <div className="font-bold text-xs text-slate-900">YouTube Comment Sentiment Classifier</div>
@@ -451,7 +451,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'sahabat-dunia':
       return (
-        <div className="w-[380px] sm:w-[440px] bg-gradient-to-b from-[#87CEEB] to-[#E0F6FF] text-[#1E3A8A] p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-sky-300 rounded-xl">
+        <div className="w-full max-w-[500px] bg-gradient-to-b from-[#87CEEB] to-[#E0F6FF] text-[#1E3A8A] p-3.5 space-y-2.5 font-sans text-[10px] select-none border border-sky-300 rounded-xl">
           {/* Top Bar with Sound Control Widget */}
           <div className="flex items-center justify-between pb-1 border-b border-sky-200/60">
             <div className="flex items-center gap-1.5">
@@ -513,7 +513,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
     default:
       return (
-        <div className="w-[380px] bg-slate-900 text-white p-3.5 space-y-2 text-[10px]">
+        <div className="w-full max-w-[500px] bg-slate-900 text-white p-3.5 space-y-2 text-[10px]">
           <div className="font-bold text-xs">Project Architecture Verification</div>
           <div className="text-slate-400">Source code validated and indexed.</div>
         </div>
