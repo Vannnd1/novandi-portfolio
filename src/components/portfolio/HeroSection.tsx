@@ -58,15 +58,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <Spotlight
-      className="rounded-3xl border border-[#101010]/8 bg-gradient-to-b from-[#fdfdfd] via-[#f9f9fa] to-white p-6 sm:p-10 md:p-12 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
+      className="rounded-3xl border border-[#101010]/8 bg-gradient-to-b from-[#fdfdfd] via-[#f9f9fa] to-white p-6 sm:p-10 lg:p-12 xl:p-14 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
       spotlightColor="rgba(253, 74, 166, 0.08)"
-      size={700}
+      size={800}
     >
       <motion.div
         variants={heroContainerVariants}
         initial={shouldReduceMotion ? false : 'hidden'}
         animate="visible"
-        className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-14"
+        className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-8 sm:gap-10 lg:gap-12 xl:gap-16"
       >
         {/* Left Column: Discipline Pill, Editorial Headline, Bio, and Magnetic CTAs */}
         <div className="flex-1 space-y-6 text-left w-full">
@@ -88,7 +88,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <p className="font-hegarty text-3xl sm:text-4xl text-[#767676] stroke-title m-0">
               {t.hero.helloIm}
             </p>
-            <h1 className="font-hegarty text-4xl sm:text-5xl md:text-6xl text-[#101010] stroke-title m-0 tracking-tight leading-[1.05]">
+            <h1 className="font-hegarty text-4xl sm:text-5xl md:text-6xl xl:text-[4.25rem] text-[#101010] stroke-title m-0 tracking-tight leading-[1.04]">
               {t.hero.name.split(' ').map((word, wIdx) => (
                 <motion.span
                   key={wIdx}
@@ -108,7 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </motion.div>
 
           {/* Narrative Bio Paragraph with Integrated Verified Social Channels */}
-          <motion.p variants={heroItemVariants} className="font-space text-base sm:text-lg text-[#262626] font-normal leading-[1.8] m-0">
+          <motion.p variants={heroItemVariants} className="font-space text-base sm:text-lg text-[#262626] font-normal leading-[1.8] max-w-[720px] m-0">
             {t.hero.leadBefore}{' '}
             <span className="text-[#737373]">{t.hero.leadMuted}</span>{' '}
             {t.hero.leadShare}{' '}
@@ -164,7 +164,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#fd4aa6]/30 via-transparent to-[#46b8ff]/30 rounded-[28px] sm:rounded-[36px] blur-sm opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Main Portrait Frame */}
-              <div className="relative w-48 h-60 sm:w-60 sm:h-76 md:w-68 md:h-84 rounded-2xl sm:rounded-3xl overflow-hidden border-[4px] border-white shadow-[0_20px_45px_rgba(0,0,0,0.15)] ring-1 ring-black/10 bg-[#f4f4f5]">
+              <div className="relative w-52 h-68 sm:w-64 sm:h-80 lg:w-72 lg:h-92 xl:w-80 xl:h-100 rounded-2xl sm:rounded-3xl overflow-hidden border-[4px] border-white shadow-[0_20px_45px_rgba(0,0,0,0.15)] ring-1 ring-black/10 bg-[#f4f4f5]">
                 <img
                   src="/profile.jpg"
                   alt={profile.name}
@@ -173,10 +173,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 />
 
                 {/* Bottom Floating Identity Chip */}
-                <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-sm flex items-center justify-between">
-                  <div className="font-space text-[11px] font-bold text-[#101010] leading-tight">
+                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-sm flex items-center justify-between">
+                  <div className="font-space text-xs font-bold text-[#101010] leading-tight">
                     <div>{profile.location}</div>
-                    <div className="text-[9.5px] font-normal text-[#666]">Universitas Gunadarma</div>
+                    <div className="text-[10px] font-normal text-[#666]">Universitas Gunadarma</div>
                   </div>
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
