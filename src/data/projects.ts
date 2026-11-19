@@ -378,6 +378,8 @@ export const projectsDataEn: ProjectItem[] = [
       { label: "Cohort Training", value: "900+ Hours Curriculum", status: "verified" },
       { label: "Capstone Delivery", value: "Validated & Graduated", status: "verified" },
     ],
+    githubUrl: "https://github.com/Vannnd1/Capstone-Project-Asah",
+    demoUrl: "https://capstone-project-asah.vercel.app/",
     caseStudy: {
       problemStatement:
         "Modern digital education platforms generate massive volumes of student activity data, yet instructors and academic mentors often lack real-time automated tools to identify students falling behind, pinpoint specific conceptual bottlenecks, or provide individualized intervention strategies.",
@@ -424,12 +426,14 @@ export const projectsDataEn: ProjectItem[] = [
           { label: "Cohort Graduation", value: "Verified Distinction", benchmark: "Asah 2025 (Dicoding × Accenture)" },
           { label: "Learning Path", value: "React & Back-End with AI", benchmark: "900+ Hours Curriculum" },
           { label: "Tech Architecture", value: "Full-Stack Web + AI", benchmark: "React 19 + Express 5 + Supabase" },
+          { label: "Live Deployment", value: "Vercel Cloud", benchmark: "capstone-project-asah.vercel.app" },
         ],
       },
       limitationsAndFutureWork: [
-        "Delivered as an academic team capstone repository; production cloud hosting lifecycle concluded upon successful cohort graduation in February 2026.",
+        "Currently deployed as a live cloud showcase on Vercel; future iterations could introduce persistent multi-tenant organization workspaces and real-time WebSocket notifications for mentor-student interaction.",
       ],
       references: [
+        "Capstone Project Asah Repository & Live Application (github.com/Vannnd1/Capstone-Project-Asah & capstone-project-asah.vercel.app).",
         "Asah led by Dicoding in association with Accenture — React & Back-End with AI Official Curriculum & Syllabus (2025).",
         "Dicoding Indonesia & Accenture Capstone Project Documentation & Verification Standards (2025–2026).",
       ],
@@ -912,6 +916,8 @@ export const projectsDataId: ProjectItem[] = [
       { label: "Pelatihan Cohort", value: "900+ Jam Kurikulum", status: "verified" },
       { label: "Hasil Capstone", value: "Tervalidasi & Lulus", status: "verified" },
     ],
+    githubUrl: "https://github.com/Vannnd1/Capstone-Project-Asah",
+    demoUrl: "https://capstone-project-asah.vercel.app/",
     caseStudy: {
       problemStatement:
         "Platform edukasi digital modern menghasilkan volume data aktivitas siswa yang melimpah, namun para pengajar dan mentor akademik sering kali kekurangan alat otomatis real-time untuk mendeteksi siswa yang mulai tertinggal, menemukan materi yang menjadi kendala konseptual, atau menyusun strategi intervensi yang dipersonalisasi.",
@@ -958,12 +964,14 @@ export const projectsDataId: ProjectItem[] = [
           { label: "Kelulusan Cohort", value: "Lulus Terverifikasi", benchmark: "Asah 2025 (Dicoding × Accenture)" },
           { label: "Alur Pembelajaran", value: "React & Back-End with AI", benchmark: "900+ Jam Kurikulum" },
           { label: "Arsitektur Teknis", value: "Full-Stack Web + AI", benchmark: "React 19 + Express 5 + Supabase" },
+          { label: "Deployment Live", value: "Vercel Cloud", benchmark: "capstone-project-asah.vercel.app" },
         ],
       },
       limitationsAndFutureWork: [
-        "Dikembangkan sebagai repositori capstone tim akademik; siklus hosting cloud produksi diselesaikan seiring kelulusan cohort pada Februari 2026.",
+        "Saat ini aktif di-deploy sebagai live cloud showcase di Vercel; iterasi mendatang dapat menambahkan workspace organisasi multi-tenant dan notifikasi real-time WebSocket untuk interaksi mentor-siswa.",
       ],
       references: [
+        "Repositori Capstone Project Asah & Aplikasi Live (github.com/Vannnd1/Capstone-Project-Asah & capstone-project-asah.vercel.app).",
         "Kurikulum & Silabus Resmi Alur React & Back-End with AI — Program Asah oleh Dicoding bersama Accenture (2025).",
         "Standar Dokumentasi & Verifikasi Proyek Capstone Dicoding Indonesia & Accenture (2025–2026).",
       ],
