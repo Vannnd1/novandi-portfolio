@@ -31,12 +31,6 @@ export interface CaseStudyData {
   references?: string[];
 }
 
-export interface ProjectDeliverables {
-  scope: string;
-  output: string;
-  impact: string;
-}
-
 export interface ProjectItem {
   id: string;
   title: string;
@@ -47,7 +41,6 @@ export interface ProjectItem {
   isFlagship?: boolean;
   academicContext?: string;
   summary: string;
-  deliverables?: ProjectDeliverables;
   techStack: string[];
   metrics: ProjectMetric[];
   githubUrl?: string;
@@ -66,12 +59,7 @@ export const projectsDataEn: ProjectItem[] = [
     isFlagship: true,
     academicContext: "Undergraduate Thesis (Skripsi), S1 Informatika Universitas Gunadarma",
     summary:
-      "A medical digital image encryption and decryption system utilizing composite chaotic maps (Gauss-MS Map and MS-Gauss Map) to protect confidential healthcare imagery against statistical, differential, and brute-force attacks.",
-    deliverables: {
-      scope: "Engineered medical image cryptography using composite chaotic maps (Gauss-MS & MS-Gauss) with Numba JIT acceleration.",
-      output: "Python Tkinter desktop GUI for instant DICOM/PNG cipher processing and real-time histogram cryptanalysis.",
-      impact: "Passed 15/15 NIST SP 800-22 statistical randomness tests (α=0.01) with near-ideal entropy (~7.998) in 18ms.",
-    },
+      "Engineered a medical image cryptography system using composite chaotic maps and a Python Tkinter GUI to protect DICOM/PNG scans, passing 15/15 NIST SP 800-22 statistical randomness tests with 18ms encryption latency.",
     techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
     metrics: [
       { label: "NIST SP 800-22", value: "15/15 Tests Passed (α=0.01)", status: "passed" },
@@ -177,12 +165,7 @@ export const projectsDataEn: ProjectItem[] = [
     year: "2026",
     isFlagship: true,
     summary:
-      "An enterprise-grade Manufacturing Operations Management (MOM/MES) platform engineered to digitize discrete factory workflows. Implements strict server-side Segregation of Duties (SoD) across 6 discrete manufacturing personas, ACID-compliant Knex database transactions with row-level locks and non-negative inventory invariants, 5-stage upstream-to-downstream lot genealogy, real-time SQL operational analytics with CSV formula injection defense, and resilient observability probes.",
-    deliverables: {
-      scope: "Architected full-stack MOM/MES workflows from Purchase Requisition and Work Order dispatch to automated Quality Control gates.",
-      output: "Enterprise full-stack web platform (React, Node.js, Express, PostgreSQL) backed by 20 automated test suites.",
-      impact: "Achieved 252 automated tests with 96.6% core logic coverage, preventing operational regressions and ensuring audit compliance.",
-    },
+      "Architected a full-stack enterprise MOM/MES platform (React, Node.js, PostgreSQL) digitizing factory floor workflows, backed by 252 automated tests with 96.6% core logic coverage.",
     techStack: ["TypeScript 5.5", "React 19", "Express 4.19", "PostgreSQL", "Knex.js", "Tailwind CSS v4", "Zustand", "Vitest"],
     metrics: [
       { label: "Automated Tests", value: "252 Passed (20 Suites)", status: "passed" },
@@ -300,12 +283,7 @@ export const projectsDataEn: ProjectItem[] = [
     year: "2026",
     isFlagship: false,
     summary:
-      "An end-to-end interactive retail intelligence dashboard analyzing 541,000+ transaction records from the UCI Online Retail dataset through responsive visualizations, client-side in-memory cross-filtering over pre-aggregated matrices, and an embedded context-aware AI analyst powered by Google Gemini.",
-    deliverables: {
-      scope: "Engineered in-memory aggregation pipelines for large-scale retail datasets and integrated Google Gemini LLM for smart insights.",
-      output: "Interactive analytics platform (React, Tailwind, Recharts) with sub-second querying and AI-driven business recommendations.",
-      impact: "Processes 541,909 transactions in sub-50ms, automating churn risk detection and retention strategies without database overhead.",
-    },
+      "Built an interactive retail analytics web dashboard featuring an in-memory aggregation engine and Google Gemini AI assistant, processing 541,909 transactions with sub-50ms query speeds.",
     techStack: ["React 18", "Vite", "Tailwind CSS", "Recharts", "Google Gemini API", "JavaScript", "Node.js ETL"],
     metrics: [
       { label: "Dataset Scale", value: "541,909 Records", status: "verified" },
@@ -392,12 +370,7 @@ export const projectsDataEn: ProjectItem[] = [
     isFlagship: false,
     academicContext: "Program Asah 2025 — Asah led by Dicoding in association with Accenture (Learning Path: React & Back-End with AI)",
     summary:
-      "The official team capstone project engineered during Program Asah 2025 led by Dicoding in association with Accenture under the 'React & Back-End with AI' learning path. A full-stack educational analytics platform that tracks student study progression, evaluates module mastery through interactive Recharts visualizations, and delivers automated AI-driven diagnostic insights using React 19, Node.js (Express 5), Supabase PostgreSQL, and AI learning analytics models.",
-    deliverables: {
-      scope: "Engineered an AI-driven adaptive learning analytics platform during the Dicoding × Accenture industry scholarship program.",
-      output: "Modern web application (React 18, Express, Supabase) featuring learning activity analytics and automated AI study recommendations.",
-      impact: "Reviewed and accredited by senior Accenture & Dicoding mentors, meeting production security and clean-code standards.",
-    },
+      "Engineered an adaptive learning analytics platform using React and Express during the Dicoding × Accenture cohort, providing study progression tracking and AI-driven personalized insights.",
     techStack: ["React 19", "Node.js", "Express 5", "Supabase", "PostgreSQL", "Recharts", "REST API", "Tailwind CSS", "AI Analytics Engine"],
     metrics: [
       { label: "Program Cohort", value: "Asah 2025 (Dicoding × Accenture)", status: "verified" },
@@ -476,12 +449,7 @@ export const projectsDataEn: ProjectItem[] = [
     isFlagship: false,
     academicContext: "Universitas Gunadarma Academic Study (2025)",
     summary:
-      "A complete machine learning and NLP application analyzing audience reception from official YouTube teaser/trailer comments for the animated film 'Jumbo'. Features smart preprocessing (demojizing emojis, 15,000 slang word normalization, negation word preservation, Sastrawi stemming), InSet lexicon polarity scoring with domain override, and a balanced-weight Linear SVM classifier achieving 86% test accuracy, deployed as an interactive Streamlit web application.",
-    deliverables: {
-      scope: "Built an end-to-end Indonesian NLP pipeline handling informal user comments, slang words, negation context, and emojis.",
-      output: "Interactive Streamlit web application powered by a balanced Linear SVM model and a 15,000-word colloquial dictionary.",
-      impact: "Achieved 86% test accuracy and 0.90 positive F1-Score, accurately capturing audience sentiment without slang distortions.",
-    },
+      "Built an end-to-end NLP pipeline and interactive Streamlit web app to classify YouTube audience sentiment for the animated film Jumbo, achieving 86% test accuracy with a 15,000-word slang dictionary.",
     techStack: ["Python", "Streamlit", "Scikit-Learn", "NLTK", "Sastrawi", "InSet Lexicon", "SVM", "TF-IDF N-gram"],
     metrics: [
       { label: "Overall Accuracy", value: "86% Test Set", status: "verified" },
@@ -561,12 +529,7 @@ export const projectsDataEn: ProjectItem[] = [
     year: "2026",
     isFlagship: false,
     summary:
-      "An interactive educational web platform introducing biodiversity and animal habitats to young learners through multimedia visual cards, quiz modules, and interactive Web Audio sound controls.",
-    deliverables: {
-      scope: "Developed a responsive, interactive multimedia educational web app for children's animal fauna discovery with zero backend lag.",
-      output: "Interactive multimedia web app featuring animal flashcards, dynamic audio soundscapes, and engaging quiz mechanics.",
-      impact: "Delivers a fast, lightweight, and engaging digital learning experience for children across mobile, tablet, and desktop screens.",
-    },
+      "Developed an interactive animal education web app using the Web Audio API, delivering responsive audio-visual flashcards and quizzes with zero external backend dependencies.",
     techStack: ["HTML5", "CSS3", "Vanilla JavaScript", "Web Audio API", "Interactive UI"],
     metrics: [
       { label: "Architecture", value: "Zero-Dependency Vanilla", status: "neutral" },
@@ -634,12 +597,7 @@ export const projectsDataId: ProjectItem[] = [
     isFlagship: true,
     academicContext: "Skripsi Sarjana S1 Informatika, Universitas Gunadarma",
     summary:
-      "Sistem enkripsi dan dekripsi citra medis digital menggunakan composite chaotic maps (Gauss-MS Map dan MS-Gauss Map) untuk melindungi kerahasiaan data rekam medis pasien dari serangan statistik, diferensial, dan brute-force.",
-    deliverables: {
-      scope: "Mengembangkan algoritma kriptografi citra medis berbasis composite chaotic maps (Gauss-MS & MS-Gauss) dengan akselerasi Numba JIT.",
-      output: "Aplikasi desktop GUI Python (Tkinter) untuk enkripsi-dekripsi citra DICOM/PNG dan analisis histogram visual secara instan.",
-      impact: "Lolos 15/15 uji keacakan statistik NIST SP 800-22 (α=0.01) dengan entropi tinggi (~7.998) dan latensi enkripsi hanya 18ms.",
-    },
+      "Mengembangkan sistem kriptografi citra medis berbasis composite chaotic maps dan GUI Python (Tkinter) untuk melindungi citra DICOM/PNG, berhasil lulus 15/15 uji keacakan statistik NIST SP 800-22 dengan latensi enkripsi hanya 18 ms.",
     techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
     metrics: [
       { label: "NIST SP 800-22", value: "15/15 Pengujian Lolos (α=0.01)", status: "passed" },
@@ -745,12 +703,7 @@ export const projectsDataId: ProjectItem[] = [
     year: "2026",
     isFlagship: true,
     summary:
-      "Platform Manufacturing Operations Management (MOM/MES) tingkat enterprise yang direkayasa untuk mendigitalkan alur kerja pabrik diskret. Mengimplementasikan Segregation of Duties (SoD) ketat di sisi server untuk 6 persona operasional pabrik, transaksi basis data Knex berbasis ACID dengan lock tingkat baris dan invarian saldo non-negatif, silsilah lot 5-tahap dari hulu ke hilir, analitik operasional SQL real-time dengan proteksi injeksi formula CSV, serta probe observabilitas produksi yang tangguh.",
-    deliverables: {
-      scope: "Merancang arsitektur alur kerja MOM/MES terintegrasi dari Purchase Requisition, Work Order produksi, hingga Quality Control.",
-      output: "Platform web enterprise full-stack (React, Node.js, Express, PostgreSQL) dengan 20 automated test suites terverifikasi.",
-      impact: "Mencapai 252 automated tests dengan 96.6% core logic coverage, mencegah cacat operasional & memastikan kepatuhan audit trail.",
-    },
+      "Merancang platform MOM/MES full-stack (React, Node.js, PostgreSQL) untuk mendigitalkan alur kerja pabrik dari pesanan kerja hingga kontrol kualitas, teruji melalui 252 automated tests dengan 96.6% core logic coverage.",
     techStack: ["TypeScript 5.5", "React 19", "Express 4.19", "PostgreSQL", "Knex.js", "Tailwind CSS v4", "Zustand", "Vitest"],
     metrics: [
       { label: "Pengujian Otomatis", value: "252 Lolos (20 Test Suites)", status: "passed" },
@@ -868,12 +821,7 @@ export const projectsDataId: ProjectItem[] = [
     year: "2026",
     isFlagship: false,
     summary:
-      "Dasbor analitik retail interaktif menyeluruh yang menganalisis 541.000+ data transaksi dari dataset UCI Online Retail melalui visualisasi responsif, cross-filtering in-memory di sisi klien berbasis matriks pra-agregasi (tanpa beban server), dan asisten analitik AI cerdas berbasis Google Gemini yang sadar konteks filter.",
-    deliverables: {
-      scope: "Membangun pipeline agregasi in-memory untuk dataset transaksi retail berskala besar dan integrasi LLM Google Gemini.",
-      output: "Dashboard analitik interaktif (React, Tailwind, Recharts) dengan query engine instan dan generator rekomendasi bisnis bertenaga AI.",
-      impact: "Memproses 541.909 transaksi dengan respon sub-50ms, mengotomatiskan deteksi tren churn & strategi retensi tanpa beban database.",
-    },
+      "Membangun dashboard analitik retail berbasis web dengan query engine in-memory dan asisten AI Google Gemini, mampu memproses 541.909 transaksi retail secara instan dengan respon sub-50 ms.",
     techStack: ["React 18", "Vite", "Tailwind CSS", "Recharts", "Google Gemini API", "JavaScript", "Node.js ETL"],
     metrics: [
       { label: "Skala Dataset", value: "541.909 Baris Data", status: "verified" },
@@ -960,12 +908,7 @@ export const projectsDataId: ProjectItem[] = [
     isFlagship: false,
     academicContext: "Program Asah 2025 — Asah oleh Dicoding bersama Accenture (Learning Path: React & Back-End with AI)",
     summary:
-      "Proyek capstone tim resmi yang direkayasa selama Program Asah 2025 yang diselenggarakan oleh Dicoding Indonesia bersama Accenture pada alur spesialisasi 'React & Back-End with AI'. Platform analitik edukasi full-stack yang memantau perkembangan belajar siswa, mengukur penguasaan modul melalui visualisasi interaktif Recharts, serta memberikan insight diagnostik berbasis AI menggunakan React 19, Node.js (Express 5), Supabase PostgreSQL, dan model analitik belajar AI.",
-    deliverables: {
-      scope: "Merekayasa platform analitik pembelajaran adaptif berbasis AI dalam program beasiswa industri Dicoding Indonesia × Accenture.",
-      output: "Aplikasi web modern (React 18, Express, Supabase) dengan pelacakan aktivitas belajar dan rekomendasi jalur belajar personal berbasis AI.",
-      impact: "Dinilai langsung oleh mentor teknologi senior Accenture & Dicoding dengan standar keamanan produksi dan review kode berkala.",
-    },
+      "Merekayasa platform analitik pembelajaran adaptif berbasis React dan Express pada program beasiswa Dicoding × Accenture, menghadirkan pelacakan progres belajar dan rekomendasi materi bertenaga AI.",
     techStack: ["React 19", "Node.js", "Express 5", "Supabase", "PostgreSQL", "Recharts", "REST API", "Tailwind CSS", "Engine Analitik AI"],
     metrics: [
       { label: "Program Cohort", value: "Asah 2025 (Dicoding × Accenture)", status: "verified" },
@@ -1044,12 +987,7 @@ export const projectsDataId: ProjectItem[] = [
     isFlagship: false,
     academicContext: "Studi Akademik Universitas Gunadarma (2025)",
     summary:
-      "Aplikasi machine learning dan NLP lengkap untuk menganalisis respons publik dari komentar video teaser/trailer resmi film animasi 'Jumbo' di YouTube. Menghadirkan preprocessing cerdas (demojize emoji, normalisasi 15.000 kata gaul/slang, preservasi kata negasi, stemming Sastrawi), pelabelan polaritas lexicon InSet dengan penyesuaian domain, serta pengklasifikasi Linear SVM berbobot seimbang dengan akurasi uji 86%, disebarkan sebagai aplikasi web interaktif Streamlit.",
-    deliverables: {
-      scope: "Membangun pipeline NLP end-to-end untuk membersihkan dan mengklasifikasikan komentar YouTube berbahasa Indonesia informal & slang.",
-      output: "Aplikasi web Streamlit interaktif dengan model Linear SVM berbobot seimbang dan kamus normalisasi 15.000 kata alay/gaul.",
-      impact: "Meraih akurasi uji 86% dan F1-Score positif 0.90, akurat memetakan penerimaan audiens tanpa terdistorsi bahasa gaul atau negasi.",
-    },
+      "Membangun pipeline NLP end-to-end dan web app Streamlit untuk mengklasifikasikan sentimen komentar YouTube film Jumbo, meraih akurasi uji 86% dengan normalisasi 15.000 kata gaul dan preservasi negasi.",
     techStack: ["Python", "Streamlit", "Scikit-Learn", "NLTK", "Sastrawi", "InSet Lexicon", "SVM", "TF-IDF N-gram"],
     metrics: [
       { label: "Akurasi Keseluruhan", value: "86% pada Data Uji", status: "verified" },
@@ -1129,12 +1067,7 @@ export const projectsDataId: ProjectItem[] = [
     year: "2026",
     isFlagship: false,
     summary:
-      "Platform web edukasi interaktif yang memperkenalkan keanekaragaman hayati dan habitat satwa kepada anak-anak melalui kartu visual multimedia, modul kuis interaktif, dan kontrol audio terintegrasi Web Audio API.",
-    deliverables: {
-      scope: "Mengembangkan media edukasi interaktif pengenalan fauna untuk anak-anak dengan prinsip responsif dan zero external backend.",
-      output: "Aplikasi web interaktif (HTML5, Tailwind, JS/React) dengan kartu fauna interaktif, tata suara dinamis, dan kuis edukatif.",
-      impact: "Menyajikan pengalaman belajar digital yang cepat, ringan, dan interaktif untuk anak-anak di perangkat tablet maupun desktop.",
-    },
+      "Mengembangkan aplikasi web edukasi fauna interaktif anak menggunakan Web Audio API, menyajikan kartu visual bersuara dan kuis edukatif yang responsif tanpa dependensi backend eksternal.",
     techStack: ["HTML5", "CSS3", "Vanilla JavaScript", "Web Audio API", "Interactive UI"],
     metrics: [
       { label: "Arsitektur", value: "Vanilla Zero-Dependency", status: "neutral" },

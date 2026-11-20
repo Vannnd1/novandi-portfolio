@@ -66,44 +66,10 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                     </p>
                   )}
 
-                  {/* 3-Part Deliverables: Scope, Output, Impact */}
-                  {project.deliverables ? (
-                    <div className="space-y-2 pt-1 pb-1 select-none">
-                      {/* Scope */}
-                      <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-relaxed">
-                        <span className="shrink-0 px-2 py-0.5 rounded font-space font-bold text-[10px] bg-slate-100 text-slate-700 border border-slate-200 uppercase tracking-wide">
-                          {t.works.scopeLabel}
-                        </span>
-                        <span className="text-[#334155] font-space font-medium">
-                          {project.deliverables.scope}
-                        </span>
-                      </div>
-
-                      {/* Output */}
-                      <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-relaxed">
-                        <span className="shrink-0 px-2 py-0.5 rounded font-space font-bold text-[10px] bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wide">
-                          {t.works.outputLabel}
-                        </span>
-                        <span className="text-[#334155] font-space font-medium">
-                          {project.deliverables.output}
-                        </span>
-                      </div>
-
-                      {/* Impact */}
-                      <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-relaxed">
-                        <span className="shrink-0 px-2 py-0.5 rounded font-space font-bold text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200 uppercase tracking-wide">
-                          {t.works.impactLabel}
-                        </span>
-                        <span className="text-[#0f172a] font-space font-semibold">
-                          {project.deliverables.impact}
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed max-w-[640px] m-0">
-                      {project.summary}
-                    </p>
-                  )}
+                  {/* Summary: What was done, output, and impact (Concise & Uncluttered) */}
+                  <p className="font-space font-normal text-sm sm:text-base text-[#4b5563] leading-[1.65] max-w-[640px] m-0">
+                    {project.summary}
+                  </p>
 
                   {/* Verified Metrics Chips (if any) */}
                   {project.metrics && project.metrics.length > 0 && (
