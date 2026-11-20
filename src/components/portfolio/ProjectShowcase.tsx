@@ -238,7 +238,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                       </div>
 
                       {/* Viewport Content */}
-                      <div className="p-1 sm:p-2 bg-slate-50/50">
+                      <div className="w-full">
                         <ProjectMockup projectId={project.id} />
                       </div>
                     </button>
