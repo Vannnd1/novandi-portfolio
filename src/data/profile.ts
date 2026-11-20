@@ -29,6 +29,7 @@ export interface ProfileData {
   phone?: string;
   location: string;
   githubUrl: string;
+  linkedinUrl: string;
   instagramUrl: string;
   bioSummary: string;
   education: EducationItem[];
@@ -49,6 +50,7 @@ export const profileDataEn: ProfileData = {
   email: "novandiramdhan5@gmail.com",
   location: "Cibinong, Bogor, Indonesia",
   githubUrl: "https://github.com/Vannnd1",
+  linkedinUrl: "https://www.linkedin.com/in/novandiahmdr/",
   instagramUrl: "https://www.instagram.com/novandiahmdr/",
   bioSummary:
     "Fresh S1 Informatika graduate from Universitas Gunadarma with a verified foundation in software engineering, applied digital image cryptography, and data intelligence. Experienced in developing full-stack web applications with React and Node.js, building enterprise workflows with rigorous test coverage, and implementing medical image encryption algorithms with NIST SP 800-22 statistical validation.",
@@ -133,6 +135,7 @@ export const profileDataId: ProfileData = {
   email: "novandiramdhan5@gmail.com",
   location: "Cibinong, Bogor, Indonesia",
   githubUrl: "https://github.com/Vannnd1",
+  linkedinUrl: "https://www.linkedin.com/in/novandiahmdr/",
   instagramUrl: "https://www.instagram.com/novandiahmdr/",
   bioSummary:
     "Lulusan S1 Informatika Universitas Gunadarma dengan fondasi teruji dalam rekayasa perangkat lunak, kriptografi citra digital terapan, dan inteligensi data. Berpengalaman membangun aplikasi web full-stack dengan React dan Node.js, merancang arsitektur alur kerja enterprise dengan cakupan pengujian otomatis yang ketat, serta mengimplementasikan algoritma enkripsi citra medis dengan validasi statistik standar NIST SP 800-22.",

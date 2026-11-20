@@ -6,7 +6,7 @@ import { Spotlight } from '../Spotlight';
 import { TiltCard } from '../TiltCard';
 import { Magnetic } from '../MagneticButton';
 import { SocialPill } from '../SocialPill';
-import { GitHubIcon, InstagramIcon } from '../Icons';
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from '../Icons';
 
 interface HeroSectionProps {
   onExploreWorks: () => void;
@@ -120,6 +120,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               tilt={-1.2}
             />{' '}
             {t.hero.and}{' '}
+            <SocialPill
+              href={profile.linkedinUrl}
+              icon={<LinkedInIcon className="w-3.5 h-3.5" />}
+              label="linkedin"
+              variant="linkedin"
+              tilt={1.2}
+            />
+            {t.hero.leadKeep}{' '}
             <SocialPill
               href={profile.githubUrl}
               icon={<GitHubIcon className="w-3.5 h-3.5" />}

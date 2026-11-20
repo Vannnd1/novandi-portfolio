@@ -207,6 +207,16 @@ export const NovandiPortfolio: React.FC = () => {
               github
             </motion.a>
             <motion.a
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-[#38bdf8] hover:underline no-underline inline-block transition-transform"
+            >
+              linkedin
+            </motion.a>
+            <motion.a
               href={profile.instagramUrl}
               target="_blank"
               rel="noreferrer"
