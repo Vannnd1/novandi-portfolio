@@ -441,6 +441,46 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="font-bold text-slate-700 text-[10px]">15K Alay</div>
             </div>
           </div>
+
+          {/* Live Analyzed Comment Stream Preview */}
+          <div className="space-y-1.5 pt-1 border-t border-slate-100">
+            <div className="text-[8px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
+              <span>Sample Inference Stream</span>
+              <span className="text-[7.5px] text-emerald-600 font-semibold font-mono">● Real-time Preprocessed</span>
+            </div>
+
+            {/* Comment 1: Positive */}
+            <div className="p-2 rounded bg-emerald-50/70 border border-emerald-200/80 space-y-0.5">
+              <div className="flex items-center justify-between">
+                <span className="text-[8px] text-slate-500 font-mono">@user_indonesia · YouTube</span>
+                <span className="px-1.5 py-0.2 rounded text-[7.5px] font-bold bg-emerald-500 text-white shadow-2xs">
+                  POSITIF (Conf: 94.2%)
+                </span>
+              </div>
+              <p className="text-[8.5px] text-slate-800 font-medium m-0 leading-tight">
+                "Kualitas animasinya gila keren bgt, bangga bgt sama animator lokal! 🔥🇮🇩"
+              </p>
+              <div className="text-[7.5px] text-emerald-700 font-mono">
+                Tokens: [animasi, kualitas, keren, bangga, animator, lokal] ➔ Score: +3.8
+              </div>
+            </div>
+
+            {/* Comment 2: Negative/Criticism */}
+            <div className="p-2 rounded bg-rose-50/70 border border-rose-200/80 space-y-0.5">
+              <div className="flex items-center justify-between">
+                <span className="text-[8px] text-slate-500 font-mono">@movie_enthusiast · YouTube</span>
+                <span className="px-1.5 py-0.2 rounded text-[7.5px] font-bold bg-rose-500 text-white shadow-2xs">
+                  NEGATIF (Conf: 81.5%)
+                </span>
+              </div>
+              <p className="text-[8.5px] text-slate-800 font-medium m-0 leading-tight">
+                "Promosinya kurang gencar, padahal ceritanya bagus tapi jadwal tayang minim."
+              </p>
+              <div className="text-[7.5px] text-rose-700 font-mono">
+                Negation: [kurang_gencar, minim] ➔ Inverted Polarity: -2.1
+              </div>
+            </div>
+          </div>
         </div>
       );
 
