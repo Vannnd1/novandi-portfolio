@@ -18,7 +18,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
   projects,
   onSelectProject,
 }) => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <motion.div
@@ -31,7 +31,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
     >
       {projects.map((project, idx) => (
         <RevealOnScroll key={project.id} delay={idx * 50} distance={24}>
-          <article className="group relative rounded-3xl border border-[#e8e8e8] bg-[#fbfbfb] hover:bg-white p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] overflow-hidden">
+          <article className="group group/card relative rounded-3xl border border-[#e8e8e8] bg-[#fbfbfb] hover:bg-white p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] overflow-hidden">
             {/* Subtle top corner gradient accent */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#fd4aa6]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -167,6 +167,164 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                 </TiltCard>
               </div>
             </div>
+
+            {/* Crypto Project Hover Overlay (Reveals 3 workflow screens stacked vertically on card hover) */}
+            {project.id === 'chaotic-image-encryption' && (
+              <div
+                className="absolute inset-0 z-30 bg-white/98 backdrop-blur-md p-5 sm:p-7 md:p-8 rounded-3xl border border-neutral-200/90 shadow-2xl opacity-0 pointer-events-none group-hover/card:opacity-100 group-hover/card:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto transition-all duration-300 overflow-y-auto flex flex-col justify-start"
+              >
+                {/* Sticky Header Bar */}
+                <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md pb-3.5 pt-0.5 border-b border-neutral-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 select-none">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] animate-pulse" />
+                    <div>
+                      <h4 className="font-hegarty text-base sm:text-lg text-[#101010] m-0">
+                        {language === 'id'
+                          ? 'Alur Aplikasi Desktop Windows (.exe)'
+                          : 'Windows Desktop Application Flow (.exe)'}
+                      </h4>
+                      <p className="text-[11px] font-mono text-neutral-500 m-0">
+                        {language === 'id'
+                          ? '01 Halaman Utama → 02 Modul Enkripsi → 03 Modul Dekripsi'
+                          : '01 Main Menu → 02 Encryption Module → 03 Decryption Module'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => onSelectProject(project.id)}
+                      className="inline-flex items-center gap-1.5 font-hegarty text-xs bg-[#101010] hover:bg-[#fd4aa6] text-white px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer active:scale-95 shadow-sm"
+                    >
+                      <span>{t.works.viewCaseStudy}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 font-hegarty text-xs bg-white hover:bg-black hover:text-white border border-[#d4d4d8] text-[#27272a] px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer active:scale-95 shadow-2xs"
+                      >
+                        <GitBranch className="w-3 h-3" />
+                        <span>github</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* 3 Images Stacked Vertically Downwards */}
+                <div className="space-y-4 pt-4 max-w-4xl mx-auto w-full">
+                  {/* Screen 1: Halaman Utama */}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => onSelectProject(project.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectProject(project.id);
+                      }
+                    }}
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                  >
+                    <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span className="font-semibold text-neutral-900">
+                          {language === 'id'
+                            ? '01 · Halaman Utama (Main Menu & Pemilihan Algoritma Chaos)'
+                            : '01 · Main Menu (Chaos Algorithm Selection & Setup)'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-neutral-500 font-mono">chaotic_crypto_system.exe</span>
+                    </div>
+                    <div className="relative aspect-[16/9] overflow-hidden bg-black/90">
+                      <img
+                        src="/projects/crypto-main-menu.png"
+                        alt={language === 'id' ? 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)' : 'Main Menu Chaos Image Encryption (.exe)'}
+                        className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Screen 2: Modul Enkripsi */}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => onSelectProject(project.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectProject(project.id);
+                      }
+                    }}
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                  >
+                    <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#fd4aa6]" />
+                        <span className="font-semibold text-neutral-900">
+                          {language === 'id'
+                            ? '02 · Modul Enkripsi Citra Medis (Gauss-MS Map · Latensi 18 ms)'
+                            : '02 · Medical Image Encryption Module (Gauss-MS Map · 18 ms)'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-neutral-500 font-mono">
+                        {language === 'id' ? 'Enkripsi Citra Digital' : 'Image Encryption'}
+                      </span>
+                    </div>
+                    <div className="relative aspect-[16/9] overflow-hidden bg-black/90">
+                      <img
+                        src="/projects/crypto-encrypt.jpg"
+                        alt={language === 'id' ? 'Modul Enkripsi Citra Digital (.exe)' : 'Image Encryption Module (.exe)'}
+                        className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Screen 3: Modul Dekripsi */}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => onSelectProject(project.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectProject(project.id);
+                      }
+                    }}
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                  >
+                    <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-blue-500" />
+                        <span className="font-semibold text-neutral-900">
+                          {language === 'id'
+                            ? '03 · Modul Dekripsi & Restorasi Citra Lossless (100% Sempurna)'
+                            : '03 · Decryption & 100% Lossless Restoration Module'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-neutral-500 font-mono">
+                        {language === 'id' ? 'Dekripsi Citra Digital' : 'Image Decryption'}
+                      </span>
+                    </div>
+                    <div className="relative aspect-[16/9] overflow-hidden bg-black/90">
+                      <img
+                        src="/projects/crypto-decrypt.jpg"
+                        alt={language === 'id' ? 'Modul Dekripsi Citra Digital (.exe)' : 'Image Decryption Module (.exe)'}
+                        className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </article>
         </RevealOnScroll>
       ))}

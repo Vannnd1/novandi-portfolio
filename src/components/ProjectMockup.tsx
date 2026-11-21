@@ -9,111 +9,29 @@ import {
   Calendar,
   Sparkles,
 } from 'lucide-react';
+import { useLanguage } from '../context/useLanguage';
 
 interface ProjectMockupProps {
   projectId: string;
 }
 
 const CryptoProjectHoverShowcase: React.FC = () => {
-  const [selectedIdx, setSelectedIdx] = React.useState<number | null>(null);
-
-  const screens = [
-    {
-      src: '/projects/crypto-main-menu.png',
-      alt: 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)',
-      label: 'Halaman Utama',
-      badge: '01 · Menu Utama',
-    },
-    {
-      src: '/projects/crypto-encrypt.jpg',
-      alt: 'Halaman Enkripsi Citra Digital (.exe)',
-      label: 'Enkripsi Citra',
-      badge: '02 · Enkripsi',
-    },
-    {
-      src: '/projects/crypto-decrypt.jpg',
-      alt: 'Halaman Dekripsi Citra Digital (.exe)',
-      label: 'Dekripsi Citra',
-      badge: '03 · Dekripsi',
-    },
-  ];
+  const { language } = useLanguage();
 
   return (
-    <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0F172A] select-none group/showcase">
-      {/* Vertical sliding track containing the 3 images in order */}
-      <div
-        className={`w-full transition-transform ease-in-out ${
-          selectedIdx !== null
-            ? 'duration-500'
-            : 'duration-[6000ms] group-hover/window:-translate-y-[66.666%] group-hover/showcase:-translate-y-[66.666%]'
-        }`}
-        style={
-          selectedIdx !== null
-            ? { transform: `translateY(-${selectedIdx * 33.333}%)` }
-            : undefined
-        }
-      >
-        {screens.map((screen, idx) => (
-          <div key={idx} className="relative w-full aspect-[16/9] bg-slate-900">
-            <img
-              src={screen.src}
-              alt={screen.alt}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            {/* Subtle screen label badge */}
-            <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[9px] font-mono font-medium text-white shadow-sm pointer-events-none">
-              <span>{screen.badge}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Floating navigation pills overlay at bottom */}
-      <div className="absolute bottom-2.5 left-0 right-0 z-20 flex items-center justify-between px-3 pointer-events-none">
-        {/* Format hint */}
-        <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[8.5px] font-mono text-slate-300 shadow-sm">
-          <span>🖥️ Windows .exe</span>
-        </div>
-
-        {/* Tab switcher buttons */}
-        <div className="flex items-center gap-1 pointer-events-auto bg-black/75 backdrop-blur-md border border-white/15 p-0.5 rounded-full shadow-sm">
-          {screens.map((screen, idx) => {
-            const isActive = selectedIdx === idx;
-            return (
-              <button
-                key={idx}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedIdx(idx);
-                }}
-                onMouseEnter={() => setSelectedIdx(idx)}
-                className={`px-2 py-0.5 rounded-full text-[8.5px] font-medium transition-all ${
-                  isActive
-                    ? 'bg-blue-600 text-white font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-white/10'
-                }`}
-                title={screen.label}
-              >
-                {screen.label}
-              </button>
-            );
-          })}
-          {selectedIdx !== null && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedIdx(null);
-              }}
-              className="px-1.5 py-0.5 rounded-full text-[8px] text-slate-400 hover:text-white"
-              title="Reset auto-hover"
-            >
-              ↺
-            </button>
-          )}
-        </div>
+    <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 select-none">
+      <img
+        src="/projects/crypto-main-menu.png"
+        alt={language === 'id' ? 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)' : 'Main Menu Chaos Image Encryption (.exe)'}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+      {/* Floating hint overlay at bottom */}
+      <div className="absolute bottom-2.5 left-2.5 right-2.5 z-20 flex items-center justify-between px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[8.5px] font-mono text-slate-300 shadow-sm pointer-events-none">
+        <span>🖥️ Windows .exe</span>
+        <span className="text-white/90">
+          {language === 'id' ? 'Hover card untuk lihat 3 layar alur ↓' : 'Hover card to view 3-screen workflow ↓'}
+        </span>
       </div>
     </div>
   );
