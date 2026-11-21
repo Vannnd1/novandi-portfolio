@@ -114,11 +114,11 @@ export const projectsDataEn: ProjectItem[] = [
       },
       implementationDecisions: [
         {
-          title: "Hybrid Chaos Engine (Gauss + Modified Sine)",
+          title: "Hybrid Chaos Engine (Gauss-MS Map Composition)",
           rationale:
-            "Single chaos formulas often suffer from periodic windows where patterns can repeat and be predicted. Combining the Gaussian exponential function with the Modified Sine Map mathematically eliminates periodic islands, creating a continuous, unpredictably chaotic stream.",
+            "Single chaos formulas often suffer from periodic windows where patterns can repeat and be predicted. Composing the Gaussian exponential map with the MS Map (a rational chaotic map derived from the Logistic Map) mathematically eliminates periodic islands, creating a continuous, unpredictably chaotic stream.",
           technicalCode:
-            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: Modified Sine Map\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map with modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
+            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Logistic Map modification)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map with modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
         },
         {
           title: "Numba JIT Acceleration for Instant Processing",
@@ -658,9 +658,9 @@ export const projectsDataId: ProjectItem[] = [
         {
           title: "Menggabungkan Dua Algoritma Pengacak (Gauss-MS Map)",
           rationale:
-            "Rumus pengacak tunggal sering memiliki celah periodik yang membuat pola angka bisa diprediksi oleh komputer lawan. Menggabungkan fungsi Gaussian dengan Modified Sine Map menutup celah tersebut secara matematis, sehingga deretan angka yang dihasilkan benar-benar acak, liar, dan tidak berulang.",
+            "Rumus pengacak tunggal sering memiliki celah periodik yang membuat pola angka bisa diprediksi oleh komputer lawan. Menggabungkan fungsi Gaussian dengan MS Map (peta chaos hasil modifikasi Logistic Map) menutup celah tersebut secara matematis, sehingga deretan angka yang dihasilkan benar-benar acak, liar, dan tidak berulang.",
           technicalCode:
-            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: Modified Sine Map\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map with modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
+            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Modifikasi Logistic Map)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map dengan modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
         },
         {
           title: "Optimasi Kecepatan Eksekusi (Numba JIT)",
