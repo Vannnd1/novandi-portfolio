@@ -39,13 +39,13 @@ export const StickerCard: React.FC = () => {
   return (
     <div
       id="contact-card"
-      className="group relative w-full min-h-[380px] sm:min-h-[460px] p-5 sm:p-6 bg-[#f7f7f7] border border-[#e8e8e8] rounded-2xl sm:rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden select-none"
+      className="group relative w-full min-h-[380px] sm:min-h-[460px] p-5 sm:p-6 bg-[#f7f7f7] dark:bg-[#121215] border border-[#e8e8e8] dark:border-[#27272a] rounded-2xl sm:rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden select-none"
     >
       {/* Clickable Card Stretched Link */}
       <a
         href={getMailtoUrl(profile.email)}
         onClick={(e) => handleSmartEmailClick(e, profile.email)}
-        className="absolute inset-0 z-0 rounded-2xl sm:rounded-3xl focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
+        className="absolute inset-0 z-0 rounded-2xl sm:rounded-3xl focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white"
         title={t.stickerCard.titleAttr}
         aria-label={t.stickerCard.titleAttr}
       />

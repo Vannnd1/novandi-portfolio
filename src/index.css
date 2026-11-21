@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: 'BBH Hegarty';
   font-style: normal;
@@ -19,6 +21,11 @@
     --font-dm-sans: 'DM Sans', sans-serif;
   }
 
+  .dark {
+    --color-canvas: #09090b;
+    --color-ink: #f4f4f5;
+  }
+
   body {
     background-color: var(--color-canvas);
     color: var(--color-ink);
@@ -27,6 +34,7 @@
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 }
 
@@ -56,6 +64,11 @@
   filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.18));
 }
 
+.dark .stroke-title {
+  -webkit-text-stroke: 3px #18181b;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
 .font-mono-tech {
   font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 }
@@ -70,9 +83,17 @@
   background-size: 24px 24px;
 }
 
+.dark .bg-tech-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
 .bg-tech-dots {
   background-image: radial-gradient(rgba(253, 74, 166, 0.15) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+.dark .bg-tech-dots {
+  background-image: radial-gradient(rgba(253, 74, 166, 0.22) 1px, transparent 1px);
 }
 
 /* Purposeful Motion Animations */

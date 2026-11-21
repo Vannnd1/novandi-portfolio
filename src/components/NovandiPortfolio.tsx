@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useLanguage } from '../context/useLanguage';
 import { ScrollProgress } from './ScrollProgress';
+import { ThemeToggle } from './ThemeToggle';
 import { HeroSection } from './portfolio/HeroSection';
 import { TechnicalMetrics } from './portfolio/TechnicalMetrics';
 import { ProjectShowcase } from './portfolio/ProjectShowcase';
@@ -37,47 +38,54 @@ export const NovandiPortfolio: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#101010] selection:bg-[#ffd3e5] selection:text-[#fd4aa6] relative">
+    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#101010] dark:text-[#f4f4f5] selection:bg-[#ffd3e5] selection:text-[#fd4aa6] dark:selection:bg-[#fd4aa6]/30 dark:selection:text-[#fd4aa6] relative transition-colors duration-200">
       {/* 0. Top Thin Scroll Progress Bar */}
       <ScrollProgress />
 
-      {/* 1. Sticky Header with Novandi's brand logo & Language Switcher */}
-      <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 border-b border-[#101010]/10">
+      {/* 1. Sticky Header with Novandi's brand logo, Theme Toggle & Language Switcher */}
+      <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 dark:bg-[#09090b]/80 border-b border-[#101010]/10 dark:border-white/10 transition-colors duration-200">
         <nav className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 h-[72px] flex items-center justify-between select-none">
           <a
             href="/"
-            className="font-hegarty text-[30px] sm:text-[32px] text-[#101010] stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
+            className="font-hegarty text-[30px] sm:text-[32px] text-[#101010] dark:text-white stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
             aria-label={t.nav.homeAria}
           >
             <span>novan.arm</span>
           </a>
 
-          {/* Interactive Language Switcher Toggle */}
-          <div
-            className="relative flex items-center gap-1 bg-[#f4f4f5] p-1 rounded-full border border-[#e4e4e7] text-xs font-space"
-            role="group"
-            aria-label={t.nav.langSwitchAria}
-          >
-            {(['id', 'en'] as const).map((langKey) => (
-              <button
-                key={langKey}
-                type="button"
-                onClick={() => setLanguage(langKey)}
-                className={`relative px-3 py-1 rounded-full font-bold transition-colors duration-200 cursor-pointer uppercase z-10 select-none ${
-                  language === langKey ? 'text-white' : 'text-[#666] hover:text-black'
-                }`}
-                title={langKey === 'id' ? 'Bahasa Indonesia' : 'English'}
-              >
-                {langKey}
-                {language === langKey && (
-                  <motion.span
-                    layoutId="activeLangPill"
-                    className="absolute inset-0 bg-[#101010] rounded-full -z-10 shadow-xs"
-                    transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                  />
-                )}
-              </button>
-            ))}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Interactive Theme Toggle Button */}
+            <ThemeToggle />
+
+            {/* Interactive Language Switcher Toggle */}
+            <div
+              className="relative flex items-center gap-1 bg-[#f4f4f5] dark:bg-[#18181b] p-1 rounded-full border border-[#e4e4e7] dark:border-[#27272a] text-xs font-space transition-colors"
+              role="group"
+              aria-label={t.nav.langSwitchAria}
+            >
+              {(['id', 'en'] as const).map((langKey) => (
+                <button
+                  key={langKey}
+                  type="button"
+                  onClick={() => setLanguage(langKey)}
+                  className={`relative px-3 py-1 rounded-full font-bold transition-colors duration-200 cursor-pointer uppercase z-10 select-none ${
+                    language === langKey
+                      ? 'text-white dark:text-black'
+                      : 'text-[#666] dark:text-[#a1a1aa] hover:text-black dark:hover:text-white'
+                  }`}
+                  title={langKey === 'id' ? 'Bahasa Indonesia' : 'English'}
+                >
+                  {langKey}
+                  {language === langKey && (
+                    <motion.span
+                      layoutId="activeLangPill"
+                      className="absolute inset-0 bg-[#101010] dark:bg-white rounded-full -z-10 shadow-xs"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
         </nav>
       </header>
@@ -103,14 +111,14 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── PORTFOLIO TABS NAVIGATION ── */}
         <section id="portfolio-tabs" className="space-y-8 scroll-mt-24">
-          <div className="flex items-end gap-9 border-b border-[#d8d8d8] overflow-x-auto select-none">
+          <div className="flex items-end gap-9 border-b border-[#d8d8d8] dark:border-[#27272a] overflow-x-auto select-none transition-colors">
             {(['works', 'experience', 'education'] as const).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 className={`relative font-hegarty text-2xl pb-3.5 transition-colors cursor-pointer leading-none capitalize ${
-                  activeTab === tab ? 'text-black' : 'text-[#767676] hover:text-black'
+                  activeTab === tab ? 'text-black dark:text-white' : 'text-[#767676] dark:text-[#a1a1aa] hover:text-black dark:hover:text-white'
                 }`}
               >
                 {t.tabs[tab]}
@@ -157,7 +165,7 @@ export const NovandiPortfolio: React.FC = () => {
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
           <section className="pt-2 pb-2 select-none flex justify-center overflow-hidden">
-            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
+            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] dark:text-[#27272a] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
                   key={cIdx}
@@ -187,7 +195,7 @@ export const NovandiPortfolio: React.FC = () => {
       </main>
 
       {/* ── DARK FOOTER BAR ── */}
-      <footer className="w-full bg-[#202020] text-white py-8 sm:h-[135px] select-none flex items-center">
+      <footer className="w-full bg-[#202020] dark:bg-[#0c0c0e] border-t border-transparent dark:border-[#27272a] text-white py-8 sm:h-[135px] select-none flex items-center transition-colors">
         <div className="max-w-[1180px] w-full mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
             <span>@novandi ahmad ramdhan</span>

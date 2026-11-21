@@ -181,7 +181,7 @@ export const GithubHeatmap: React.FC = () => {
       case 1:
         return 'bg-[#fbcfe8]'; // soft blush pink
       default:
-        return 'bg-[#f1f3f5] hover:bg-[#e9ecef] border border-black/[0.03]'; // crisp light neutral
+        return 'bg-[#f1f3f5] dark:bg-[#27272a] hover:bg-[#e9ecef] hover:dark:bg-[#3f3f46] border border-black/[0.03] dark:border-white/[0.05]'; // crisp light neutral / modern dark neutral
     }
   };
 
@@ -193,26 +193,26 @@ export const GithubHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white border border-[#E5E7EB] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
+    <div className="w-full bg-white dark:bg-[#121215] border border-[#E5E7EB] dark:border-[#27272a] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
       {/* ── CARD HEADER: Live Status, Identity & Tooltip Bar ── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#F3F4F6]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#F3F4F6] dark:border-[#27272a]">
         {/* User Identity */}
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-700 shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-[#18181b] flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
             <GitHubIcon className="w-4 h-4" />
           </div>
           <div className="flex flex-col">
-            <span className="font-sans font-semibold text-xs sm:text-sm text-[#111318] tracking-tight">
+            <span className="font-sans font-semibold text-xs sm:text-sm text-[#111318] dark:text-white tracking-tight">
               Vannnd1
             </span>
-            <span className="text-[10px] text-[#9CA3AF] font-sans">
+            <span className="text-[10px] text-[#9CA3AF] dark:text-[#71717a] font-sans">
               GitHub Contribution Graph
             </span>
           </div>
         </div>
 
         {/* Dynamic Tooltip / Active Day Indicator */}
-        <div className="h-6 text-[11px] font-sans text-center sm:text-right text-[#6B7280] flex items-center sm:justify-end overflow-hidden">
+        <div className="h-6 text-[11px] font-sans text-center sm:text-right text-[#6B7280] dark:text-[#a1a1aa] flex items-center sm:justify-end overflow-hidden">
           <AnimatePresence mode="wait">
             {hoveredDay ? (
               <motion.div
@@ -221,7 +221,7 @@ export const GithubHeatmap: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -3 }}
                 transition={{ duration: 0.15 }}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-50 border border-neutral-200/60 text-[#111318] font-medium text-xs"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-50 dark:bg-[#18181b] border border-neutral-200/60 dark:border-[#27272a] text-[#111318] dark:text-white font-medium text-xs"
               >
                 <strong className="text-[#fd4aa6] font-semibold">{hoveredDay.count}</strong>{' '}
                 <span>
@@ -241,7 +241,7 @@ export const GithubHeatmap: React.FC = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="text-[#9CA3AF] text-[11px]"
+                className="text-[#9CA3AF] dark:text-[#71717a] text-[11px]"
               >
                 {t.heatmap.tooltipHover}
               </motion.span>
@@ -253,7 +253,7 @@ export const GithubHeatmap: React.FC = () => {
       {/* ── GRID VIEWPORT: Days Header + Column-Locked Dots ── */}
       <div className="flex items-start gap-2 pt-1 relative">
         {/* Day Labels on left: Perfectly row-aligned with 7 dot rows */}
-        <div className="flex flex-col text-[10px] font-sans text-[#9CA3AF] select-none shrink-0">
+        <div className="flex flex-col text-[10px] font-sans text-[#9CA3AF] dark:text-[#71717a] select-none shrink-0">
           {/* Header spacer to match month row height: h-5 (20px) + mb-1.5 (6px) = 26px */}
           <div className="h-[26px]" aria-hidden="true" />
           
@@ -289,7 +289,7 @@ export const GithubHeatmap: React.FC = () => {
                     {Array.from({ length: 7 }).map((_, rowIdx) => (
                       <div
                         key={rowIdx}
-                        className="w-2.5 h-2.5 sm:w-[11px] sm:h-[11px] rounded-full bg-[#E5E7EB] animate-pulse"
+                        className="w-2.5 h-2.5 sm:w-[11px] sm:h-[11px] rounded-full bg-[#E5E7EB] dark:bg-[#27272a] animate-pulse"
                       />
                     ))}
                   </div>
@@ -297,13 +297,13 @@ export const GithubHeatmap: React.FC = () => {
               ))}
             </div>
           ) : hasError ? (
-            <div className="py-8 text-center w-full text-xs font-mono text-[#888]">
+            <div className="py-8 text-center w-full text-xs font-mono text-[#888] dark:text-[#71717a]">
               {language === 'id'
                 ? 'Gagal memuat visualisasi kontribusi. Kunjungi GitHub untuk melihat aktivitas terbaru.'
                 : 'Failed to load contribution activity. Visit GitHub to inspect recent activity.'}
             </div>
           ) : weeks.length === 0 ? (
-            <div className="py-8 text-center w-full text-xs font-mono text-[#888]">
+            <div className="py-8 text-center w-full text-xs font-mono text-[#888] dark:text-[#71717a]">
               {language === 'id'
                 ? 'Tidak ada riwayat kontribusi untuk periode ini.'
                 : 'No contribution activity found for this period.'}
@@ -318,7 +318,7 @@ export const GithubHeatmap: React.FC = () => {
                     {/* Month Label Header Slot: Locked to this exact column */}
                     <div className="h-5 w-full relative mb-1.5">
                       {monthLabel && (
-                        <span className="absolute left-0 top-0 text-[10px] sm:text-[11px] font-sans font-medium text-[#9CA3AF] whitespace-nowrap pointer-events-none select-none">
+                        <span className="absolute left-0 top-0 text-[10px] sm:text-[11px] font-sans font-medium text-[#9CA3AF] dark:text-[#71717a] whitespace-nowrap pointer-events-none select-none">
                           {monthLabel}
                         </span>
                       )}
@@ -361,12 +361,12 @@ export const GithubHeatmap: React.FC = () => {
       </div>
 
       {/* ── FOOTER: Summary Link & Consistent Legend ── */}
-      <div className="pt-3 mt-2 border-t border-[#F3F4F6] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#9CA3AF] font-sans select-none">
+      <div className="pt-3 mt-2 border-t border-[#F3F4F6] dark:border-[#27272a] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#9CA3AF] dark:text-[#71717a] font-sans select-none">
         <a
           href="https://github.com/Vannnd1"
           target="_blank"
           rel="noreferrer"
-          className="font-medium text-[#4B5563] hover:text-[#fd4aa6] transition-colors inline-flex items-center gap-1.5 group"
+          className="font-medium text-[#4B5563] dark:text-[#d4d4d8] hover:text-[#fd4aa6] dark:hover:text-[#fd4aa6] transition-colors inline-flex items-center gap-1.5 group"
         >
           <span>
             {isLoading
@@ -381,7 +381,7 @@ export const GithubHeatmap: React.FC = () => {
         {/* Synchronized Legend with Exact Same Color Tokens */}
         <div className="flex items-center gap-1.5 text-[10px] self-end sm:self-auto">
           <span>{t.heatmap.less}</span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#f1f3f5] border border-black/[0.03]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#f1f3f5] dark:bg-[#27272a] border border-black/[0.03] dark:border-white/[0.05]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#fbcfe8]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#f472b6]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6]" />

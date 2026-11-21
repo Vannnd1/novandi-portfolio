@@ -58,8 +58,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <Spotlight
-      className="rounded-3xl border border-[#101010]/8 bg-gradient-to-b from-[#fdfdfd] via-[#f9f9fa] to-white p-6 sm:p-10 lg:p-12 xl:p-14 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
-      spotlightColor="rgba(253, 74, 166, 0.08)"
+      className="rounded-3xl border border-[#101010]/8 dark:border-white/10 bg-gradient-to-b from-[#fdfdfd] via-[#f9f9fa] to-white dark:from-[#121215] dark:via-[#16161a] dark:to-[#121215] p-6 sm:p-10 lg:p-12 xl:p-14 shadow-[0_4px_30px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)] transition-colors"
+      spotlightColor="rgba(253, 74, 166, 0.12)"
       size={800}
     >
       <motion.div
@@ -72,12 +72,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex-1 space-y-6 text-left w-full">
           {/* Technical Status & Availability Badges */}
           <motion.div variants={heroItemVariants} className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.04] border border-black/10 font-space text-xs font-semibold text-[#18181b] tracking-wide">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/15 font-space text-xs font-semibold text-[#18181b] dark:text-[#f4f4f5] tracking-wide transition-colors">
               <span className="w-2 h-2 rounded-full bg-[#fd4aa6]" />
               <span>{t.hero.discipline}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 font-space text-xs font-semibold">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60 font-space text-xs font-semibold transition-colors">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>{t.hero.statusAvailable}</span>
             </span>
@@ -85,10 +85,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Main Headline with Oversized Editorial Typography */}
           <motion.div variants={heroItemVariants} className="space-y-1">
-            <p className="font-hegarty text-3xl sm:text-4xl text-[#767676] stroke-title m-0">
+            <p className="font-hegarty text-3xl sm:text-4xl text-[#767676] dark:text-[#a1a1aa] stroke-title m-0 transition-colors">
               {t.hero.helloIm}
             </p>
-            <h1 className="font-hegarty text-4xl sm:text-5xl md:text-6xl xl:text-[4.25rem] text-[#101010] stroke-title m-0 tracking-tight leading-[1.04]">
+            <h1 className="font-hegarty text-4xl sm:text-5xl md:text-6xl xl:text-[4.25rem] text-[#101010] dark:text-white stroke-title m-0 tracking-tight leading-[1.04] transition-colors">
               {t.hero.name.split(' ').map((word, wIdx) => (
                 <motion.span
                   key={wIdx}
@@ -108,9 +108,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </motion.div>
 
           {/* Narrative Bio Paragraph with Integrated Verified Social Channels */}
-          <motion.p variants={heroItemVariants} className="font-space text-base sm:text-lg text-[#262626] font-normal leading-[1.8] max-w-[720px] m-0">
+          <motion.p variants={heroItemVariants} className="font-space text-base sm:text-lg text-[#262626] dark:text-[#d4d4d8] font-normal leading-[1.8] max-w-[720px] m-0 transition-colors">
             {t.hero.leadBefore}{' '}
-            <span className="text-[#737373]">{t.hero.leadMuted}</span>{' '}
+            <span className="text-[#737373] dark:text-[#a1a1aa]">{t.hero.leadMuted}</span>{' '}
             {t.hero.leadShare}{' '}
             <SocialPill
               href={profile.instagramUrl}
@@ -144,10 +144,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button
                 type="button"
                 onClick={onExploreWorks}
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#101010] hover:bg-[#202020] text-white font-hegarty text-sm sm:text-base transition-all duration-200 cursor-pointer shadow-lg shadow-black/15 hover:shadow-[#fd4aa6]/25 hover:shadow-xl active:scale-95 group"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#101010] dark:bg-white hover:bg-[#202020] hover:dark:bg-[#fd4aa6] text-white dark:text-black hover:dark:text-white font-hegarty text-sm sm:text-base transition-all duration-200 cursor-pointer shadow-lg shadow-black/15 hover:shadow-[#fd4aa6]/25 hover:shadow-xl active:scale-95 group"
               >
                 <span>{t.hero.exploreWorks}</span>
-                <ArrowDown className="w-4 h-4 text-[#fd4aa6] transition-transform duration-200 group-hover:translate-y-0.5" />
+                <ArrowDown className="w-4 h-4 text-[#fd4aa6] dark:text-[#fd4aa6] group-hover:dark:text-white transition-transform duration-200 group-hover:translate-y-0.5" />
               </button>
             </Magnetic>
 
@@ -155,10 +155,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <a
                 href="#contact-card"
                 onClick={onContactClick}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-[#fafafa] border border-[#101010]/20 hover:border-[#101010] text-[#101010] font-hegarty text-sm sm:text-base transition-all duration-200 cursor-pointer shadow-xs active:scale-95"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-[#18181b] hover:bg-[#fafafa] hover:dark:bg-[#27272a] border border-[#101010]/20 dark:border-white/15 text-[#101010] dark:text-white font-hegarty text-sm sm:text-base transition-all duration-200 cursor-pointer shadow-xs active:scale-95"
               >
                 <span>{t.hero.contactMe}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#767676]" />
+                <ArrowUpRight className="w-4 h-4 text-[#767676] dark:text-[#a1a1aa]" />
               </a>
             </Magnetic>
           </motion.div>
@@ -172,7 +172,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#fd4aa6]/30 via-transparent to-[#46b8ff]/30 rounded-[28px] sm:rounded-[36px] blur-sm opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Main Portrait Frame */}
-              <div className="relative w-52 h-68 sm:w-64 sm:h-80 lg:w-72 lg:h-92 xl:w-80 xl:h-100 rounded-2xl sm:rounded-3xl overflow-hidden border-[4px] border-white shadow-[0_20px_45px_rgba(0,0,0,0.15)] ring-1 ring-black/10 bg-[#f4f4f5]">
+              <div className="relative w-52 h-68 sm:w-64 sm:h-80 lg:w-72 lg:h-92 xl:w-80 xl:h-100 rounded-2xl sm:rounded-3xl overflow-hidden border-[4px] border-white dark:border-[#27272a] shadow-[0_20px_45px_rgba(0,0,0,0.15)] ring-1 ring-black/10 dark:ring-white/10 bg-[#f4f4f5] dark:bg-[#18181b] transition-colors">
                 <img
                   src="/profile.jpg"
                   alt={profile.name}
@@ -181,10 +181,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 />
 
                 {/* Bottom Floating Identity Chip */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-sm flex items-center justify-between">
-                  <div className="font-space text-xs font-bold text-[#101010] leading-tight">
+                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-xl bg-white/95 dark:bg-[#18181b]/95 backdrop-blur-md border border-white/60 dark:border-white/15 shadow-sm flex items-center justify-between transition-colors">
+                  <div className="font-space text-xs font-bold text-[#101010] dark:text-white leading-tight">
                     <div>{profile.location}</div>
-                    <div className="text-[10px] font-normal text-[#666]">Universitas Gunadarma</div>
+                    <div className="text-[10px] font-normal text-[#666] dark:text-[#a1a1aa]">Universitas Gunadarma</div>
                   </div>
                 </div>
               </div>

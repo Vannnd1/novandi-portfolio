@@ -11,7 +11,7 @@ export const TechPill: React.FC<TechPillProps> = ({ name, size = 'base', classNa
 
   const getBadgeClass = (tech: string) => {
     if (tech === 'next.js' || tech.includes('typescript') || tech.includes('fastapi') || tech.includes('express')) {
-      return 'bg-white text-black border-black';
+      return 'bg-white dark:bg-[#18181b] text-black dark:text-white border-black dark:border-[#3f3f46]';
     }
     if (tech === 'react.js' || tech.includes('react') || tech.includes('golang') || tech.includes('frontend')) {
       return 'bg-[#96d7ff] text-black border-[#5ca9d6]';
@@ -28,7 +28,7 @@ export const TechPill: React.FC<TechPillProps> = ({ name, size = 'base', classNa
     if (tech === 'nest.js' || tech.includes('tensorflow') || tech.includes('huggingface') || tech.includes('opencv') || tech.includes('nist')) {
       return 'bg-[#ff4040] text-black border-[#c82e2e]';
     }
-    return 'bg-white text-black border-black';
+    return 'bg-white dark:bg-[#18181b] text-black dark:text-white border-black dark:border-[#3f3f46]';
   };
 
   const sizeClasses = size === 'sm' ? 'text-xs sm:text-sm px-2.5 py-1' : 'text-base px-3 py-1.5';

@@ -52,64 +52,64 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'manufacturing-digital-operations':
       return (
-        <div className="w-full bg-slate-50 text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none">
+        <div className="w-full bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-3.5 space-y-2.5 font-sans text-[10px] select-none transition-colors">
           {/* Operational Command Center Header */}
-          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
+          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800">
             <div>
-              <div className="font-bold text-xs text-slate-900">Operational Command Center</div>
-              <div className="text-[8.5px] text-slate-500">Real-time manufacturing operations & quality gate events</div>
+              <div className="font-bold text-xs text-slate-900 dark:text-white">Operational Command Center</div>
+              <div className="text-[8.5px] text-slate-500 dark:text-slate-400">Real-time manufacturing operations & quality gate events</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8.5px] font-mono text-slate-500 bg-slate-100 border border-slate-200">
+            <span className="px-2 py-0.5 rounded text-[8.5px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               v1.0 MES
             </span>
           </div>
 
           {/* 4 KPI Cards (Direct match with summary.inventory / procurement / production / quality) */}
           <div className="grid grid-cols-4 gap-1.5">
-            <div className="bg-white border border-slate-200 p-1.5 rounded flex flex-col justify-between">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1.5 rounded flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-bold uppercase">Deficit</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-bold uppercase">Deficit</span>
                 <AlertTriangle className="w-3 h-3 text-amber-500" />
               </div>
-              <div className="text-xs font-bold text-slate-900 mt-1">14</div>
+              <div className="text-xs font-bold text-slate-900 dark:text-white mt-1">14</div>
               <div className="text-[7.5px] text-slate-400">SKUs Low Stock</div>
             </div>
 
-            <div className="bg-white border border-slate-200 p-1.5 rounded flex flex-col justify-between">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1.5 rounded flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-bold uppercase">Req (PR)</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-bold uppercase">Req (PR)</span>
                 <ShoppingCart className="w-3 h-3 text-blue-500" />
               </div>
-              <div className="text-xs font-bold text-slate-900 mt-1">8</div>
+              <div className="text-xs font-bold text-slate-900 dark:text-white mt-1">8</div>
               <div className="text-[7.5px] text-slate-400">Pending Auth</div>
             </div>
 
-            <div className="bg-white border border-slate-200 p-1.5 rounded flex flex-col justify-between">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1.5 rounded flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-bold uppercase">Prod Order</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-bold uppercase">Prod Order</span>
                 <Target className="w-3 h-3 text-purple-500" />
               </div>
-              <div className="text-xs font-bold text-slate-900 mt-1">6</div>
+              <div className="text-xs font-bold text-slate-900 dark:text-white mt-1">6</div>
               <div className="text-[7.5px] text-slate-400">In Progress</div>
             </div>
 
-            <div className="bg-white border border-slate-200 p-1.5 rounded flex flex-col justify-between">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1.5 rounded flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-bold uppercase">Defect Gate</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-bold uppercase">Defect Gate</span>
                 <ShieldAlert className="w-3 h-3 text-rose-500" />
               </div>
-              <div className="text-xs font-bold text-rose-600 mt-1">2</div>
+              <div className="text-xs font-bold text-rose-600 dark:text-rose-400 mt-1">2</div>
               <div className="text-[7.5px] text-slate-400">Failed QC</div>
             </div>
           </div>
 
           {/* Data Table: Production Status & Active Work Orders */}
-          <div className="bg-white border border-slate-200 rounded overflow-hidden">
-            <div className="px-2 py-1 bg-slate-100 border-b border-slate-200 text-[8.5px] font-bold text-slate-700">
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded overflow-hidden">
+            <div className="px-2 py-1 bg-slate-100 dark:bg-slate-700/60 border-b border-slate-200 dark:border-slate-700 text-[8.5px] font-bold text-slate-700 dark:text-slate-200">
               Active Production Work Orders
             </div>
             <table className="w-full text-left text-[8.5px]">
-              <thead className="bg-slate-50 text-slate-500 border-b border-slate-200">
+              <thead className="bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-700">
                 <tr>
                   <th className="p-1 px-2">Order ID</th>
                   <th className="p-1">SKU / Item</th>
@@ -117,23 +117,23 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
                   <th className="p-1 pr-2 text-right">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-700/60">
                 <tr>
-                  <td className="p-1 px-2 font-mono font-medium text-slate-800">WO-2026-004</td>
-                  <td className="p-1 text-slate-600">FG-PRECISION-SHAFT</td>
-                  <td className="p-1 font-bold text-slate-700">1,500 pcs</td>
+                  <td className="p-1 px-2 font-mono font-medium text-slate-800 dark:text-slate-200">WO-2026-004</td>
+                  <td className="p-1 text-slate-600 dark:text-slate-400">FG-PRECISION-SHAFT</td>
+                  <td className="p-1 font-bold text-slate-700 dark:text-slate-300">1,500 pcs</td>
                   <td className="p-1 pr-2 text-right">
-                    <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[8px] font-bold">
+                    <span className="px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 text-[8px] font-bold">
                       IN PROGRESS
                     </span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-1 px-2 font-mono font-medium text-slate-800">WO-2026-005</td>
-                  <td className="p-1 text-slate-600">FG-HOUSING-ALUM</td>
-                  <td className="p-1 font-bold text-slate-700">800 pcs</td>
+                  <td className="p-1 px-2 font-mono font-medium text-slate-800 dark:text-slate-200">WO-2026-005</td>
+                  <td className="p-1 text-slate-600 dark:text-slate-400">FG-HOUSING-ALUM</td>
+                  <td className="p-1 font-bold text-slate-700 dark:text-slate-300">800 pcs</td>
                   <td className="p-1 pr-2 text-right">
-                    <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold">
+                    <span className="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-[8px] font-bold">
                       READY
                     </span>
                   </td>
@@ -143,9 +143,9 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
           </div>
 
           {/* Footer Tests Strip */}
-          <div className="flex items-center justify-between text-[8px] text-slate-500 pt-0.5">
+          <div className="flex items-center justify-between text-[8px] text-slate-500 dark:text-slate-400 pt-0.5">
             <span>Enterprise Ledger · PostgreSQL ACID Engine</span>
-            <span className="text-emerald-600 font-bold">✓ 252 Automated Jest Tests Passing</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ 252 Automated Jest Tests Passing</span>
           </div>
         </div>
       );
@@ -214,66 +214,66 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'adaptive-learning-insight':
       return (
-        <div className="w-full bg-white text-gray-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none">
+        <div className="w-full bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 p-3.5 space-y-2.5 font-sans text-[10px] select-none transition-colors">
           {/* Header matching Dashboard.jsx */}
-          <div className="flex items-center justify-between pb-1.5 border-b border-gray-100">
+          <div className="flex items-center justify-between pb-1.5 border-b border-gray-100 dark:border-slate-800">
             <div>
-              <div className="font-bold text-xs text-gray-900">Halo, Novan! 👋</div>
-              <div className="text-[8.5px] text-gray-500">Program Asah 2025 · Dicoding × Accenture · React & Back-End with AI</div>
+              <div className="font-bold text-xs text-gray-900 dark:text-white">Halo, Novan! 👋</div>
+              <div className="text-[8.5px] text-gray-500 dark:text-slate-400">Program Asah 2025 · Dicoding × Accenture · React & Back-End with AI</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
               React + AI Cohort
             </span>
           </div>
 
           {/* 3 Statistic Cards matching Dashboard.jsx */}
           <div className="grid grid-cols-3 gap-2">
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
+            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
+              <div className="p-1.5 bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 rounded-lg">
                 <Target className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[7.5px] text-gray-400 font-bold uppercase">TARGET</p>
-                <p className="text-[9px] font-bold text-gray-900">Web Dev</p>
+                <p className="text-[9px] font-bold text-gray-900 dark:text-white">Web Dev</p>
               </div>
             </div>
 
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-green-50 text-green-600 rounded-lg">
+            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
+              <div className="p-1.5 bg-green-50 dark:bg-green-950/80 text-green-600 dark:text-green-400 rounded-lg">
                 <Activity className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[7.5px] text-gray-400 font-bold uppercase">NILAI UJIAN</p>
-                <p className="text-[9px] font-bold text-gray-900">88.5 <span className="text-[7.5px] font-normal text-gray-400">/ 100</span></p>
+                <p className="text-[9px] font-bold text-gray-900 dark:text-white">88.5 <span className="text-[7.5px] font-normal text-gray-400">/ 100</span></p>
               </div>
             </div>
 
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-purple-50 text-purple-600 rounded-lg">
+            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
+              <div className="p-1.5 bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 rounded-lg">
                 <TrendingUp className="w-4 h-4" />
               </div>
               <div>
                 <p className="text-[7.5px] text-gray-400 font-bold uppercase">WAKTU</p>
-                <p className="text-[9px] font-bold text-gray-900">42 Jam</p>
+                <p className="text-[9px] font-bold text-gray-900 dark:text-white">42 Jam</p>
               </div>
             </div>
           </div>
 
           {/* Aktivitas Chart header matching Dashboard.jsx */}
-          <div className="bg-white rounded-xl border border-gray-200 p-2 shadow-xs space-y-1">
+          <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-2 shadow-xs space-y-1">
             <div className="flex justify-between items-center text-[8.5px]">
-              <span className="font-bold text-gray-800 flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-blue-600" /> Aktivitas Belajar (Okt 2026)
+              <span className="font-bold text-gray-800 dark:text-slate-200 flex items-center gap-1">
+                <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400" /> Aktivitas Belajar (Okt 2026)
               </span>
-              <div className="flex bg-gray-100 p-0.5 rounded text-[8px]">
-                <span className="px-1.5 py-0.5 rounded bg-white text-blue-600 font-bold shadow-xs">Harian</span>
-                <span className="px-1.5 py-0.5 text-gray-500">Mingguan</span>
+              <div className="flex bg-gray-100 dark:bg-slate-700/60 p-0.5 rounded text-[8px]">
+                <span className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 font-bold shadow-xs">Harian</span>
+                <span className="px-1.5 py-0.5 text-gray-500 dark:text-slate-400">Mingguan</span>
               </div>
             </div>
             {/* Progress line curve */}
             <div className="h-9 flex items-end gap-1 pt-1">
               {[40, 65, 55, 80, 70, 90, 85, 95, 90, 100].map((h, i) => (
-                <div key={i} className="flex-1 bg-blue-500 rounded-t" style={{ height: `${h}%` }} />
+                <div key={i} className="flex-1 bg-blue-500 dark:bg-blue-400 rounded-t" style={{ height: `${h}%` }} />
               ))}
             </div>
           </div>
@@ -298,34 +298,34 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * ────────────────────────────────────────────────────────────────────────── */
     case 'youtube-sentiment-jumbo':
       return (
-        <div className="w-full bg-white text-slate-900 p-3.5 space-y-2.5 font-sans text-[10px] select-none">
-          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
+        <div className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-3.5 space-y-2.5 font-sans text-[10px] select-none transition-colors">
+          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800">
             <div>
-              <div className="font-bold text-xs text-slate-900">YouTube Comment Sentiment Classifier</div>
-              <div className="text-[8.5px] text-slate-500">Film Jumbo · Support Vector Machine & InSet Lexicon</div>
+              <div className="font-bold text-xs text-slate-900 dark:text-white">YouTube Comment Sentiment Classifier</div>
+              <div className="text-[8.5px] text-slate-500 dark:text-slate-400">Film Jumbo · Support Vector Machine & InSet Lexicon</div>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="px-2 py-0.5 rounded text-[8px] font-mono text-purple-700 bg-purple-50 border border-purple-200">
+              <span className="px-2 py-0.5 rounded text-[8px] font-mono text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60">
                 SVM 86%
               </span>
             </div>
           </div>
 
           {/* Sentiment Distribution Bar */}
-          <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-1.5">
-            <div className="flex justify-between text-[8.5px] text-slate-600">
+          <div className="bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 space-y-1.5">
+            <div className="flex justify-between text-[8.5px] text-slate-600 dark:text-slate-300">
               <span className="font-bold">Distribusi Sentimen Ulasan (236 Data Uji)</span>
               <span className="text-slate-400 font-mono">Biner (InSet Lexicon)</span>
             </div>
-            <div className="h-3.5 bg-slate-200 rounded-full overflow-hidden flex">
+            <div className="h-3.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
               <div className="h-full bg-emerald-500 w-[74.2%]" />
               <div className="h-full bg-rose-500 w-[25.8%]" />
             </div>
             <div className="flex justify-between text-[8.5px] font-medium pt-0.5">
-              <span className="text-emerald-700 font-semibold flex items-center gap-1">
+              <span className="text-emerald-700 dark:text-emerald-300 font-semibold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-xs bg-emerald-500 inline-block" /> Positif 74.2% (175 data)
               </span>
-              <span className="text-rose-700 font-semibold flex items-center gap-1">
+              <span className="text-rose-700 dark:text-rose-300 font-semibold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-xs bg-rose-500 inline-block" /> Negatif 25.8% (61 data)
               </span>
             </div>
@@ -333,59 +333,59 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
           {/* Model Evaluation Metrics */}
           <div className="grid grid-cols-4 gap-1 text-center text-[8.5px]">
-            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
+            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-1.5 rounded">
               <div className="text-slate-400">Akurasi Uji</div>
-              <div className="font-bold text-slate-900 text-[10px]">86.0%</div>
+              <div className="font-bold text-slate-900 dark:text-white text-[10px]">86.0%</div>
             </div>
-            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
+            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-1.5 rounded">
               <div className="text-slate-400">F1 Positif</div>
-              <div className="font-bold text-emerald-600 text-[10px]">0.90</div>
+              <div className="font-bold text-emerald-600 dark:text-emerald-400 text-[10px]">0.90</div>
             </div>
-            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
+            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-1.5 rounded">
               <div className="text-slate-400">Recall Negatif</div>
-              <div className="font-bold text-purple-600 text-[10px]">77.0%</div>
+              <div className="font-bold text-purple-600 dark:text-purple-400 text-[10px]">77.0%</div>
             </div>
-            <div className="bg-slate-50 border border-slate-200 p-1.5 rounded">
+            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-1.5 rounded">
               <div className="text-slate-400">Normalisasi</div>
-              <div className="font-bold text-slate-700 text-[10px]">15K Alay</div>
+              <div className="font-bold text-slate-700 dark:text-slate-200 text-[10px]">15K Alay</div>
             </div>
           </div>
 
           {/* Live Analyzed Comment Stream Preview */}
-          <div className="space-y-1.5 pt-1 border-t border-slate-100">
-            <div className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider flex items-center justify-between">
+          <div className="space-y-1.5 pt-1 border-t border-slate-100 dark:border-slate-800">
+            <div className="text-[8px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center justify-between">
               <span>Sample Inference</span>
               <span className="text-[8px] text-slate-400 font-mono">TF-IDF + Linear SVM</span>
             </div>
 
             {/* Comment 1: Positive */}
-            <div className="p-2 rounded bg-emerald-50/70 border border-emerald-200/80 space-y-0.5">
+            <div className="p-2 rounded bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 space-y-0.5">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-mono">@user_indonesia · YouTube</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-mono">@user_indonesia · YouTube</span>
                 <span className="px-1.5 py-0.2 rounded text-[7.5px] font-bold bg-emerald-500 text-white shadow-2xs">
                   POSITIF (Conf: 94.2%)
                 </span>
               </div>
-              <p className="text-[8.5px] text-slate-800 font-medium m-0 leading-tight">
+              <p className="text-[8.5px] text-slate-800 dark:text-slate-200 font-medium m-0 leading-tight">
                 "Kualitas animasinya gila keren bgt, bangga bgt sama animator lokal! 🔥🇮🇩"
               </p>
-              <div className="text-[7.5px] text-emerald-700 font-mono">
+              <div className="text-[7.5px] text-emerald-700 dark:text-emerald-300 font-mono">
                 Tokens: [animasi, kualitas, keren, bangga, animator, lokal] ➔ Score: +3.8
               </div>
             </div>
 
             {/* Comment 2: Negative/Criticism */}
-            <div className="p-2 rounded bg-rose-50/70 border border-rose-200/80 space-y-0.5">
+            <div className="p-2 rounded bg-rose-50/70 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/60 space-y-0.5">
               <div className="flex items-center justify-between">
-                <span className="text-[8px] text-slate-500 font-mono">@movie_enthusiast · YouTube</span>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-mono">@movie_enthusiast · YouTube</span>
                 <span className="px-1.5 py-0.2 rounded text-[7.5px] font-bold bg-rose-500 text-white shadow-2xs">
                   NEGATIF (Conf: 81.5%)
                 </span>
               </div>
-              <p className="text-[8.5px] text-slate-800 font-medium m-0 leading-tight">
+              <p className="text-[8.5px] text-slate-800 dark:text-slate-200 font-medium m-0 leading-tight">
                 "Promosinya kurang gencar, padahal ceritanya bagus tapi jadwal tayang minim."
               </p>
-              <div className="text-[7.5px] text-rose-700 font-mono">
+              <div className="text-[7.5px] text-rose-700 dark:text-rose-300 font-mono">
                 Negation: [kurang_gencar, minim] ➔ Inverted Polarity: -2.1
               </div>
             </div>

@@ -110,14 +110,14 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
-        className="bg-white text-[#101010] w-full max-w-5xl xl:max-w-6xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default"
+        className="bg-white dark:bg-[#09090b] text-[#101010] dark:text-[#f4f4f5] w-full max-w-5xl xl:max-w-6xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#e8e8e8] dark:border-neutral-800 shadow-2xl overflow-hidden flex flex-col my-auto cursor-default transition-colors"
       >
         {/* Sticky Top Action Bar */}
-        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#e8e8e8] flex items-center justify-between">
+        <div className="sticky top-0 z-30 bg-white/95 dark:bg-[#09090b]/95 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#e8e8e8] dark:border-neutral-800 flex items-center justify-between transition-colors">
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center gap-2 font-hegarty text-sm sm:text-base text-[#767676] hover:text-black px-3.5 py-1.5 rounded-full hover:bg-[#f5f5f5] active:scale-95 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 font-hegarty text-sm sm:text-base text-[#767676] dark:text-neutral-400 hover:text-black hover:dark:text-white px-3.5 py-1.5 rounded-full hover:bg-[#f5f5f5] hover:dark:bg-neutral-800 active:scale-95 transition-all cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>{t.modal.backToWorks}</span>
@@ -129,7 +129,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-[#101010] hover:bg-[#fd4aa6] text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
+                className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-[#101010] dark:bg-white hover:bg-[#fd4aa6] hover:dark:bg-[#fd4aa6] text-white dark:text-black hover:dark:text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
               >
                 <span>{t.modal.liveSite}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -140,7 +140,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-black px-3.5 py-1.5 rounded-full border border-[#fd4aa6]/30 hover:border-black hover:bg-[#fff0f6] active:scale-95 transition-all"
+                className="hidden sm:inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm text-[#fd4aa6] hover:text-black hover:dark:text-white px-3.5 py-1.5 rounded-full border border-[#fd4aa6]/30 hover:border-black hover:dark:border-white hover:bg-[#fff0f6] hover:dark:bg-neutral-800 active:scale-95 transition-all"
               >
                 <GitBranch className="w-3.5 h-3.5" />
                 <span>github</span>
@@ -151,7 +151,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               ref={closeBtnRef}
               type="button"
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#555] hover:text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
+              className="w-9 h-9 rounded-full bg-[#f5f5f5] dark:bg-neutral-800 hover:bg-[#eaeaea] hover:dark:bg-neutral-700 text-[#555] dark:text-neutral-300 hover:text-black hover:dark:text-white flex items-center justify-center transition-all active:scale-95 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white"
               aria-label={t.modal.closeAria}
             >
               <X className="w-4 h-4" />
@@ -164,26 +164,26 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           
           {/* Header Banner */}
           <RevealOnScroll delay={0}>
-            <div className="space-y-4 border-b border-[#e8e8e8] pb-8">
+            <div className="space-y-4 border-b border-[#e8e8e8] dark:border-neutral-800 pb-8 transition-colors">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <span className="font-space text-xs font-semibold px-3 py-1 rounded-full bg-[#fd4aa6]/10 text-[#fd4aa6] border border-[#fd4aa6]/25 tracking-wide uppercase">
                   {project.categoryLabel}
                 </span>
-                <span className="font-dm-sans italic font-bold text-base sm:text-lg text-[#3d3d3d]">
+                <span className="font-dm-sans italic font-bold text-base sm:text-lg text-[#3d3d3d] dark:text-neutral-400">
                   {project.year}
                 </span>
               </div>
 
-              <h1 id="case-study-title" className="font-hegarty text-3xl sm:text-4xl md:text-5xl text-black leading-[1.05] tracking-tight">
+              <h1 id="case-study-title" className="font-hegarty text-3xl sm:text-4xl md:text-5xl text-black dark:text-white leading-[1.05] tracking-tight transition-colors">
                 {project.title}
               </h1>
 
-              <p className="font-space font-medium text-base sm:text-lg text-[#555] leading-relaxed">
+              <p className="font-space font-medium text-base sm:text-lg text-[#555] dark:text-neutral-300 leading-relaxed transition-colors">
                 {project.subtitle}
               </p>
 
               {project.academicContext && (
-                <div className="text-xs sm:text-sm font-space text-[#555] bg-[#fbfbfb] p-4 rounded-2xl border border-[#e8e8e8] flex items-start gap-3">
+                <div className="text-xs sm:text-sm font-space text-[#555] dark:text-neutral-300 bg-[#fbfbfb] dark:bg-[#121215] p-4 rounded-2xl border border-[#e8e8e8] dark:border-neutral-800 flex items-start gap-3 transition-colors">
                   <BookOpen className="w-4 h-4 text-[#fd4aa6] shrink-0 mt-0.5" />
                   <span className="leading-relaxed">{project.academicContext}</span>
                 </div>
@@ -196,7 +196,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101010] hover:bg-[#fd4aa6] text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101010] dark:bg-white hover:bg-[#fd4aa6] hover:dark:bg-[#fd4aa6] text-white dark:text-black hover:dark:text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
                   >
                     <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -207,7 +207,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#202020] hover:bg-[#fd4aa6] text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#202020] dark:bg-neutral-800 hover:bg-[#fd4aa6] hover:dark:bg-[#fd4aa6] text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
                   >
                     <GitBranch className="w-4 h-4" />
                     <span>{t.modal.inspectGithubRepo}</span>
@@ -215,7 +215,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                   </a>
                 ) : (
                   !project.demoUrl && (
-                    <span className="font-space text-xs text-[#767676] bg-[#f5f5f5] px-3.5 py-1.5 rounded-full border border-[#e8e8e8]">
+                    <span className="font-space text-xs text-[#767676] dark:text-neutral-400 bg-[#f5f5f5] dark:bg-neutral-800 px-3.5 py-1.5 rounded-full border border-[#e8e8e8] dark:border-neutral-700">
                       {t.modal.sourceAcademic}
                     </span>
                   )
@@ -227,15 +227,15 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 1. Problem Statement & Motivation */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec01Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <h3 className="font-geist font-semibold text-base sm:text-lg text-black">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <h3 className="font-geist font-semibold text-base sm:text-lg text-black dark:text-white">
                   {t.modal.sec01Sub}
                 </h3>
-                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
+                <p className="font-space font-medium text-sm sm:text-base text-[#555] dark:text-neutral-300 leading-relaxed">
                   {caseStudy.problemStatement}
                 </p>
               </div>
@@ -245,12 +245,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 2. Objectives & Scope */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec02Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <ul className="space-y-3 text-sm sm:text-base text-[#555]">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <ul className="space-y-3 text-sm sm:text-base text-[#555] dark:text-neutral-300">
                   {caseStudy.objectives.map((obj, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-[#fd4aa6] shrink-0 mt-0.5" />
@@ -265,12 +265,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 3. My Role and Contributions */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec03Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <p className="font-space font-medium text-sm sm:text-base text-[#555] dark:text-neutral-300 leading-relaxed">
                   {caseStudy.roleAndContributions}
                 </p>
               </div>
@@ -280,7 +280,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 4. Technical Stack Breakdown */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec04Title}</span>
               </div>
@@ -295,24 +295,24 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 5. System Architecture & Processing Pipeline */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec05Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <p className="font-space font-medium text-sm sm:text-base text-[#555] dark:text-neutral-300 leading-relaxed">
                   {caseStudy.systemArchitecture.overview}
                 </p>
                 <div className="space-y-3 pt-1">
                   {caseStudy.systemArchitecture.steps.map((st, i) => (
-                    <div key={i} className="p-4 sm:p-5 rounded-xl bg-white border border-[#eaeaea] space-y-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-                      <div className="font-hegarty text-base sm:text-lg text-black flex items-center gap-2">
-                        <span className="font-space font-bold text-xs px-2 py-0.5 rounded-full bg-[#f5f5f5] text-black border border-[#d8d8d8]">
+                    <div key={i} className="p-4 sm:p-5 rounded-xl bg-white dark:bg-[#18181b] border border-[#eaeaea] dark:border-neutral-800 space-y-1.5 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+                      <div className="font-hegarty text-base sm:text-lg text-black dark:text-white flex items-center gap-2">
+                        <span className="font-space font-bold text-xs px-2 py-0.5 rounded-full bg-[#f5f5f5] dark:bg-neutral-800 text-black dark:text-white border border-[#d8d8d8] dark:border-neutral-700">
                           {i + 1}
                         </span>
                         <span>{st.step}</span>
                       </div>
-                      <div className="font-space text-xs sm:text-sm text-[#666] leading-relaxed pl-7">
+                      <div className="font-space text-xs sm:text-sm text-[#666] dark:text-neutral-400 leading-relaxed pl-7">
                         {st.description}
                       </div>
                     </div>
@@ -325,17 +325,17 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 6. Implementation Decisions & Code Highlights */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec06Title}</span>
               </div>
               <div className="space-y-4">
                 {caseStudy.implementationDecisions.map((dec, i) => (
-                  <div key={i} className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                    <h4 className="font-hegarty text-lg sm:text-xl text-black">
+                  <div key={i} className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                    <h4 className="font-hegarty text-lg sm:text-xl text-black dark:text-white">
                       {dec.title}
                     </h4>
-                    <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
+                    <p className="font-space font-medium text-sm sm:text-base text-[#555] dark:text-neutral-300 leading-relaxed">
                       {dec.rationale}
                     </p>
                     {dec.technicalCode && (
@@ -362,34 +362,34 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 7. Empirical Results & Validation */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec07Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <p className="font-space font-medium text-sm sm:text-base text-[#555] leading-relaxed">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <p className="font-space font-medium text-sm sm:text-base text-[#555] dark:text-neutral-300 leading-relaxed">
                   {caseStudy.empiricalResults.summary}
                 </p>
                 
-                <div className="rounded-2xl border border-[#e8e8e8] overflow-hidden bg-white shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+                <div className="rounded-2xl border border-[#e8e8e8] dark:border-neutral-800 overflow-hidden bg-white dark:bg-[#18181b] shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
                   <table className="w-full text-left font-space text-xs sm:text-sm">
-                    <thead className="bg-[#f7f7f7] border-b border-[#e8e8e8]">
+                    <thead className="bg-[#f7f7f7] dark:bg-neutral-800 border-b border-[#e8e8e8] dark:border-neutral-700">
                       <tr>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">{t.modal.colMetric}</th>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black">{t.modal.colOutput}</th>
-                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-[#767676] hidden sm:table-cell">{t.modal.colBenchmark}</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black dark:text-white">{t.modal.colMetric}</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-black dark:text-white">{t.modal.colOutput}</th>
+                        <th className="p-3.5 sm:p-4 font-hegarty text-sm text-[#767676] dark:text-neutral-400 hidden sm:table-cell">{t.modal.colBenchmark}</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#f0f0f0]">
+                    <tbody className="divide-y divide-[#f0f0f0] dark:divide-neutral-800">
                       {caseStudy.empiricalResults.metrics.map((m, i) => (
-                        <tr key={i} className="hover:bg-[#fafafa] transition-colors">
-                          <td className="p-3.5 sm:p-4 font-medium text-black">{m.label}</td>
+                        <tr key={i} className="hover:bg-[#fafafa] hover:dark:bg-neutral-800/50 transition-colors">
+                          <td className="p-3.5 sm:p-4 font-medium text-black dark:text-white">{m.label}</td>
                           <td className="p-3.5 sm:p-4">
                             <span className="font-bold text-[#fd4aa6] bg-[#fd4aa6]/10 px-2.5 py-1 rounded-full border border-[#fd4aa6]/25 inline-block">
                               {m.value}
                             </span>
                           </td>
-                          <td className="p-3.5 sm:p-4 text-[#767676] hidden sm:table-cell">{m.benchmark || '—'}</td>
+                          <td className="p-3.5 sm:p-4 text-[#767676] dark:text-neutral-400 hidden sm:table-cell">{m.benchmark || '—'}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -402,12 +402,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* 8. Limitations and Future Improvements */}
           <RevealOnScroll delay={0}>
             <section className="space-y-3.5">
-              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black">
+              <div className="flex items-center gap-2.5 font-hegarty text-xl sm:text-2xl text-black dark:text-white">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6] shrink-0" />
                 <span>{t.modal.sec08Title}</span>
               </div>
-              <div className="bg-[#fbfbfb] hover:bg-white transition-colors border border-[#e8e8e8] rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                <ul className="space-y-2.5 text-sm sm:text-base text-[#555]">
+              <div className="bg-[#fbfbfb] dark:bg-[#121215] hover:bg-white hover:dark:bg-[#16161a] transition-colors border border-[#e8e8e8] dark:border-neutral-800 rounded-2xl p-6 sm:p-7 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <ul className="space-y-2.5 text-sm sm:text-base text-[#555] dark:text-neutral-300">
                   {caseStudy.limitationsAndFutureWork.map((lim, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <span className="w-2 h-2 rounded-full bg-[#fd4aa6] shrink-0 mt-2" />
@@ -423,10 +423,10 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {caseStudy.references && caseStudy.references.length > 0 && (
             <RevealOnScroll delay={0}>
               <section className="space-y-3 pt-2">
-                <div className="flex items-center gap-2 font-hegarty text-base sm:text-lg text-[#767676]">
+                <div className="flex items-center gap-2 font-hegarty text-base sm:text-lg text-[#767676] dark:text-neutral-400">
                   <span>{t.modal.secRefTitle}</span>
                 </div>
-                <ul className="space-y-2 text-xs sm:text-sm font-space text-[#767676] pl-4 border-l-2 border-[#fd4aa6]/40">
+                <ul className="space-y-2 text-xs sm:text-sm font-space text-[#767676] dark:text-neutral-400 pl-4 border-l-2 border-[#fd4aa6]/40">
                   {caseStudy.references.map((ref, i) => (
                     <li key={i}>{ref}</li>
                   ))}
@@ -437,11 +437,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
           {/* Bottom Action Footer */}
           <RevealOnScroll delay={0}>
-            <div className="pt-8 border-t border-[#e8e8e8] flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="pt-8 border-t border-[#e8e8e8] dark:border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4 transition-colors">
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#202020] hover:bg-[#fd4aa6] text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#202020] dark:bg-neutral-800 hover:bg-[#fd4aa6] text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>{t.modal.backToWorks}</span>
@@ -453,7 +453,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#101010] hover:bg-[#fd4aa6] text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#101010] dark:bg-white hover:bg-[#fd4aa6] hover:dark:bg-[#fd4aa6] text-white dark:text-black hover:dark:text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
                   >
                     <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -464,7 +464,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#d8d8d8] hover:border-black hover:bg-[#f7f7f7] text-[#202020] font-hegarty text-base rounded-full transition-all active:scale-95 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#d8d8d8] dark:border-neutral-700 hover:border-black hover:dark:border-white hover:bg-[#f7f7f7] hover:dark:bg-neutral-800 text-[#202020] dark:text-neutral-200 hover:dark:text-white font-hegarty text-base rounded-full transition-all active:scale-95 cursor-pointer"
                   >
                     <GitBranch className="w-4 h-4" />
                     <span>{t.modal.githubRepo}</span>
