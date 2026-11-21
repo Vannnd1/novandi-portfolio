@@ -116,9 +116,9 @@ export const projectsDataEn: ProjectItem[] = [
         {
           title: "Hybrid Chaos Engine (Gauss-MS Map Composition)",
           rationale:
-            "Single chaos formulas often suffer from periodic windows where patterns can repeat and be predicted. Composing the Gaussian exponential map with the MS Map (a rational chaotic map derived from the Logistic Map) mathematically eliminates periodic islands, creating a continuous, unpredictably chaotic stream.",
+            "Single chaos formulas often suffer from periodic windows where patterns can repeat and be predicted. Composing the Gaussian exponential map with the MS Map—named after its creator Maria Suryadi (Suryadi, Irsan & Satria, 2017) as a rational chaotic modification of the Logistic Map—mathematically eliminates periodic islands, creating a continuous, unpredictably chaotic stream.",
           technicalCode:
-            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Logistic Map modification)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map with modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
+            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Maria Suryadi et al., 2017)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map with modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
         },
         {
           title: "Numba JIT Acceleration for Instant Processing",
@@ -154,6 +154,7 @@ export const projectsDataEn: ProjectItem[] = [
         "Future protocol: integrating automated public-key exchange (e.g., ECDH) for secure key delivery over hospital networks.",
       ],
       references: [
+        "Suryadi, M., Irsan, C., & Satria, H. (2017). Desain dan Analisis Peta Chaos 1D Berbasis Modifikasi Logistic Map (MS Map).",
         "NIST Special Publication 800-22 Revision 1a: A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications.",
         "Shannon, C. E. (1949). Communication Theory of Secrecy Systems. Bell System Technical Journal, 28(4), 656-715.",
         "Universitas Gunadarma Undergraduate Thesis Repository (Skripsi 2026, Novandi Ahmad Ramdhan).",
@@ -658,9 +659,9 @@ export const projectsDataId: ProjectItem[] = [
         {
           title: "Menggabungkan Dua Algoritma Pengacak (Gauss-MS Map)",
           rationale:
-            "Rumus pengacak tunggal sering memiliki celah periodik yang membuat pola angka bisa diprediksi oleh komputer lawan. Menggabungkan fungsi Gaussian dengan MS Map (peta chaos hasil modifikasi Logistic Map) menutup celah tersebut secara matematis, sehingga deretan angka yang dihasilkan benar-benar acak, liar, dan tidak berulang.",
+            "Rumus pengacak tunggal sering memiliki celah periodik yang membuat pola angka bisa diprediksi oleh komputer lawan. Menggabungkan fungsi Gaussian dengan MS Map—yang dinamai dari penemunya Maria Suryadi (Suryadi, Irsan & Satria, 2017) sebagai modifikasi rasional dari Logistic Map—menutup celah tersebut secara matematis, sehingga deretan angka yang dihasilkan benar-benar acak, liar, dan tidak berulang.",
           technicalCode:
-            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Modifikasi Logistic Map)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map dengan modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
+            "# Gauss-MS Map composition: g(f(x))\ndef gauss_ms_map(x, r=3.5, lam=3.5, alpha=5.8, beta=2.5):\n    # Inner: MS Map (Maria Suryadi dkk., 2017)\n    fx = (r * lam * x / (1.0 + lam * (1.0 - x)**2)) % 1.0\n    # Outer: Gauss Map dengan modulo 1\n    return (np.exp(-alpha * (fx**2)) + beta) % 1.0",
         },
         {
           title: "Optimasi Kecepatan Eksekusi (Numba JIT)",
@@ -696,6 +697,7 @@ export const projectsDataId: ProjectItem[] = [
         "Dapat ditambahkan fitur pengiriman kunci otomatis yang aman antar rumah sakit melalui koneksi internet terenkripsi.",
       ],
       references: [
+        "Suryadi, M., Irsan, C., & Satria, H. (2017). Desain dan Analisis Peta Chaos 1D Berbasis Modifikasi Logistic Map (MS Map).",
         "NIST Special Publication 800-22 Revision 1a: A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications.",
         "Shannon, C. E. (1949). Communication Theory of Secrecy Systems. Bell System Technical Journal, 28(4), 656-715.",
         "Repositori Skripsi S1 Informatika Universitas Gunadarma (Skripsi 2026, Novandi Ahmad Ramdhan).",
