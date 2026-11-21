@@ -122,9 +122,16 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
               {/* Right Column: Visual Mockup Viewport */}
               <div className="w-full lg:col-span-6 flex items-center justify-center">
                 <TiltCard maxTilt={3} scale={1.01} className="w-full">
-                  <button
-                    type="button"
+                  <div
+                    role="button"
+                    tabIndex={0}
                     onClick={() => onSelectProject(project.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectProject(project.id);
+                      }
+                    }}
                     aria-label={`${t.works.viewCaseStudy}: ${project.title}`}
                     className="group/window w-full block text-left cursor-pointer rounded-2xl bg-white border border-[#e5e7eb] shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.1)] hover:border-[#d4d4d8] overflow-hidden transition-all duration-300 focus:outline-hidden focus-visible:ring-4 focus-visible:ring-[#fd4aa6]"
                   >
@@ -142,7 +149,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                         </span>
                       ) : (
                         <span className="text-[10px] font-mono text-[#a1a1aa]">
-                          {project.id}
+                          {project.id === 'chaotic-image-encryption' ? 'chaotic_crypto_system.exe' : project.id}
                         </span>
                       )}
 
@@ -156,7 +163,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                     <div className="w-full">
                       <ProjectMockup projectId={project.id} />
                     </div>
-                  </button>
+                  </div>
                 </TiltCard>
               </div>
             </div>

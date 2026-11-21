@@ -59,8 +59,8 @@ export const projectsDataEn: ProjectItem[] = [
     isFlagship: true,
     academicContext: "Undergraduate Thesis (Skripsi), S1 Informatika Universitas Gunadarma",
     summary:
-      "Engineered a medical image cryptography system using composite chaotic maps and a Python Tkinter GUI to protect DICOM/PNG scans, passing 15/15 NIST SP 800-22 statistical randomness tests with 18ms encryption latency.",
-    techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
+      "Engineered a medical image cryptography system using composite chaotic maps packaged into a standalone Windows desktop executable (.exe) to protect DICOM/PNG scans, passing 15/15 NIST SP 800-22 statistical randomness tests with 18ms encryption latency.",
+    techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter GUI", "Windows Executable (.exe)", "SciPy", "OpenCV"],
     metrics: [
       { label: "NIST SP 800-22", value: "15/15 Tests Passed (α=0.01)", status: "passed" },
       { label: "Shannon Entropy", value: "≈ 7.998 / 8.000", status: "verified" },
@@ -78,7 +78,7 @@ export const projectsDataEn: ProjectItem[] = [
         "Implement an 8-bit uniform keystream generator and symmetric XOR diffusion pipeline for 2D Grayscale and 3D RGB/BGR images.",
         "Conduct empirical statistical validation using the full NIST SP 800-22 test battery across 1,000,000 generated bits.",
         "Verify security against differential attacks (NPCR/UACI) and measure adjacent pixel decorrelation.",
-        "Develop an interactive graphical user interface (GUI) with real-time histogram plots, pixel correlation scatter diagrams, and test history reporting.",
+        "Develop an interactive graphical user interface (GUI) with real-time histogram plots, pixel correlation scatter diagrams, and package the final software into a standalone Windows desktop executable (.exe) for direct clinical deployment.",
       ],
       roleAndContributions:
         "Independent researcher and lead software engineer for the undergraduate thesis project (Skripsi). Researched chaos theory formulations, implemented mathematical iteration kernels in Python, engineered the Numba JIT compiler acceleration, authored the 15 NIST SP 800-22 testing scripts, built the Tkinter interactive GUI, and conducted all statistical evaluations.",
@@ -105,6 +105,10 @@ export const projectsDataEn: ProjectItem[] = [
           {
             step: "5. Empirical Cryptanalysis Battery",
             description: "Calculates Shannon Entropy, NPCR/UACI differential sensitivity, adjacent correlation (H, V, D), Chi-Square histogram uniformity, and runs 15 NIST SP 800-22 tests.",
+          },
+          {
+            step: "6. Standalone Desktop Packaging (.exe)",
+            description: "Compiled into a zero-dependency Windows executable (.exe) bundling the Numba chaos kernels, OpenCV, and Tkinter GUI for one-click clinical workstation deployment.",
           },
         ],
       },
@@ -597,8 +601,8 @@ export const projectsDataId: ProjectItem[] = [
     isFlagship: true,
     academicContext: "Skripsi Sarjana S1 Informatika, Universitas Gunadarma",
     summary:
-      "Mengembangkan sistem kriptografi citra medis berbasis composite chaotic maps dan GUI Python (Tkinter) untuk melindungi citra DICOM/PNG, berhasil lulus 15/15 uji keacakan statistik NIST SP 800-22 dengan latensi enkripsi hanya 18 ms.",
-    techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter / GUI", "SciPy", "OpenCV", "Matplotlib"],
+      "Mengembangkan sistem kriptografi citra medis berbasis composite chaotic maps yang dikompilasi menjadi aplikasi desktop mandiri Windows (.exe) untuk melindungi citra DICOM/PNG, berhasil lulus 15/15 uji keacakan statistik NIST SP 800-22 dengan latensi enkripsi hanya 18 ms.",
+    techStack: ["Python 3.10+", "Numba JIT", "NumPy", "Tkinter GUI", "Aplikasi Desktop (.exe)", "SciPy", "OpenCV"],
     metrics: [
       { label: "NIST SP 800-22", value: "15/15 Pengujian Lolos (α=0.01)", status: "passed" },
       { label: "Entropi Shannon", value: "≈ 7.998 / 8.000", status: "verified" },
@@ -616,7 +620,7 @@ export const projectsDataId: ProjectItem[] = [
         "Mengimplementasikan generator keystream 8-bit seragam dan engine difusi simetris bitwise XOR untuk citra 2D Grayscale dan 3D RGB/BGR.",
         "Melakukan validasi statistik empiris menggunakan 15 pengujian lengkap rangkaian standar NIST SP 800-22 pada 1.000.000 bit yang dibangkitkan.",
         "Memverifikasi ketahanan terhadap serangan diferensial (NPCR/UACI) serta mengukur dekorelasi piksel bersebelahan.",
-        "Membangun antarmuka grafis interaktif (GUI) dengan visualisasi histogram real-time, diagram pencar korelasi piksel, dan pelaporan riwayat uji.",
+        "Membangun antarmuka grafis interaktif (GUI) dengan visualisasi histogram real-time, diagram pencar korelasi piksel, serta mengemas sistem menjadi aplikasi desktop mandiri Windows (.exe) siap pakai.",
       ],
       roleAndContributions:
         "Peneliti mandiri dan software engineer utama untuk proyek skripsi sarjana S1 Informatika. Meriset formulasi teori chaos, mengimplementasikan kernel iterasi matematis di Python, merekayasa akselerasi compiler Numba JIT, menyusun skrip pengujian 15 uji NIST SP 800-22, membangun GUI interaktif dengan Tkinter, dan melaksanakan seluruh evaluasi statistik.",
@@ -643,6 +647,10 @@ export const projectsDataId: ProjectItem[] = [
           {
             step: "5. Rangkaian Kriptanalisis Empiris",
             description: "Menghitung Entropi Informasi Shannon, sensitivitas diferensial NPCR/UACI, korelasi piksel tetangga (H, V, D), keseragaman histogram Chi-Square, dan menjalankan 15 pengujian NIST SP 800-22.",
+          },
+          {
+            step: "6. Kompilasi Executable Mandiri (.exe)",
+            description: "Mengompilasi sistem menjadi aplikasi desktop mandiri Windows (.exe) tanpa dependensi eksternal, memaketkan seluruh kernel chaos Numba, OpenCV, dan GUI Tkinter untuk penggunaan langsung.",
           },
         ],
       },

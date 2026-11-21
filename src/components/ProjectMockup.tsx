@@ -14,6 +14,111 @@ interface ProjectMockupProps {
   projectId: string;
 }
 
+const CryptoProjectHoverShowcase: React.FC = () => {
+  const [selectedIdx, setSelectedIdx] = React.useState<number | null>(null);
+
+  const screens = [
+    {
+      src: '/projects/crypto-main-menu.png',
+      alt: 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)',
+      label: 'Halaman Utama',
+      badge: '01 · Menu Utama',
+    },
+    {
+      src: '/projects/crypto-encrypt.jpg',
+      alt: 'Halaman Enkripsi Citra Digital (.exe)',
+      label: 'Enkripsi Citra',
+      badge: '02 · Enkripsi',
+    },
+    {
+      src: '/projects/crypto-decrypt.jpg',
+      alt: 'Halaman Dekripsi Citra Digital (.exe)',
+      label: 'Dekripsi Citra',
+      badge: '03 · Dekripsi',
+    },
+  ];
+
+  return (
+    <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#0F172A] select-none group/showcase">
+      {/* Vertical sliding track containing the 3 images in order */}
+      <div
+        className={`w-full transition-transform ease-in-out ${
+          selectedIdx !== null
+            ? 'duration-500'
+            : 'duration-[6000ms] group-hover/window:-translate-y-[66.666%] group-hover/showcase:-translate-y-[66.666%]'
+        }`}
+        style={
+          selectedIdx !== null
+            ? { transform: `translateY(-${selectedIdx * 33.333}%)` }
+            : undefined
+        }
+      >
+        {screens.map((screen, idx) => (
+          <div key={idx} className="relative w-full aspect-[16/9] bg-slate-900">
+            <img
+              src={screen.src}
+              alt={screen.alt}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            {/* Subtle screen label badge */}
+            <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[9px] font-mono font-medium text-white shadow-sm pointer-events-none">
+              <span>{screen.badge}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Floating navigation pills overlay at bottom */}
+      <div className="absolute bottom-2.5 left-0 right-0 z-20 flex items-center justify-between px-3 pointer-events-none">
+        {/* Format hint */}
+        <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[8.5px] font-mono text-slate-300 shadow-sm">
+          <span>🖥️ Windows .exe</span>
+        </div>
+
+        {/* Tab switcher buttons */}
+        <div className="flex items-center gap-1 pointer-events-auto bg-black/75 backdrop-blur-md border border-white/15 p-0.5 rounded-full shadow-sm">
+          {screens.map((screen, idx) => {
+            const isActive = selectedIdx === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedIdx(idx);
+                }}
+                onMouseEnter={() => setSelectedIdx(idx)}
+                className={`px-2 py-0.5 rounded-full text-[8.5px] font-medium transition-all ${
+                  isActive
+                    ? 'bg-blue-600 text-white font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                }`}
+                title={screen.label}
+              >
+                {screen.label}
+              </button>
+            );
+          })}
+          {selectedIdx !== null && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIdx(null);
+              }}
+              className="px-1.5 py-0.5 rounded-full text-[8px] text-slate-400 hover:text-white"
+              title="Reset auto-hover"
+            >
+              ↺
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
   switch (projectId) {
     /* ──────────────────────────────────────────────────────────────────────────
@@ -21,116 +126,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
      * Direct replica of tkinter GUI and wireframe in Skripsi documentation
      * ────────────────────────────────────────────────────────────────────────── */
     case 'chaotic-image-encryption':
-      return (
-        <div className="w-full bg-[#F8FAFC] text-[#0F172A] p-3.5 space-y-2.5 font-sans text-[10px] select-none">
-          {/* Windows Title Bar */}
-          <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0] bg-white -m-3.5 mb-2.5 p-2.5 px-3">
-            <div className="flex items-center gap-1.5">
-              <span className="text-blue-600 font-bold text-xs">🔒</span>
-              <span className="font-semibold text-[11px] text-[#0F172A]">
-                Enkripsi Citra Digital — Algoritma: Gauss MS Map (Komposisi g∘f)
-              </span>
-            </div>
-            <div className="flex items-center gap-1 text-[9px] text-[#64748B]">
-              <span className="w-2.5 h-2.5 rounded-sm border border-[#CBD5E1] inline-block text-center leading-[8px]">—</span>
-              <span className="w-2.5 h-2.5 rounded-sm border border-[#CBD5E1] inline-block text-center leading-[8px]">□</span>
-              <span className="w-2.5 h-2.5 rounded-sm border border-[#EF4444] text-[#EF4444] inline-block text-center leading-[8px]">✕</span>
-            </div>
-          </div>
-
-          {/* 3-Column Main Layout matching encrypt.py wrapper */}
-          <div className="grid grid-cols-3 gap-2 pt-1">
-            {/* Kolom Kiri — Citra Asli */}
-            <div className="bg-white border border-[#E2E8F0] rounded p-2 flex flex-col justify-between">
-              <div className="font-bold text-[9px] text-[#0F172A] border-b border-[#E2E8F0] pb-1 flex items-center gap-1">
-                <span>📂</span> Citra Asli
-              </div>
-              <div className="my-1.5 h-24 bg-[#F1F5F9] border border-[#CBD5E1] rounded overflow-hidden flex items-center justify-center relative">
-                <img
-                  src="/projects/mri-sample.jpg"
-                  alt="Citra Asli MRI"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="bg-[#3B82F6] hover:bg-blue-600 text-white text-[9px] font-semibold py-1 rounded text-center">
-                📂 Open Image
-              </div>
-            </div>
-
-            {/* Kolom Tengah — Parameter Chaos */}
-            <div className="bg-white border border-[#E2E8F0] rounded p-2 space-y-1">
-              <div className="font-bold text-[9px] text-[#0F172A] border-b border-[#E2E8F0] pb-1 flex items-center gap-1">
-                <span>⚙️</span> Parameter Chaos
-              </div>
-              <div className="space-y-0.5 text-[8.5px] text-[#475569]">
-                <div className="flex justify-between items-center">
-                  <span>X₀ (awal):</span>
-                  <span className="bg-[#F1F5F9] border border-[#E2E8F0] px-1 py-0.5 rounded font-mono font-bold">0.3</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>r (MS):</span>
-                  <span className="bg-[#F1F5F9] border border-[#E2E8F0] px-1 py-0.5 rounded font-mono font-bold">3.5</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>α (Gauss):</span>
-                  <span className="bg-[#F1F5F9] border border-[#E2E8F0] px-1 py-0.5 rounded font-mono font-bold">5.8</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>β (Gauss):</span>
-                  <span className="bg-[#F1F5F9] border border-[#E2E8F0] px-1 py-0.5 rounded font-mono font-bold">3.1</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Iter (skip):</span>
-                  <span className="bg-[#F1F5F9] border border-[#E2E8F0] px-1 py-0.5 rounded font-mono font-bold">200</span>
-                </div>
-              </div>
-              <div className="pt-1">
-                <div className="bg-[#3B82F6] text-white text-[8.5px] font-bold py-1 rounded text-center">
-                  🔒 Enkripsi Sekarang
-                </div>
-                <div className="text-[8px] text-[#64748B] text-center mt-0.5 font-mono">
-                  Waktu: <strong className="text-emerald-600">18.4 ms</strong>
-                </div>
-              </div>
-            </div>
-
-            {/* Kolom Kanan — Citra Hasil Enkripsi */}
-            <div className="bg-white border border-[#E2E8F0] rounded p-2 flex flex-col justify-between">
-              <div className="font-bold text-[9px] text-[#0F172A] border-b border-[#E2E8F0] pb-1 flex items-center gap-1">
-                <span>🔒</span> Citra Terenkripsi
-              </div>
-              <div className="my-1.5 h-24 bg-[#0F172A] border border-[#CBD5E1] rounded overflow-hidden relative">
-                {/* Static noise texture simulating chaotic cipher */}
-                <div
-                  className="w-full h-full opacity-85"
-                  style={{
-                    backgroundImage:
-                      'radial-gradient(#fd4aa6 0.75px, transparent 0.75px), radial-gradient(#38bdf8 0.75px, #0F172A 0.75px)',
-                    backgroundSize: '4px 4px',
-                    backgroundPosition: '0 0, 2px 2px',
-                  }}
-                />
-              </div>
-              <div className="bg-[#10B981] hover:bg-emerald-600 text-white text-[9px] font-semibold py-1 rounded text-center">
-                💾 Save Image
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Analysis Buttons matching encrypt.py */}
-          <div className="grid grid-cols-3 gap-1.5 pt-1 text-[8.5px]">
-            <div className="bg-white border border-[#CBD5E1] p-1 rounded text-center font-medium text-[#475569]">
-              📉 Uji Correlation
-            </div>
-            <div className="bg-white border border-[#CBD5E1] p-1 rounded text-center font-medium text-[#475569]">
-              📊 Analisis Metrik
-            </div>
-            <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 p-1 rounded text-center font-bold">
-              ✓ NIST P-val &gt; 0.01
-            </div>
-          </div>
-        </div>
-      );
+      return <CryptoProjectHoverShowcase />;
 
     /* ──────────────────────────────────────────────────────────────────────────
      * 2. Manufacturing Digital Operations System (MOM / MES)
