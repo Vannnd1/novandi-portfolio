@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, GitBranch } from 'lucide-react';
+import { ArrowUpRight, GitBranch, ZoomIn } from 'lucide-react';
 import type { ProjectItem } from '../../data/projects';
 import { useLanguage } from '../../context/useLanguage';
 import { RevealOnScroll } from '../RevealOnScroll';
@@ -8,6 +8,7 @@ import { TiltCard } from '../TiltCard';
 import { Magnetic } from '../MagneticButton';
 import { TechPill } from '../TechPill';
 import { ProjectMockup } from '../ProjectMockup';
+import { ImageLightbox, type LightboxImage } from '../ImageLightbox';
 
 interface ProjectShowcaseProps {
   projects: ProjectItem[];
@@ -19,6 +20,32 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
   onSelectProject,
 }) => {
   const { language, t } = useLanguage();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const cryptoScreenshots: LightboxImage[] = [
+    {
+      src: '/projects/crypto-main-menu.png',
+      alt: language === 'id' ? 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)' : 'Main Menu Chaos Image Encryption (.exe)',
+      title: language === 'id' ? '01 · Halaman Utama (Main Menu & Pemilihan Algoritma Chaos)' : '01 · Main Menu (Chaos Algorithm Selection & Setup)',
+      subtitle: language === 'id' ? 'Antarmuka GUI Tkinter untuk pemilihan algoritma chaos, inisialisasi kunci rahasia & pengujian NIST' : 'Tkinter GUI for chaotic algorithm selection, seed initialization & NIST SP 800-22 testing',
+      badge: '01 / 03 · Main Menu',
+    },
+    {
+      src: '/projects/crypto-encrypt.jpg',
+      alt: language === 'id' ? 'Modul Enkripsi Citra Digital (.exe)' : 'Image Encryption Module (.exe)',
+      title: language === 'id' ? '02 · Modul Enkripsi Citra Medis (Gauss-MS Map · Latensi 18 ms)' : '02 · Medical Image Encryption Module (Gauss-MS Map · 18 ms)',
+      subtitle: language === 'id' ? 'Pengacakan piksel citra medis resolusi tinggi secara bitwise XOR dengan latensi 18 ms dan entropi 7.998' : 'High-speed bitwise XOR medical image scrambling with 18 ms latency and 7.998 Shannon entropy',
+      badge: '02 / 03 · Enkripsi',
+    },
+    {
+      src: '/projects/crypto-decrypt.jpg',
+      alt: language === 'id' ? 'Modul Dekripsi Citra Digital (.exe)' : 'Image Decryption Module (.exe)',
+      title: language === 'id' ? '03 · Modul Dekripsi & Restorasi Citra Lossless (100% Sempurna)' : '03 · Decryption & 100% Lossless Restoration Module',
+      subtitle: language === 'id' ? 'Pemulihan citra medis 100% utuh tanpa cacat piksel dengan parameter kunci chaos yang sama' : 'Exact 100% pixel restoration preserving full diagnostic clarity using identical chaos parameters',
+      badge: '03 / 03 · Dekripsi',
+    },
+  ];
 
   return (
     <motion.div
@@ -221,14 +248,19 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                   <div
                     role="button"
                     tabIndex={0}
-                    onClick={() => onSelectProject(project.id)}
+                    onClick={() => {
+                      setLightboxIndex(0);
+                      setLightboxOpen(true);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        onSelectProject(project.id);
+                        setLightboxIndex(0);
+                        setLightboxOpen(true);
                       }
                     }}
-                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-zoom-in text-left"
+                    title={language === 'id' ? 'Klik untuk melihat screenshot layar penuh' : 'Click to view full screenshot'}
                   >
                     <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
                       <div className="flex items-center gap-2">
@@ -248,6 +280,13 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                         className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
                         loading="lazy"
                       />
+                      {/* Zoom hint badge on hover */}
+                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white text-xs font-mono border border-white/20 shadow-lg">
+                          <ZoomIn className="w-3.5 h-3.5 text-[#fd4aa6]" />
+                          <span>{language === 'id' ? 'Klik untuk memperbesar screenshot' : 'Click to enlarge screenshot'}</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -255,14 +294,19 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                   <div
                     role="button"
                     tabIndex={0}
-                    onClick={() => onSelectProject(project.id)}
+                    onClick={() => {
+                      setLightboxIndex(1);
+                      setLightboxOpen(true);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        onSelectProject(project.id);
+                        setLightboxIndex(1);
+                        setLightboxOpen(true);
                       }
                     }}
-                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-zoom-in text-left"
+                    title={language === 'id' ? 'Klik untuk melihat screenshot layar penuh' : 'Click to view full screenshot'}
                   >
                     <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
                       <div className="flex items-center gap-2">
@@ -284,6 +328,13 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                         className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
                         loading="lazy"
                       />
+                      {/* Zoom hint badge on hover */}
+                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white text-xs font-mono border border-white/20 shadow-lg">
+                          <ZoomIn className="w-3.5 h-3.5 text-[#fd4aa6]" />
+                          <span>{language === 'id' ? 'Klik untuk memperbesar screenshot' : 'Click to enlarge screenshot'}</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -291,14 +342,19 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                   <div
                     role="button"
                     tabIndex={0}
-                    onClick={() => onSelectProject(project.id)}
+                    onClick={() => {
+                      setLightboxIndex(2);
+                      setLightboxOpen(true);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        onSelectProject(project.id);
+                        setLightboxIndex(2);
+                        setLightboxOpen(true);
                       }
                     }}
-                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-pointer text-left"
+                    className="group/img block rounded-xl border border-neutral-200 overflow-hidden bg-neutral-900 shadow-xs hover:border-[#fd4aa6]/60 transition-all cursor-zoom-in text-left"
+                    title={language === 'id' ? 'Klik untuk melihat screenshot layar penuh' : 'Click to view full screenshot'}
                   >
                     <div className="px-3.5 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-700">
                       <div className="flex items-center gap-2">
@@ -320,6 +376,13 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                         className="w-full h-full object-cover group-hover/img:scale-[1.01] transition-transform duration-300"
                         loading="lazy"
                       />
+                      {/* Zoom hint badge on hover */}
+                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white text-xs font-mono border border-white/20 shadow-lg">
+                          <ZoomIn className="w-3.5 h-3.5 text-[#fd4aa6]" />
+                          <span>{language === 'id' ? 'Klik untuk memperbesar screenshot' : 'Click to enlarge screenshot'}</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -328,6 +391,22 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
           </article>
         </RevealOnScroll>
       ))}
+
+      {/* Fullscreen Screenshot Lightbox */}
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        currentIndex={lightboxIndex}
+        images={cryptoScreenshots}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={(newIdx) => setLightboxIndex(newIdx)}
+        onViewCaseStudy={() => onSelectProject('chaotic-image-encryption')}
+        caseStudyLabel={t.works.viewCaseStudy}
+        hintLabel={
+          language === 'id'
+            ? 'Gunakan tombol panah ← → untuk navigasi · Esc untuk menutup'
+            : 'Use arrow keys ← → to navigate · Esc to close'
+        }
+      />
     </motion.div>
   );
 };
