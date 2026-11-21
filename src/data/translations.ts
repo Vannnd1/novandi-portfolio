@@ -48,8 +48,6 @@ export interface Translations {
     liveDemo: string;
     quickPreview: string;
     techStackAria: string;
-    previewBadge: string;
-    clickToInspect: string;
   };
   stickerCard: {
     heading: string;
@@ -136,8 +134,6 @@ export const translations: Record<Language, Translations> = {
       liveDemo: "live demo",
       quickPreview: "pratinjau cepat",
       techStackAria: "Teknologi yang digunakan",
-      previewBadge: "Live Replica // Viewport",
-      clickToInspect: "Klik untuk buka studi kasus lengkap",
     },
     stickerCard: {
       heading: "Siap mengakselerasi alur kerja Anda?",
@@ -222,8 +218,6 @@ export const translations: Record<Language, Translations> = {
       liveDemo: "live demo",
       quickPreview: "quick preview",
       techStackAria: "Tech stack",
-      previewBadge: "Live Replica // Viewport",
-      clickToInspect: "Click to open full case study",
     },
     stickerCard: {
       heading: "Ready to elevate your workflow?",

@@ -73,12 +73,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Technical Status & Availability Badges */}
           <motion.div variants={heroItemVariants} className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.04] border border-black/10 font-space text-xs font-semibold text-[#18181b] tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-[#fd4aa6] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#fd4aa6]" />
               <span>{t.hero.discipline}</span>
             </span>
 
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 font-space text-xs font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>{t.hero.statusAvailable}</span>
             </span>
           </motion.div>
@@ -186,7 +186,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <div>{profile.location}</div>
                     <div className="text-[10px] font-normal text-[#666]">Universitas Gunadarma</div>
                   </div>
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
               </div>
             </div>

@@ -145,9 +145,8 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="font-bold text-xs text-slate-900">Operational Command Center</div>
               <div className="text-[8.5px] text-slate-500">Real-time manufacturing operations & quality gate events</div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[8.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Live on Vercel</span>
+            <span className="px-2 py-0.5 rounded text-[8.5px] font-mono text-slate-500 bg-slate-100 border border-slate-200">
+              v1.0 MES
             </span>
           </div>
 
@@ -250,11 +249,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="text-[8.5px] text-slate-400">Sales Velocity, RFM Clusters & Churn Predictor</div>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-emerald-500 text-white shadow-xs flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>Live on Vercel</span>
-              </span>
-              <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+              <span className="px-1.5 py-0.5 rounded text-[8px] font-mono text-cyan-400 bg-cyan-500/10 border border-cyan-500/30">
                 Gemini 1.5
               </span>
             </div>
@@ -396,11 +391,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="text-[8.5px] text-slate-500">Film Jumbo · Support Vector Machine & InSet Lexicon</div>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-emerald-500 text-white shadow-xs flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>Live on Streamlit</span>
-              </span>
-              <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
+              <span className="px-2 py-0.5 rounded text-[8px] font-mono text-purple-700 bg-purple-50 border border-purple-200">
                 SVM 86%
               </span>
             </div>
@@ -417,8 +408,12 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <div className="h-full bg-rose-500 w-[25.8%]" />
             </div>
             <div className="flex justify-between text-[8.5px] font-medium pt-0.5">
-              <span className="text-emerald-700 font-bold">● Positif 74.2% (175 data)</span>
-              <span className="text-rose-700 font-bold">● Negatif 25.8% (61 data)</span>
+              <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-xs bg-emerald-500 inline-block" /> Positif 74.2% (175 data)
+              </span>
+              <span className="text-rose-700 font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-xs bg-rose-500 inline-block" /> Negatif 25.8% (61 data)
+              </span>
             </div>
           </div>
 
@@ -444,9 +439,9 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
           {/* Live Analyzed Comment Stream Preview */}
           <div className="space-y-1.5 pt-1 border-t border-slate-100">
-            <div className="text-[8px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
-              <span>Sample Inference Stream</span>
-              <span className="text-[7.5px] text-emerald-600 font-semibold font-mono">● Real-time Preprocessed</span>
+            <div className="text-[8px] font-semibold text-slate-500 uppercase tracking-wider flex items-center justify-between">
+              <span>Sample Inference</span>
+              <span className="text-[8px] text-slate-400 font-mono">TF-IDF + Linear SVM</span>
             </div>
 
             {/* Comment 1: Positive */}
@@ -503,14 +498,9 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
               <span className="font-bold text-xs text-sky-950">Sahabat Dunia — Belajar Hewan</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="flex items-center gap-1 text-[8px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>Live on Vercel</span>
+              <span className="px-2 py-0.5 rounded text-[8px] font-mono text-sky-700 bg-white/80 border border-sky-200">
+                Web Audio API
               </span>
-              <div className="flex items-center gap-1 text-[8.5px] bg-white/80 px-2 py-0.5 rounded-full border border-sky-200 text-sky-800">
-                <span>🔊</span>
-                <span>Audio: Aktif</span>
-              </div>
             </div>
           </div>
 

@@ -129,9 +129,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
+                className="inline-flex items-center gap-1.5 font-hegarty text-xs sm:text-sm bg-[#101010] hover:bg-[#fd4aa6] text-white px-3.5 py-1.5 rounded-full active:scale-95 transition-all shadow-xs"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 <span>{t.modal.liveSite}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
@@ -197,9 +196,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#101010] hover:bg-[#fd4aa6] text-white font-hegarty text-sm rounded-full transition-all active:scale-95 shadow-sm"
                   >
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                     <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
@@ -455,9 +453,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                     href={project.demoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-md shadow-emerald-600/20 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#101010] hover:bg-[#fd4aa6] text-white font-hegarty text-base rounded-full transition-all active:scale-95 shadow-sm cursor-pointer"
                   >
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                     <span>{t.modal.visitLiveSite}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>

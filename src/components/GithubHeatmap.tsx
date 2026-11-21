@@ -196,21 +196,15 @@ export const GithubHeatmap: React.FC = () => {
     <div className="w-full bg-white border border-[#E5E7EB] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
       {/* ── CARD HEADER: Live Status, Identity & Tooltip Bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#F3F4F6]">
-        {/* User / Live Sync Pill */}
+        {/* User Identity */}
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-700 shrink-0">
             <GitHubIcon className="w-4 h-4" />
           </div>
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-sans font-semibold text-xs sm:text-sm text-[#111318] tracking-tight">
-                Vannnd1
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                {language === 'id' ? 'Aktif' : 'Live Sync'}
-              </span>
-            </div>
+            <span className="font-sans font-semibold text-xs sm:text-sm text-[#111318] tracking-tight">
+              Vannnd1
+            </span>
             <span className="text-[10px] text-[#9CA3AF] font-sans">
               GitHub Contribution Graph
             </span>
