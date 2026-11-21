@@ -30,7 +30,7 @@ const CryptoProjectHoverShowcase: React.FC = () => {
       <div className="absolute bottom-2.5 left-2.5 right-2.5 z-20 flex items-center justify-between px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[8.5px] font-mono text-slate-300 shadow-sm pointer-events-none">
         <span>🖥️ Windows .exe</span>
         <span className="text-white/90">
-          {language === 'id' ? 'Hover card untuk lihat 3 layar alur ↓' : 'Hover card to view 3-screen workflow ↓'}
+          {language === 'id' ? 'Hover gambar untuk lihat 3 alur layar ↓' : 'Hover image to view 3-screen workflow ↓'}
         </span>
       </div>
     </div>
