@@ -370,17 +370,17 @@ export const projectsDataEn: ProjectItem[] = [
     title: "Adaptive Learning Insight — Capstone Project Program Asah (Dicoding × Accenture)",
     subtitle: "AI-Powered Educational Learning Analytics & Student Diagnostic Intelligence Platform",
     category: "academic-coursework",
-    categoryLabel: "COHORT CAPSTONE · FULL-STACK WEB & AI",
+    categoryLabel: "COHORT CAPSTONE (5-MEMBER TEAM) · FRONTEND ROLE",
     year: "2025",
     isFlagship: false,
     academicContext: "Program Asah 2025 — Asah led by Dicoding in association with Accenture (Learning Path: React & Back-End with AI)",
     summary:
-      "Engineered an adaptive learning analytics platform using React and Express during the Dicoding × Accenture cohort, providing study progression tracking and AI-driven personalized insights.",
+      "A collaborative 5-member team capstone project during the Dicoding × Accenture cohort, where my role was Frontend Developer (React 19, Tailwind CSS, Recharts) responsible for building the learning analytics dashboard, quiz velocity tracking, and AI diagnostic insights.",
     techStack: ["React 19", "Node.js", "Express 5", "Supabase", "PostgreSQL", "Recharts", "REST API", "Tailwind CSS", "AI Analytics Engine"],
     metrics: [
+      { label: "Team Structure", value: "5 Members (Role: Frontend)", status: "verified" },
       { label: "Program Cohort", value: "Asah 2025 (Dicoding × Accenture)", status: "verified" },
       { label: "Learning Path", value: "React & Back-End with AI", status: "verified" },
-      { label: "Cohort Training", value: "900+ Hours Curriculum", status: "verified" },
       { label: "Capstone Delivery", value: "Validated & Graduated", status: "verified" },
     ],
     githubUrl: "https://github.com/Vannnd1/Capstone-Project-Asah",
@@ -389,14 +389,14 @@ export const projectsDataEn: ProjectItem[] = [
       problemStatement:
         "Modern digital education platforms generate massive volumes of student activity data, yet instructors and academic mentors often lack real-time automated tools to identify students falling behind, pinpoint specific conceptual bottlenecks, or provide individualized intervention strategies.",
       objectives: [
-        "Collaborate in a cross-functional development team to engineer a scalable web-based student learning analytics dashboard.",
-        "Construct responsive, interactive user interfaces in React 19 utilizing Recharts for visual progress tracking, velocity metrics, and quiz mastery rates.",
+        "Collaborate within a 5-member cross-functional engineering team to develop a scalable web-based student learning analytics dashboard.",
+        "Architect and construct responsive, interactive user interfaces as Frontend Developer in React 19 utilizing Recharts for visual progress tracking, velocity metrics, and quiz mastery rates.",
         "Architect and implement RESTful API endpoints using Node.js and Express 5, connecting to Supabase (PostgreSQL) for persistent data storage.",
         "Integrate AI-driven learning diagnostic models to synthesize quiz submission trends and generate tailored improvement recommendations.",
         "Execute rigorous code reviews, automated linting, and Git feature-branch workflows matching Dicoding and Accenture production standards.",
       ],
       roleAndContributions:
-        "Full-Stack Web & AI Developer (Cohort Collaborator). Implemented frontend interface components in React with Recharts for dynamic time-series performance tracking, developed and tested Express backend REST endpoints, handled database schema integration with Supabase, and participated in Git/GitHub team collaboration with strict code reviews.",
+        "Frontend Developer (5-Member Team Project). As the team's frontend engineer in a 5-person collaborative group, was fully responsible for architecting and developing the client-side user interface using React 19, Tailwind CSS, and Recharts. Implemented real-time student study velocity charts, quiz mastery performance gauges, and interactive AI learning diagnostic cards. Integrated REST API endpoints with the Express backend built by teammates and maintained rigorous Git/GitHub code reviews and agile sprint workflows.",
       systemArchitecture: {
         overview:
           "Client-server full-stack architecture coupling a React 19 single-page application with a Node.js Express 5 RESTful API, backed by Supabase cloud PostgreSQL storage and an AI analytics inference pipeline.",
@@ -429,8 +429,8 @@ export const projectsDataEn: ProjectItem[] = [
           "Successfully completed, defended, and validated as the official team capstone deliverable for Program Asah 2025 led by Dicoding in association with Accenture, fulfilling the graduation criteria for the specialized React & Back-End with AI learning path.",
         metrics: [
           { label: "Cohort Graduation", value: "Verified Distinction", benchmark: "Asah 2025 (Dicoding × Accenture)" },
+          { label: "Team Structure", value: "5 Members (Role: Frontend)", benchmark: "Cross-Functional Agile Team" },
           { label: "Learning Path", value: "React & Back-End with AI", benchmark: "900+ Hours Curriculum" },
-          { label: "Tech Architecture", value: "Full-Stack Web + AI", benchmark: "React 19 + Express 5 + Supabase" },
           { label: "Live Deployment", value: "Vercel Cloud", benchmark: "capstone-project-asah.vercel.app" },
         ],
       },
@@ -913,17 +913,17 @@ export const projectsDataId: ProjectItem[] = [
     title: "Adaptive Learning Insight — Proyek Capstone Program Asah (Dicoding × Accenture)",
     subtitle: "Platform Analitik Edukasi & Inteligensi Diagnostik Belajar Siswa Berbasis AI",
     category: "academic-coursework",
-    categoryLabel: "CAPSTONE COHORT · WEB FULL-STACK & AI",
+    categoryLabel: "CAPSTONE TIM (5 ORANG) · ROLE FRONTEND",
     year: "2025",
     isFlagship: false,
     academicContext: "Program Asah 2025 — Asah oleh Dicoding bersama Accenture (Learning Path: React & Back-End with AI)",
     summary:
-      "Merekayasa platform analitik pembelajaran adaptif berbasis React dan Express pada program beasiswa Dicoding × Accenture, menghadirkan pelacakan progres belajar dan rekomendasi materi bertenaga AI.",
+      "Proyek capstone tim yang beranggotakan 5 orang pada program beasiswa Dicoding × Accenture, di mana peran saya adalah Frontend Developer (React 19, Tailwind CSS, Recharts) untuk merancang dan membangun antarmuka dasbor analitik belajar adaptif, visualisasi progres kuis, serta integrasi rekomendasi AI.",
     techStack: ["React 19", "Node.js", "Express 5", "Supabase", "PostgreSQL", "Recharts", "REST API", "Tailwind CSS", "Engine Analitik AI"],
     metrics: [
+      { label: "Struktur Tim", value: "5 Orang (Role: Frontend)", status: "verified" },
       { label: "Program Cohort", value: "Asah 2025 (Dicoding × Accenture)", status: "verified" },
       { label: "Alur Pembelajaran", value: "React & Back-End with AI", status: "verified" },
-      { label: "Pelatihan Cohort", value: "900+ Jam Kurikulum", status: "verified" },
       { label: "Hasil Capstone", value: "Tervalidasi & Lulus", status: "verified" },
     ],
     githubUrl: "https://github.com/Vannnd1/Capstone-Project-Asah",
@@ -932,14 +932,14 @@ export const projectsDataId: ProjectItem[] = [
       problemStatement:
         "Platform edukasi digital modern menghasilkan volume data aktivitas siswa yang melimpah, namun para pengajar dan mentor akademik sering kali kekurangan alat otomatis real-time untuk mendeteksi siswa yang mulai tertinggal, menemukan materi yang menjadi kendala konseptual, atau menyusun strategi intervensi yang dipersonalisasi.",
       objectives: [
-        "Berkolaborasi dalam tim pengembang lintas fungsi untuk merekayasa dasbor analitik belajar siswa berbasis web yang andal dan terukur.",
-        "Membangun antarmuka pengguna yang responsif dan interaktif di React 19 menggunakan Recharts untuk visualisasi perkembangan belajar, metrik akselerasi, dan rasio ketuntasan kuis.",
+        "Berkolaborasi dalam tim pengembang lintas fungsi beranggotakan 5 orang untuk merekayasa dasbor analitik belajar siswa berbasis web yang andal dan terukur.",
+        "Merancang dan membangun antarmuka pengguna responsif sebagai Frontend Developer di React 19 menggunakan Recharts untuk visualisasi perkembangan belajar, metrik akselerasi, dan rasio ketuntasan kuis.",
         "Merancang dan mengimplementasikan endpoint RESTful API menggunakan Node.js dan Express 5, terhubung ke Supabase (PostgreSQL) untuk penyimpanan data persisten.",
         "Mengintegrasikan model diagnostik pembelajaran berbasis AI untuk menganalisis tren pengerjaan kuis dan menghasilkan rekomendasi perbaikan yang tepat sasaran.",
         "Melaksanakan code review ketat, linting otomatis, dan alur kerja Git feature-branch yang selaras dengan standar produksi Dicoding dan Accenture.",
       ],
       roleAndContributions:
-        "Full-Stack Web & AI Developer (Kolaborator Cohort). Mengimplementasikan komponen front-end di React dengan Recharts untuk pelacakan performa berkala, mengembangkan dan menguji endpoint REST backend Express, mengintegrasikan skema basis data Supabase, serta aktif dalam kolaborasi Git/GitHub dengan review kode yang ketat.",
+        "Frontend Developer (Tim Proyek 5 Orang). Sebagai pengembang frontend dalam tim beranggotakan 5 orang, bertanggung jawab penuh atas perancangan dan implementasi antarmuka pengguna (UI/UX) berbasis React 19, Tailwind CSS, dan Recharts. Mengembangkan komponen visualisasi performa belajar siswa secara dinamis, dasbor pelacakan kuis, serta integrasi konsumsi endpoint RESTful API backend yang dibangun oleh rekan tim. Berkolaborasi aktif melalui alur Git/GitHub, pull request review, serta koordinasi sprint tim.",
       systemArchitecture: {
         overview:
           "Arsitektur full-stack client-server yang menghubungkan aplikasi web React 19 dengan RESTful API Node.js Express 5, didukung penyimpanan awan Supabase PostgreSQL dan pipeline inferensi analitik AI.",
@@ -972,8 +972,8 @@ export const projectsDataId: ProjectItem[] = [
           "Berhasil diselesaikan, dipresentasikan, dan divalidasi sebagai proyek akhir resmi Program Asah 2025 yang dipimpin oleh Dicoding bersama Accenture, memenuhi syarat kelulusan alur React & Back-End with AI.",
         metrics: [
           { label: "Kelulusan Cohort", value: "Lulus Terverifikasi", benchmark: "Asah 2025 (Dicoding × Accenture)" },
+          { label: "Struktur Tim", value: "5 Orang (Role: Frontend)", benchmark: "Kolaborasi Tim Lintas Fungsi" },
           { label: "Alur Pembelajaran", value: "React & Back-End with AI", benchmark: "900+ Jam Kurikulum" },
-          { label: "Arsitektur Teknis", value: "Full-Stack Web + AI", benchmark: "React 19 + Express 5 + Supabase" },
           { label: "Deployment Live", value: "Vercel Cloud", benchmark: "capstone-project-asah.vercel.app" },
         ],
       },

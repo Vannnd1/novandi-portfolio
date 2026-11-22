@@ -38,6 +38,8 @@ const CryptoProjectHoverShowcase: React.FC = () => {
 };
 
 export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
+  const { language } = useLanguage();
+
   switch (projectId) {
     /* ──────────────────────────────────────────────────────────────────────────
      * 1. Chaotic Medical Image Encryption System
@@ -219,10 +221,14 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
           <div className="flex items-center justify-between pb-1.5 border-b border-gray-100 dark:border-slate-800">
             <div>
               <div className="font-bold text-xs text-gray-900 dark:text-white">Halo, Novan! 👋</div>
-              <div className="text-[8.5px] text-gray-500 dark:text-slate-400">Program Asah 2025 · Dicoding × Accenture · React & Back-End with AI</div>
+              <div className="text-[8.5px] text-gray-500 dark:text-slate-400">
+                {language === 'id'
+                  ? 'Program Asah 2025 · Dicoding × Accenture · Tim 5 Orang'
+                  : 'Program Asah 2025 · Dicoding × Accenture · 5-Member Team'}
+              </div>
             </div>
             <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
-              React + AI Cohort
+              {language === 'id' ? 'Role: Frontend (Tim 5)' : 'Role: Frontend (Team of 5)'}
             </span>
           </div>
 
