@@ -59,16 +59,26 @@ export const NovandiPortfolio: React.FC = () => {
 
             {/* Interactive Language Switcher Toggle */}
             <div
-              className="relative flex items-center gap-1 bg-[#f4f4f5] dark:bg-[#18181b] p-1 rounded-full border border-[#e4e4e7] dark:border-[#27272a] text-xs font-space transition-colors"
+              className="relative grid grid-cols-2 p-1 bg-[#f4f4f5] dark:bg-[#18181b] rounded-full border border-[#e4e4e7] dark:border-[#27272a] text-xs font-space transition-colors select-none"
               role="group"
               aria-label={t.nav.langSwitchAria}
             >
+              {/* Sliding indicator pill: uses pure relative X transform, completely immune to sticky header scroll offset */}
+              <motion.span
+                className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-[#101010] dark:bg-white rounded-full shadow-xs pointer-events-none"
+                initial={false}
+                animate={{
+                  x: language === 'id' ? 0 : '100%',
+                }}
+                transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+              />
+
               {(['id', 'en'] as const).map((langKey) => (
                 <button
                   key={langKey}
                   type="button"
                   onClick={() => setLanguage(langKey)}
-                  className={`relative px-3 py-1 rounded-full font-bold transition-colors duration-200 cursor-pointer uppercase z-10 select-none ${
+                  className={`relative z-10 px-3 py-1 min-w-[38px] text-center rounded-full font-bold transition-colors duration-200 cursor-pointer uppercase select-none ${
                     language === langKey
                       ? 'text-white dark:text-black'
                       : 'text-[#666] dark:text-[#a1a1aa] hover:text-black dark:hover:text-white'
@@ -76,13 +86,6 @@ export const NovandiPortfolio: React.FC = () => {
                   title={langKey === 'id' ? 'Bahasa Indonesia' : 'English'}
                 >
                   {langKey}
-                  {language === langKey && (
-                    <motion.span
-                      layoutId="activeLangPill"
-                      className="absolute inset-0 bg-[#101010] dark:bg-white rounded-full -z-10 shadow-xs"
-                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-                    />
-                  )}
                 </button>
               ))}
             </div>
