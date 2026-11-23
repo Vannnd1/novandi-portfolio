@@ -89,25 +89,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           applyThemeToDOM(nextTheme, true);
         });
 
-        transition.ready
-          .then(() => {
-            document.documentElement.animate(
-              {
-                clipPath: [
-                  'inset(0 0 100% 0)',
-                  'inset(0 0 0% 0)',
-                ],
-              },
-              {
-                duration: 440,
-                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                pseudoElement: '::view-transition-new(root)',
-              }
-            );
-          })
-          .catch(() => {
-            // Fallback gracefully if ready fails
-          });
+        transition.finished.catch(() => {
+          // Fallback gracefully if finished fails
+        });
       } catch {
         setTheme(nextTheme);
       }

@@ -24,10 +24,10 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={theme}
-          initial={{ y: -14, opacity: 0, scale: 0.5 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          exit={{ y: 14, opacity: 0, scale: 0.5 }}
-          transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] as const }}
+          initial={{ scale: 0.45, rotate: isDark ? -90 : 90, opacity: 0 }}
+          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+          exit={{ scale: 0.45, rotate: isDark ? 90 : -90, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 500, damping: 28 }}
           className="flex items-center justify-center"
         >
           {isDark ? (
