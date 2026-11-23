@@ -16,6 +16,6 @@ export type Theme = 'light' | 'dark';
 export interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  toggleTheme: (origin?: { x: number; y: number }) => void;
+  toggleTheme: () => void;
   isDark: boolean;
 }

@@ -153,7 +153,7 @@ html.theme-transitioning *::after {
   transition-delay: 0s !important;
 }
 
-/* View Transitions API: circular ripple reveal animation */
+/* View Transitions API: Vertical Horizon Curtain Roll */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

@@ -60,8 +60,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     applyThemeToDOM(newTheme, false);
   }, []);
 
-  const toggleTheme = useCallback(
-    (origin?: { x: number; y: number }) => {
+  const toggleTheme = useCallback(() => {
       const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark';
 
       // Check if View Transition API is supported and motion is allowed
@@ -79,13 +78,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return;
       }
 
-      const x = origin?.x ?? (typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
-      const y = origin?.y ?? (typeof window !== 'undefined' ? 36 : 0);
-      const endRadius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
-      );
-
       try {
         const transition = document.startViewTransition(() => {
           setThemeState(nextTheme);
@@ -102,12 +94,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             document.documentElement.animate(
               {
                 clipPath: [
-                  `circle(0px at ${x}px ${y}px)`,
-                  `circle(${endRadius}px at ${x}px ${y}px)`,
+                  'inset(0 0 100% 0)',
+                  'inset(0 0 0% 0)',
                 ],
               },
               {
-                duration: 480,
+                duration: 440,
                 easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 pseudoElement: '::view-transition-new(root)',
               }
