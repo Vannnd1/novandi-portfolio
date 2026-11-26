@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { useLanguage } from '../context/useLanguage';
 import { motion, AnimatePresence } from 'motion/react';
 import { GitHubIcon } from './Icons';
+import { ViceCornerBrackets } from './ViceFrameAccents';
 
 interface ContributionDay {
   date: string;
@@ -193,18 +194,32 @@ export const GithubHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white/95 dark:bg-[#140d22] border border-[#f0d8e6] dark:border-[#2f1f4d] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
+    <div className="relative overflow-hidden w-full bg-white/95 dark:bg-[#140d22]/95 bg-vice-scanlines border border-[#f0d8e6] dark:border-[#352259] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-[0_6px_26px_rgba(168,85,247,0.05)] dark:shadow-[0_10px_32px_rgba(0,0,0,0.45)] transition-all duration-300">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#ff3b9a]/75 via-[#ff8a4c]/80 to-[#00d9ff]/75"
+      />
+      <ViceCornerBrackets size="sm" />
+
       {/* ── CARD HEADER: Live Status, Identity & Tooltip Bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#f5e3ee] dark:border-[#2b1d45]">
         {/* User Identity */}
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-[#fff1f8] dark:bg-[#1f1436] flex items-center justify-center text-[#ff3b9a] dark:text-[#ff78bc] shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-[#fff1f8] dark:bg-[#1f1436] border border-[#f0d8e6] dark:border-[#372459] flex items-center justify-center text-[#ff3b9a] dark:text-[#ff78bc] shrink-0">
             <GitHubIcon className="w-4 h-4" />
           </div>
           <div className="flex flex-col">
-            <span className="font-sans font-semibold text-xs sm:text-sm text-[#1a1026] dark:text-[#fdf7ff] tracking-tight">
-              Vannnd1
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="font-sans font-semibold text-xs sm:text-sm text-[#1a1026] dark:text-[#fdf7ff] tracking-tight">
+                Vannnd1
+              </span>
+              <span
+                aria-hidden="true"
+                className="font-mono text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-[#00d9ff]/10 text-[#0284c7] dark:text-[#00d9ff] border border-[#00d9ff]/25"
+              >
+                GIT // LOG
+              </span>
+            </div>
             <span className="text-[10px] text-[#8d74a3] dark:text-[#9c89b8] font-sans">
               GitHub Contribution Graph
             </span>

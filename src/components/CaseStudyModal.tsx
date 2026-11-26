@@ -110,18 +110,31 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 12 }}
         transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
-        className="bg-[#fff9f6] dark:bg-[#0e081a] text-[#1a1026] dark:text-[#fdf7ff] w-full max-w-5xl xl:max-w-6xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#f0d8e6] dark:border-[#322152] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default transition-colors"
+        className="bg-[#fff9f6] dark:bg-[#0e081a] text-[#1a1026] dark:text-[#fdf7ff] w-full max-w-5xl xl:max-w-6xl min-h-screen sm:min-h-fit sm:rounded-3xl border border-[#f0d8e6] dark:border-[#352259] shadow-2xl overflow-hidden flex flex-col my-auto cursor-default transition-colors"
       >
         {/* Sticky Top Action Bar */}
-        <div className="sticky top-0 z-30 bg-[#fff9f6]/92 dark:bg-[#0e081a]/92 backdrop-blur-md px-5 sm:px-10 py-4 border-b border-[#f0d8e6] dark:border-[#2f1f4d] flex items-center justify-between transition-colors">
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex items-center gap-2 font-hegarty text-sm sm:text-base text-[#7b648f] dark:text-[#b4a0ce] hover:text-[#1a1026] hover:dark:text-white px-3.5 py-1.5 rounded-full hover:bg-[#fff1f8] hover:dark:bg-[#1e1333] active:scale-95 transition-all cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{t.modal.backToWorks}</span>
-          </button>
+        <div className="sticky top-0 z-30 bg-[#fff9f6]/92 dark:bg-[#0e081a]/92 backdrop-blur-md border-b border-[#f0d8e6] dark:border-[#2f1f4d] transition-colors">
+          <div
+            aria-hidden="true"
+            className="h-[2.5px] w-full bg-gradient-to-r from-[#00d9ff] via-[#ff3b9a] to-[#ffb35c]"
+          />
+          <div className="px-5 sm:px-10 py-3.5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 font-hegarty text-sm sm:text-base text-[#7b648f] dark:text-[#b4a0ce] hover:text-[#1a1026] hover:dark:text-white px-3.5 py-1.5 rounded-full hover:bg-[#fff1f8] hover:dark:bg-[#1e1333] active:scale-95 transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{t.modal.backToWorks}</span>
+            </button>
+            <span
+              aria-hidden="true"
+              className="hidden md:inline-flex items-center font-mono text-[10px] font-bold tracking-widest uppercase text-[#0284c7] dark:text-[#00d9ff]/80 px-2 py-0.5 rounded bg-[#00d9ff]/10 border border-[#00d9ff]/25"
+            >
+              ENGINEERING BRIEF
+            </span>
+          </div>
 
           <div className="flex items-center gap-2.5">
             {project.demoUrl && (
@@ -156,6 +169,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             >
               <X className="w-4 h-4" />
             </button>
+          </div>
           </div>
         </div>
 

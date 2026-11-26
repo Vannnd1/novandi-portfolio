@@ -9,6 +9,7 @@ import { Magnetic } from '../MagneticButton';
 import { TechPill } from '../TechPill';
 import { ProjectMockup } from '../ProjectMockup';
 import { ImageLightbox, type LightboxImage } from '../ImageLightbox';
+import { ViceCornerBrackets } from '../ViceFrameAccents';
 
 interface ProjectShowcaseProps {
   projects: ProjectItem[];
@@ -58,19 +59,36 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
     >
       {projects.map((project, idx) => (
         <RevealOnScroll key={project.id} delay={idx * 50} distance={24}>
-          <article className="group relative rounded-3xl border border-[#f0d8e6] dark:border-[#2f1f4d] bg-white/90 dark:bg-[#140d22] hover:bg-white hover:dark:bg-[#1a112d] p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_24px_rgba(168,85,247,0.04)] hover:shadow-[0_16px_40px_rgba(255,59,154,0.12)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] hover:border-[#ff3b9a]/40 dark:hover:border-[#ff3b9a]/45 overflow-hidden">
+          <article className="group relative rounded-3xl border border-[#f0d8e6] dark:border-[#352259] bg-white/92 dark:bg-[#140d22]/95 bg-vice-scanlines hover:bg-white hover:dark:bg-[#1a112d] p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_24px_rgba(168,85,247,0.04)] hover:shadow-[0_16px_40px_rgba(255,59,154,0.14)] dark:hover:shadow-[0_16px_44px_rgba(0,0,0,0.5)] hover:border-[#ff3b9a]/45 dark:hover:border-[#ff3b9a]/50 overflow-hidden">
+            {/* Subtle top sunset highlight sheen on hover */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#00d9ff] via-[#ff3b9a] to-[#ffb35c] opacity-35 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <ViceCornerBrackets
+              size="sm"
+              className="opacity-45 group-hover:opacity-100 transition-opacity duration-300"
+            />
             {/* Subtle top corner gradient accent */}
             <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#ff3b9a]/15 via-[#ff8a4c]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+            <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
               {/* Left Column (Metadata, Title, Clean Summary, Tech Stack, Actions) */}
               <div className="w-full lg:col-span-6 space-y-4 text-left flex flex-col justify-between">
                 <div className="space-y-3.5">
-                  {/* Header tags: Category & Year */}
+                  {/* Header tags: Mission Index, Category & Year */}
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#f5e3ee] dark:border-[#2b1d45] pb-2.5 transition-colors">
-                    <span className="font-space text-xs font-bold px-3 py-1 rounded-full bg-[#fff4fa] dark:bg-[#1f1336] text-[#e61e7a] dark:text-[#ff5eb0] border border-[#ff3b9a]/30 uppercase tracking-wider shadow-2xs">
-                      {project.categoryLabel}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span
+                        aria-hidden="true"
+                        className="font-mono text-[10px] font-bold tracking-widest text-[#0284c7] dark:text-[#00d9ff] uppercase"
+                      >
+                        CASE // 0{idx + 1}
+                      </span>
+                      <span className="font-space text-xs font-bold px-3 py-1 rounded-full bg-[#fff4fa] dark:bg-[#1f1336] text-[#e61e7a] dark:text-[#ff5eb0] border border-[#ff3b9a]/30 uppercase tracking-wider shadow-2xs">
+                        {project.categoryLabel}
+                      </span>
+                    </div>
                     <span className="font-dm-sans italic font-bold text-base text-[#7b648f] dark:text-[#ffb35c]">
                       {project.year}
                     </span>
