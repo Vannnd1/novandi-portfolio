@@ -4,9 +4,6 @@ import {
   ShoppingCart,
   Target,
   ShieldAlert,
-  Activity,
-  TrendingUp,
-  Calendar,
   Sparkles,
 } from 'lucide-react';
 import { useLanguage } from '../context/useLanguage';
@@ -212,87 +209,21 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({ projectId }) => {
 
     /* ──────────────────────────────────────────────────────────────────────────
      * 4. Adaptive Learning Insight
-     * Direct replica of Dashboard in ai-learning-insight-capstone
+     * Real screenshot of Adaptive Learning Insight Dashboard (Program Asah)
      * ────────────────────────────────────────────────────────────────────────── */
     case 'adaptive-learning-insight':
       return (
-        <div className="w-full bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 p-3.5 space-y-2.5 font-sans text-[10px] select-none transition-colors">
-          {/* Header matching Dashboard.jsx */}
-          <div className="flex items-center justify-between pb-1.5 border-b border-gray-100 dark:border-slate-800">
-            <div>
-              <div className="font-bold text-xs text-gray-900 dark:text-white">Halo, Novan! 👋</div>
-              <div className="text-[8.5px] text-gray-500 dark:text-slate-400">
-                {language === 'id'
-                  ? 'Program Asah 2025 · Dicoding × Accenture · Tim 5 Orang'
-                  : 'Program Asah 2025 · Dicoding × Accenture · 5-Member Team'}
-              </div>
-            </div>
-            <span className="px-2 py-0.5 rounded text-[8px] font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
-              {language === 'id' ? 'Role: Frontend (Tim 5)' : 'Role: Frontend (Team of 5)'}
-            </span>
-          </div>
-
-          {/* 3 Statistic Cards matching Dashboard.jsx */}
-          <div className="grid grid-cols-3 gap-2">
-            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 rounded-lg">
-                <Target className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-[7.5px] text-gray-400 font-bold uppercase">TARGET</p>
-                <p className="text-[9px] font-bold text-gray-900 dark:text-white">Web Dev</p>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-green-50 dark:bg-green-950/80 text-green-600 dark:text-green-400 rounded-lg">
-                <Activity className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-[7.5px] text-gray-400 font-bold uppercase">NILAI UJIAN</p>
-                <p className="text-[9px] font-bold text-gray-900 dark:text-white">88.5 <span className="text-[7.5px] font-normal text-gray-400">/ 100</span></p>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xs flex items-center gap-2">
-              <div className="p-1.5 bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 rounded-lg">
-                <TrendingUp className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-[7.5px] text-gray-400 font-bold uppercase">WAKTU</p>
-                <p className="text-[9px] font-bold text-gray-900 dark:text-white">42 Jam</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Aktivitas Chart header matching Dashboard.jsx */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-2 shadow-xs space-y-1">
-            <div className="flex justify-between items-center text-[8.5px]">
-              <span className="font-bold text-gray-800 dark:text-slate-200 flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400" /> Aktivitas Belajar (Okt 2026)
-              </span>
-              <div className="flex bg-gray-100 dark:bg-slate-700/60 p-0.5 rounded text-[8px]">
-                <span className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 font-bold shadow-xs">Harian</span>
-                <span className="px-1.5 py-0.5 text-gray-500 dark:text-slate-400">Mingguan</span>
-              </div>
-            </div>
-            {/* Progress line curve */}
-            <div className="h-9 flex items-end gap-1 pt-1">
-              {[40, 65, 55, 80, 70, 90, 85, 95, 90, 100].map((h, i) => (
-                <div key={i} className="flex-1 bg-blue-500 dark:bg-blue-400 rounded-t" style={{ height: `${h}%` }} />
-              ))}
-            </div>
-          </div>
-
-          {/* AI Recommendation Banner matching Dashboard.jsx */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-2 text-white shadow-xs">
-            <div className="font-bold text-[9px] flex items-center gap-1">
-              <span>🚀</span> Rekomendasi AI!
-            </div>
-            <div className="text-[8px] text-blue-100 mt-0.5 leading-snug">
-              "Konsistensi adalah kunci. Setiap modul yang kamu selesaikan membawamu lebih dekat ke target."
-            </div>
-          </div>
+        <div className="relative w-full aspect-[1024/521] overflow-hidden bg-white select-none">
+          <img
+            src="/projects/asah-dashboard.jpg"
+            alt={
+              language === 'id'
+                ? 'Dasbor Adaptive Learning Insight — Proyek Capstone Program Asah (Dicoding × Accenture)'
+                : 'Adaptive Learning Insight Dashboard — Program Asah Capstone Project (Dicoding × Accenture)'
+            }
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
       );
 

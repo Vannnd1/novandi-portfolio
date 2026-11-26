@@ -20,32 +20,46 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
   onSelectProject,
 }) => {
   const { language, t } = useLanguage();
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxProjectId, setLightboxProjectId] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const cryptoScreenshots: LightboxImage[] = [
-    {
-      src: '/projects/crypto-main-menu.png',
-      alt: language === 'id' ? 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)' : 'Main Menu Chaos Image Encryption (.exe)',
-      title: language === 'id' ? '01 · Halaman Utama (Main Menu & Pemilihan Algoritma Chaos)' : '01 · Main Menu (Chaos Algorithm Selection & Setup)',
-      subtitle: language === 'id' ? 'Antarmuka GUI Tkinter untuk pemilihan algoritma chaos, inisialisasi kunci rahasia & pengujian NIST' : 'Tkinter GUI for chaotic algorithm selection, seed initialization & NIST SP 800-22 testing',
-      badge: '01 / 03 · Main Menu',
-    },
-    {
-      src: '/projects/crypto-encrypt.jpg',
-      alt: language === 'id' ? 'Modul Enkripsi Citra Digital (.exe)' : 'Image Encryption Module (.exe)',
-      title: language === 'id' ? '02 · Modul Enkripsi Citra Medis (Gauss-MS Map · Latensi 18 ms)' : '02 · Medical Image Encryption Module (Gauss-MS Map · 18 ms)',
-      subtitle: language === 'id' ? 'Pengacakan piksel citra medis resolusi tinggi secara bitwise XOR dengan latensi 18 ms dan entropi 7.998' : 'High-speed bitwise XOR medical image scrambling with 18 ms latency and 7.998 Shannon entropy',
-      badge: '02 / 03 · Enkripsi',
-    },
-    {
-      src: '/projects/crypto-decrypt.jpg',
-      alt: language === 'id' ? 'Modul Dekripsi Citra Digital (.exe)' : 'Image Decryption Module (.exe)',
-      title: language === 'id' ? '03 · Modul Dekripsi & Restorasi Citra Lossless (100% Sempurna)' : '03 · Decryption & 100% Lossless Restoration Module',
-      subtitle: language === 'id' ? 'Pemulihan citra medis 100% utuh tanpa cacat piksel dengan parameter kunci chaos yang sama' : 'Exact 100% pixel restoration preserving full diagnostic clarity using identical chaos parameters',
-      badge: '03 / 03 · Dekripsi',
-    },
-  ];
+  const projectScreenshots: Record<string, LightboxImage[]> = {
+    'chaotic-image-encryption': [
+      {
+        src: '/projects/crypto-main-menu.png',
+        alt: language === 'id' ? 'Halaman Utama Enkripsi Citra Digital Berbasis Chaos (.exe)' : 'Main Menu Chaos Image Encryption (.exe)',
+        title: language === 'id' ? '01 · Halaman Utama (Main Menu & Pemilihan Algoritma Chaos)' : '01 · Main Menu (Chaos Algorithm Selection & Setup)',
+        subtitle: language === 'id' ? 'Antarmuka GUI Tkinter untuk pemilihan algoritma chaos, inisialisasi kunci rahasia & pengujian NIST' : 'Tkinter GUI for chaotic algorithm selection, seed initialization & NIST SP 800-22 testing',
+        badge: '01 / 03 · Main Menu',
+      },
+      {
+        src: '/projects/crypto-encrypt.jpg',
+        alt: language === 'id' ? 'Modul Enkripsi Citra Digital (.exe)' : 'Image Encryption Module (.exe)',
+        title: language === 'id' ? '02 · Modul Enkripsi Citra Medis (Gauss-MS Map · Latensi 18 ms)' : '02 · Medical Image Encryption Module (Gauss-MS Map · 18 ms)',
+        subtitle: language === 'id' ? 'Pengacakan piksel citra medis resolusi tinggi secara bitwise XOR dengan latensi 18 ms dan entropi 7.998' : 'High-speed bitwise XOR medical image scrambling with 18 ms latency and 7.998 Shannon entropy',
+        badge: '02 / 03 · Enkripsi',
+      },
+      {
+        src: '/projects/crypto-decrypt.jpg',
+        alt: language === 'id' ? 'Modul Dekripsi Citra Digital (.exe)' : 'Image Decryption Module (.exe)',
+        title: language === 'id' ? '03 · Modul Dekripsi & Restorasi Citra Lossless (100% Sempurna)' : '03 · Decryption & 100% Lossless Restoration Module',
+        subtitle: language === 'id' ? 'Pemulihan citra medis 100% utuh tanpa cacat piksel dengan parameter kunci chaos yang sama' : 'Exact 100% pixel restoration preserving full diagnostic clarity using identical chaos parameters',
+        badge: '03 / 03 · Dekripsi',
+      },
+    ],
+    'adaptive-learning-insight': [
+      {
+        src: '/projects/asah-dashboard.jpg',
+        alt: language === 'id' ? 'Dasbor Adaptive Learning Insight — Capstone Program Asah (Dicoding × Accenture)' : 'Adaptive Learning Insight Dashboard — Program Asah Capstone (Dicoding × Accenture)',
+        title: language === 'id' ? '01 · Dasbor Utama Adaptive Learning Insight' : '01 · Adaptive Learning Insight Main Dashboard',
+        subtitle: language === 'id' ? 'Ringkasan gaya belajar, target harian, AI Insight, dan rekomendasi kursus personal' : 'Learning style, daily target progress, AI Insight diagnostics, and course recommendations',
+        badge: '01 / 01 · Dashboard',
+      },
+    ],
+  };
+
+  const cryptoScreenshots = projectScreenshots['chaotic-image-encryption'];
+  const activeLightboxImages = lightboxProjectId ? (projectScreenshots[lightboxProjectId] ?? []) : [];
 
   return (
     <motion.div
@@ -187,8 +201,23 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                     </div>
 
                     {/* Viewport Content */}
-                    <div className="w-full">
+                    <div className="relative w-full">
                       <ProjectMockup projectId={project.id} />
+                      {project.id === 'adaptive-learning-insight' && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setLightboxProjectId('adaptive-learning-insight');
+                            setLightboxIndex(0);
+                          }}
+                          aria-label={language === 'id' ? 'Perbesar gambar proyek' : 'Zoom project screenshot'}
+                          className="absolute bottom-2.5 left-2.5 z-20 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 hover:bg-[#ff3b9a] backdrop-blur-md border border-white/15 text-[10px] font-mono text-white shadow-sm transition-colors cursor-pointer"
+                        >
+                          <ZoomIn className="w-3 h-3" />
+                          <span>{language === 'id' ? 'Perbesar' : 'Zoom'}</span>
+                        </button>
+                      )}
                     </div>
 
                     {/* Crypto Project Hover Overlay: TRIGGERS ONLY WHEN HOVERING THIS IMAGE WINDOW! */}
@@ -218,8 +247,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                               type="button"
                               onClick={(e) => {
                                 e.stopPropagation();
+                                setLightboxProjectId('chaotic-image-encryption');
                                 setLightboxIndex(sIdx);
-                                setLightboxOpen(true);
                               }}
                               className="group/item w-full flex items-center gap-2.5 p-1.5 rounded-xl bg-[#fff2f8] dark:bg-[#1a112d] hover:bg-white dark:hover:bg-[#24183d] border border-[#efd6e5] dark:border-[#342254] hover:border-[#ff3b9a] dark:hover:border-[#ff3b9a] transition-all duration-150 cursor-pointer text-left shadow-2xs hover:shadow-xs"
                               title={language === 'id' ? 'Klik untuk melihat screenshot layar penuh' : 'Click to view full screenshot'}
@@ -284,12 +313,14 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
 
       {/* Fullscreen Screenshot Lightbox */}
       <ImageLightbox
-        isOpen={lightboxOpen}
+        isOpen={Boolean(lightboxProjectId)}
         currentIndex={lightboxIndex}
-        images={cryptoScreenshots}
-        onClose={() => setLightboxOpen(false)}
+        images={activeLightboxImages}
+        onClose={() => setLightboxProjectId(null)}
         onNavigate={(newIdx) => setLightboxIndex(newIdx)}
-        onViewCaseStudy={() => onSelectProject('chaotic-image-encryption')}
+        onViewCaseStudy={() => {
+          if (lightboxProjectId) onSelectProject(lightboxProjectId);
+        }}
         caseStudyLabel={t.works.viewCaseStudy}
         hintLabel={
           language === 'id'
