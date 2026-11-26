@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Layers, RotateCcw, Sparkles, X } from 'lucide-react';
 import { useLanguage } from '../../context/useLanguage';
@@ -16,6 +16,7 @@ interface OrbitOrbState {
   id: TechFishId;
   role: TechRoleId;
   lane: 0 | 1;
+  baseAngle: number;
   angle: number;
   phase: number;
   x: number;
@@ -107,6 +108,60 @@ function getOrbitPosition(
   };
 }
 
+function getActiveSectorAnchor(role: TechRoleId | 'all', diameter: number) {
+  if (role === 'all') return null;
+  const geom = SECTOR_GEOMETRIES.find((g) => g.id === role);
+  if (!geom) return null;
+  return polarToCartesian(diameter / 2, diameter / 2, (WHEEL_OUTER_R / 360) * diameter, geom.midDeg);
+}
+
+function syncOrbPosition(
+  orb: OrbitOrbState,
+  diameter: number,
+  elapsed: number,
+  laneOffsets: readonly [number, number]
+) {
+  orb.angle = orb.baseAngle + laneOffsets[orb.lane];
+  const pos = getOrbitPosition(orb.lane, orb.angle, elapsed, orb.phase, diameter);
+  orb.x = pos.x;
+  orb.y = pos.y;
+}
+
+function syncOrbitAndApplyDom(
+  orbs: OrbitOrbState[],
+  equippedSet: ReadonlySet<TechFishId>,
+  orbNodes: Partial<Record<TechFishId, HTMLDivElement | null>>,
+  tetherLines: Partial<Record<TechFishId, SVGLineElement | null>>,
+  diameter: number,
+  activeRole: TechRoleId | 'all',
+  elapsed?: number,
+  laneOffsets?: readonly [number, number]
+) {
+  const size = getOrbSize(diameter);
+  const anchorPt = getActiveSectorAnchor(activeRole, diameter);
+
+  for (let i = 0; i < orbs.length; i++) {
+    const orb = orbs[i];
+    if (elapsed !== undefined && laneOffsets !== undefined) {
+      // Keep equipped orbs synced to their live orbital slot so returning them never overlaps neighbors.
+      syncOrbPosition(orb, diameter, elapsed, laneOffsets);
+    }
+    if (equippedSet.has(orb.id)) continue;
+
+    const node = orbNodes[orb.id];
+    if (node) {
+      node.style.transform = `translate3d(${orb.x.toFixed(1)}px, ${orb.y.toFixed(1)}px, 0)`;
+    }
+    const line = tetherLines[orb.id];
+    if (line && anchorPt && orb.role === activeRole) {
+      line.setAttribute('x1', anchorPt.x.toFixed(1));
+      line.setAttribute('y1', anchorPt.y.toFixed(1));
+      line.setAttribute('x2', (orb.x + size / 2).toFixed(1));
+      line.setAttribute('y2', (orb.y + size / 2).toFixed(1));
+    }
+  }
+}
+
 function createInitialOrbs(diameter: number): OrbitOrbState[] {
   const innerCount = Math.ceil(TECH_POND_ITEMS.length / 2);
   const outerCount = TECH_POND_ITEMS.length - innerCount;
@@ -115,15 +170,16 @@ function createInitialOrbs(diameter: number): OrbitOrbState[] {
     const lane: 0 | 1 = idx % 2 === 0 ? 0 : 1;
     const laneIdx = Math.floor(idx / 2);
     const laneTotal = lane === 0 ? innerCount : outerCount;
-    const angle = (laneIdx / laneTotal) * Math.PI * 2 + (lane === 1 ? Math.PI / laneTotal : 0);
+    const baseAngle = (laneIdx / laneTotal) * Math.PI * 2 + (lane === 1 ? Math.PI / laneTotal : 0);
     const phase = idx * 0.85;
-    const pos = getOrbitPosition(lane, angle, 0, phase, diameter);
+    const pos = getOrbitPosition(lane, baseAngle, 0, phase, diameter);
 
     return {
       id: item.id,
       role: item.role,
       lane,
-      angle,
+      baseAngle,
+      angle: baseAngle,
       phase,
       x: pos.x,
       y: pos.y,
@@ -145,33 +201,26 @@ export const ViceLoadoutCard: React.FC = () => {
   const orbNodeRefs = useRef<Partial<Record<TechFishId, HTMLDivElement | null>>>({});
   const tetherLineRefs = useRef<Partial<Record<TechFishId, SVGLineElement | null>>>({});
   const orbStateRef = useRef<OrbitOrbState[]>(createInitialOrbs(DEFAULT_DIAMETER));
+  const laneOffsetsRef = useRef<[number, number]>([0, 0]);
+  const elapsedRef = useRef<number>(0);
   const equippedSetRef = useRef<Set<TechFishId>>(new Set());
   const selectedRoleRef = useRef<TechRoleId | 'all'>('all');
   const diameterRef = useRef<number>(DEFAULT_DIAMETER);
   const pulseCounterRef = useRef(0);
   const timersRef = useRef<number[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     equippedSetRef.current = new Set(equippedIds);
-    const d = diameterRef.current;
-    orbStateRef.current.forEach((orb) => {
-      if (equippedSetRef.current.has(orb.id)) return;
-      const node = orbNodeRefs.current[orb.id];
-      if (node) {
-        node.style.transform = `translate3d(${orb.x.toFixed(1)}px, ${orb.y.toFixed(1)}px, 0)`;
-      }
-      const line = tetherLineRefs.current[orb.id];
-      if (line) {
-        const size = getOrbSize(d);
-        line.setAttribute('x2', (orb.x + size / 2).toFixed(1));
-        line.setAttribute('y2', (orb.y + size / 2).toFixed(1));
-      }
-    });
-  }, [equippedIds]);
-
-  useEffect(() => {
     selectedRoleRef.current = selectedRole;
-  }, [selectedRole]);
+    syncOrbitAndApplyDom(
+      orbStateRef.current,
+      equippedSetRef.current,
+      orbNodeRefs.current,
+      tetherLineRefs.current,
+      diameterRef.current,
+      selectedRole
+    );
+  }, [equippedIds, selectedRole]);
 
   useEffect(() => {
     return () => {
@@ -197,11 +246,16 @@ export const ViceLoadoutCard: React.FC = () => {
     const updateBounds = () => {
       const d = stageEl.clientWidth || DEFAULT_DIAMETER;
       diameterRef.current = d;
-      orbStateRef.current.forEach((orb) => {
-        const pos = getOrbitPosition(orb.lane, orb.angle, 0, orb.phase, d);
-        orb.x = pos.x;
-        orb.y = pos.y;
-      });
+      syncOrbitAndApplyDom(
+        orbStateRef.current,
+        equippedSetRef.current,
+        orbNodeRefs.current,
+        tetherLineRefs.current,
+        d,
+        selectedRoleRef.current,
+        elapsedRef.current,
+        laneOffsetsRef.current
+      );
     };
 
     updateBounds();
@@ -213,38 +267,20 @@ export const ViceLoadoutCard: React.FC = () => {
     }
 
     if (shouldReduceMotion) {
-      const d = diameterRef.current;
-      const size = getOrbSize(d);
-      orbStateRef.current.forEach((orb) => {
-        const pos = getOrbitPosition(orb.lane, orb.angle, 0, orb.phase, d);
-        orb.x = pos.x;
-        orb.y = pos.y;
-        const node = orbNodeRefs.current[orb.id];
-        if (node) {
-          node.style.transform = `translate3d(${orb.x.toFixed(1)}px, ${orb.y.toFixed(1)}px, 0)`;
-        }
-        const line = tetherLineRefs.current[orb.id];
-        if (line) {
-          line.setAttribute('x2', (orb.x + size / 2).toFixed(1));
-          line.setAttribute('y2', (orb.y + size / 2).toFixed(1));
-        }
-      });
       return () => observer?.disconnect();
     }
 
     let rafId = 0;
     let lastTime = performance.now();
-    let elapsed = 0;
     let lane0Speed = 0.16;
     let lane1Speed = -0.11;
 
     const step = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
-      elapsed += dt;
+      elapsedRef.current += dt;
 
       const d = diameterRef.current;
-      const size = getOrbSize(d);
       const orbs = orbStateRef.current;
 
       // Gently slow an orbital lane while any active orb in that lane is hovered
@@ -262,37 +298,20 @@ export const ViceLoadoutCard: React.FC = () => {
       lane0Speed += (targetSpeed0 - lane0Speed) * Math.min(1, dt * 6);
       lane1Speed += (targetSpeed1 - lane1Speed) * Math.min(1, dt * 6);
 
-      const activeRole = selectedRoleRef.current;
-      const activeSectorGeom =
-        activeRole === 'all' ? null : SECTOR_GEOMETRIES.find((g) => g.id === activeRole) ?? null;
-      const anchorPt = activeSectorGeom
-        ? polarToCartesian(d / 2, d / 2, (WHEEL_OUTER_R / 360) * d, activeSectorGeom.midDeg)
-        : null;
+      // Advance shared lane angles once per frame so all 7 slots per lane keep exact spacing.
+      laneOffsetsRef.current[0] = (laneOffsetsRef.current[0] + lane0Speed * dt) % (Math.PI * 2);
+      laneOffsetsRef.current[1] = (laneOffsetsRef.current[1] + lane1Speed * dt) % (Math.PI * 2);
 
-      for (let i = 0; i < orbs.length; i++) {
-        const orb = orbs[i];
-        if (equippedSetRef.current.has(orb.id)) continue;
-
-        const omega = orb.lane === 0 ? lane0Speed : lane1Speed;
-        orb.angle = (orb.angle + omega * dt) % (Math.PI * 2);
-
-        const pos = getOrbitPosition(orb.lane, orb.angle, elapsed, orb.phase, d);
-        orb.x = pos.x;
-        orb.y = pos.y;
-
-        const node = orbNodeRefs.current[orb.id];
-        if (node) {
-          node.style.transform = `translate3d(${orb.x.toFixed(1)}px, ${orb.y.toFixed(1)}px, 0)`;
-        }
-
-        const line = tetherLineRefs.current[orb.id];
-        if (line && anchorPt && orb.role === activeRole) {
-          line.setAttribute('x1', anchorPt.x.toFixed(1));
-          line.setAttribute('y1', anchorPt.y.toFixed(1));
-          line.setAttribute('x2', (orb.x + size / 2).toFixed(1));
-          line.setAttribute('y2', (orb.y + size / 2).toFixed(1));
-        }
-      }
+      syncOrbitAndApplyDom(
+        orbs,
+        equippedSetRef.current,
+        orbNodeRefs.current,
+        tetherLineRefs.current,
+        d,
+        selectedRoleRef.current,
+        elapsedRef.current,
+        laneOffsetsRef.current
+      );
 
       rafId = window.requestAnimationFrame(step);
     };
@@ -311,6 +330,7 @@ export const ViceLoadoutCard: React.FC = () => {
     const orb = orbStateRef.current.find((o) => o.id === item.id);
     const size = getOrbSize(diameterRef.current);
     if (orb) {
+      orb.hovered = false;
       spawnPulse(orb.x + size / 2, orb.y + size / 2, item.accentColor);
     }
 
@@ -327,18 +347,29 @@ export const ViceLoadoutCard: React.FC = () => {
       spawnPulse(orb.x + size / 2, orb.y + size / 2, item?.accentColor ?? '#ff3b9a');
     }
 
-    setEquippedIds((prev) => {
-      const next = prev.filter((itemId) => itemId !== id);
-      if (activeEquippedId === id) {
-        setActiveEquippedId(next.length > 0 ? next[next.length - 1] : null);
-      }
-      return next;
+    const next = equippedIds.filter((itemId) => itemId !== id);
+    setEquippedIds((prev) => prev.filter((itemId) => itemId !== id));
+    setActiveEquippedId((prevActive) => {
+      if (prevActive !== id) return prevActive;
+      return next.length > 0 ? next[next.length - 1] : null;
     });
   };
 
   const handleResetLoadout = () => {
     const d = diameterRef.current;
+    laneOffsetsRef.current = [0, 0];
+    elapsedRef.current = 0;
     orbStateRef.current = createInitialOrbs(d);
+    const emptySet = new Set<TechFishId>();
+    equippedSetRef.current = emptySet;
+    syncOrbitAndApplyDom(
+      orbStateRef.current,
+      emptySet,
+      orbNodeRefs.current,
+      tetherLineRefs.current,
+      d,
+      'all'
+    );
     setEquippedIds([]);
     setActiveEquippedId(null);
     setSelectedRole('all');
