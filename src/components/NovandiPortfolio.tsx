@@ -8,7 +8,7 @@ import { TechnicalMetrics } from './portfolio/TechnicalMetrics';
 import { ProjectShowcase } from './portfolio/ProjectShowcase';
 import { TimelineSection } from './portfolio/TimelineSection';
 import { GithubHeatmap } from './GithubHeatmap';
-import { ViceRadarCard } from './portfolio/ViceRadarCard';
+import { ViceLoadoutCard } from './portfolio/ViceLoadoutCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { RevealOnScroll } from './RevealOnScroll';
 import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
@@ -155,10 +155,10 @@ export const NovandiPortfolio: React.FC = () => {
           </div>
         </section>
 
-        {/* ── INTERACTIVE VICE CITY TECH RADAR ── */}
+        {/* ── INTERACTIVE VICE STACK LOADOUT WHEEL ── */}
         <RevealOnScroll distance={24} delay={50}>
-          <section aria-label={t.techRadar.ariaLabel}>
-            <ViceRadarCard />
+          <section aria-label={t.techLoadout.ariaLabel}>
+            <ViceLoadoutCard />
           </section>
         </RevealOnScroll>
 

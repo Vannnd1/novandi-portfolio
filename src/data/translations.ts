@@ -49,23 +49,27 @@ export interface Translations {
     quickPreview: string;
     techStackAria: string;
   };
-  techRadar: {
+  techLoadout: {
     ariaLabel: string;
     badge: string;
     hint: string;
-    lockedLabel: string;
+    equippedLabel: string;
     resetAll: string;
     releaseOne: string;
-    lockAction: string;
+    equipAction: string;
+    filterSector: string;
+    showAll: string;
+    allLabel: string;
+    orbitUnit: string;
     standbyTitle: string;
-    targetLockedTag: string;
+    equippedTag: string;
+    sectorHint: string;
     emptyTray: string;
     stackCountLabel: string;
     trayTitle: string;
     trayPlaceholder: string;
-    lockedListAria: string;
-    allLockedTitle: string;
-    allLockedSub: string;
+    equippedListAria: string;
+    allEquippedTitle: string;
   };
   footer: {
     rights: string;
@@ -146,23 +150,27 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "pratinjau cepat",
       techStackAria: "Teknologi yang digunakan",
     },
-    techRadar: {
-      ariaLabel: "Radar interaktif Vice City untuk tech stack",
-      badge: "Vice Stack Radar",
-      hint: "Klik blip teknologi yang terdeteksi sonar untuk mengunci target",
-      lockedLabel: "Terkunci",
-      resetAll: "Reset Radar",
+    techLoadout: {
+      ariaLabel: "Loadout Wheel interaktif ala GTA untuk tech stack",
+      badge: "Vice Stack Loadout",
+      hint: "Pilih peran di Weapon Wheel atau klik ikon mengorbit untuk memasangnya",
+      equippedLabel: "Terpasang",
+      resetAll: "Reset Loadout",
       releaseOne: "Lepaskan",
-      lockAction: "Kunci",
-      standbyTitle: "Sonar Aktif · Menunggu Target",
-      targetLockedTag: "Target Terkunci",
-      emptyTray: "Klik ikon teknologi yang berpatroli di radar kiri untuk melihat detail penggunaannya di proyek nyata.",
+      equipAction: "Pasang",
+      filterSector: "Filter sektor",
+      showAll: "Tampilkan semua peran",
+      allLabel: "Semua",
+      orbitUnit: "orbit",
+      standbyTitle: "Loadout Siap · Pilih Kategori atau Ikon",
+      equippedTag: "Terpasang",
+      sectorHint: "Klik ikon yang bersinar di orbit luar untuk melihat detail proyeknya.",
+      emptyTray: "Klik kategori di Weapon Wheel (Frontend, Backend, AI, Test) atau klik ikon yang mengorbit untuk memasangnya ke Loadout.",
       stackCountLabel: "Teknologi Terverifikasi",
-      trayTitle: "Stack Terkunci",
-      trayPlaceholder: "Belum ada target terkunci.",
-      lockedListAria: "Daftar teknologi yang terkunci",
-      allLockedTitle: "Semua Target Terkunci!",
-      allLockedSub: "Seluruh 14 teknologi di atas dipakai nyata pada proyek web, AI, dan riset skripsi saya.",
+      trayTitle: "Deck Loadout Aktif",
+      trayPlaceholder: "Belum ada teknologi yang dipasang ke Loadout.",
+      equippedListAria: "Daftar teknologi di Loadout",
+      allEquippedTitle: "Full Stack Loadout Lengkap!",
     },
     footer: {
       rights: "hak cipta dilindungi",
@@ -241,23 +249,27 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "quick preview",
       techStackAria: "Tech stack",
     },
-    techRadar: {
-      ariaLabel: "Interactive Vice City tech stack sonar radar",
-      badge: "Vice Stack Radar",
-      hint: "Click any sonar-detected tech blip to lock target",
-      lockedLabel: "Locked",
-      resetAll: "Reset Radar",
-      releaseOne: "Release",
-      lockAction: "Lock",
-      standbyTitle: "Sonar Active · Awaiting Lock",
-      targetLockedTag: "Target Locked",
-      emptyTray: "Click any patrolling tech icon on the radar to lock it and inspect where it was shipped.",
+    techLoadout: {
+      ariaLabel: "Interactive GTA-style tech stack Loadout Wheel",
+      badge: "Vice Stack Loadout",
+      hint: "Filter roles via the Weapon Wheel or click orbiting icons to equip",
+      equippedLabel: "Equipped",
+      resetAll: "Reset Loadout",
+      releaseOne: "Unequip",
+      equipAction: "Equip",
+      filterSector: "Filter sector",
+      showAll: "Show all roles",
+      allLabel: "All",
+      orbitUnit: "orbit",
+      standbyTitle: "Loadout Ready · Pick a Role or Icon",
+      equippedTag: "Equipped",
+      sectorHint: "Click any highlighted orbiting icon to inspect where it was shipped.",
+      emptyTray: "Select a role sector on the Weapon Wheel or click any orbiting tech icon to equip it into your Loadout.",
       stackCountLabel: "Verified Technologies",
-      trayTitle: "Locked Loadout",
-      trayPlaceholder: "No targets locked yet.",
-      lockedListAria: "Locked technologies list",
-      allLockedTitle: "All Targets Locked!",
-      allLockedSub: "All 14 technologies were shipped across my web, AI, and thesis engineering projects.",
+      trayTitle: "Equipped Loadout Deck",
+      trayPlaceholder: "No technologies equipped in Loadout yet.",
+      equippedListAria: "Equipped technologies list",
+      allEquippedTitle: "Full Stack Loadout Equipped!",
     },
     footer: {
       rights: "all right reserved",

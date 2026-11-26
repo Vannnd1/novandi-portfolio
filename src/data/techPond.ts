@@ -16,9 +16,63 @@ export type TechFishId =
   | 'scikit-learn'
   | 'git';
 
+export type TechRoleId = 'frontend' | 'backend' | 'ai-data' | 'tooling';
+
+export interface TechRoleSector {
+  id: TechRoleId;
+  label: Record<Language, string>;
+  shortLabel: string;
+  color: string;
+  summary: Record<Language, string>;
+}
+
+export const TECH_ROLE_SECTORS: TechRoleSector[] = [
+  {
+    id: 'frontend',
+    label: { id: 'Frontend & UI', en: 'Frontend & UI' },
+    shortLabel: 'Frontend',
+    color: '#00d9ff',
+    summary: {
+      id: 'Antarmuka web interaktif, manajemen state, dan sistem desain responsif.',
+      en: 'Interactive web interfaces, client state management, and responsive UI systems.',
+    },
+  },
+  {
+    id: 'backend',
+    label: { id: 'Backend & DB', en: 'Backend & DB' },
+    shortLabel: 'Backend',
+    color: '#a855f7',
+    summary: {
+      id: 'RESTful API, otorisasi RBAC/SoD, transaksi ACID, dan pipeline data.',
+      en: 'RESTful APIs, RBAC/SoD authorization, ACID transactions, and ETL pipelines.',
+    },
+  },
+  {
+    id: 'ai-data',
+    label: { id: 'AI, Data & ML', en: 'AI, Data & ML' },
+    shortLabel: 'AI & Data',
+    color: '#ff3b9a',
+    summary: {
+      id: 'Kriptografi citra medis, analitik retail, NLP bahasa Indonesia, dan LLM.',
+      en: 'Medical image cryptography, retail analytics, Indonesian NLP, and LLM integration.',
+    },
+  },
+  {
+    id: 'tooling',
+    label: { id: 'Build, Test & Git', en: 'Build, Test & Git' },
+    shortLabel: 'Test & Git',
+    color: '#ffb35c',
+    summary: {
+      id: 'Pengujian otomatis (252 tes), bundling cepat, dan kolaborasi Git tim.',
+      en: 'Automated testing (252 tests), fast production builds, and team Git workflows.',
+    },
+  },
+];
+
 export interface TechFishItem {
   id: TechFishId;
   name: string;
+  role: TechRoleId;
   accentColor: string;
   category: Record<Language, string>;
   usedIn: Record<Language, string>;
@@ -28,6 +82,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'react',
     name: 'React',
+    role: 'frontend',
     accentColor: '#38bdf8',
     category: { id: 'Frontend UI', en: 'Frontend UI' },
     usedIn: {
@@ -38,6 +93,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'typescript',
     name: 'TypeScript',
+    role: 'frontend',
     accentColor: '#3178c6',
     category: { id: 'Bahasa Pemrograman', en: 'Language' },
     usedIn: {
@@ -48,6 +104,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'javascript',
     name: 'JavaScript',
+    role: 'frontend',
     accentColor: '#eab308',
     category: { id: 'Bahasa Pemrograman', en: 'Language' },
     usedIn: {
@@ -58,6 +115,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'python',
     name: 'Python',
+    role: 'ai-data',
     accentColor: '#3776ab',
     category: { id: 'Riset & AI', en: 'Research & AI' },
     usedIn: {
@@ -68,6 +126,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'nodejs',
     name: 'Node.js',
+    role: 'backend',
     accentColor: '#22c55e',
     category: { id: 'Backend & ETL', en: 'Backend & ETL' },
     usedIn: {
@@ -78,6 +137,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'express',
     name: 'Express',
+    role: 'backend',
     accentColor: '#64748b',
     category: { id: 'Backend REST API', en: 'Backend REST API' },
     usedIn: {
@@ -88,6 +148,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'postgresql',
     name: 'PostgreSQL',
+    role: 'backend',
     accentColor: '#336791',
     category: { id: 'Basis Data', en: 'Database' },
     usedIn: {
@@ -98,6 +159,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'tailwindcss',
     name: 'Tailwind CSS',
+    role: 'frontend',
     accentColor: '#06b6d4',
     category: { id: 'Styling & UI', en: 'Styling & UI' },
     usedIn: {
@@ -108,6 +170,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'supabase',
     name: 'Supabase',
+    role: 'backend',
     accentColor: '#3ecf8e',
     category: { id: 'Cloud Database', en: 'Cloud Database' },
     usedIn: {
@@ -118,6 +181,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'vite',
     name: 'Vite',
+    role: 'tooling',
     accentColor: '#6366f1',
     category: { id: 'Build Tool', en: 'Build Tool' },
     usedIn: {
@@ -128,6 +192,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'vitest',
     name: 'Vitest',
+    role: 'tooling',
     accentColor: '#84cc16',
     category: { id: 'Automated Testing', en: 'Automated Testing' },
     usedIn: {
@@ -138,6 +203,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'gemini',
     name: 'Gemini AI',
+    role: 'ai-data',
     accentColor: '#a855f7',
     category: { id: 'Generative AI', en: 'Generative AI' },
     usedIn: {
@@ -148,6 +214,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'scikit-learn',
     name: 'Scikit-Learn',
+    role: 'ai-data',
     accentColor: '#f97316',
     category: { id: 'Machine Learning', en: 'Machine Learning' },
     usedIn: {
@@ -158,6 +225,7 @@ export const TECH_POND_ITEMS: TechFishItem[] = [
   {
     id: 'git',
     name: 'Git & GitHub',
+    role: 'tooling',
     accentColor: '#f05032',
     category: { id: 'Version Control', en: 'Version Control' },
     usedIn: {
