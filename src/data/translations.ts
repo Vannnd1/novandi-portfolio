@@ -49,19 +49,23 @@ export interface Translations {
     quickPreview: string;
     techStackAria: string;
   };
-  techPond: {
+  techRadar: {
     ariaLabel: string;
     badge: string;
     hint: string;
-    caughtLabel: string;
-    releaseAll: string;
+    lockedLabel: string;
+    resetAll: string;
     releaseOne: string;
-    catchAction: string;
+    lockAction: string;
+    standbyTitle: string;
+    targetLockedTag: string;
     emptyTray: string;
     stackCountLabel: string;
-    caughtListAria: string;
-    allCaughtTitle: string;
-    allCaughtSub: string;
+    trayTitle: string;
+    trayPlaceholder: string;
+    lockedListAria: string;
+    allLockedTitle: string;
+    allLockedSub: string;
   };
   footer: {
     rights: string;
@@ -142,19 +146,23 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "pratinjau cepat",
       techStackAria: "Teknologi yang digunakan",
     },
-    techPond: {
-      ariaLabel: "Kolam interaktif tech stack yang pernah digunakan",
-      badge: "Kolam Tech Stack",
-      hint: "Klik logo yang berenang untuk menangkapnya",
-      caughtLabel: "Tertangkap",
-      releaseAll: "Lepas Semua",
+    techRadar: {
+      ariaLabel: "Radar interaktif Vice City untuk tech stack",
+      badge: "Vice Stack Radar",
+      hint: "Klik blip teknologi yang terdeteksi sonar untuk mengunci target",
+      lockedLabel: "Terkunci",
+      resetAll: "Reset Radar",
       releaseOne: "Lepaskan",
-      catchAction: "Tangkap",
-      emptyTray: "Jaring masih kosong — klik logo tech stack yang berenang di kolam!",
+      lockAction: "Kunci",
+      standbyTitle: "Sonar Aktif · Menunggu Target",
+      targetLockedTag: "Target Terkunci",
+      emptyTray: "Klik ikon teknologi yang berpatroli di radar kiri untuk melihat detail penggunaannya di proyek nyata.",
       stackCountLabel: "Teknologi Terverifikasi",
-      caughtListAria: "Daftar teknologi yang tertangkap",
-      allCaughtTitle: "Semua Tech Stack Tertangkap!",
-      allCaughtSub: "Setiap teknologi di atas dipakai langsung pada proyek web, AI, dan riset skripsi saya.",
+      trayTitle: "Stack Terkunci",
+      trayPlaceholder: "Belum ada target terkunci.",
+      lockedListAria: "Daftar teknologi yang terkunci",
+      allLockedTitle: "Semua Target Terkunci!",
+      allLockedSub: "Seluruh 14 teknologi di atas dipakai nyata pada proyek web, AI, dan riset skripsi saya.",
     },
     footer: {
       rights: "hak cipta dilindungi",
@@ -233,19 +241,23 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "quick preview",
       techStackAria: "Tech stack",
     },
-    techPond: {
-      ariaLabel: "Interactive tech stack swimming pond",
-      badge: "Tech Stack Pond",
-      hint: "Click any swimming logo to catch it",
-      caughtLabel: "Caught",
-      releaseAll: "Release All",
+    techRadar: {
+      ariaLabel: "Interactive Vice City tech stack sonar radar",
+      badge: "Vice Stack Radar",
+      hint: "Click any sonar-detected tech blip to lock target",
+      lockedLabel: "Locked",
+      resetAll: "Reset Radar",
       releaseOne: "Release",
-      catchAction: "Catch",
-      emptyTray: "Net is empty — click any swimming tech logo above to catch it!",
+      lockAction: "Lock",
+      standbyTitle: "Sonar Active · Awaiting Lock",
+      targetLockedTag: "Target Locked",
+      emptyTray: "Click any patrolling tech icon on the radar to lock it and inspect where it was shipped.",
       stackCountLabel: "Verified Technologies",
-      caughtListAria: "Caught technologies tray",
-      allCaughtTitle: "All Tech Stack Caught!",
-      allCaughtSub: "Every technology above was shipped across my web, AI, and thesis engineering projects.",
+      trayTitle: "Locked Loadout",
+      trayPlaceholder: "No targets locked yet.",
+      lockedListAria: "Locked technologies list",
+      allLockedTitle: "All Targets Locked!",
+      allLockedSub: "All 14 technologies were shipped across my web, AI, and thesis engineering projects.",
     },
     footer: {
       rights: "all right reserved",

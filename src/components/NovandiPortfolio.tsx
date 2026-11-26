@@ -8,7 +8,7 @@ import { TechnicalMetrics } from './portfolio/TechnicalMetrics';
 import { ProjectShowcase } from './portfolio/ProjectShowcase';
 import { TimelineSection } from './portfolio/TimelineSection';
 import { GithubHeatmap } from './GithubHeatmap';
-import { TechPondCard } from './portfolio/TechPondCard';
+import { ViceRadarCard } from './portfolio/ViceRadarCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { RevealOnScroll } from './RevealOnScroll';
 import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
@@ -155,10 +155,10 @@ export const NovandiPortfolio: React.FC = () => {
           </div>
         </section>
 
-        {/* ── INTERACTIVE TECH STACK POND ── */}
+        {/* ── INTERACTIVE VICE CITY TECH RADAR ── */}
         <RevealOnScroll distance={24} delay={50}>
-          <section aria-label={t.techPond.ariaLabel}>
-            <TechPondCard />
+          <section aria-label={t.techRadar.ariaLabel}>
+            <ViceRadarCard />
           </section>
         </RevealOnScroll>
 
