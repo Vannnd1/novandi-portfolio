@@ -43,23 +43,13 @@ export const NovandiPortfolio: React.FC = () => {
       {/* 1. Sticky Header with Novandi's brand logo, Theme Toggle & Language Switcher */}
       <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-[#fff9f6]/80 dark:bg-[#0b0614]/80 border-b border-[#f0d8e6] dark:border-[#2d1d47] transition-colors duration-200">
         <nav className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 h-[72px] flex items-center justify-between select-none">
-          <div className="flex items-center gap-3">
-            <a
-              href="/"
-              className="font-hegarty text-[30px] sm:text-[32px] text-[#1a1026] dark:text-[#fdf7ff] stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
-              aria-label={t.nav.homeAria}
-            >
-              <span>novan.arm</span>
-            </a>
-
-            <span
-              aria-hidden="true"
-              className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#fff1f8] dark:bg-[#170e29] border border-[#f0d8e6] dark:border-[#342254] font-mono text-[10px] font-bold tracking-widest uppercase text-[#7b648f] dark:text-[#b4a0ce]"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#ff3b9a] to-[#00d9ff]" />
-              <span>VICE // EDITION</span>
-            </span>
-          </div>
+          <a
+            href="/"
+            className="font-hegarty text-[30px] sm:text-[32px] text-[#1a1026] dark:text-[#fdf7ff] stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
+            aria-label={t.nav.homeAria}
+          >
+            <span>novan.arm</span>
+          </a>
 
           <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Interactive Theme Toggle Button */}
@@ -174,12 +164,8 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
-          <section className="relative pt-4 pb-2 select-none flex justify-center overflow-hidden">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-[#ff3b9a]/30 to-transparent"
-            />
-            <p className="relative z-10 font-hegarty text-[clamp(64px,18vw,165px)] text-[#ebd1e0] dark:text-[#23153b] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center drop-shadow-[0_8px_28px_rgba(255,59,154,0.08)]">
+          <section className="pt-2 pb-2 select-none flex justify-center overflow-hidden">
+            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#ebd1e0] dark:text-[#23153b] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
                   key={cIdx}

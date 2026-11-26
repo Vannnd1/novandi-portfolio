@@ -11,7 +11,6 @@ import {
 } from '../../data/techPond';
 import { TechBrandIcon } from '../TechBrandIcon';
 import { ViceAmbientBackdrop } from '../ViceAmbientBackdrop';
-import { ViceCornerBrackets } from '../ViceFrameAccents';
 
 interface OrbitOrbState {
   id: TechFishId;
@@ -405,15 +404,8 @@ export const ViceLoadoutCard: React.FC = () => {
   return (
     <div
       id="tech-loadout"
-      className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#f0d8e6] dark:border-[#352259] bg-[#fff9fc] dark:bg-[#130b22] bg-vice-scanlines shadow-[0_12px_36px_rgba(168,85,247,0.08)] dark:shadow-[0_16px_42px_rgba(0,0,0,0.48)] select-none transition-colors duration-300"
+      className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#f0d8e6] dark:border-[#2f1f4d] bg-[#fff9fc] dark:bg-[#130b22] shadow-[0_12px_36px_rgba(168,85,247,0.08)] dark:shadow-[0_16px_42px_rgba(0,0,0,0.48)] select-none transition-colors duration-300"
     >
-      {/* Top Vice Sunset Art Deco Trim */}
-      <div
-        aria-hidden="true"
-        className="relative z-20 h-[2px] w-full bg-gradient-to-r from-[#00d9ff]/80 via-[#ff3b9a] to-[#ffb35c]/80"
-      />
-      <ViceCornerBrackets size="sm" />
-
       {/* Interactive Vice Sunset Aura (wanders randomly, approaches pointer on hover) */}
       <ViceAmbientBackdrop />
 
