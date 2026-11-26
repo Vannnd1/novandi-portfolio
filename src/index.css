@@ -153,6 +153,25 @@
   }
 }
 
+@keyframes viceBlobMorph {
+  0%, 100% {
+    border-radius: 36% 64% 68% 32% / 44% 32% 68% 56%;
+  }
+  25% {
+    border-radius: 70% 30% 38% 62% / 30% 68% 32% 70%;
+  }
+  50% {
+    border-radius: 28% 72% 58% 42% / 64% 34% 66% 36%;
+  }
+  75% {
+    border-radius: 58% 42% 28% 72% / 40% 74% 26% 60%;
+  }
+}
+
+.animate-vice-blob {
+  animation: viceBlobMorph 9s ease-in-out infinite;
+}
+
 .animate-radar-ripple {
   animation: radarRipple 760ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

@@ -5,11 +5,16 @@ interface AmbientOrbSpec {
   id: string;
   sizeClass: string;
   colorClass: string;
+  morphDuration: string;
+  morphDelay: string;
   initXRatio: number;
   initYRatio: number;
   speed: number;
   freq: number;
   phase: number;
+  spinSpeed: number;
+  scaleFreqX: number;
+  scaleFreqY: number;
   attractWeight: number;
   attractEase: number;
   hoverOffsetRadius: number;
@@ -23,6 +28,11 @@ interface AmbientOrbPhysics extends AmbientOrbSpec {
   wanderAngle: number;
   turnBias: number;
   nextBiasAt: number;
+  rotDeg: number;
+  scaleX: number;
+  scaleY: number;
+  targetScaleBias: number;
+  nextScaleAt: number;
 }
 
 interface ViceAmbientBackdropProps {
@@ -32,39 +42,54 @@ interface ViceAmbientBackdropProps {
 const CARD_ORB_SPECS: AmbientOrbSpec[] = [
   {
     id: 'card-pink',
-    sizeClass: 'w-60 h-60 sm:w-76 sm:h-76 blur-3xl',
+    sizeClass: 'w-68 h-44 sm:w-84 sm:h-52 blur-2xl',
     colorClass: 'bg-[#ff3b9a]/18 dark:bg-[#ff3b9a]/26',
+    morphDuration: '8.5s',
+    morphDelay: '0s',
     initXRatio: 0.22,
     initYRatio: 0.3,
     speed: 125,
     freq: 1.65,
     phase: 0.6,
+    spinSpeed: 22,
+    scaleFreqX: 1.25,
+    scaleFreqY: 0.92,
     attractWeight: 0.96,
     attractEase: 5.4,
     hoverOffsetRadius: 12,
   },
   {
     id: 'card-cyan',
-    sizeClass: 'w-64 h-64 sm:w-80 sm:h-80 blur-3xl',
+    sizeClass: 'w-72 h-46 sm:w-88 sm:h-56 blur-2xl',
     colorClass: 'bg-[#00d9ff]/18 dark:bg-[#00d9ff]/22',
+    morphDuration: '10.5s',
+    morphDelay: '-3.2s',
     initXRatio: 0.78,
     initYRatio: 0.72,
     speed: 105,
     freq: 1.35,
     phase: 2.7,
+    spinSpeed: -17,
+    scaleFreqX: 1.05,
+    scaleFreqY: 1.38,
     attractWeight: 0.62,
     attractEase: 3.6,
     hoverOffsetRadius: 68,
   },
   {
     id: 'card-coral',
-    sizeClass: 'w-52 h-52 sm:w-68 sm:h-68 blur-3xl',
+    sizeClass: 'w-60 h-40 sm:w-76 sm:h-48 blur-2xl',
     colorClass: 'bg-[#ff8a4c]/16 dark:bg-[#8b3dff]/22',
+    morphDuration: '9.5s',
+    morphDelay: '-6.1s',
     initXRatio: 0.55,
     initYRatio: 0.25,
     speed: 92,
     freq: 1.15,
     phase: 4.1,
+    spinSpeed: 15,
+    scaleFreqX: 1.42,
+    scaleFreqY: 1.08,
     attractWeight: 0.36,
     attractEase: 2.5,
     hoverOffsetRadius: 105,
@@ -83,6 +108,11 @@ function createInitialOrbs(width: number, height: number): AmbientOrbPhysics[] {
       wanderAngle: angle,
       turnBias: (idx % 2 === 0 ? 1 : -1) * 0.65,
       nextBiasAt: 0.9 + idx * 0.6,
+      rotDeg: idx * 48,
+      scaleX: 1,
+      scaleY: 1,
+      targetScaleBias: 1,
+      nextScaleAt: 1.1 + idx * 0.7,
     };
   });
 }
@@ -93,6 +123,14 @@ function randomTurnBias(): number {
 
 function randomBiasDelay(elapsed: number): number {
   return elapsed + 0.9 + Math.random() * 1.4;
+}
+
+function randomScaleBias(): number {
+  return 0.72 + Math.random() * 0.68; // 0.72x to 1.40x organic grow/shrink
+}
+
+function randomScaleDelay(elapsed: number): number {
+  return elapsed + 1.1 + Math.random() * 1.7;
 }
 
 export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ className = '' }) => {
@@ -115,9 +153,10 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
 
     const applyOrbTransforms = () => {
       for (let i = 0; i < orbs.length; i++) {
+        const orb = orbs[i];
         const node = orbRefs.current[i];
         if (node) {
-          node.style.transform = `translate3d(${orbs[i].x.toFixed(1)}px, ${orbs[i].y.toFixed(1)}px, 0)`;
+          node.style.transform = `translate3d(${orb.x.toFixed(1)}px, ${orb.y.toFixed(1)}px, 0) rotate(${orb.rotDeg.toFixed(1)}deg) scale(${orb.scaleX.toFixed(3)}, ${orb.scaleY.toFixed(3)})`;
         }
       }
     };
@@ -190,12 +229,17 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
           orb.nextBiasAt = randomBiasDelay(elapsed);
         }
 
+        if (elapsed >= orb.nextScaleAt) {
+          orb.targetScaleBias = randomScaleBias();
+          orb.nextScaleAt = randomScaleDelay(elapsed);
+        }
+
         orb.wanderAngle += (Math.sin(elapsed * orb.freq + orb.phase) * 0.8 + orb.turnBias) * dt;
 
         let targetVx = Math.cos(orb.wanderAngle) * orb.speed;
         let targetVy = Math.sin(orb.wanderAngle) * orb.speed;
 
-        // Soft inward drift near edges so fast orbs curve back inside the card
+        // Soft inward drift near edges so fast blobs curve back inside the card
         if (orb.x < padX) targetVx += ((padX - orb.x) / padX) * 190;
         else if (orb.x > width - padX) targetVx -= ((orb.x - (width - padX)) / padX) * 190;
 
@@ -221,6 +265,17 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
 
         orb.x += orb.vx * dt;
         orb.y += orb.vy * dt;
+
+        // Continuous organic tumbling & independent X/Y size grow-and-shrink
+        orb.rotDeg = (orb.rotDeg + orb.spinSpeed * dt) % 360;
+        const hoverBloom = pointer.active ? 0.12 : 0;
+        const desiredScaleX =
+          orb.targetScaleBias + hoverBloom + Math.sin(elapsed * orb.scaleFreqX + orb.phase) * 0.24;
+        const desiredScaleY =
+          orb.targetScaleBias + hoverBloom + Math.cos(elapsed * orb.scaleFreqY + orb.phase * 1.3) * 0.24;
+        const scaleBlend = Math.min(1, dt * 2.4);
+        orb.scaleX += (Math.max(0.62, Math.min(1.55, desiredScaleX)) - orb.scaleX) * scaleBlend;
+        orb.scaleY += (Math.max(0.62, Math.min(1.55, desiredScaleY)) - orb.scaleY) * scaleBlend;
       }
 
       applyOrbTransforms();
@@ -253,7 +308,11 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
           className="absolute top-0 left-0"
         >
           <span
-            className={`block -translate-x-1/2 -translate-y-1/2 rounded-full ${spec.sizeClass} ${spec.colorClass}`}
+            style={{
+              animationDuration: spec.morphDuration,
+              animationDelay: spec.morphDelay,
+            }}
+            className={`block -translate-x-1/2 -translate-y-1/2 animate-vice-blob ${spec.sizeClass} ${spec.colorClass}`}
           />
         </div>
       ))}
