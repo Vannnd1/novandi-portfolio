@@ -155,37 +155,37 @@
 
 @keyframes viceBlobMorph {
   0%, 100% {
-    border-radius: 36% 64% 68% 32% / 44% 32% 68% 56%;
+    border-radius: 42% 58% 54% 46% / 46% 40% 60% 54%;
   }
   25% {
-    border-radius: 70% 30% 38% 62% / 30% 68% 32% 70%;
+    border-radius: 58% 42% 44% 56% / 38% 58% 42% 62%;
   }
   50% {
-    border-radius: 28% 72% 58% 42% / 64% 34% 66% 36%;
+    border-radius: 40% 60% 58% 42% / 58% 44% 56% 42%;
   }
   75% {
-    border-radius: 58% 42% 28% 72% / 40% 74% 26% 60%;
+    border-radius: 54% 46% 40% 60% / 44% 60% 40% 56%;
   }
 }
 
 .animate-vice-blob {
-  animation: viceBlobMorph 9s ease-in-out infinite;
+  animation: viceBlobMorph 8s ease-in-out infinite;
 }
 
 .vice-tricolor-blob {
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.2) 0%, transparent 56%),
-    radial-gradient(circle at 34% 38%, rgba(255, 59, 154, 0.24) 0%, transparent 58%),
-    radial-gradient(circle at 66% 38%, rgba(255, 138, 76, 0.22) 0%, transparent 58%),
-    radial-gradient(circle at 50% 68%, rgba(0, 217, 255, 0.22) 0%, transparent 60%);
+    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.28) 0%, rgba(255, 138, 76, 0.14) 36%, transparent 66%),
+    radial-gradient(circle at 42% 44%, rgba(255, 59, 154, 0.24) 0%, transparent 56%),
+    radial-gradient(circle at 58% 44%, rgba(255, 138, 76, 0.22) 0%, transparent 56%),
+    radial-gradient(circle at 50% 60%, rgba(0, 217, 255, 0.24) 0%, transparent 58%);
 }
 
 .dark .vice-tricolor-blob {
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.24) 0%, transparent 56%),
-    radial-gradient(circle at 34% 38%, rgba(255, 59, 154, 0.3) 0%, transparent 58%),
-    radial-gradient(circle at 66% 38%, rgba(255, 138, 76, 0.25) 0%, transparent 58%),
-    radial-gradient(circle at 50% 68%, rgba(0, 217, 255, 0.26) 0%, transparent 60%);
+    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.34) 0%, rgba(255, 138, 76, 0.18) 36%, transparent 66%),
+    radial-gradient(circle at 42% 44%, rgba(255, 59, 154, 0.28) 0%, transparent 56%),
+    radial-gradient(circle at 58% 44%, rgba(255, 138, 76, 0.26) 0%, transparent 56%),
+    radial-gradient(circle at 50% 60%, rgba(0, 217, 255, 0.28) 0%, transparent 58%);
 }
 
 .animate-radar-ripple {

@@ -14,7 +14,7 @@ function randomBiasDelay(elapsed: number): number {
 }
 
 function randomScaleBias(): number {
-  return 0.78 + Math.random() * 0.58; // 0.78x to 1.36x organic grow/shrink
+  return 0.86 + Math.random() * 0.42; // 0.86x to 1.28x organic grow/shrink
 }
 
 function randomScaleDelay(elapsed: number): number {
@@ -68,8 +68,12 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
 
     const pointer = {
       active: false,
+      locked: false,
       x: width / 2,
       y: height / 2,
+      clientX: 0,
+      clientY: 0,
+      hasClient: false,
     };
 
     const isCoarsePointer =
@@ -92,18 +96,47 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = parentTarget.getBoundingClientRect();
+      pointer.clientX = e.clientX;
+      pointer.clientY = e.clientY;
+      pointer.hasClient = true;
       pointer.x = e.clientX - rect.left;
       pointer.y = e.clientY - rect.top;
       pointer.active = true;
+      if (pointer.locked) {
+        blob.x = pointer.x;
+        blob.y = pointer.y;
+        applyBlobTransform();
+      }
     };
 
     const handleMouseLeave = () => {
       pointer.active = false;
+      pointer.locked = false;
+    };
+
+    const handleScroll = () => {
+      if (!pointer.active || !pointer.hasClient) return;
+      const rect = parentTarget.getBoundingClientRect();
+      const x = pointer.clientX - rect.left;
+      const y = pointer.clientY - rect.top;
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        pointer.x = x;
+        pointer.y = y;
+        if (pointer.locked) {
+          blob.x = x;
+          blob.y = y;
+          applyBlobTransform();
+        }
+      } else {
+        pointer.active = false;
+        pointer.locked = false;
+      }
     };
 
     if (!isCoarsePointer) {
       parentTarget.addEventListener('mousemove', handleMouseMove, { passive: true });
       parentTarget.addEventListener('mouseleave', handleMouseLeave);
+      window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     let rafId = 0;
@@ -126,12 +159,22 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
       }
 
       if (pointer.active) {
-        // Direct smooth convergence straight to exact pointer coordinates (no offset/lag)
-        const followAlpha = 1 - Math.exp(-14 * dt);
         const prevX = blob.x;
         const prevY = blob.y;
-        blob.x += (pointer.x - blob.x) * followAlpha;
-        blob.y += (pointer.y - blob.y) * followAlpha;
+        const dist = Math.hypot(pointer.x - blob.x, pointer.y - blob.y);
+
+        if (pointer.locked || dist < 4) {
+          // Stay locked right underneath the pointer with zero trailing lag
+          pointer.locked = true;
+          blob.x = pointer.x;
+          blob.y = pointer.y;
+        } else {
+          // Glide swiftly over to meet the pointer on hover entry
+          const glideAlpha = 1 - Math.exp(-20 * dt);
+          blob.x += (pointer.x - blob.x) * glideAlpha;
+          blob.y += (pointer.y - blob.y) * glideAlpha;
+        }
+
         if (dt > 0) {
           blob.vx = (blob.x - prevX) / dt;
           blob.vy = (blob.y - prevY) / dt;
@@ -161,14 +204,15 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         blob.y += blob.vy * dt;
       }
 
-      // Continuous organic tumbling & independent X/Y grow-and-shrink
-      blob.rotDeg = (blob.rotDeg + 18 * dt) % 360;
-      const hoverBloom = pointer.active ? 0.1 : 0;
-      const desiredScaleX = blob.targetScaleBias + hoverBloom + Math.sin(elapsed * 1.25) * 0.22;
-      const desiredScaleY = blob.targetScaleBias + hoverBloom + Math.cos(elapsed * 0.96 + 0.9) * 0.22;
-      const scaleBlend = Math.min(1, dt * 2.4);
-      blob.scaleX += (Math.max(0.72, Math.min(1.5, desiredScaleX)) - blob.scaleX) * scaleBlend;
-      blob.scaleY += (Math.max(0.72, Math.min(1.5, desiredScaleY)) - blob.scaleY) * scaleBlend;
+      // Organic rotation & balanced size pulsing centered right under the pointer
+      blob.rotDeg = (blob.rotDeg + 16 * dt) % 360;
+      const desiredBase = blob.targetScaleBias + Math.sin(elapsed * 1.35) * 0.15;
+      const wobble = Math.sin(elapsed * 1.9) * 0.08;
+      const desiredScaleX = desiredBase + wobble;
+      const desiredScaleY = desiredBase - wobble;
+      const scaleBlend = Math.min(1, dt * 3.2);
+      blob.scaleX += (Math.max(0.78, Math.min(1.42, desiredScaleX)) - blob.scaleX) * scaleBlend;
+      blob.scaleY += (Math.max(0.78, Math.min(1.42, desiredScaleY)) - blob.scaleY) * scaleBlend;
 
       applyBlobTransform();
       rafId = window.requestAnimationFrame(step);
@@ -181,6 +225,7 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
       observer?.disconnect();
       parentTarget.removeEventListener('mousemove', handleMouseMove);
       parentTarget.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [shouldReduceMotion]);
 
@@ -195,7 +240,7 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         style={{ willChange: 'transform' }}
         className="absolute top-0 left-0"
       >
-        <span className="block -translate-x-1/2 -translate-y-1/2 w-[380px] h-[260px] sm:w-[620px] sm:h-[400px] blur-[56px] sm:blur-[68px] animate-vice-blob vice-tricolor-blob" />
+        <span className="block -translate-x-1/2 -translate-y-1/2 w-[280px] h-[230px] sm:w-[400px] sm:h-[320px] blur-[46px] sm:blur-[56px] animate-vice-blob vice-tricolor-blob" />
       </div>
     </div>
   );
