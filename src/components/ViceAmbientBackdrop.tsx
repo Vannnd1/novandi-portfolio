@@ -5,6 +5,11 @@ interface ViceAmbientBackdropProps {
   className?: string;
 }
 
+// Half of the blob's rendered size at the sm breakpoint (400×320).
+// Used to offset the position layer so the blob's visual center sits at (blob.x, blob.y).
+const BLOB_HW = 200;
+const BLOB_HH = 160;
+
 function randomTurnBias(): number {
   return (Math.random() - 0.5) * 2.4;
 }
@@ -14,7 +19,7 @@ function randomBiasDelay(elapsed: number): number {
 }
 
 function randomScaleBias(): number {
-  return 0.86 + Math.random() * 0.42; // 0.86x to 1.28x organic grow/shrink
+  return 0.86 + Math.random() * 0.42;
 }
 
 function randomScaleDelay(elapsed: number): number {
@@ -24,7 +29,10 @@ function randomScaleDelay(elapsed: number): number {
 export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ className = '' }) => {
   const shouldReduceMotion = useReducedMotion();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const blobRef = useRef<HTMLDivElement>(null);
+  // posRef handles translate only — keeps the blob center exactly at (blob.x, blob.y).
+  const posRef = useRef<HTMLDivElement>(null);
+  // rotRef handles rotate + scale only — rotates around the blob's own center.
+  const rotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const wrapperEl = wrapperRef.current;
@@ -54,14 +62,17 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
     };
 
     const applyBlobTransform = () => {
-      const node = blobRef.current;
-      if (node) {
-        // Read actual rendered size so centering is accurate at any breakpoint
-        const hw = node.offsetWidth / 2;
-        const hh = node.offsetHeight / 2;
-        const cx = blob.x - hw;
-        const cy = blob.y - hh;
-        node.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) rotate(${blob.rotDeg.toFixed(1)}deg) scale(${blob.scaleX.toFixed(3)}, ${blob.scaleY.toFixed(3)})`;
+      const pos = posRef.current;
+      const rot = rotRef.current;
+      if (pos) {
+        // Position layer: move the blob's CENTER to (blob.x, blob.y).
+        // Subtract half-sizes so the top-left of pos lands at (blob.x - BLOB_HW, blob.y - BLOB_HH),
+        // making the center exactly at (blob.x, blob.y) with no rotation interaction.
+        pos.style.transform = `translate3d(${(blob.x - BLOB_HW).toFixed(1)}px, ${(blob.y - BLOB_HH).toFixed(1)}px, 0)`;
+      }
+      if (rot) {
+        // Rotation layer: rotate and scale around the blob element's own center (transform-origin: center is set in JSX).
+        rot.style.transform = `rotate(${blob.rotDeg.toFixed(1)}deg) scale(${blob.scaleX.toFixed(3)}, ${blob.scaleY.toFixed(3)})`;
       }
     };
 
@@ -169,12 +180,10 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         const dist = Math.hypot(pointer.x - blob.x, pointer.y - blob.y);
 
         if (pointer.locked || dist < 4) {
-          // Stay locked right underneath the pointer with zero trailing lag
           pointer.locked = true;
           blob.x = pointer.x;
           blob.y = pointer.y;
         } else {
-          // Glide swiftly over to meet the pointer on hover entry
           const glideAlpha = 1 - Math.exp(-20 * dt);
           blob.x += (pointer.x - blob.x) * glideAlpha;
           blob.y += (pointer.y - blob.y) * glideAlpha;
@@ -191,7 +200,6 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         let targetVx = Math.cos(blob.wanderAngle) * baseSpeed;
         let targetVy = Math.sin(blob.wanderAngle) * baseSpeed;
 
-        // Soft inward curve near edges so the large aura stays inside the card
         const padX = Math.max(48, width * 0.18);
         const padY = Math.max(48, height * 0.18);
 
@@ -209,7 +217,6 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         blob.y += blob.vy * dt;
       }
 
-      // Organic rotation & balanced size pulsing centered right under the pointer
       blob.rotDeg = (blob.rotDeg + 16 * dt) % 360;
       const desiredBase = blob.targetScaleBias + Math.sin(elapsed * 1.35) * 0.15;
       const wobble = Math.sin(elapsed * 1.9) * 0.08;
@@ -240,12 +247,16 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 z-0 overflow-hidden ${className}`}
     >
-      <div
-        ref={blobRef}
-        style={{ willChange: 'transform', transformOrigin: 'center' }}
-        className="absolute top-0 left-0 w-[280px] h-[230px] sm:w-[400px] sm:h-[320px]"
-      >
-        <span className="block w-full h-full blur-[46px] sm:blur-[56px] animate-vice-blob vice-tricolor-blob" />
+      {/* posRef: translate only — moves blob center to (blob.x, blob.y) */}
+      <div ref={posRef} className="absolute top-0 left-0" style={{ willChange: 'transform' }}>
+        {/* rotRef: rotate + scale only — pivots around blob's own center */}
+        <div
+          ref={rotRef}
+          style={{ transformOrigin: 'center', willChange: 'transform' }}
+          className="w-[280px] h-[230px] sm:w-[400px] sm:h-[320px]"
+        >
+          <span className="block w-full h-full blur-[46px] sm:blur-[56px] animate-vice-blob vice-tricolor-blob" />
+        </div>
       </div>
     </div>
   );
