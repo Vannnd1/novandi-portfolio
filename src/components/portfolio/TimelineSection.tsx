@@ -24,7 +24,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ type }) => {
         <div className="border-l-2 border-[#ff3b9a]/25 dark:border-[#ff3b9a]/25 pl-6 sm:pl-8 ml-2 sm:ml-4 space-y-12 relative transition-colors">
           {profile.experience.map((exp, idx) => (
             <RevealOnScroll key={idx} delay={idx * 60} distance={18}>
-              <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/82 dark:bg-[#140d22]/82 hover:bg-white/95 hover:dark:bg-[#1a112d]/90 border border-[#f0d8e6] dark:border-[#2f1f4d] hover:border-[#ff3b9a]/40 hover:dark:border-[#ff3b9a]/45 transition-all duration-300 hover:shadow-md">
+              <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/85 dark:bg-[#140d22]/90 hover:bg-white hover:dark:bg-[#1a112d] border border-[#f0d8e6] dark:border-[#2f1f4d] hover:border-[#ff3b9a]/40 hover:dark:border-[#ff3b9a]/45 transition-all duration-300 hover:shadow-md">
                 {/* Animated Timeline Node */}
                 <span className="absolute -left-[31px] sm:-left-[39px] top-7 w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ff3b9a] to-[#ff8a4c] ring-4 ring-[#fff9f6] dark:ring-[#0b0614] shadow-xs" />
 
@@ -75,7 +75,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ type }) => {
       <div className="border-l-2 border-[#ff3b9a]/25 dark:border-[#ff3b9a]/25 pl-6 sm:pl-8 ml-2 sm:ml-4 space-y-12 relative transition-colors">
         {profile.education.map((edu, idx) => (
           <RevealOnScroll key={idx} delay={idx * 60} distance={18}>
-            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/82 dark:bg-[#140d22]/82 hover:bg-white/95 hover:dark:bg-[#1a112d]/90 border border-[#f0d8e6] dark:border-[#2f1f4d] hover:border-[#ff3b9a]/40 hover:dark:border-[#ff3b9a]/45 transition-all duration-300 hover:shadow-md">
+            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/85 dark:bg-[#140d22]/90 hover:bg-white hover:dark:bg-[#1a112d] border border-[#f0d8e6] dark:border-[#2f1f4d] hover:border-[#ff3b9a]/40 hover:dark:border-[#ff3b9a]/45 transition-all duration-300 hover:shadow-md">
               {/* Timeline Node */}
               <span className="absolute -left-[31px] sm:-left-[39px] top-7 w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#ff3b9a] to-[#ff8a4c] ring-4 ring-[#fff9f6] dark:ring-[#0b0614] shadow-xs" />
 

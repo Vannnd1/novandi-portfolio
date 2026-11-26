@@ -11,7 +11,6 @@ import { GithubHeatmap } from './GithubHeatmap';
 import { ViceLoadoutCard } from './portfolio/ViceLoadoutCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { RevealOnScroll } from './RevealOnScroll';
-import { ViceAmbientBackdrop } from './ViceAmbientBackdrop';
 import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
 
 type TabType = 'works' | 'experience' | 'education';
@@ -32,8 +31,11 @@ export const NovandiPortfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#fff9f6] dark:bg-[#0b0614] text-[#1a1026] dark:text-[#fdf7ff] selection:bg-[#ffd1e8] selection:text-[#d61f7a] dark:selection:bg-[#ff3b9a]/35 dark:selection:text-[#ff85c2] relative transition-colors duration-200">
-      {/* Interactive Vice City Ambient Horizon Glow (wanders randomly, approaches pointer on hover) */}
-      <ViceAmbientBackdrop scope="viewport" />
+      {/* Subtle Static Vice City Sunset Horizon Aura */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 top-0 h-[460px] z-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-10%,rgba(255,59,154,0.12),rgba(255,138,76,0.06),transparent)] dark:bg-[radial-gradient(ellipse_85%_60%_at_50%_-10%,rgba(255,59,154,0.22),rgba(139,61,255,0.14),transparent)]"
+      />
 
       {/* 0. Top Thin Scroll Progress Bar */}
       <ScrollProgress />

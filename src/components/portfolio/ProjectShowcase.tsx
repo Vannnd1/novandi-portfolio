@@ -58,7 +58,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
     >
       {projects.map((project, idx) => (
         <RevealOnScroll key={project.id} delay={idx * 50} distance={24}>
-          <article className="group relative rounded-3xl border border-[#f0d8e6] dark:border-[#2f1f4d] bg-white/84 dark:bg-[#140d22]/82 hover:bg-white/95 hover:dark:bg-[#1a112d]/90 p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_24px_rgba(168,85,247,0.04)] hover:shadow-[0_16px_40px_rgba(255,59,154,0.12)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] hover:border-[#ff3b9a]/40 dark:hover:border-[#ff3b9a]/45 overflow-hidden">
+          <article className="group relative rounded-3xl border border-[#f0d8e6] dark:border-[#2f1f4d] bg-white/90 dark:bg-[#140d22] hover:bg-white hover:dark:bg-[#1a112d] p-6 sm:p-8 md:p-10 lg:p-11 xl:p-12 transition-all duration-300 shadow-[0_4px_24px_rgba(168,85,247,0.04)] hover:shadow-[0_16px_40px_rgba(255,59,154,0.12)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] hover:border-[#ff3b9a]/40 dark:hover:border-[#ff3b9a]/45 overflow-hidden">
             {/* Subtle top corner gradient accent */}
             <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#ff3b9a]/15 via-[#ff8a4c]/10 to-transparent rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
