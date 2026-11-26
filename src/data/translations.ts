@@ -49,12 +49,19 @@ export interface Translations {
     quickPreview: string;
     techStackAria: string;
   };
-  stickerCard: {
-    heading: string;
-    titleAttr: string;
-    copyTitle: string;
-    copy: string;
-    copied: string;
+  techPond: {
+    ariaLabel: string;
+    badge: string;
+    hint: string;
+    caughtLabel: string;
+    releaseAll: string;
+    releaseOne: string;
+    catchAction: string;
+    emptyTray: string;
+    stackCountLabel: string;
+    caughtListAria: string;
+    allCaughtTitle: string;
+    allCaughtSub: string;
   };
   footer: {
     rights: string;
@@ -117,12 +124,12 @@ export const translations: Record<Language, Translations> = {
     },
     credibility: {
       gpaSub: "IPK Informatika · Gunadarma",
-      tests: "252 Tes",
-      testsSub: "Cakupan Core Logic 96.6%",
-      nist: "15/15 Lolos",
-      nistSub: "Uji Kriptografi NIST",
-      data: "541K+ Baris",
-      dataSub: "Analitik Retail In-Memory",
+      tests: "5 Web Live",
+      testsSub: "Aplikasi Web, AI & Analitik",
+      nist: "96.6%",
+      nistSub: "Core Logic Coverage · 252 Tes",
+      data: "Alumni Asah",
+      dataSub: "Cohort Dicoding × Accenture",
     },
     tabs: {
       experience: "pengalaman",
@@ -135,12 +142,19 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "pratinjau cepat",
       techStackAria: "Teknologi yang digunakan",
     },
-    stickerCard: {
-      heading: "Siap mengakselerasi alur kerja Anda?",
-      titleAttr: "Kirim email ke Novandi (membuka aplikasi Email di HP / Gmail di Desktop)",
-      copyTitle: "Salin alamat email",
-      copy: "Salin",
-      copied: "Tersalin!",
+    techPond: {
+      ariaLabel: "Kolam interaktif tech stack yang pernah digunakan",
+      badge: "Kolam Tech Stack",
+      hint: "Klik logo yang berenang untuk menangkapnya",
+      caughtLabel: "Tertangkap",
+      releaseAll: "Lepas Semua",
+      releaseOne: "Lepaskan",
+      catchAction: "Tangkap",
+      emptyTray: "Jaring masih kosong — klik logo tech stack yang berenang di kolam!",
+      stackCountLabel: "Teknologi Terverifikasi",
+      caughtListAria: "Daftar teknologi yang tertangkap",
+      allCaughtTitle: "Semua Tech Stack Tertangkap!",
+      allCaughtSub: "Setiap teknologi di atas dipakai langsung pada proyek web, AI, dan riset skripsi saya.",
     },
     footer: {
       rights: "hak cipta dilindungi",
@@ -201,12 +215,12 @@ export const translations: Record<Language, Translations> = {
     },
     credibility: {
       gpaSub: "Informatics GPA · Gunadarma",
-      tests: "252 Tests",
-      testsSub: "96.6% Core Logic Coverage",
-      nist: "15/15 Passed",
-      nistSub: "NIST Cryptography Benchmark",
-      data: "541K+ Rows",
-      dataSub: "In-Memory Retail Analytics",
+      tests: "5 Live Apps",
+      testsSub: "Deployed Web, AI & Data Apps",
+      nist: "96.6%",
+      nistSub: "Core Logic Coverage · 252 Tests",
+      data: "Asah Alumni",
+      dataSub: "Dicoding × Accenture Cohort",
     },
     tabs: {
       experience: "experience",
@@ -219,12 +233,19 @@ export const translations: Record<Language, Translations> = {
       quickPreview: "quick preview",
       techStackAria: "Tech stack",
     },
-    stickerCard: {
-      heading: "Ready to elevate your workflow?",
-      titleAttr: "Send email to Novandi (opens email app / Gmail)",
-      copyTitle: "Copy email address",
-      copy: "Copy",
-      copied: "Copied!",
+    techPond: {
+      ariaLabel: "Interactive tech stack swimming pond",
+      badge: "Tech Stack Pond",
+      hint: "Click any swimming logo to catch it",
+      caughtLabel: "Caught",
+      releaseAll: "Release All",
+      releaseOne: "Release",
+      catchAction: "Catch",
+      emptyTray: "Net is empty — click any swimming tech logo above to catch it!",
+      stackCountLabel: "Verified Technologies",
+      caughtListAria: "Caught technologies tray",
+      allCaughtTitle: "All Tech Stack Caught!",
+      allCaughtSub: "Every technology above was shipped across my web, AI, and thesis engineering projects.",
     },
     footer: {
       rights: "all right reserved",

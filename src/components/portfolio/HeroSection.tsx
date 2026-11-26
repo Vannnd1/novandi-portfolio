@@ -7,10 +7,10 @@ import { TiltCard } from '../TiltCard';
 import { Magnetic } from '../MagneticButton';
 import { SocialPill } from '../SocialPill';
 import { GitHubIcon, InstagramIcon, LinkedInIcon } from '../Icons';
+import { getMailtoUrl, handleSmartEmailClick } from '../../utils/email';
 
 interface HeroSectionProps {
   onExploreWorks: () => void;
-  onContactClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 const heroContainerVariants = {
@@ -51,7 +51,6 @@ const heroPhotoVariants = {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onExploreWorks,
-  onContactClick,
 }) => {
   const { profile, t } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
@@ -153,8 +152,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             <Magnetic strength={0.25}>
               <a
-                href="#contact-card"
-                onClick={onContactClick}
+                href={getMailtoUrl(profile.email)}
+                onClick={(e) => handleSmartEmailClick(e, profile.email)}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-[#18181b] hover:bg-[#fafafa] hover:dark:bg-[#27272a] border border-[#101010]/20 dark:border-white/15 text-[#101010] dark:text-white font-hegarty text-sm sm:text-base transition-all duration-200 cursor-pointer shadow-xs active:scale-95"
               >
                 <span>{t.hero.contactMe}</span>

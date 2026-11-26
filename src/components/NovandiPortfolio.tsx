@@ -8,7 +8,7 @@ import { TechnicalMetrics } from './portfolio/TechnicalMetrics';
 import { ProjectShowcase } from './portfolio/ProjectShowcase';
 import { TimelineSection } from './portfolio/TimelineSection';
 import { GithubHeatmap } from './GithubHeatmap';
-import { StickerCard } from './StickerCard';
+import { TechPondCard } from './portfolio/TechPondCard';
 import { CaseStudyModal } from './CaseStudyModal';
 import { RevealOnScroll } from './RevealOnScroll';
 import { getMailtoUrl, handleSmartEmailClick } from '../utils/email';
@@ -27,14 +27,6 @@ export const NovandiPortfolio: React.FC = () => {
     setActiveTab('works');
     const el = document.getElementById('portfolio-tabs');
     el?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = document.getElementById('contact-card');
-    if (el) {
-      e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
@@ -97,10 +89,7 @@ export const NovandiPortfolio: React.FC = () => {
       <main className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 pt-6 sm:pt-8 pb-20 space-y-12 sm:space-y-16">
         
         {/* ── HERO SECTION: Visually Striking Editorial First Screen ── */}
-        <HeroSection
-          onExploreWorks={handleExploreWorks}
-          onContactClick={handleContactClick}
-        />
+        <HeroSection onExploreWorks={handleExploreWorks} />
 
         {/* ── TECHNICAL CREDIBILITY STRIP ── */}
         <TechnicalMetrics />
@@ -158,10 +147,10 @@ export const NovandiPortfolio: React.FC = () => {
           </div>
         </section>
 
-        {/* ── LIME GREEN CALL TO ACTION ── */}
+        {/* ── INTERACTIVE TECH STACK POND ── */}
         <RevealOnScroll distance={24} delay={50}>
-          <section aria-label="Call to Action">
-            <StickerCard />
+          <section aria-label={t.techPond.ariaLabel}>
+            <TechPondCard />
           </section>
         </RevealOnScroll>
 
