@@ -56,7 +56,12 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
     const applyBlobTransform = () => {
       const node = blobRef.current;
       if (node) {
-        node.style.transform = `translate3d(${blob.x.toFixed(1)}px, ${blob.y.toFixed(1)}px, 0) rotate(${blob.rotDeg.toFixed(1)}deg) scale(${blob.scaleX.toFixed(3)}, ${blob.scaleY.toFixed(3)})`;
+        // Read actual rendered size so centering is accurate at any breakpoint
+        const hw = node.offsetWidth / 2;
+        const hh = node.offsetHeight / 2;
+        const cx = blob.x - hw;
+        const cy = blob.y - hh;
+        node.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) rotate(${blob.rotDeg.toFixed(1)}deg) scale(${blob.scaleX.toFixed(3)}, ${blob.scaleY.toFixed(3)})`;
       }
     };
 
@@ -237,10 +242,10 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
     >
       <div
         ref={blobRef}
-        style={{ willChange: 'transform' }}
-        className="absolute top-0 left-0"
+        style={{ willChange: 'transform', transformOrigin: 'center' }}
+        className="absolute top-0 left-0 w-[280px] h-[230px] sm:w-[400px] sm:h-[320px]"
       >
-        <span className="block -translate-x-1/2 -translate-y-1/2 w-[280px] h-[230px] sm:w-[400px] sm:h-[320px] blur-[46px] sm:blur-[56px] animate-vice-blob vice-tricolor-blob" />
+        <span className="block w-full h-full blur-[46px] sm:blur-[56px] animate-vice-blob vice-tricolor-blob" />
       </div>
     </div>
   );
