@@ -172,6 +172,20 @@
   animation: viceBlobMorph 9s ease-in-out infinite;
 }
 
+.vice-tricolor-blob {
+  background-image:
+    radial-gradient(circle at 24% 32%, rgba(255, 59, 154, 0.24) 0%, transparent 62%),
+    radial-gradient(circle at 76% 30%, rgba(255, 138, 76, 0.22) 0%, transparent 62%),
+    radial-gradient(circle at 52% 76%, rgba(0, 217, 255, 0.22) 0%, transparent 64%);
+}
+
+.dark .vice-tricolor-blob {
+  background-image:
+    radial-gradient(circle at 24% 32%, rgba(255, 59, 154, 0.32) 0%, transparent 62%),
+    radial-gradient(circle at 76% 30%, rgba(255, 138, 76, 0.24) 0%, transparent 62%),
+    radial-gradient(circle at 52% 76%, rgba(0, 217, 255, 0.26) 0%, transparent 64%);
+}
+
 .animate-radar-ripple {
   animation: radarRipple 760ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
