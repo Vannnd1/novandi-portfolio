@@ -10,6 +10,7 @@ import {
   type TechRoleId,
 } from '../../data/techPond';
 import { TechBrandIcon } from '../TechBrandIcon';
+import { ViceAmbientBackdrop } from '../ViceAmbientBackdrop';
 
 interface OrbitOrbState {
   id: TechFishId;
@@ -374,15 +375,8 @@ export const ViceLoadoutCard: React.FC = () => {
       id="tech-loadout"
       className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#f0d8e6] dark:border-[#2f1f4d] bg-gradient-to-br from-[#fff5fa] via-[#fcf2ff] to-[#f2f8ff] dark:from-[#140d22] dark:via-[#120b2b] dark:to-[#091229] shadow-[0_12px_36px_rgba(168,85,247,0.08)] dark:shadow-[0_16px_42px_rgba(0,0,0,0.48)] select-none transition-colors duration-300"
     >
-      {/* Subtle Vice Sunset Aura */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-20 -left-20 w-80 h-80 rounded-full bg-[#ff3b9a]/10 dark:bg-[#ff3b9a]/15 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-20 -right-16 w-96 h-96 rounded-full bg-[#00d9ff]/14 dark:bg-[#00d9ff]/12 blur-3xl"
-      />
+      {/* Interactive Vice Sunset Aura (wanders randomly, approaches pointer on hover) */}
+      <ViceAmbientBackdrop scope="container" />
 
       {/* Top Loadout Header Bar */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-2 px-5 sm:px-7 pt-4 sm:pt-5 pb-2">

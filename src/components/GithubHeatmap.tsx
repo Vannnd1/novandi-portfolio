@@ -193,7 +193,7 @@ export const GithubHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white/95 dark:bg-[#140d22] border border-[#f0d8e6] dark:border-[#2f1f4d] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
+    <div className="w-full bg-white/85 dark:bg-[#140d22]/82 border border-[#f0d8e6] dark:border-[#2f1f4d] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
       {/* ── CARD HEADER: Live Status, Identity & Tooltip Bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#f5e3ee] dark:border-[#2b1d45]">
         {/* User Identity */}
