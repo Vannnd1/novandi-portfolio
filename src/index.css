@@ -174,16 +174,18 @@
 
 .vice-tricolor-blob {
   background-image:
-    radial-gradient(circle at 24% 32%, rgba(255, 59, 154, 0.24) 0%, transparent 62%),
-    radial-gradient(circle at 76% 30%, rgba(255, 138, 76, 0.22) 0%, transparent 62%),
-    radial-gradient(circle at 52% 76%, rgba(0, 217, 255, 0.22) 0%, transparent 64%);
+    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.2) 0%, transparent 56%),
+    radial-gradient(circle at 34% 38%, rgba(255, 59, 154, 0.24) 0%, transparent 58%),
+    radial-gradient(circle at 66% 38%, rgba(255, 138, 76, 0.22) 0%, transparent 58%),
+    radial-gradient(circle at 50% 68%, rgba(0, 217, 255, 0.22) 0%, transparent 60%);
 }
 
 .dark .vice-tricolor-blob {
   background-image:
-    radial-gradient(circle at 24% 32%, rgba(255, 59, 154, 0.32) 0%, transparent 62%),
-    radial-gradient(circle at 76% 30%, rgba(255, 138, 76, 0.24) 0%, transparent 62%),
-    radial-gradient(circle at 52% 76%, rgba(0, 217, 255, 0.26) 0%, transparent 64%);
+    radial-gradient(circle at 50% 50%, rgba(255, 59, 154, 0.24) 0%, transparent 56%),
+    radial-gradient(circle at 34% 38%, rgba(255, 59, 154, 0.3) 0%, transparent 58%),
+    radial-gradient(circle at 66% 38%, rgba(255, 138, 76, 0.25) 0%, transparent 58%),
+    radial-gradient(circle at 50% 68%, rgba(0, 217, 255, 0.26) 0%, transparent 60%);
 }
 
 .animate-radar-ripple {

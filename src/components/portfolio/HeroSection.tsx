@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../../context/useLanguage';
-import { Spotlight } from '../Spotlight';
 import { TiltCard } from '../TiltCard';
 import { Magnetic } from '../MagneticButton';
 import { SocialPill } from '../SocialPill';
@@ -57,15 +56,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative rounded-3xl border border-[#f0d8e6] dark:border-[#332152] bg-gradient-to-br from-[#ffffff] via-[#fff5fa] to-[#fff3eb] dark:from-[#160d26] dark:via-[#1b1030] dark:to-[#120b20] shadow-[0_6px_32px_rgba(168,85,247,0.06)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden transition-colors">
+    <div className="relative rounded-3xl border border-[#f0d8e6] dark:border-[#332152] bg-[#fff9fc] dark:bg-[#130b22] shadow-[0_6px_32px_rgba(168,85,247,0.06)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-hidden transition-colors">
       {/* Interactive Vice Ambient Glow inside Profile Card */}
       <ViceAmbientBackdrop />
 
-      <Spotlight
-        className="relative z-10 p-6 sm:p-10 lg:p-12 xl:p-14"
-        spotlightColor="rgba(255, 59, 154, 0.14)"
-        size={800}
-      >
+      <div className="relative z-10 p-6 sm:p-10 lg:p-12 xl:p-14">
       <motion.div
         variants={heroContainerVariants}
         initial={shouldReduceMotion ? false : 'hidden'}
@@ -196,7 +191,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </TiltCard>
         </motion.div>
       </motion.div>
-      </Spotlight>
+      </div>
     </div>
   );
 };

@@ -373,7 +373,7 @@ export const ViceLoadoutCard: React.FC = () => {
   return (
     <div
       id="tech-loadout"
-      className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#f0d8e6] dark:border-[#2f1f4d] bg-gradient-to-br from-[#fff5fa] via-[#fcf2ff] to-[#f2f8ff] dark:from-[#140d22] dark:via-[#120b2b] dark:to-[#091229] shadow-[0_12px_36px_rgba(168,85,247,0.08)] dark:shadow-[0_16px_42px_rgba(0,0,0,0.48)] select-none transition-colors duration-300"
+      className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#f0d8e6] dark:border-[#2f1f4d] bg-[#fff9fc] dark:bg-[#130b22] shadow-[0_12px_36px_rgba(168,85,247,0.08)] dark:shadow-[0_16px_42px_rgba(0,0,0,0.48)] select-none transition-colors duration-300"
     >
       {/* Interactive Vice Sunset Aura (wanders randomly, approaches pointer on hover) */}
       <ViceAmbientBackdrop />

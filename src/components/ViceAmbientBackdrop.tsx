@@ -125,39 +125,45 @@ export const ViceAmbientBackdrop: React.FC<ViceAmbientBackdropProps> = ({ classN
         blob.nextScaleAt = randomScaleDelay(elapsed);
       }
 
-      blob.wanderAngle += (Math.sin(elapsed * 1.45) * 0.8 + blob.turnBias) * dt;
-
-      const baseSpeed = 128;
-      let targetVx = Math.cos(blob.wanderAngle) * baseSpeed;
-      let targetVy = Math.sin(blob.wanderAngle) * baseSpeed;
-
-      // Soft inward curve near edges so the large aura stays inside the card
-      const padX = Math.max(48, width * 0.18);
-      const padY = Math.max(48, height * 0.18);
-
-      if (blob.x < padX) targetVx += ((padX - blob.x) / padX) * 200;
-      else if (blob.x > width - padX) targetVx -= ((blob.x - (width - padX)) / padX) * 200;
-
-      if (blob.y < padY) targetVy += ((padY - blob.y) / padY) * 200;
-      else if (blob.y > height - padY) targetVy -= ((blob.y - (height - padY)) / padY) * 200;
-
       if (pointer.active) {
-        const breathX = Math.cos(elapsed * 1.5) * 18;
-        const breathY = Math.sin(elapsed * 1.25) * 14;
-        targetVx = (pointer.x + breathX - blob.x) * 5.2;
-        targetVy = (pointer.y + breathY - blob.y) * 5.2;
+        // Direct smooth convergence straight to exact pointer coordinates (no offset/lag)
+        const followAlpha = 1 - Math.exp(-14 * dt);
+        const prevX = blob.x;
+        const prevY = blob.y;
+        blob.x += (pointer.x - blob.x) * followAlpha;
+        blob.y += (pointer.y - blob.y) * followAlpha;
+        if (dt > 0) {
+          blob.vx = (blob.x - prevX) / dt;
+          blob.vy = (blob.y - prevY) / dt;
+        }
+      } else {
+        blob.wanderAngle += (Math.sin(elapsed * 1.45) * 0.8 + blob.turnBias) * dt;
+
+        const baseSpeed = 128;
+        let targetVx = Math.cos(blob.wanderAngle) * baseSpeed;
+        let targetVy = Math.sin(blob.wanderAngle) * baseSpeed;
+
+        // Soft inward curve near edges so the large aura stays inside the card
+        const padX = Math.max(48, width * 0.18);
+        const padY = Math.max(48, height * 0.18);
+
+        if (blob.x < padX) targetVx += ((padX - blob.x) / padX) * 200;
+        else if (blob.x > width - padX) targetVx -= ((blob.x - (width - padX)) / padX) * 200;
+
+        if (blob.y < padY) targetVy += ((padY - blob.y) / padY) * 200;
+        else if (blob.y > height - padY) targetVy -= ((blob.y - (height - padY)) / padY) * 200;
+
+        const blend = Math.min(1, dt * 3.6);
+        blob.vx += (targetVx - blob.vx) * blend;
+        blob.vy += (targetVy - blob.vy) * blend;
+
+        blob.x += blob.vx * dt;
+        blob.y += blob.vy * dt;
       }
-
-      const blend = Math.min(1, dt * (pointer.active ? 6.2 : 3.6));
-      blob.vx += (targetVx - blob.vx) * blend;
-      blob.vy += (targetVy - blob.vy) * blend;
-
-      blob.x += blob.vx * dt;
-      blob.y += blob.vy * dt;
 
       // Continuous organic tumbling & independent X/Y grow-and-shrink
       blob.rotDeg = (blob.rotDeg + 18 * dt) % 360;
-      const hoverBloom = pointer.active ? 0.12 : 0;
+      const hoverBloom = pointer.active ? 0.1 : 0;
       const desiredScaleX = blob.targetScaleBias + hoverBloom + Math.sin(elapsed * 1.25) * 0.22;
       const desiredScaleY = blob.targetScaleBias + hoverBloom + Math.cos(elapsed * 0.96 + 0.9) * 0.22;
       const scaleBlend = Math.min(1, dt * 2.4);
