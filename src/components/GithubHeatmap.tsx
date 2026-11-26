@@ -169,19 +169,19 @@ export const GithubHeatmap: React.FC = () => {
     return map;
   }, [weeks, language]);
 
-  // Unified color palette for dots & legend (Harmonized with signature #fd4aa6)
+  // Unified Vice City sunset color palette for dots & legend
   const getColor = (level: number) => {
     switch (level) {
       case 4:
-        return 'bg-[#db2777] shadow-[0_0_8px_rgba(219,39,119,0.4)]'; // rich deep magenta
+        return 'bg-gradient-to-br from-[#ff3b9a] to-[#ff8a4c] shadow-[0_0_8px_rgba(255,107,107,0.5)]'; // Vice sunset coral-pink peak
       case 3:
-        return 'bg-[#fd4aa6] shadow-[0_0_6px_rgba(253,74,166,0.35)]'; // signature electric hot pink
+        return 'bg-[#ff3b9a] shadow-[0_0_6px_rgba(255,59,154,0.45)]'; // Vice electric magenta
       case 2:
-        return 'bg-[#f472b6]'; // medium vibrant pink
+        return 'bg-[#f472b6] dark:bg-[#b83280]'; // vibrant dusk rose
       case 1:
-        return 'bg-[#fbcfe8]'; // soft blush pink
+        return 'bg-[#fbcfe8] dark:bg-[#5e1f4e]'; // soft Miami blush
       default:
-        return 'bg-[#f1f3f5] dark:bg-[#27272a] hover:bg-[#e9ecef] hover:dark:bg-[#3f3f46] border border-black/[0.03] dark:border-white/[0.05]'; // crisp light neutral / modern dark neutral
+        return 'bg-[#f7eaf2] dark:bg-[#23173a] hover:bg-[#efd8e6] hover:dark:bg-[#312050] border border-[#ff3b9a]/[0.06] dark:border-white/[0.05]';
     }
   };
 
@@ -193,26 +193,26 @@ export const GithubHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-white dark:bg-[#121215] border border-[#E5E7EB] dark:border-[#27272a] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
+    <div className="w-full bg-white/95 dark:bg-[#140d22] border border-[#f0d8e6] dark:border-[#2f1f4d] rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-xs hover:shadow-sm transition-all duration-300">
       {/* ── CARD HEADER: Live Status, Identity & Tooltip Bar ── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#F3F4F6] dark:border-[#27272a]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-2 border-b border-[#f5e3ee] dark:border-[#2b1d45]">
         {/* User Identity */}
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-[#18181b] flex items-center justify-center text-neutral-700 dark:text-neutral-300 shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-[#fff1f8] dark:bg-[#1f1436] flex items-center justify-center text-[#ff3b9a] dark:text-[#ff78bc] shrink-0">
             <GitHubIcon className="w-4 h-4" />
           </div>
           <div className="flex flex-col">
-            <span className="font-sans font-semibold text-xs sm:text-sm text-[#111318] dark:text-white tracking-tight">
+            <span className="font-sans font-semibold text-xs sm:text-sm text-[#1a1026] dark:text-[#fdf7ff] tracking-tight">
               Vannnd1
             </span>
-            <span className="text-[10px] text-[#9CA3AF] dark:text-[#71717a] font-sans">
+            <span className="text-[10px] text-[#8d74a3] dark:text-[#9c89b8] font-sans">
               GitHub Contribution Graph
             </span>
           </div>
         </div>
 
         {/* Dynamic Tooltip / Active Day Indicator */}
-        <div className="h-6 text-[11px] font-sans text-center sm:text-right text-[#6B7280] dark:text-[#a1a1aa] flex items-center sm:justify-end overflow-hidden">
+        <div className="h-6 text-[11px] font-sans text-center sm:text-right text-[#7b648f] dark:text-[#b4a0ce] flex items-center sm:justify-end overflow-hidden">
           <AnimatePresence mode="wait">
             {hoveredDay ? (
               <motion.div
@@ -221,9 +221,9 @@ export const GithubHeatmap: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -3 }}
                 transition={{ duration: 0.15 }}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-50 dark:bg-[#18181b] border border-neutral-200/60 dark:border-[#27272a] text-[#111318] dark:text-white font-medium text-xs"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fff4fa] dark:bg-[#1f1436] border border-[#f0d8e6] dark:border-[#372459] text-[#1a1026] dark:text-[#fdf7ff] font-medium text-xs"
               >
-                <strong className="text-[#fd4aa6] font-semibold">{hoveredDay.count}</strong>{' '}
+                <strong className="text-[#ff3b9a] font-semibold">{hoveredDay.count}</strong>{' '}
                 <span>
                   {hoveredDay.count === 1 ? t.heatmap.contribution : t.heatmap.contributions}{' '}
                   {t.heatmap.on}{' '}
@@ -361,12 +361,12 @@ export const GithubHeatmap: React.FC = () => {
       </div>
 
       {/* ── FOOTER: Summary Link & Consistent Legend ── */}
-      <div className="pt-3 mt-2 border-t border-[#F3F4F6] dark:border-[#27272a] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#9CA3AF] dark:text-[#71717a] font-sans select-none">
+      <div className="pt-3 mt-2 border-t border-[#f5e3ee] dark:border-[#2b1d45] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#8d74a3] dark:text-[#9c89b8] font-sans select-none">
         <a
           href="https://github.com/Vannnd1"
           target="_blank"
           rel="noreferrer"
-          className="font-medium text-[#4B5563] dark:text-[#d4d4d8] hover:text-[#fd4aa6] dark:hover:text-[#fd4aa6] transition-colors inline-flex items-center gap-1.5 group"
+          className="font-medium text-[#523e63] dark:text-[#d6c7e8] hover:text-[#ff3b9a] dark:hover:text-[#ff78bc] transition-colors inline-flex items-center gap-1.5 group"
         >
           <span>
             {isLoading
@@ -381,11 +381,11 @@ export const GithubHeatmap: React.FC = () => {
         {/* Synchronized Legend with Exact Same Color Tokens */}
         <div className="flex items-center gap-1.5 text-[10px] self-end sm:self-auto">
           <span>{t.heatmap.less}</span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#f1f3f5] dark:bg-[#27272a] border border-black/[0.03] dark:border-white/[0.05]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#fbcfe8]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#f472b6]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#fd4aa6]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#db2777]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#f7eaf2] dark:bg-[#23173a] border border-[#ff3b9a]/[0.06] dark:border-white/[0.05]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#fbcfe8] dark:bg-[#5e1f4e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#f472b6] dark:bg-[#b83280]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff3b9a]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#ff3b9a] to-[#ff8a4c]" />
           <span>{t.heatmap.more}</span>
         </div>
       </div>

@@ -83,12 +83,12 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
         onClick={(e) => {
           if (e.target === e.currentTarget) onClose();
         }}
-        className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex flex-col justify-between p-3 sm:p-5 md:p-6 select-none overflow-hidden"
+        className="fixed inset-0 z-50 bg-[#080410]/94 backdrop-blur-md flex flex-col justify-between p-3 sm:p-5 md:p-6 select-none overflow-hidden"
       >
         {/* Top Header Bar */}
-        <div className="flex items-center justify-between gap-3 text-white pb-3 border-b border-white/10 z-10">
+        <div className="flex items-center justify-between gap-3 text-white pb-3 border-b border-[#ff3b9a]/20 z-10">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="shrink-0 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono font-medium text-[#fd4aa6]">
+            <span className="shrink-0 px-2.5 py-1 rounded-full bg-[#1a102c] border border-[#ff3b9a]/35 text-xs font-mono font-medium text-[#ff4da6]">
               {currentImage.badge || `${currentIndex + 1} / ${images.length}`}
             </span>
             <div className="min-w-0">
@@ -96,7 +96,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 {currentImage.title}
               </h3>
               {currentImage.subtitle && (
-                <p className="hidden sm:block text-xs font-mono text-neutral-400 truncate m-0">
+                <p className="hidden sm:block text-xs font-mono text-[#b4a0ce] truncate m-0">
                   {currentImage.subtitle}
                 </p>
               )}
@@ -111,7 +111,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                   onClose();
                   onViewCaseStudy();
                 }}
-                className="hidden md:inline-flex items-center gap-1.5 font-hegarty text-xs bg-white/10 hover:bg-[#fd4aa6] text-white px-3.5 py-1.5 rounded-full transition-colors active:scale-95 cursor-pointer border border-white/15"
+                className="hidden md:inline-flex items-center gap-1.5 font-hegarty text-xs bg-[#1a102c] hover:bg-[#ff3b9a] text-white px-3.5 py-1.5 rounded-full transition-colors active:scale-95 cursor-pointer border border-[#ff3b9a]/30"
               >
                 <span>{caseStudyLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               href={currentImage.src}
               target="_blank"
               rel="noreferrer"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white flex items-center justify-center transition-colors active:scale-95 border border-white/15"
+              className="w-9 h-9 rounded-full bg-[#1a102c] hover:bg-[#2a1b47] text-[#d6c7e8] hover:text-white flex items-center justify-center transition-colors active:scale-95 border border-white/15"
               title="Buka gambar ukuran asli di tab baru"
               aria-label="Open full image in new tab"
             >
@@ -132,7 +132,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white flex items-center justify-center transition-colors active:scale-95 border border-white/15 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#fd4aa6]"
+              className="w-9 h-9 rounded-full bg-[#1a102c] hover:bg-[#2a1b47] text-[#d6c7e8] hover:text-white flex items-center justify-center transition-colors active:scale-95 border border-white/15 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#ff3b9a]"
               aria-label="Tutup preview gambar (Esc)"
             >
               <X className="w-4 h-4" />
@@ -206,7 +206,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                   onClick={() => onNavigate(idx)}
                   className={`relative rounded-lg overflow-hidden transition-all cursor-pointer border ${
                     isActive
-                      ? 'border-[#fd4aa6] ring-2 ring-[#fd4aa6]/40 scale-105'
+                      ? 'border-[#ff3b9a] ring-2 ring-[#ff3b9a]/45 scale-105'
                       : 'border-white/20 opacity-60 hover:opacity-100 hover:border-white/50'
                   }`}
                   title={img.title}

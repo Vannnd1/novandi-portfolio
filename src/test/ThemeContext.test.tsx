@@ -21,21 +21,7 @@ describe('ThemeContext & ThemeToggle', () => {
     document.documentElement.classList.remove('dark');
   });
 
-  it('defaults to light theme when nothing is in localStorage', () => {
-    render(
-      <ThemeProvider>
-        <ConsumerComponent />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('theme').textContent).toBe('light');
-    expect(screen.getByTestId('isDark').textContent).toBe('false');
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
-  });
-
-  it('respects pre-existing localStorage theme="dark"', () => {
-    localStorage.setItem('theme', 'dark');
-
+  it('defaults to dark theme (Vice Night) when nothing is in localStorage', () => {
     render(
       <ThemeProvider>
         <ConsumerComponent />
@@ -47,7 +33,21 @@ describe('ThemeContext & ThemeToggle', () => {
     expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 
-  it('toggles theme between light and dark, updating DOM and localStorage', async () => {
+  it('respects pre-existing localStorage theme="light"', () => {
+    localStorage.setItem('theme', 'light');
+
+    render(
+      <ThemeProvider>
+        <ConsumerComponent />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByTestId('theme').textContent).toBe('light');
+    expect(screen.getByTestId('isDark').textContent).toBe('false');
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
+  });
+
+  it('toggles theme between dark and light, updating DOM and localStorage', async () => {
     render(
       <ThemeProvider>
         <ConsumerComponent />
@@ -56,17 +56,7 @@ describe('ThemeContext & ThemeToggle', () => {
 
     const toggleBtn = screen.getByText('Toggle Theme');
 
-    // Toggle to dark
-    await act(async () => {
-      toggleBtn.click();
-    });
-
-    expect(screen.getByTestId('theme').textContent).toBe('dark');
-    expect(screen.getByTestId('isDark').textContent).toBe('true');
-    expect(document.documentElement.classList.contains('dark')).toBe(true);
-    expect(localStorage.getItem('theme')).toBe('dark');
-
-    // Toggle back to light
+    // Toggle to light
     await act(async () => {
       toggleBtn.click();
     });
@@ -75,23 +65,33 @@ describe('ThemeContext & ThemeToggle', () => {
     expect(screen.getByTestId('isDark').textContent).toBe('false');
     expect(document.documentElement.classList.contains('dark')).toBe(false);
     expect(localStorage.getItem('theme')).toBe('light');
+
+    // Toggle back to dark
+    await act(async () => {
+      toggleBtn.click();
+    });
+
+    expect(screen.getByTestId('theme').textContent).toBe('dark');
+    expect(screen.getByTestId('isDark').textContent).toBe('true');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(localStorage.getItem('theme')).toBe('dark');
   });
 
-  it('ThemeToggle component renders and toggles theme on click', async () => {
+  it('ThemeToggle component renders in dark mode by default and toggles to light mode on click', async () => {
     render(
       <ThemeProvider>
         <ThemeToggle />
       </ThemeProvider>
     );
 
-    const button = screen.getByRole('button', { name: /switch to dark mode/i });
+    const button = screen.getByRole('button', { name: /switch to light mode/i });
     expect(button).toBeInTheDocument();
 
     await act(async () => {
       button.click();
     });
 
-    expect(document.documentElement.classList.contains('dark')).toBe(true);
-    expect(screen.getByRole('button', { name: /switch to light mode/i })).toBeInTheDocument();
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
+    expect(screen.getByRole('button', { name: /switch to dark mode/i })).toBeInTheDocument();
   });
 });

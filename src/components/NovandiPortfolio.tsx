@@ -30,16 +30,22 @@ export const NovandiPortfolio: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#09090b] text-[#101010] dark:text-[#f4f4f5] selection:bg-[#ffd3e5] selection:text-[#fd4aa6] dark:selection:bg-[#fd4aa6]/30 dark:selection:text-[#fd4aa6] relative transition-colors duration-200">
+    <div className="min-h-screen bg-[#fff9f6] dark:bg-[#0b0614] text-[#1a1026] dark:text-[#fdf7ff] selection:bg-[#ffd1e8] selection:text-[#d61f7a] dark:selection:bg-[#ff3b9a]/35 dark:selection:text-[#ff85c2] relative transition-colors duration-200">
+      {/* Subtle Vice City Sunset Horizon Aura */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 top-0 h-[460px] z-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-10%,rgba(255,59,154,0.12),rgba(255,138,76,0.06),transparent)] dark:bg-[radial-gradient(ellipse_85%_60%_at_50%_-10%,rgba(255,59,154,0.22),rgba(139,61,255,0.14),transparent)]"
+      />
+
       {/* 0. Top Thin Scroll Progress Bar */}
       <ScrollProgress />
 
       {/* 1. Sticky Header with Novandi's brand logo, Theme Toggle & Language Switcher */}
-      <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-white/80 dark:bg-[#09090b]/80 border-b border-[#101010]/10 dark:border-white/10 transition-colors duration-200">
+      <header className="sticky top-0 z-50 backdrop-blur-[18px] bg-[#fff9f6]/80 dark:bg-[#0b0614]/80 border-b border-[#f0d8e6] dark:border-[#2d1d47] transition-colors duration-200">
         <nav className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 h-[72px] flex items-center justify-between select-none">
           <a
             href="/"
-            className="font-hegarty text-[30px] sm:text-[32px] text-[#101010] dark:text-white stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
+            className="font-hegarty text-[30px] sm:text-[32px] text-[#1a1026] dark:text-[#fdf7ff] stroke-title no-underline hover:opacity-85 transition-opacity flex items-center gap-2"
             aria-label={t.nav.homeAria}
           >
             <span>novan.arm</span>
@@ -51,13 +57,13 @@ export const NovandiPortfolio: React.FC = () => {
 
             {/* Interactive Language Switcher Toggle */}
             <div
-              className="relative grid grid-cols-2 p-1 bg-[#f4f4f5] dark:bg-[#18181b] rounded-full border border-[#e4e4e7] dark:border-[#27272a] text-xs font-space transition-colors select-none"
+              className="relative grid grid-cols-2 p-1 bg-[#fff1f8] dark:bg-[#160f26] rounded-full border border-[#f0d8e6] dark:border-[#2f1f4d] text-xs font-space transition-colors select-none"
               role="group"
               aria-label={t.nav.langSwitchAria}
             >
               {/* Sliding indicator pill: uses pure relative X transform, completely immune to sticky header scroll offset */}
               <motion.span
-                className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-[#101010] dark:bg-white rounded-full shadow-xs pointer-events-none"
+                className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gradient-to-r from-[#ff3b9a] to-[#ff8a4c] rounded-full shadow-xs pointer-events-none"
                 initial={false}
                 animate={{
                   x: language === 'id' ? 0 : '100%',
@@ -72,8 +78,8 @@ export const NovandiPortfolio: React.FC = () => {
                   onClick={() => setLanguage(langKey)}
                   className={`relative z-10 px-3 py-1 min-w-[38px] text-center rounded-full font-bold transition-colors duration-200 cursor-pointer uppercase select-none ${
                     language === langKey
-                      ? 'text-white dark:text-black'
-                      : 'text-[#666] dark:text-[#a1a1aa] hover:text-black dark:hover:text-white'
+                      ? 'text-white'
+                      : 'text-[#7b648f] dark:text-[#b4a0ce] hover:text-[#1a1026] dark:hover:text-white'
                   }`}
                   title={langKey === 'id' ? 'Bahasa Indonesia' : 'English'}
                 >
@@ -86,7 +92,7 @@ export const NovandiPortfolio: React.FC = () => {
       </header>
 
       {/* 2. Main Page Shell */}
-      <main className="max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 pt-6 sm:pt-8 pb-20 space-y-12 sm:space-y-16">
+      <main className="relative z-10 max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-10 pt-6 sm:pt-8 pb-20 space-y-12 sm:space-y-16">
         
         {/* ── HERO SECTION: Visually Striking Editorial First Screen ── */}
         <HeroSection onExploreWorks={handleExploreWorks} />
@@ -103,21 +109,23 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── PORTFOLIO TABS NAVIGATION ── */}
         <section id="portfolio-tabs" className="space-y-8 scroll-mt-24">
-          <div className="flex items-end gap-9 border-b border-[#d8d8d8] dark:border-[#27272a] overflow-x-auto select-none transition-colors">
+          <div className="flex items-end gap-9 border-b border-[#f0d8e6] dark:border-[#2f1f4d] overflow-x-auto select-none transition-colors">
             {(['works', 'experience', 'education'] as const).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 className={`relative font-hegarty text-2xl pb-3.5 transition-colors cursor-pointer leading-none capitalize ${
-                  activeTab === tab ? 'text-black dark:text-white' : 'text-[#767676] dark:text-[#a1a1aa] hover:text-black dark:hover:text-white'
+                  activeTab === tab
+                    ? 'text-[#1a1026] dark:text-[#fdf7ff]'
+                    : 'text-[#7b648f] dark:text-[#9c89b8] hover:text-[#ff3b9a] dark:hover:text-[#ff78bc]'
                 }`}
               >
                 {t.tabs[tab]}
                 {activeTab === tab && (
                   <motion.span
                     layoutId="activeTabUnderline"
-                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#fd4aa6]"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#ff3b9a] via-[#ff8a4c] to-[#00d9ff]"
                     transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                   />
                 )}
@@ -157,7 +165,7 @@ export const NovandiPortfolio: React.FC = () => {
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
           <section className="pt-2 pb-2 select-none flex justify-center overflow-hidden">
-            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#202020] dark:text-[#27272a] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
+            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#ebd1e0] dark:text-[#23153b] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
                   key={cIdx}
@@ -171,7 +179,7 @@ export const NovandiPortfolio: React.FC = () => {
                   }}
                   whileHover={{
                     scale: 1.05,
-                    color: '#fd4aa6',
+                    color: '#ff3b9a',
                     y: -4,
                     transition: { duration: 0.2 },
                   }}
@@ -187,11 +195,11 @@ export const NovandiPortfolio: React.FC = () => {
       </main>
 
       {/* ── DARK FOOTER BAR ── */}
-      <footer className="w-full bg-[#202020] dark:bg-[#0c0c0e] border-t border-transparent dark:border-[#27272a] text-white py-8 sm:h-[135px] select-none flex items-center transition-colors">
+      <footer className="relative z-10 w-full bg-[#140b24] dark:bg-[#07040e] border-t border-[#ff3b9a]/25 text-[#fdf7ff] py-8 sm:h-[135px] select-none flex items-center transition-colors">
         <div className="max-w-[1180px] w-full mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-hegarty text-sm sm:text-[0.95rem] text-white flex items-center gap-4 m-0">
+          <p className="font-hegarty text-sm sm:text-[0.95rem] text-[#fdf7ff] flex items-center gap-4 m-0">
             <span>@novandi ahmad ramdhan</span>
-            <span aria-hidden="true">•</span>
+            <span aria-hidden="true" className="text-[#ff3b9a]">•</span>
             <span>{t.footer.rights}</span>
           </p>
 
@@ -202,7 +210,7 @@ export const NovandiPortfolio: React.FC = () => {
               rel="noreferrer"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-[#cf2ee3] hover:underline no-underline inline-block transition-transform"
+              className="text-[#c084fc] hover:underline no-underline inline-block transition-transform"
             >
               github
             </motion.a>
@@ -212,7 +220,7 @@ export const NovandiPortfolio: React.FC = () => {
               rel="noreferrer"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-[#38bdf8] hover:underline no-underline inline-block transition-transform"
+              className="text-[#22d3ee] hover:underline no-underline inline-block transition-transform"
             >
               linkedin
             </motion.a>
@@ -222,7 +230,7 @@ export const NovandiPortfolio: React.FC = () => {
               rel="noreferrer"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-[#f0258d] hover:underline no-underline inline-block transition-transform"
+              className="text-[#ff4da6] hover:underline no-underline inline-block transition-transform"
             >
               instagram
             </motion.a>
@@ -231,7 +239,7 @@ export const NovandiPortfolio: React.FC = () => {
               onClick={(e) => handleSmartEmailClick(e, profile.email)}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-[#bef264] hover:underline no-underline inline-block transition-transform"
+              className="text-[#ffb35c] hover:underline no-underline inline-block transition-transform"
             >
               email
             </motion.a>

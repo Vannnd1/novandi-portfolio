@@ -17,8 +17,8 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 450, damping: 25 }}
-      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer select-none bg-[#f4f4f5] hover:bg-[#e4e4e7] dark:bg-[#18181b] dark:hover:bg-[#27272a] border border-[#e4e4e7] dark:border-[#27272a] text-[#404040] dark:text-[#f4f4f5] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#fd4aa6] shadow-xs overflow-hidden ${className}`}
-      title={isDark ? 'Aktifkan Mode Terang (Light Mode)' : 'Aktifkan Mode Gelap (Dark Mode)'}
+      className={`relative w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer select-none bg-[#fff1f8] hover:bg-[#ffe3f1] dark:bg-[#1a102c] dark:hover:bg-[#261840] border border-[#f0d8e6] dark:border-[#372459] text-[#4c2b66] dark:text-[#fdf7ff] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#ff3b9a] shadow-xs overflow-hidden ${className}`}
+      title={isDark ? 'Aktifkan Mode Terang (Miami Daylight)' : 'Aktifkan Mode Gelap (Vice Night)'}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -31,9 +31,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
           className="flex items-center justify-center"
         >
           {isDark ? (
-            <Sun className="w-4 h-4 text-[#fbbf24] hover:text-[#f59e0b] transition-colors" />
+            <Sun className="w-4 h-4 text-[#ffb35c] hover:text-[#ffd166] transition-colors" />
           ) : (
-            <Moon className="w-4 h-4 text-[#52525b] hover:text-black transition-colors" />
+            <Moon className="w-4 h-4 text-[#9333ea] hover:text-[#ff3b9a] transition-colors" />
           )}
         </motion.div>
       </AnimatePresence>

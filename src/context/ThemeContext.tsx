@@ -5,19 +5,16 @@ import type { Theme, ThemeContextType } from './types';
 const STORAGE_KEY = 'theme';
 
 function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'light';
+  if (typeof window === 'undefined') return 'dark';
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'dark' || saved === 'light') {
       return saved;
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
   } catch {
-    return 'light';
+    return 'dark';
   }
-  return 'light';
+  return 'dark';
 }
 
 function applyThemeToDOM(theme: Theme, isViewTransition = false) {
@@ -37,7 +34,7 @@ function applyThemeToDOM(theme: Theme, isViewTransition = false) {
   // Update mobile browser chrome status bar color
   const metaTheme = document.querySelector('meta[name="theme-color"]');
   if (metaTheme) {
-    metaTheme.setAttribute('content', theme === 'dark' ? '#09090b' : '#ffffff');
+    metaTheme.setAttribute('content', theme === 'dark' ? '#0b0614' : '#fff9f6');
   }
 
   if (!isViewTransition) {

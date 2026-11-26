@@ -389,39 +389,39 @@ export const TechPondCard: React.FC = () => {
   return (
     <div
       id="tech-pond"
-      className="relative w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-[#f2fafc] dark:bg-[#09121e] border border-[#c7e6ed] dark:border-[#1c3554] shadow-[0_12px_32px_rgba(14,116,144,0.08)] dark:shadow-[0_14px_36px_rgba(0,0,0,0.45)] overflow-hidden select-none transition-colors duration-300"
+      className="relative w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-[#fff5fa] dark:bg-[#130b24] border border-[#f0cce2] dark:border-[#362259] shadow-[0_12px_32px_rgba(255,59,154,0.08)] dark:shadow-[0_14px_36px_rgba(0,0,0,0.5)] overflow-hidden select-none transition-colors duration-300"
     >
-      {/* Inner Water Pond Container */}
-      <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-cyan-500/20 dark:border-sky-400/15 bg-gradient-to-br from-[#e3f8fc] via-[#c7eff8] to-[#aae2f2] dark:from-[#0c2238] dark:via-[#0a1a2e] dark:to-[#071321] shadow-inner transition-colors duration-300">
-        {/* Ambient Water Caustics & Subtle Depth */}
+      {/* Inner Water Pond Container (Vice Beach Daylight / Ocean Drive Midnight) */}
+      <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-cyan-500/25 dark:border-[#ff3b9a]/20 bg-gradient-to-br from-[#dff9ff] via-[#b7effd] to-[#90e2fb] dark:from-[#12163b] dark:via-[#0d1c3c] dark:to-[#07142b] shadow-inner transition-colors duration-300">
+        {/* Ambient Water Caustics & Vice Sunset Reflection */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-60 dark:opacity-45"
+          className="pointer-events-none absolute inset-0 opacity-75 dark:opacity-65"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 18% 28%, rgba(255,255,255,0.65) 0%, transparent 38%), radial-gradient(circle at 82% 70%, rgba(56,189,248,0.28) 0%, transparent 45%), radial-gradient(circle at 52% 15%, rgba(253,74,166,0.08) 0%, transparent 35%)',
+              'radial-gradient(circle at 18% 25%, rgba(255,59,154,0.16) 0%, transparent 40%), radial-gradient(circle at 82% 72%, rgba(0,217,255,0.22) 0%, transparent 46%), radial-gradient(circle at 55% 12%, rgba(255,138,76,0.14) 0%, transparent 38%)',
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-[0.07] dark:opacity-[0.08] bg-tech-grid"
+          className="pointer-events-none absolute inset-0 opacity-[0.07] dark:opacity-[0.09] bg-tech-grid"
         />
 
         {/* Top Pond Header Bar */}
         <div className="relative z-20 flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 pt-3.5 sm:pt-4 pointer-events-none">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 dark:bg-[#0e263f]/90 border border-cyan-600/20 dark:border-cyan-400/20 font-space text-[11px] sm:text-xs font-bold text-[#0e4b5f] dark:text-cyan-200 uppercase tracking-wider shadow-2xs backdrop-blur-xs">
-              <Waves className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/85 dark:bg-[#120d29]/90 border border-[#ff3b9a]/25 dark:border-cyan-400/25 font-space text-[11px] sm:text-xs font-bold text-[#1a1026] dark:text-cyan-200 uppercase tracking-wider shadow-2xs backdrop-blur-xs">
+              <Waves className="w-3.5 h-3.5 text-[#0891b2] dark:text-[#00d9ff]" />
               <span>{t.techPond.badge}</span>
             </span>
-            <span className="hidden md:inline-block font-space text-xs text-[#155e75]/80 dark:text-cyan-100/70 font-medium">
+            <span className="hidden md:inline-block font-space text-xs text-[#155e75]/85 dark:text-cyan-100/75 font-medium">
               {t.techPond.hint}
             </span>
           </div>
 
           <div className="flex items-center gap-2 pointer-events-auto">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/85 dark:bg-[#0e263f]/90 border border-cyan-600/20 dark:border-cyan-400/20 font-space text-xs font-bold text-[#0f172a] dark:text-white shadow-2xs backdrop-blur-xs">
-              <span className="w-2 h-2 rounded-full bg-[#fd4aa6]" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 dark:bg-[#120d29]/90 border border-[#ff3b9a]/25 dark:border-[#ff3b9a]/30 font-space text-xs font-bold text-[#1a1026] dark:text-[#fdf7ff] shadow-2xs backdrop-blur-xs">
+              <span className="w-2 h-2 rounded-full bg-[#ff3b9a]" />
               <span>
                 {caughtIds.length} / {TECH_POND_ITEMS.length} {t.techPond.caughtLabel}
               </span>
@@ -431,7 +431,7 @@ export const TechPondCard: React.FC = () => {
               <button
                 type="button"
                 onClick={handleReleaseAll}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0f172a] dark:bg-white hover:bg-[#fd4aa6] hover:dark:bg-[#fd4aa6] text-white dark:text-[#09090b] hover:dark:text-white font-space text-xs font-bold transition-colors duration-150 cursor-pointer shadow-xs active:scale-95 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#fd4aa6]"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#ff3b9a] to-[#ff8a4c] hover:brightness-110 text-white font-space text-xs font-bold transition-all duration-150 cursor-pointer shadow-xs active:scale-95 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#ff3b9a]"
                 title={t.techPond.releaseAll}
               >
                 <RotateCcw className="w-3 h-3" />
@@ -544,13 +544,13 @@ export const TechPondCard: React.FC = () => {
         </div>
 
         {/* Bottom Collector Dock */}
-        <div className="relative z-20 px-4 sm:px-6 py-3.5 sm:py-4 bg-white/80 dark:bg-[#081626]/90 backdrop-blur-md border-t border-cyan-900/10 dark:border-cyan-300/15 transition-colors">
+        <div className="relative z-20 px-4 sm:px-6 py-3.5 sm:py-4 bg-white/85 dark:bg-[#0e081c]/90 backdrop-blur-md border-t border-[#ff3b9a]/15 dark:border-[#ff3b9a]/20 transition-colors">
           {caughtItems.length === 0 ? (
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <p className="font-space text-xs sm:text-sm text-[#155e75] dark:text-cyan-100/80 font-medium m-0">
+              <p className="font-space text-xs sm:text-sm text-[#155e75] dark:text-cyan-100/85 font-medium m-0">
                 {t.techPond.emptyTray}
               </p>
-              <span className="font-space text-[11px] text-[#0e7490]/80 dark:text-cyan-300/60 font-semibold uppercase tracking-wider">
+              <span className="font-space text-[11px] text-[#0e7490]/85 dark:text-[#ff78bc]/80 font-semibold uppercase tracking-wider">
                 14 {t.techPond.stackCountLabel}
               </span>
             </div>
@@ -566,8 +566,8 @@ export const TechPondCard: React.FC = () => {
                       role="listitem"
                       className={`inline-flex items-center gap-1.5 pl-2 pr-1.5 py-1 rounded-full border font-space text-xs font-semibold transition-all ${
                         isActive
-                          ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#09090b] border-[#0f172a] dark:border-white shadow-xs'
-                          : 'bg-white/95 dark:bg-[#0f263f] text-[#0f172a] dark:text-cyan-50 border-cyan-900/15 dark:border-cyan-400/20 hover:border-[#fd4aa6]'
+                          ? 'bg-gradient-to-r from-[#ff3b9a] to-[#ff8a4c] text-white border-transparent shadow-xs'
+                          : 'bg-white/95 dark:bg-[#191130] text-[#1a1026] dark:text-[#fdf7ff] border-[#eed4e4] dark:border-[#39265c] hover:border-[#ff3b9a]'
                       }`}
                     >
                       <button
@@ -585,8 +585,8 @@ export const TechPondCard: React.FC = () => {
                         title={`${t.techPond.releaseOne} ${item.name}`}
                         className={`p-0.5 rounded-full transition-colors cursor-pointer ${
                           isActive
-                            ? 'hover:bg-white/20 dark:hover:bg-black/15 text-white/80 dark:text-black/70'
-                            : 'hover:bg-black/10 dark:hover:bg-white/10 text-[#64748b] dark:text-cyan-200/70'
+                            ? 'hover:bg-white/20 text-white/90'
+                            : 'hover:bg-black/10 dark:hover:bg-white/10 text-[#7b648f] dark:text-[#b4a0ce]'
                         }`}
                       >
                         <X className="w-3 h-3" />
@@ -598,17 +598,17 @@ export const TechPondCard: React.FC = () => {
 
               {/* Active Caught Tech Detail Strip */}
               {activeItem && (
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2.5 border-t border-cyan-900/10 dark:border-cyan-300/10">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2.5 border-t border-[#ff3b9a]/15 dark:border-[#ff3b9a]/15">
                   <div className="inline-flex items-center gap-2 shrink-0">
                     <TechBrandIcon id={activeItem.id} className="w-5 h-5" />
-                    <span className="font-hegarty text-sm sm:text-base text-[#0f172a] dark:text-white">
+                    <span className="font-hegarty text-sm sm:text-base text-[#1a1026] dark:text-[#fdf7ff]">
                       {activeItem.name}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 dark:bg-cyan-400/15 text-[#0e7490] dark:text-cyan-300 font-space text-[10px] font-bold uppercase tracking-wider">
+                    <span className="px-2 py-0.5 rounded-full bg-[#ff3b9a]/12 dark:bg-[#00d9ff]/15 text-[#d61f7a] dark:text-[#67e8f9] font-space text-[10px] font-bold uppercase tracking-wider">
                       {activeItem.category[language]}
                     </span>
                   </div>
-                  <p className="font-space text-xs sm:text-[13px] text-[#334155] dark:text-cyan-100/85 m-0 leading-relaxed">
+                  <p className="font-space text-xs sm:text-[13px] text-[#523e63] dark:text-[#d6c7e8] m-0 leading-relaxed">
                     {activeItem.usedIn[language]}
                   </p>
                 </div>

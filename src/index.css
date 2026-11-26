@@ -12,8 +12,8 @@
 
 @layer base {
   :root {
-    --color-canvas: #FFFFFF;
-    --color-ink: #101010;
+    --color-canvas: #fff9f6;
+    --color-ink: #1a1026;
     --font-bbh-hegarty: 'BBH Hegarty', sans-serif;
     --font-manrope: 'Manrope', -apple-system, sans-serif;
     --font-space-grotesk: 'Space Grotesk', sans-serif;
@@ -22,8 +22,8 @@
   }
 
   .dark {
-    --color-canvas: #09090b;
-    --color-ink: #f4f4f5;
+    --color-canvas: #0b0614;
+    --color-ink: #fdf7ff;
   }
 
   body {
@@ -59,14 +59,14 @@
 }
 
 .stroke-title {
-  -webkit-text-stroke: 3px #fff;
+  -webkit-text-stroke: 3px #fff9f6;
   paint-order: stroke fill;
-  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 4px 4px rgba(145, 39, 108, 0.16));
 }
 
 .dark .stroke-title {
-  -webkit-text-stroke: 3px #18181b;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  -webkit-text-stroke: 3px #140d22;
+  filter: drop-shadow(0 4px 10px rgba(255, 59, 154, 0.24));
 }
 
 .font-mono-tech {
@@ -79,21 +79,21 @@
 
 /* Subtle Editorial Background Patterns */
 .bg-tech-grid {
-  background-image: radial-gradient(rgba(16, 16, 16, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(168, 85, 247, 0.14) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .dark .bg-tech-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 59, 154, 0.14) 1px, transparent 1px);
 }
 
 .bg-tech-dots {
-  background-image: radial-gradient(rgba(253, 74, 166, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 59, 154, 0.18) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 .dark .bg-tech-dots {
-  background-image: radial-gradient(rgba(253, 74, 166, 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 217, 255, 0.2) 1px, transparent 1px);
 }
 
 /* Purposeful Motion Animations */

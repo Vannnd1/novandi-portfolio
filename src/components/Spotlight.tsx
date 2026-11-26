@@ -11,7 +11,7 @@ interface SpotlightProps {
 export const Spotlight: React.FC<SpotlightProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(253, 74, 166, 0.08)',
+  spotlightColor = 'rgba(255, 59, 154, 0.14)',
   size = 650,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);

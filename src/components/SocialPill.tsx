@@ -15,15 +15,15 @@ export const SocialPill: React.FC<SocialPillProps> = ({ href, icon, label, varia
   const getVariantStyles = () => {
     switch (variant) {
       case 'github':
-        return 'bg-[#cf2ee3] hover:bg-[#b51fc9] text-white shadow-[#cf2ee3]/20';
+        return 'bg-[#9333ea] hover:bg-[#7e22ce] text-white shadow-[#a855f7]/25';
       case 'twitter':
       case 'linkedin':
-        return 'bg-[#46b8ff] hover:bg-[#209ded] text-white shadow-[#46b8ff]/20';
+        return 'bg-[#06b6d4] hover:bg-[#0891b2] text-white shadow-[#06b6d4]/25';
       case 'instagram':
       case 'gmail':
-        return 'bg-[#f0258d] hover:bg-[#d61778] text-white shadow-[#f0258d]/20';
+        return 'bg-[#ff3b9a] hover:bg-[#e11d74] text-white shadow-[#ff3b9a]/25';
       default:
-        return 'bg-[#101010] text-white shadow-black/20';
+        return 'bg-[#1a1026] text-white shadow-[#1a1026]/20';
     }
   };
 
