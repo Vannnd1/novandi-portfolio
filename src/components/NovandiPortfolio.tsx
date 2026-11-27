@@ -164,13 +164,14 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
-          <section className="pt-2 pb-2 select-none flex justify-center overflow-hidden">
-            <p className="font-hegarty text-[clamp(64px,18vw,165px)] text-[#ebd1e0] dark:text-[#23153b] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 opacity-95 flex justify-center">
+          <section className="pt-2 pb-3 select-none flex justify-center overflow-hidden">
+            <p className="novan-glossy-wordmark font-hegarty text-[clamp(64px,18vw,165px)] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
                   key={cIdx}
+                  style={{ '--char-index': cIdx } as React.CSSProperties}
                   initial={shouldReduceMotion ? false : { opacity: 0, y: 22, scale: 0.96 }}
-                  whileInView={{ opacity: 0.95, y: 0, scale: 1 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.45,
@@ -183,7 +184,7 @@ export const NovandiPortfolio: React.FC = () => {
                     y: -4,
                     transition: { duration: 0.2 },
                   }}
-                  className="inline-block transition-colors cursor-default"
+                  className="novan-glossy-char inline-block cursor-default"
                 >
                   {char}
                 </motion.span>
