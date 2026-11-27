@@ -164,8 +164,8 @@ export const NovandiPortfolio: React.FC = () => {
 
         {/* ── GIANT BRAND WORDMARK FOOTER TYPOGRAPHY ── */}
         <RevealOnScroll distance={20} delay={60} duration={750}>
-          <section className="pt-2 pb-3 select-none flex justify-center overflow-hidden">
-            <p className="novan-glossy-wordmark font-hegarty text-[clamp(64px,18vw,165px)] text-center leading-[0.9] tracking-[-0.04em] whitespace-nowrap m-0 flex justify-center">
+          <section className="py-4 select-none flex justify-center overflow-x-clip">
+            <p className="novan-glossy-wordmark font-hegarty text-[clamp(64px,18vw,165px)] text-center leading-[1.05] tracking-[-0.04em] whitespace-nowrap m-0 flex justify-center">
               {'novan'.split('').map((char, cIdx) => (
                 <motion.span
                   key={cIdx}

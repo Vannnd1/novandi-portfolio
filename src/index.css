@@ -153,6 +153,8 @@
 }
 
 .novan-glossy-char {
+  padding: 0.18em 0.08em;
+  margin: -0.18em -0.08em;
   background-image:
     linear-gradient(
       115deg,
@@ -178,7 +180,7 @@
     );
   background-size: 1100% 100%, 100% 220%;
   background-position:
-    calc(var(--novan-shine, 31) * 1% + var(--char-index, 0) * 9.5%) 50%,
+    calc(var(--novan-shine, 31) * 1% + var(--char-index, 0) * 8.5%) 50%,
     50% var(--novan-sheen-y, 35%);
   background-repeat: no-repeat, no-repeat;
   -webkit-background-clip: text;
